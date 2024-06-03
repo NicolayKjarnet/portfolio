@@ -56,6 +56,34 @@ section {
   padding: 7rem 10vw;
 }
 
+.long-divider {
+  height: 0.1px;
+  width: 80%;
+  background-color: var(--clr-white);
+}
+
+.long-divider:nth-child(2) {
+  margin: 2rem 0 0 0;
+}
+
+.long-divider {
+  margin: 0 0 2rem 0;
+  width: 100%;
+}
+
+.important-note__title {
+  margin-bottom: 0.5rem;
+}
+
+.important-note {
+  color: yellow;
+  font-size: 1rem;
+}
+
+.project-section__img-ratatouille {
+  background-color: var(--clr-green);
+}
+
 /* -------------------- HEADER -------------------- */
 
 .header {
@@ -222,7 +250,7 @@ a {
   transition: 0.3s ease-in-out;
   width: 100%;
   object-fit: cover;
-  object-position: top;
+  object-position: middle;
   transform: scale(1.01);
   height: 100%;
 }
@@ -557,6 +585,10 @@ a {
     flex-direction: column;
     align-items: center;
   }
+
+  .contact-article {
+    flex-direction: column;
+  }
 }
 
 @media only screen and (min-width: 581px) {
@@ -588,6 +620,10 @@ a {
     align-items: flex-start;
     line-height: 0;
     margin-right: 5rem;
+  }
+
+  .contact-article {
+    flex-direction: row;
   }
 }
 
