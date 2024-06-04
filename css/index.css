@@ -452,11 +452,11 @@ a {
 /*! -------------------- CONTACT -------------------- */
 
 .contact-section__container {
-  border: 1px solid var(--clr-white);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  min-height: 20rem;
 }
 
 .contact-article {
@@ -489,6 +489,7 @@ a {
 .contact-form__container {
   display: flex;
   flex-direction: column;
+  max-width: fit-content;
   gap: 1rem;
 }
 
