@@ -419,44 +419,12 @@ a {
 
 /*! -------------------- CONTACT -------------------- */
 
-/* .contact-section__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.contact-article {
-  display: flex;
-  gap: 3rem;
-  text-align: left;
-  min-height: 10rem;
-}
-
-.socials-container {
-  margin: 1rem 0 0 0;
-  display: flex;
-}
-
-.socials-container > a:hover {
-  color: var(--clr-red);
-}
-
-.fa {
-  color: var(--clr-headings-1);
-  height: 100%;
-  width: 20%;
-  display: flex;
-  justify-content: space-between;
-} */
-
-/*! -------------------- CONTACT -------------------- */
-
 .contact-section__container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
   min-height: 20rem;
+  padding: 2rem;
 }
 
 .contact-article {
