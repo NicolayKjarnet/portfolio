@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const projectArticles = document.querySelectorAll(
     ".project-section__article"
   );
+  const filterDropdown = document.querySelector(".filter-dropdown");
 
   filterItems.forEach((item) => {
     item.addEventListener("click", function () {
@@ -65,17 +66,26 @@ document.addEventListener("DOMContentLoaded", function () {
       filterItems.forEach((el) => el.classList.remove("active"));
       this.classList.add("active");
 
-      projectArticles.forEach((article) => {
-        if (filterValue === "all") {
-          article.classList.remove("hidden");
-        } else if (
-          article.classList.contains(`project-section__article--${filterValue}`)
-        ) {
-          article.classList.remove("hidden");
-        } else {
-          article.classList.add("hidden");
-        }
-      });
+      filterProjects(filterValue);
     });
   });
+
+  filterDropdown.addEventListener("change", function () {
+    const filterValue = this.value;
+    filterProjects(filterValue);
+  });
+
+  function filterProjects(filterValue) {
+    projectArticles.forEach((article) => {
+      if (filterValue === "all") {
+        article.classList.remove("hidden");
+      } else if (
+        article.classList.contains(`project-section__article--${filterValue}`)
+      ) {
+        article.classList.remove("hidden");
+      } else {
+        article.classList.add("hidden");
+      }
+    });
+  }
 });

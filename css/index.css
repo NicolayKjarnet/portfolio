@@ -252,6 +252,13 @@ a {
   display: none;
 }
 
+.filter-dropdown {
+  display: none;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
 .project-section {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -480,7 +487,7 @@ a {
   text-decoration: none;
 }
 
-/* -------------------- FOOTER HOVETR & ANIMATION -------------------- */
+/* -------------------- FOOTER HOVER & ANIMATION -------------------- */
 
 .footer__img-container:hover {
   cursor: pointer;
@@ -599,10 +606,9 @@ a {
 .wave-3 .shape-fill {
   fill: var(--clr-orange);
 }
-
 /* -------------------- MEDIA QUERIES -------------------- */
 
-/* @media only screen and (min-width: 1px) {
+@media only screen and (min-width: 1px) {
   .project-section__article {
     grid-column: auto / span 12;
   }
@@ -645,72 +651,28 @@ a {
   }
 }
 
-@media only screen and (min-width: 902px) {
-  .project-section__article {
-    grid-column: auto / span 6;
+@media only screen and (max-width: 768px) {
+  .filter-list {
+    display: none;
   }
 
-  .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .header__title-section {
-    align-items: flex-start;
-    line-height: 0;
-    margin-right: 5rem;
-  }
-
-  .contact-article {
-    flex-direction: row;
+  .filter-dropdown {
+    display: inline-block;
   }
 }
 
-@media only screen and (min-width: 1450px) {
-  .project-section__article {
-    grid-column: auto / span 4;
-  }
-} */
-
-@media only screen and (min-width: 1px) {
-  .project-section__article {
-    grid-column: auto / span 12;
-  }
-
-  .header {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .header__title-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    line-height: 0.3rem;
-    margin: 0;
-  }
-
-  .list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .contact-article {
-    flex-direction: column;
-  }
-
+@media only screen and (min-width: 768px) {
   .filter-list {
-    flex-direction: column;
+    display: flex;
   }
-}
 
-@media only screen and (min-width: 481px) {
-  .filter-list {
-    flex-direction: row;
+  .filter-dropdown {
+    display: none;
+  }
+
+  .filter-item {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 
