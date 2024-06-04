@@ -62,6 +62,19 @@
 
         <!-- Projects section -->
 
+        <div class="filter-box">
+            <ul class="filter-list">
+                <li class="filter-item active" data-filter="all">All</li>
+                <li class="filter-item" data-filter="fullstack">Fullstack</li>
+                <li class="filter-item" data-filter="ux">UX</li>
+                <li class="filter-item" data-filter="frontend">Frontend</li>
+                <li class="filter-item" data-filter="ios">iOS</li>
+                <li class="filter-item" data-filter="android">Android</li>
+                <li class="filter-item" data-filter="crossplattform">Crossplattform</li>
+                <li class="filter-item" data-filter="iot">IoT</li>
+            </ul>
+        </div>
+
         <div class="project-section">
 
             <!-- Wolve IT -->
@@ -102,7 +115,7 @@
 
             <!-- Munch AR -->
 
-            <article class="project-section__article project-section__article--fullstack project-section__article--ux">
+            <article class="project-section__article project-section__article--fullstack project-section__article--android">
                 <a class="project-link" href="munchAR.html">
 
                         <div class="project-section__img-container">
@@ -136,7 +149,7 @@
 
             <!-- Munch QR + Admin Page -->
 
-            <article class="project-section__article project-section__article--fullstack project-section__article--fullstack project-section__article--crossplattform">
+            <article class="project-section__article project-section__article--fullstack project-section__article--fullstack project-section__article--crossplattform project-section__article--ux">
                 <a class="project-link" href="munchQR.html">
 
                         <div class="project-section__img-container">
@@ -172,11 +185,11 @@
 
             <!-- Greenhouse Monitoring -->
 
-            <article class="project-section__article project-section__article--fullstack">
-                <a class="project-link" target="_blank" href="https://nicolaykjaernet.com/">
+            <article class="project-section__article project-section__article--fullstack project-section__article--iot">
+                <a class="project-link">
 
                 <div class="project-section__img-container">
-                        <img href="https://nicolaykjaernet.com/" class="project-section__img" src="/images/GreenhouseMonitoring.png" alt="Image of a website fetching info from the Rick and Morty API.">
+                        <img class="project-section__img" src="/images/GreenhouseMonitoring.png" alt="Image of a website fetching info from the Rick and Morty API.">
                 </div>
 
                 <div class="project-section__about">
@@ -248,10 +261,10 @@
             <!-- Rick and Morty -->
 
             <article class="project-section__article project-section__article--frontend">
-                <a class="project-link" target="_blank" href="https://nicolaykjaernet.com/">
+                <a class="project-link" target="_blank" href="https://rick-and-morty-api.nicolaykjaernet.com/">
 
                         <div class="project-section__img-container">
-                                <img href="https://nicolaykjaernet.com/" class="project-section__img" src="/images/rick-and-morty-api.png" alt="Image of a website fetching info from the Rick and Morty API.">
+                                <img href="https://rick-and-morty-api.nicolaykjaernet.com/" class="project-section__img" src="/images/rick-and-morty-api.png" alt="Image of a website fetching info from the Rick and Morty API.">
                         </div>
 
                         <div class="project-section__about">
@@ -285,7 +298,7 @@
             
             <!-- Dagens Latter -->
 
-            <article class="project-section__article project-section__ios">
+            <article class="project-section__article project-section__article--ios">
 
                         <div class="project-section__img-container">
                                 <img href="https://nicolaykjaernet.com/" class="project-section__img" src="/images/AppIcon.png" alt="Image of a website fetching info from the Rick and Morty API.">
@@ -317,7 +330,7 @@
 
             <!-- Ratatouille -->
 
-            <article class="project-section__article project-section__ios">
+            <article class="project-section__article project-section__article--ios">
 
                         <div class="project-section__img-container">
                                 <img href="https://nicolaykjaernet.com/" class="project-section__img project-section__img-ratatouille" src="/images/Mouse.png" alt="Image of the main character from Ratatouille.">
@@ -362,7 +375,7 @@
                             <hr class="about__divider divider">
                     <h3 class="about__title">About</h3>
             
-                    <figcaption class="about__caption">iOS app for lovers of word puzzles.
+                    <figcaption class="about__caption">iOS app for lovers of word puzzles. More text for testing purposes.
                                     
                                 <div class="noterworthy-techniques-container">
                                         <span class="noteworthy-techniques">
@@ -414,10 +427,11 @@
 
             <!-- Scrollfolio -->
 
-            <article class="project-section__article project-section__article--ux">
+            <article class="project-section__article project-section__article--frontend">
+                <a class="project-link" target="_blank" href="https://scrollfolio.nicolaykjaernet.com/">
 
                         <div class="project-section__img-container">
-                                <img href="https://nicolaykjaernet.com/" class="project-section__img" src="/images/Scrollfolio.png" alt="Image of a website fetching info from the Rick and Morty API.">
+                                <img href="https://scrollfolio.nicolaykjaernet.com/" class="project-section__img" src="/images/Scrollfolio.png" alt="Image of a website fetching info from the Rick and Morty API.">
                         </div>
 
                         <div class="project-section__about">
@@ -435,6 +449,9 @@
                                                 <li>HTML</li>
                                                 <li>CSS</li>
                                                 <li>JS</li>
+                                                <li>Grid</li>
+                                                <li>Flexbox</li>
+                                                <li>Animation</li>
                                             </ul>
                                         </span>
                                     </div>
@@ -442,6 +459,7 @@
                             </figcaption>
 
                     </div>
+                </a>
             </article>
         </div>
 
@@ -533,7 +551,6 @@
         <!-- About section -->
 
         <div class="about-section">
-
             <article class="about-article__img">
                 <div class="image-card">
                   <div class="image-container">
@@ -584,6 +601,6 @@
     </section>
 
     <script src="/scripts/index.js"></script>
-
+    
 </body>
 </html>

@@ -121,7 +121,7 @@ a {
 }
 
 .list-item > a {
-  transition: 0.2s ease-in-out;
+  transition: 0.3s ease-in-out;
   text-decoration: none var(--clr-green) 0.12rem;
 }
 
@@ -216,7 +216,41 @@ a {
   }
 }
 
-/* -------------------- PROJECT SECTION -------------------- */
+/*! -------------------- PROJECTS -------------------- */
+.filter-box {
+  margin-bottom: 2rem;
+  text-align: center;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.filter-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-item {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: var(--clr-white);
+  text-decoration: underline wavy transparent 0.12rem;
+  transition: border-color 0.3s;
+}
+
+.filter-item:hover,
+.filter-item.active {
+  text-decoration: underline wavy var(--clr-green) 0.12rem;
+}
+
+.hidden {
+  display: none;
+}
 
 .project-section {
   display: grid;
@@ -261,8 +295,6 @@ a {
   color: var(--clr-txt);
 }
 
-/*! -------------------- ABOUT -------------------- */
-
 .project-section__about {
   padding: 1rem;
 }
@@ -291,7 +323,7 @@ a {
 
 .image {
   transform: translateY(2rem);
-  transition: 0.2s ease-in-out;
+  transition: 0.3s ease-in-out;
   object-fit: cover;
   height: 20rem;
 }
@@ -319,7 +351,11 @@ a {
 
 .project-section__project-title {
   color: var(--clr-white);
+  transition: 0.3s ease-in-out;
+  text-decoration: underline none var(--clr-orange) 0.12rem;
 }
+
+/*! -------------------- ABOUT -------------------- */
 
 .about__title,
 .about__caption {
@@ -351,11 +387,12 @@ a {
 }
 
 .noteworthy-techniques > ul > li {
-  background-color: var(--clr-dark);
+  background-color: var(--clr-dark-3);
   color: var(--clr-white);
   padding: 0.6rem;
   margin: 0.3rem;
   border-radius: 20px;
+  transition: 0.3s ease-in-out;
 }
 
 /* -------------------- PROJECTS HOVER STATES -------------------- */
@@ -365,8 +402,12 @@ a {
 }
 
 .project-section__article:hover .project-section__project-title {
-  text-decoration: underline wavy 0.2rem var(--clr-orange);
+  text-decoration: underline wavy 0.15rem var(--clr-orange);
   text-underline-offset: 0.3rem;
+}
+
+.project-section__article:hover .noteworthy-techniques > ul > li {
+  background-color: var(--clr-dark);
 }
 
 /*! -------------------- CONTACT -------------------- */
@@ -561,7 +602,7 @@ a {
 
 /* -------------------- MEDIA QUERIES -------------------- */
 
-@media only screen and (min-width: 1px) {
+/* @media only screen and (min-width: 1px) {
   .project-section__article {
     grid-column: auto / span 12;
   }
@@ -601,6 +642,92 @@ a {
     height: 1rem;
     width: 1px;
     background-color: var(--clr-white);
+  }
+}
+
+@media only screen and (min-width: 902px) {
+  .project-section__article {
+    grid-column: auto / span 6;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header__title-section {
+    align-items: flex-start;
+    line-height: 0;
+    margin-right: 5rem;
+  }
+
+  .contact-article {
+    flex-direction: row;
+  }
+}
+
+@media only screen and (min-width: 1450px) {
+  .project-section__article {
+    grid-column: auto / span 4;
+  }
+} */
+
+@media only screen and (min-width: 1px) {
+  .project-section__article {
+    grid-column: auto / span 12;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header__title-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 0.3rem;
+    margin: 0;
+  }
+
+  .list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-article {
+    flex-direction: column;
+  }
+
+  .filter-list {
+    flex-direction: column;
+  }
+
+  .filter-item {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .filter-list {
+    flex-direction: row;
+  }
+
+  .filter-item {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .filter-item {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 }
 
