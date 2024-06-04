@@ -706,28 +706,11 @@ a {
   .filter-list {
     flex-direction: column;
   }
-
-  .filter-item {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-  }
 }
 
 @media only screen and (min-width: 481px) {
   .filter-list {
     flex-direction: row;
-  }
-
-  .filter-item {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .filter-item {
-    font-size: 0.9rem;
-    padding: 0.4rem 0.8rem;
   }
 }
 
