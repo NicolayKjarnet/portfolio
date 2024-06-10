@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/projects.css" />
+    <title>Greenhouse System</title>
+  </head>
+  <body>
+    <a href="index.html">Back to Home</a>
+    <h1>Greenhouse System</h1>
+    <p>
+      The Greenhouse Monitoring System is an advanced solution designed to
+      optimize the growth conditions of various crops by leveraging a
+      combination of sensors and IoT technology. This system is implemented
+      using Arduino and a suite of sensors from Adafruit, including temperature,
+      humidity, and light sensors.
+    </p>
+
+    <div class="video-container">
+      <iframe
+        src="https://www.youtube.com/embed/nJMOi_NJ07c"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    </div>
+    <p>
+      <a href="https://github.com/NicolayKjarnet/GreenhouseMonitoringSystem.git"
+        >GitHub Repository</a
+      >
+    </p>
+
+    <h2>Key Features:</h2>
+    <ul>
+      <li>
+        <strong>Temperature and Humidity Monitoring:</strong> The system
+        continuously monitors the temperature and humidity levels using the
+        Adafruit SHT31 sensor. It alerts the user if these parameters fall
+        outside the optimal range for crops.
+      </li>
+      <li>
+        <strong>Light Intensity Management:</strong> The light intensity is
+        monitored using the Adafruit LTR329 sensor. The system ensures that
+        crops like Cayenne Pineapples and Goldfinger Bananas receive the
+        appropriate amount of light. Alerts are generated if the light is too
+        dim or too bright.
+      </li>
+      <li>
+        <strong>Magnetic Door Sensor:</strong> A hall sensor is used to detect
+        the status of the greenhouse door. Alerts are sent if the door remains
+        open for too long, ensuring the greenhouse environment remains
+        controlled.
+      </li>
+      <li>
+        <strong>IoT Connectivity:</strong> The system uses WiFi to connect to
+        the internet, sending data to a remote server for analysis and long-term
+        storage. This allows users to monitor greenhouse conditions in real-time
+        from anywhere.
+      </li>
+      <li>
+        <strong>Push Notifications:</strong> Users receive immediate alerts on
+        their mobile devices via Pushsafer when conditions require attention,
+        such as extreme temperatures, humidity levels, or prolonged door
+        openings.
+      </li>
+      <li>
+        <strong>Data Integration:</strong> The system integrates with the
+        OpenWeatherMap API to provide weather updates and contextual information
+        about external conditions, enhancing the decision-making process.
+      </li>
+    </ul>
+    <h2>Future Enhancements</h2>
+    <p>
+      A video presentation detailing the features, setup, and real-time
+      operation of the Greenhouse Monitoring System will be available soon. This
+      video will provide a comprehensive walkthrough, demonstrating how the
+      system helps maintain optimal conditions for crop growth, ensures timely
+      alerts, and supports remote monitoring and control.
+    </p>
+  </body>
+</html>
