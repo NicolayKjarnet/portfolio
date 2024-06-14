@@ -1,5 +1,3 @@
-const projectSection = document.querySelector(".project-section");
-
 const renderProjectItem = (
   link,
   imgSrc,
@@ -36,7 +34,7 @@ const renderProjectItem = (
   `;
 };
 
-const renderProjects = () => {
+export const renderProjects = () => {
   return `
     ${renderProjectItem(
       "wolve.html",
@@ -170,5 +168,3 @@ const renderProjects = () => {
     )}
   `;
 };
-
-projectSection.innerHTML = renderProjects();
