@@ -296,7 +296,7 @@ a {
   cursor: pointer;
   color: var(--clr-white);
   text-decoration: underline wavy transparent 0.12rem;
-  transition: border-color 0.3s;
+  transition: 0.3s ease-in-out;
 }
 
 .filter-item:hover,
@@ -697,6 +697,7 @@ a {
 .wave-3 .shape-fill {
   fill: var(--clr-orange);
 }
+
 /* -------------------- MEDIA QUERIES -------------------- */
 
 @media only screen and (min-width: 1px) {
