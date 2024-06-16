@@ -22,24 +22,41 @@ body {
   overflow-x: hidden;
 }
 
+/* -------------------- HEADER -------------------- */
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1.25rem;
   background-color: var(--clr-red);
+  padding: 2.5rem 0;
 }
 
 .header__link {
-  color: #007bff;
+  margin-left: 2.5rem;
+  transition: 0.3s ease-in-out;
+  color: var(--clr-white);
+  text-underline-offset: var(--offset, 0.2em);
   text-decoration: none;
+  transition: 0.5 ease-in-out;
   font-weight: bold;
+  z-index: 100;
 }
 
-.header h1 {
-  color: var(--clr-white-2);
-  text-align: center;
-  flex: 1;
+.header__link:hover {
+  text-decoration: underline wavy var(--clr-green);
+}
+
+.header-title-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--clr-white-3);
 }
 
 .video-section {
