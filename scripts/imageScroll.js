@@ -7,7 +7,7 @@ document.querySelectorAll(".img-container").forEach((container) => {
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
       img.style.transformOrigin = `${x}px ${y}px`;
-      img.style.transform = "scale(1.2)";
+      img.style.transform = "scale(1.1)";
     });
 
     img.addEventListener("mouseleave", () => {
