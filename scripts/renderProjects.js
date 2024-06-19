@@ -63,7 +63,7 @@ export const renderProjects = () => {
     ${renderProjectItem(
       "munchQR.html",
       "/images/MunchQR-min.png",
-      "Discover Munch's Artworks",
+      "Discover Munch",
       "Tourist? Scan QR codes to read about Munch's art. Are you an admin at the Munch Museum and needs to do some CRUD operations? We got you covered.",
       ["React Native", "React", ".net", "C#", "CRUD"],
       "project-section__article--fullstack project-section__article--crossplattform project-section__article--ux"
