@@ -37,7 +37,7 @@ const renderProjectItem = (
 export const renderProjects = () => {
   return `
     ${renderProjectItem(
-      "wolve-2.html",
+      "wolve.html",
       "/images/Wolve-min.png",
       "Wolve Redesign",
       "Bachelor's project for Wolve IT. Full redesign of their loyalty platform.",

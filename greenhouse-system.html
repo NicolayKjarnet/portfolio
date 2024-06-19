@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/projects-2.css" />
     <title>Greenhouse System</title>
   </head>
   <body>
@@ -13,7 +13,7 @@
     <header class="header">
       <a href="index.html" class="header__link">Back to Home</a>
       <div class="header-title-container">
-        <h1 id="header">Greenhouse System</h1>
+        <h1>Greenhouse System</h1>
       </div>
     </header>
     <main>
@@ -29,172 +29,140 @@
         </div>
       </section>
 
-      <!-- SVG Divider -->
-      <div class="wave">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-            class="shape-fill"
-          ></path>
-        </svg>
-      </div>
-
       <!-- Project Summary Section -->
-      <section class="content-section">
+      <section class="summary-section">
         <div class="summary">
-          <h2>Project Summary</h2>
-          <p>
-            The Greenhouse Monitoring System is an advanced solution designed to optimize the growth conditions of various crops by leveraging a combination of sensors and IoT technology. This system is implemented using Arduino and a suite of sensors from Adafruit, including temperature, humidity, and light sensors.
-          </p>
-          <p>
-            Through detailed research, I identified key factors influencing the growth of Goldfinger Bananas and Cayenne Pineapples. By integrating sensors to monitor these factors, I created a system that ensures optimal growth conditions. The final product includes real-time data visualization and alerts, enhancing the user experience and efficiency of the greenhouse operations.
-          </p>
+          <h2 class="summary-header">Project Summary</h2>
+        <p>
+          The Greenhouse Monitoring System is an advanced solution designed to
+          optimize the growth conditions of various crops by leveraging a
+          combination of sensors and IoT technology. This system is implemented
+          using Arduino and a suite of sensors from Adafruit, including
+          temperature, humidity, and light sensors.
+        </p>
+        <p>
+          Through detailed research, I identified key factors influencing the
+          growth of Goldfinger Bananas and Cayenne Pineapples. By integrating
+          sensors to monitor these factors, I created a system that ensures
+          optimal growth conditions. The final product includes real-time data
+          visualization and alerts, enhancing the user experience and efficiency
+          of the greenhouse operations.
+        </p>
         </div>
       </section>
-
-      <!-- SVG Divider -->
-      <div class="curve">
-        <svg
-          data-name="Layer 1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M600,112.77C268.63,112.77,0,65.52,0,7.23V120H1200V7.23C1200,65.52,931.37,112.77,600,112.77Z"
-            class="shape-fill"
-          ></path>
-        </svg>
-      </div>
 
       <!-- Process Section -->
-      <section class="process-section">
-        <h2>Process</h2>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="circle">1</div>
-            <div class="timeline-content">
-              <h3>Research</h3>
-              
-              <p>
-                I started the task by researching the growing conditions of bananas and pineapples. I found that these fruits can grow together, complementing each other in terms of shade and environmental needs. I then identified which factors could be monitored using ESP32 sensors and selected Thingspeak for cloud data management due to its ease of use and good documentation.
-              </p>
-            </div>
-          </div>
+<div class="process-container">
+  <h2 class="process-header">Project Process</h2>
+  
+  <section class="process-step process-step-height-70">
+    <div class="content">
+      <h3>1. Research</h3>
+      <p>
+        I started the task by researching the growing conditions of bananas and pineapples. I found that these fruits can grow together, complementing each other in terms of shade and environmental needs. I then identified which factors could be monitored using ESP32 sensors and selected Thingspeak for cloud data management due to its ease of use and good documentation.
+      </p>
+    </div>
+    <div class="image-container single-image">
+      <img
+        class="img-vertical"
+        src="images/Prosjektbilder/Greenhouse/bananas.png"
+        alt="Problem Identification"
+      />
+    </div>
+  </section>
 
-          <div class="timeline-item">
-            <div class="circle">2</div>
-            <div class="timeline-content">
-              <h3>Real World Scenario</h3>
-              
-              <p>
-                In a real-world scenario, the program would be optimized for specific variants of fruits. Based on my research, I chose Goldfinger Bananas and Cayenne Pineapples for their complementary growth needs. Alerts were tailored to ensure optimal growing conditions for these fruits.
-              </p>
-            </div>
-          </div>
+  <section class="process-step process-step-height-70">
+    <div class="content">
+      <h3>2. Real World Scenario</h3>
+      <p>
+        In a real-world scenario, the program would be optimized for specific variants of fruits. Based on my research, I chose Goldfinger Bananas and Cayenne Pineapples for their complementary growth needs. Alerts were tailored to ensure optimal growing conditions for these fruits.
+      </p>
+    </div>
+    <div class="image-container single-image">
+      <img
+        class="img-vertical"
+        src="images/Prosjektbilder/Greenhouse/pineapples.png"
+        alt="Problem Identification"
+      />
+    </div>
+  </section>
 
-          <div class="timeline-item">
-            <div class="circle">3</div>
-            <div class="timeline-content">
-              <h3>MVP to Final Product</h3>
-              <p>
-                After completing the research, I built MVPs for each function, integrating them into a single program. Alerts were added for out-of-range sensor data, and functionality for sending data to Thingspeak was implemented. The final product included a dashboard with gauges for temperature and humidity, enhancing data visualization.
-              </p>
-            </div>
-          </div>
+  <section class="process-step process-step-height-50">
+    <div class="content">
+      <h3>3. MVP to Final Product</h3>
+      <p>
+        After completing the research, I built MVPs for each function, integrating them into a single program. Alerts were added for out-of-range sensor data, and functionality for sending data to Thingspeak was implemented. The final product included a dashboard with gauges for temperature and humidity, enhancing data visualization.
+      </p>
+    </div>
+  </section>
 
-          <div class="timeline-item">
-            <div class="circle">4</div>
-            <div class="timeline-content">
-              <h3>Code Documentation and Structure</h3>
-              <div class="img-container">
-                <img
-                  class="img-vertical"
-                  src="images/Prosjektbilder/Greenhouse/documentation.png"
-                  alt="Problem Identification"
-                />
-              </div>
-              <p>
-                The code is well-documented with comments and divided into five main sections: Global variables, Setup, Helper functions, Main functions, and Loop. Each function includes a brief description, making it easier for others to understand the code's structure and functionality.
-              </p>
-            </div>
-          </div>
+  <section class="process-step process-step-height-50">
+    <div class="content">
+      <h3>4. Code Documentation and Structure</h3>
+      <p>
+        The code is well-documented with comments and divided into five main sections: Global variables, Setup, Helper functions, Main functions, and Loop. Each function includes a brief description, making it easier for others to understand the code's structure and functionality.
+      </p>
+    </div>
+    <div class="image-container single-image">
+      <img
+        class="img-vertical"
+        src="images/Prosjektbilder/Greenhouse/documentation.png"
+        alt="Problem Identification"
+      />
+    </div>
+  </section>
 
-          <div class="timeline-item">
-            <div class="circle">5</div>
-            <div class="timeline-content">
-              <h3>Alerts</h3>
-              <div class="img-container">
-                <img
-                  src="images/Prosjektbilder/Greenhouse/alert-example.png"
-                  alt="Sketching and Ideation"
-                />
-              </div>
-              <p>
-                The system includes alerts for various conditions, such as light intensity, temperature, and humidity. A Pushsafer alert notifies users if the greenhouse door remains open, incorporating weather data from the OpenWeatherMap API. This ensures users are aware of any critical conditions affecting the crops.
-              </p>
-            </div>
-          </div>
+  <section class="process-step process-step-height-50">
+    <div class="content">
+      <h3>5. Alerts</h3>
+      <p>
+        The system includes alerts for various conditions, such as light intensity, temperature, and humidity. A Pushsafer alert notifies users if the greenhouse door remains open, incorporating weather data from the OpenWeatherMap API. This ensures users are aware of any critical conditions affecting the crops.
+      </p>
+    </div>
+    <div class="image-container single-image">
+      <img
+        src="images/Prosjektbilder/Greenhouse/alert-example.png"
+        alt="Sketching and Ideation"
+      />
+    </div>
+  </section>
 
-          <div class="timeline-item">
-            <div class="circle">6</div>
-            <div class="timeline-content">
-              <h3>Cloud Setup</h3>
-              <p>
-                The cloud setup follows the tutorial from Random Nerd Tutorials, with adjustments made for the ESP32. This setup enables real-time data monitoring and storage, providing a comprehensive overview of the greenhouse conditions.
-              </p>
-            </div>
-          </div>
+  <section class="process-step process-step-height-50">
+    <div class="content">
+      <h3>6. Cloud Setup</h3>
+      <p>
+        The cloud setup follows the tutorial from Random Nerd Tutorials, with adjustments made for the ESP32. This setup enables real-time data monitoring and storage, providing a comprehensive overview of the greenhouse conditions.
+      </p>
+    </div>
+  </section>
 
-          <div class="timeline-item">
-            <div class="circle">7</div>
-            <div class="timeline-content">
-              <h3>Extending the Solution</h3>
-              <p>
-                To extend the solution to multiple sites, data collection and visualization can be centralized on a single IoT platform. This allows for individual visualizations for each site and advanced analysis through a centralized database.
-              </p>
-            </div>
-          </div>
+  <section class="process-step process-step-height-50">
+    <div class="content">
+      <h3>7. Extending the Solution</h3>
+      <p>
+        To extend the solution to multiple sites, data collection and visualization can be centralized on a single IoT platform. This allows for individual visualizations for each site and advanced analysis through a centralized database.
+      </p>
+    </div>
+  </section>
 
-          <div class="timeline-item">
-            <div class="circle">8</div>
-            <div class="timeline-content">
-              <h3>Libraries Used</h3>
-              <p>
-                The project utilizes several libraries to enhance functionality:
-                <ul>
-                  <li><a href="https://github.com/mathworks/ThingSpeak">mathworks/ThingSpeak</a></li>
-                  <li><a href="https://github.com/adafruit/Adafruit_SHT31_Library">adafruit/Adafruit_SHT31_Library</a></li>
-                  <li><a href="https://github.com/adafruit/Adafruit_DotStar">adafruit/Adafruit_DotStar</a></li>
-                  <li><a href="https://github.com/adafruit/Adafruit_LTR329">adafruit/Adafruit_LTR329</a></li>
-                  <li><a href="https://github.com/bblanchon/ArduinoJson">bblanchon/ArduinoJson</a></li>
-                </ul>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+  <section class="process-step process-step-height-50">
+    <div class="content">
+      <h3>8. Libraries Used</h3>
+      <p>
+        The project utilizes several libraries to enhance functionality:
+        <ul>
+          <li><a href="https://github.com/mathworks/ThingSpeak">mathworks/ThingSpeak</a></li>
+          <li><a href="https://github.com/adafruit/Adafruit_SHT31_Library">adafruit/Adafruit_SHT31_Library</a></li>
+          <li><a href="https://github.com/adafruit/Adafruit_DotStar">adafruit/Adafruit_DotStar</a></li>
+          <li><a href="https://github.com/adafruit/Adafruit_LTR329">adafruit/Adafruit_LTR329</a></li>
+          <li><a href="https://github.com/bblanchon/ArduinoJson">bblanchon/ArduinoJson</a></li>
+        </ul>
+      </p>
+    </div>
+  </section>
+</div>
 
-      <!-- SVG Divider -->
       <section id="footer-section">
-        <div class="wave-2">
-          <svg
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
-              class="shape-fill"
-            ></path>
-          </svg>
-        </div>
         <footer class="footer">
           <div class="footer__container">
             <a
@@ -209,9 +177,8 @@
                 src="/images/footer-gif.gif"
                 alt="Footer GIF"
               />
-              <figcaption class="footer__caption">Hi there!</figcaption>
             </div>
-            <a class="footer__link footer__link--back-to-top" href="#header"
+            <a class="footer__link footer__link--back-to-top" href="#top"
               >BACK TO TOP ▲</a
             >
           </div>
@@ -226,8 +193,12 @@
       defer
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"
     ></script>
+    <script defer src="scripts/projectIndex.js"></script>
     <script defer src="scripts/progress.js"></script>
     <script defer src="scripts/imageScroll.js"></script>
     <script defer src="scripts/projectIndex.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script defer src="scripts/parallax.js"></script>
   </body>
 </html>

@@ -3,26 +3,264 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/projects-2.css" />
     <title>Munch AR App</title>
   </head>
   <body>
-    <a href="index.html">Back to Home</a>
-    <h1>Munch AR App</h1>
-    <p>
-      We developed the Munch AR app to enhance the visitor experience at the
-      Munch Museum. In this app, Mr. Scream guides you through Oslo, offering
-      travel tips and fascinating trivia along the way. More information,
-      including mockups, will be added very soon.
-    </p>
-    <!-- YouTube video embed -->
-    <div class="video-container">
-      <iframe
-        src="https://www.youtube.com/embed/f7RiJLSYJQ4"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
+    <header class="header">
+      <a href="index.html" class="header__link">Back to Home</a>
+      <div class="header-title-container">
+        <h1>Munch AR App</h1>
+      </div>
+    </header>
+    <main>
+      <!-- Video Section -->
+      <section class="video-section">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/f7RiJLSYJQ4"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Project Summary Section for AR Solution -->
+      <section class="summary-section">
+        <div class="summary">
+          <h2 class="summary-header">Project Summary</h2>
+          <p>
+            As part of our Agile project, we collaborated with the Munch Museum
+            to develop a digital solution aimed at enhancing the visitor
+            experience and attracting young adults to the museum. Our team,
+            consisting of students from various fields, utilized modern
+            technology to create the Munch AR app. This app features Mr. Scream,
+            an AR guide who leads users through Oslo, providing travel tips and
+            fascinating trivia about Edvard Munch's artworks. The AR feature
+            incorporates GPS to help users navigate and discover more about the
+            museum's collections.
+          </p>
+        </div>
+      </section>
+
+      <!-- Process Section -->
+      <div class="process-container">
+        <h2 class="process-header">Project Process</h2>
+
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>1. Research and Concept</h3>
+            <p>
+              We started by researching how AR technology could enhance the
+              museum experience, aiming to create an engaging and interactive
+              experience for young adults. By combining art with modern
+              technology, we sought to make museum visits more appealing and
+              fun.
+            </p>
+            <p>
+              Using the collaboration platform Miro, we brainstormed ideas for
+              an AR guide inspired by Munch's famous painting "The Scream." This
+              character, Mr. Scream, would guide users through the museum and
+              the city, offering interesting facts about Munch and his artworks.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/MunchAR/concepts.png"
+              alt="AR Idea Example 1"
+            />
+          </div>
+        </section>
+
+        <section class="process-step">
+          <div class="content">
+            <h3>2. Design Sprint</h3>
+            <p>
+              During the design sprint, we brainstormed ideas for the AR guide,
+              developed sketches and wireframes, and created a prototype using
+              Figma. This included user flows, interactive elements, and initial
+              designs for the AR guide.
+            </p>
+            <p>
+              The design sprint helped us explore creative solutions and align
+              our vision with the client's expectations, focusing on the AR
+              feature to provide a unique and engaging experience for museum
+              visitors.
+            </p>
+          </div>
+          <div class="image-container multiple-images">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/MunchAR/concepts-2.png"
+              alt="AR Idea Example 2"
+            />
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/MunchAR/scrum.png"
+              alt="Scrum Process"
+            />
+          </div>
+        </section>
+
+        <section class="process-step">
+          <div class="content">
+            <h3>3. Prototype</h3>
+            <p>
+              Our initial prototype included the Mr. Scream guide, a QR scan
+              solution for artworks, a shop for the cafeteria, and a map of the
+              museum showing the user's progress in discovering artworks.
+              However, our advisor recommended focusing solely on the AR and QR
+              features.
+            </p>
+            <p>
+              We then developed a focused prototype of the AR feature using
+              Figma, including GPS navigation, information about Munch's
+              artworks, and travel tips for Oslo.
+            </p>
+          </div>
+          <div class="image-container multiple-images">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/MunchAR/prototype-initial-app.png"
+              alt="Initial App Prototype"
+            />
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/MunchAR/ar-prototype.png"
+              alt="AR Prototype"
+            />
+          </div>
+        </section>
+
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>4. AR Feature Development</h3>
+            <p>
+              We developed the AR feature using Kotlin for Android. Mr. Scream,
+              our virtual guide, provides engaging information and guides users
+              with GPS functionality to enhance navigation around Oslo and
+              within the museum.
+            </p>
+            <p>
+              The development process involved creating a 3D model in Unity,
+              integrating the Google Maps API, and using various tools and
+              technologies to bring the AR feature to life, making it both
+              functional and visually appealing.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/MunchAR/kotlin.png"
+              alt="Kotlin Development"
+            />
+          </div>
+        </section>
+
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>5. Product Video</h3>
+            <p>
+              To present our AR solution, we created a video showcasing how the
+              AR feature works in practice. We recorded a video with two actors
+              representing friends using the app to visit the Munch Museum,
+              demonstrating the AR guide, QR code scanning, and the statistics
+              feature.
+            </p>
+            <p>
+              We filmed the app's usage in Oslo and the museum, adding overlays
+              to show the user's perspective. The video highlights key features,
+              including adding favorite artworks and checking statistics after
+              the museum visit.
+            </p>
+          </div>
+          <div class="image-container multiple-images">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/MunchAR/video.png"
+              alt="Product Video"
+            />
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/MunchAR/video-2.png"
+              alt="Product Video Filming"
+            />
+          </div>
+        </section>
+
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>6. Further Development</h3>
+            <p>
+              The next step would be to develop a complete application that
+              encapsulates all functions. The statistics feature would need a
+              user profile to track individual progress and connect to a
+              database containing artwork information. We would plan to add a
+              point system for users who scan QR codes, allowing them to earn
+              discounts on tickets and at the cafeteria.
+            </p>
+            <p>
+              For the AR feature, we would aim to improve accessibility for
+              vision-impaired users by adding sound options. We would also plan
+              to enhance the AR guide to collaborate with local businesses,
+              offering suggestions and discount codes to users with an active
+              ticket from Munch. GPS functionality would be integrated to update
+              the map based on the user's location, and the guide would be
+              developed to interact more naturally with users.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/MunchAR/next-step.jpg"
+              alt="Product Video"
+            />
+          </div>
+        </section>
+      </div>
+
+      <section id="footer-section">
+        <footer class="footer">
+          <div class="footer__container">
+            <a
+              class="footer__link footer__link--copyright"
+              href="https://github.com/NicolayKjarnet"
+              target="_blank"
+              >©2024 Nicolay Kjærnet</a
+            >
+            <div class="footer__img-container">
+              <img
+                class="footer__img"
+                src="/images/footer-gif.gif"
+                alt="Footer GIF"
+              />
+            </div>
+            <a class="footer__link footer__link--back-to-top" href="#top"
+              >BACK TO TOP ▲</a
+            >
+          </div>
+        </footer>
+      </section>
+    </main>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"
+    ></script>
+    <script defer src="scripts/projectIndex.js"></script>
+    <script defer src="scripts/progress.js"></script>
+    <script defer src="scripts/imageScroll.js"></script>
+    <script defer src="scripts/projectIndex.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script defer src="scripts/parallax.js"></script>
   </body>
 </html>

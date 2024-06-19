@@ -3,31 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/projects.css" />
+    <link rel="stylesheet" href="css/projects-2.css" />
     <title>Laughter Of The Day</title>
   </head>
   <body>
-    <a href="index.html">Back to Home</a>
-    <h1>Laughter Of The Day</h1>
-    <p>
-      This is a basic iOS app using an external API to fetch a random joke and
-      Core Data to save the jokes. The app has full CRUD functionality: create
-      your own jokes, save them, edit them, and delete them. The app also has
-      rating functions, filtering functions and a search function. The app is
-      built using Swift.
-      <br />
-      <br />
-      <a href="https://github.com/NicolayKjarnet/DagensLatter.git"
-        >GitHub Repository</a
-      >
-    </p>
-    <div class="video-container">
-      <iframe
-        src="https://www.youtube.com/embed/Avep5SVX4QE"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
+    <header class="header">
+      <a href="index.html" class="header__link">Back to Home</a>
+      <div class="header-title-container">
+        <h1>Laughter of the Day</h1>
+      </div>
+    </header>
+    <main>
+      <!-- Video Section -->
+      <section class="video-section">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/Avep5SVX4QE"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Project Summary Section -->
+      <section class="summary-section">
+        <div class="summary">
+          <h2 class="summary-header">Project Summary</h2>
+          <p>
+            This is a basic iOS app using an external API to fetch a random joke
+            and Core Data to save the jokes. The app has full CRUD
+            functionality: create your own jokes, save them, edit them, and
+            delete them. The app also has rating functions, filtering functions
+            and a search function. The app is built using Swift.
+            <br />
+            <br />
+            <a href="https://github.com/NicolayKjarnet/DagensLatter.git"
+              >GitHub Repository</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <section id="footer-section">
+        <footer class="footer">
+          <div class="footer__container">
+            <a
+              class="footer__link footer__link--copyright"
+              href="https://github.com/NicolayKjarnet"
+              target="_blank"
+              >©2024 Nicolay Kjærnet</a
+            >
+            <div class="footer__img-container">
+              <img
+                class="footer__img"
+                src="/images/footer-gif.gif"
+                alt="Footer GIF"
+              />
+            </div>
+            <a class="footer__link footer__link--back-to-top" href="#top"
+              >BACK TO TOP ▲</a
+            >
+          </div>
+        </footer>
+      </section>
+    </main>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"
+    ></script>
+    <script defer src="scripts/projectIndex.js"></script>
+    <script defer src="scripts/progress.js"></script>
+    <script defer src="scripts/imageScroll.js"></script>
+    <script defer src="scripts/projectIndex.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script defer src="scripts/parallax.js"></script>
   </body>
 </html>
