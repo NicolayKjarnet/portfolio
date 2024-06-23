@@ -66,7 +66,6 @@ a:hover {
 
 .header-link-container {
   position: absolute;
-  left: 15vw; /* same as the padding of the header */
 }
 
 .header__link {
@@ -232,7 +231,7 @@ blockquote footer {
 /* -------------------- FOOTER -------------------- */
 
 #footer-section {
-  height: 10rem;
+  height: 15rem;
 }
 
 .footer__container a {
@@ -266,6 +265,7 @@ blockquote footer {
 
 .footer__link {
   font-size: 0.8rem;
+  flex: 1;
   text-decoration: none;
 }
 
@@ -298,6 +298,13 @@ blockquote footer {
 /* -------------------- MEDIA QUERIES -------------------- */
 
 @media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .header-link-container {
+    position: relative;
+  }
   main {
     padding: 5vh 5vw;
   }
@@ -337,6 +344,10 @@ blockquote footer {
     max-width: 90%;
     padding: 10% 0;
   }
+  .footer__link {
+    /* flex-wrap: wrap; */
+    font-size: 0.7rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -354,11 +365,6 @@ blockquote footer {
 
   .footer__container {
     padding: 10vw;
-    flex-direction: column;
     align-items: center;
-  }
-
-  .footer__link {
-    font-size: 0.7rem;
   }
 }
