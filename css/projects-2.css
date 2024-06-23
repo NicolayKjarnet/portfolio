@@ -45,6 +45,10 @@ a {
   text-decoration: none var(--clr-green) 0.12rem;
 }
 
+li > a {
+  display: flex;
+}
+
 a:hover {
   text-decoration: underline wavy var(--clr-green) 0.12rem;
   text-underline-offset: 0.3rem;
