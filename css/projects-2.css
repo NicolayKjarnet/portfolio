@@ -219,7 +219,7 @@ blockquote footer {
 }
 
 .image-container.single-image img {
-  border-radius: 1rem;
+  border-radius: 0.5rem;
 }
 
 .image-container.multiple-images img:first-child {
