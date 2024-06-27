@@ -160,7 +160,7 @@ export const renderProjects = () => {
     )}
     ${renderProjectItem(
       "https://scrollfolio.nicolaykjaernet.com/",
-      "/images/Scrollfolio-min.png",
+      "/images/Scrollfolio-min-2.png",
       "Scrollfolio",
       "A portfolio based on Apple's appear-on-scroll-effect.",
       ["HTML", "CSS", "JS", "Grid", "Flexbox", "Animation"],
