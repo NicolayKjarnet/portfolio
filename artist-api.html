@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artist API Project</title>
+    <link rel="stylesheet" href="css/projects-2.css" />
+  </head>
+  <body>
+    <div class="progress-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <header class="header">
+      <div class="header-link-container">
+        <a href="index.html" class="header__link">Back to Home</a>
+      </div>
+      <div class="header-title-container">
+        <h1>Artist API</h1>
+      </div>
+    </header>
+    <main id="top">
+      <!-- Video Section -->
+      <section class="video-section">
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/H635r95DWek"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+
+      <!-- Summary Section -->
+      <section class="summary-section">
+        <div class="summary">
+          <h2 class="summary-header">Project Summary</h2>
+          <p>
+            This project is an Artist API developed using .NET/C# for the
+            backend and React with TypeScript for the frontend. The API manages
+            artists, albums, and songs.
+          </p>
+          <a href="https://github.com/NicolayKjarnet/pop-artists"
+            >GitHub Repository</a
+          >
+        </div>
+      </section>
+
+      <!-- Process Section -->
+      <div class="process-container">
+        <h2 class="process-header">Project Process</h2>
+
+        <section class="process-step process-step-height-50">
+          <div class="content">
+            <h3>1. Relation Setup and Mockup</h3>
+            <p>
+              The first step involved setting up the relationships between the
+              main entities: artists, albums, and songs. This included creating
+              mockups to visualize the data structure and relationships.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              src="images/Prosjektbilder/ArtistApi/EntitiesAndRelations.png"
+              alt="Screenshot of Swagger testing the API endpoints"
+            />
+        </section>
+
+        <section class="process-step">
+          <div class="content">
+            <h3>2. Initial Setup and Planning</h3>
+            <p>
+              I started by setting up the web API with models, interfaces, and
+              controllers in .NET/C#. Once the initial setup was complete, I
+              tested the endpoints using Swagger to ensure they worked
+              correctly.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              src="images/Prosjektbilder/ArtistApi/BackendSetup.png"
+              alt="Screenshot of Swagger testing the API endpoints"
+            />
+          </div>
+        </section>
+
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>3. Database Initialization</h3>
+            <p>
+              I added a `DbInitializer` class to populate the database with
+              initial data, including ten artists, each with two albums and
+              songs.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              src="images/Prosjektbilder/ArtistApi/DbInitializer.png"
+              alt="Code snippet showing the DbInitializer class"
+            />
+          </div>
+        </section>
+
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>4. Frontend Setup</h3>
+            <p>
+              With the backend working, I set up the frontend using React and
+              TypeScript. I created a service using Axios to fetch data from the
+              backend and a context class to manage the state.
+            </p>
+          </div>
+          <div class="image-container multiple-images">
+            <img
+              src="images/Prosjektbilder/ArtistApi/FrontendService.png"
+              alt="Code snippet of the Axios service in the frontend"
+            />
+          </div>
+        </section>
+
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>5. Building UI Components</h3>
+            <p>
+              I built UI components such as `ArtistItem` and `ArtistList` to
+              display artists. These components made use of the service and
+              context to fetch and manage data.
+            </p>
+          </div>
+          <div class="image-container multiple-images">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/ArtistApi/ArtistItem.png"
+              alt="Screenshot of the ArtistItem component"
+            />
+          </div>
+        </section>
+
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>6. Adding Functionality</h3>
+            <p>
+              I added functionality for searching, adding, updating, and
+              deleting artists. This included setting up form components and
+              implementing error handling and user feedback features.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              src="images/Prosjektbilder/ArtistApi/UserFeedback.png"
+              alt="Screenshot showing user feedback implementation"
+            />
+          </div>
+        </section>
+
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>7. Enhancing UX</h3>
+            <p>
+              I refined the user experience by adding confirmations for delete
+              actions, tooltips, and error handling. This made the application
+              more user-friendly and robust.
+            </p>
+          </div>
+          <div class="image-container multiple-images">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/ArtistApi/ErrorHandling-3.png"
+              alt="Screenshot of enhanced error handling"
+            />
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/ArtistApi/ErrorHandling-1.png"
+              alt="Screenshot of error handling and tooltips"
+            />
+          </div>
+        </section>
+
+        <section class="process-step">
+          <div class="content">
+            <h3>8. Applying Design Principles</h3>
+            <p>
+              Throughout the project, I applied design principles and best
+              practices to ensure a high-quality user interface. This included
+              using consistent design patterns and ensuring accessibility.
+            </p>
+          </div>
+          <div class="image-container multiple-images">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/ArtistApi/ConsistentDesign.png"
+              alt="Screenshot showing consistent design implementation"
+            />
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/ArtistApi/Accessibility.png"
+              alt="Screenshot showing accessibility features"
+            />
+          </div>
+        </section>
+
+        <section class="process-step">
+          <div class="content">
+            <h3>9. Future Improvements</h3>
+            <p>
+              Currently, the application allows viewing artists, albums, and
+              songs, but CRUD operations for albums and songs are not
+              implemented. Future improvements include adding these operations
+              and further refining the user experience.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/ArtistApi/Albums.png"
+              alt="Screenshot showing the albums section"
+            />
+          </div>
+        </section>
+      </div>
+
+      <section id="footer-section">
+        <footer class="footer">
+          <div class="footer__container">
+            <a
+              class="footer__link footer__link--copyright"
+              href="https://github.com/NicolayKjarnet"
+              target="_blank"
+              >©2024 Nicolay Kjærnet</a
+            >
+            <div class="footer__img-container">
+              <img
+                class="footer__img"
+                src="/images/footer-gif.gif"
+                alt="Animated footer image"
+              />
+            </div>
+            <a class="footer__link footer__link--back-to-top" href="#top"
+              >BACK TO TOP ▲</a
+            >
+          </div>
+        </footer>
+      </section>
+    </main>
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@9/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"
+    ></script>
+    <script defer src="scripts/projectIndex.js"></script>
+    <script defer src="scripts/progress.js"></script>
+    <script defer src="scripts/imageScroll.js"></script>
+    <script defer src="scripts/projectIndex.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script defer src="scripts/parallax.js"></script>
+  </body>
+</html>

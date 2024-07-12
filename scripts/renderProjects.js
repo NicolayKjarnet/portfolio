@@ -87,7 +87,7 @@ export const renderProjects = () => {
       "project-section__article--fullstack project-section__article--iot"
     )}
     ${renderProjectItem(
-      "https://pop-artist-api.nicolaykjaernet.com/",
+      "artist-api.html",
       "/images/Popartist-min-2.png",
       "Pop Artist API",
       "So you're running a music company and need to manage information about your artists? Look no further.",
