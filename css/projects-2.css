@@ -372,3 +372,9 @@ blockquote footer {
     align-items: center;
   }
 }
+
+/* Projects */
+
+.project-process-divider {
+  margin: 5rem 0;
+}

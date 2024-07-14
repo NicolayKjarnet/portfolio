@@ -35,137 +35,187 @@
       <section class="summary-section">
         <div class="summary">
           <h2 class="summary-header">Project Summary</h2>
-        <p>
-          The Greenhouse Monitoring System is an advanced solution designed to
-          optimize the growth conditions of various crops by leveraging a
-          combination of sensors and IoT technology. This system is implemented
-          using Arduino and a suite of sensors from Adafruit, including
-          temperature, humidity, and light sensors.
-        </p>
-        <p>
-          Through detailed research, I identified key factors influencing the
-          growth of Goldfinger Bananas and Cayenne Pineapples. By integrating
-          sensors to monitor these factors, I created a system that ensures
-          optimal growth conditions. The final product includes real-time data
-          visualization and alerts, enhancing the user experience and efficiency
-          of the greenhouse operations.
-        </p>
-        <a href="https://github.com/NicolayKjarnet/greenhouse-system.git"
-        >GitHub Repository</a
-      >
+          <p>
+            The Greenhouse Monitoring System is an advanced solution designed to
+            optimize the growth conditions of various crops by leveraging a
+            combination of sensors and IoT technology. This system is
+            implemented using Arduino and a suite of sensors from Adafruit,
+            including temperature, humidity, and light sensors.
+          </p>
+          <p>
+            Through detailed research, I identified key factors influencing the
+            growth of Goldfinger Bananas and Cayenne Pineapples. By integrating
+            sensors to monitor these factors, I created a system that ensures
+            optimal growth conditions. The final product includes real-time data
+            visualization and alerts, enhancing the user experience and
+            efficiency of the greenhouse operations.
+          </p>
+          <a href="https://github.com/NicolayKjarnet/greenhouse-system.git"
+            >GitHub Repository</a
+          >
         </div>
       </section>
 
+      <hr class="project-process-divider" />
+
       <!-- Process Section -->
-<div class="process-container">
-  <h2 class="process-header">Project Process</h2>
-  
-  <section class="process-step process-step-height-70">
-    <div class="content">
-      <h3>1. Research</h3>
-      <p>
-        I started the task by researching the growing conditions of bananas and pineapples. I found that these fruits can grow together, complementing each other in terms of shade and environmental needs. I then identified which factors could be monitored using ESP32 sensors and selected Thingspeak for cloud data management due to its ease of use and good documentation.
-      </p>
-    </div>
-    <div class="image-container single-image">
-      <img
-        class="img-vertical"
-        src="images/Prosjektbilder/Greenhouse/bananas.png"
-        alt="Problem Identification"
-      />
-    </div>
-  </section>
+      <div class="process-container">
+        <h2 class="process-header">Project Process</h2>
 
-  <section class="process-step process-step-height-70">
-    <div class="content">
-      <h3>2. Real World Scenario</h3>
-      <p>
-        In a real-world scenario, the program would be optimized for specific variants of fruits. Based on my research, I chose Goldfinger Bananas and Cayenne Pineapples for their complementary growth needs. Alerts were tailored to ensure optimal growing conditions for these fruits.
-      </p>
-    </div>
-    <div class="image-container single-image">
-      <img
-        class="img-vertical"
-        src="images/Prosjektbilder/Greenhouse/pineapples.png"
-        alt="Problem Identification"
-      />
-    </div>
-  </section>
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>1. Research</h3>
+            <p>
+              I started the task by researching the growing conditions of
+              bananas and pineapples. I found that these fruits can grow
+              together, complementing each other in terms of shade and
+              environmental needs. I then identified which factors could be
+              monitored using ESP32 sensors and selected Thingspeak for cloud
+              data management due to its ease of use and good documentation.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/Greenhouse/bananas.png"
+              alt="Problem Identification"
+            />
+          </div>
+        </section>
 
-  <section class="process-step process-step-height-50">
-    <div class="content">
-      <h3>3. MVP to Final Product</h3>
-      <p>
-        After completing the research, I built MVPs for each function, integrating them into a single program. Alerts were added for out-of-range sensor data, and functionality for sending data to Thingspeak was implemented. The final product included a dashboard with gauges for temperature and humidity, enhancing data visualization.
-      </p>
-    </div>
-  </section>
+        <section class="process-step process-step-height-70">
+          <div class="content">
+            <h3>2. Real World Scenario</h3>
+            <p>
+              In a real-world scenario, the program would be optimized for
+              specific variants of fruits. Based on my research, I chose
+              Goldfinger Bananas and Cayenne Pineapples for their complementary
+              growth needs. Alerts were tailored to ensure optimal growing
+              conditions for these fruits.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/Greenhouse/pineapples.png"
+              alt="Problem Identification"
+            />
+          </div>
+        </section>
 
-  <section class="process-step process-step-height-50">
-    <div class="content">
-      <h3>4. Code Documentation and Structure</h3>
-      <p>
-        The code is well-documented with comments and divided into five main sections: Global variables, Setup, Helper functions, Main functions, and Loop. Each function includes a brief description, making it easier for others to understand the code's structure and functionality.
-      </p>
-    </div>
-    <div class="image-container single-image">
-      <img
-        class="img-vertical"
-        src="images/Prosjektbilder/Greenhouse/documentation.png"
-        alt="Problem Identification"
-      />
-    </div>
-  </section>
+        <section class="process-step process-step-height-50">
+          <div class="content">
+            <h3>3. MVP to Final Product</h3>
+            <p>
+              After completing the research, I built MVPs for each function,
+              integrating them into a single program. Alerts were added for
+              out-of-range sensor data, and functionality for sending data to
+              Thingspeak was implemented. The final product included a dashboard
+              with gauges for temperature and humidity, enhancing data
+              visualization.
+            </p>
+          </div>
+        </section>
 
-  <section class="process-step process-step-height-50">
-    <div class="content">
-      <h3>5. Alerts</h3>
-      <p>
-        The system includes alerts for various conditions, such as light intensity, temperature, and humidity. A Pushsafer alert notifies users if the greenhouse door remains open, incorporating weather data from the OpenWeatherMap API. This ensures users are aware of any critical conditions affecting the crops.
-      </p>
-    </div>
-    <div class="image-container single-image">
-      <img
-        src="images/Prosjektbilder/Greenhouse/alert-example.png"
-        alt="Sketching and Ideation"
-      />
-    </div>
-  </section>
+        <section class="process-step process-step-height-50">
+          <div class="content">
+            <h3>4. Code Documentation and Structure</h3>
+            <p>
+              The code is well-documented with comments and divided into five
+              main sections: Global variables, Setup, Helper functions, Main
+              functions, and Loop. Each function includes a brief description,
+              making it easier for others to understand the code's structure and
+              functionality.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              class="img-vertical"
+              src="images/Prosjektbilder/Greenhouse/documentation.png"
+              alt="Problem Identification"
+            />
+          </div>
+        </section>
 
-  <section class="process-step process-step-height-50">
-    <div class="content">
-      <h3>6. Cloud Setup</h3>
-      <p>
-        The cloud setup follows the tutorial from Random Nerd Tutorials, with adjustments made for the ESP32. This setup enables real-time data monitoring and storage, providing a comprehensive overview of the greenhouse conditions.
-      </p>
-    </div>
-  </section>
+        <section class="process-step process-step-height-50">
+          <div class="content">
+            <h3>5. Alerts</h3>
+            <p>
+              The system includes alerts for various conditions, such as light
+              intensity, temperature, and humidity. A Pushsafer alert notifies
+              users if the greenhouse door remains open, incorporating weather
+              data from the OpenWeatherMap API. This ensures users are aware of
+              any critical conditions affecting the crops.
+            </p>
+          </div>
+          <div class="image-container single-image">
+            <img
+              src="images/Prosjektbilder/Greenhouse/alert-example.png"
+              alt="Sketching and Ideation"
+            />
+          </div>
+        </section>
 
-  <section class="process-step process-step-height-50">
-    <div class="content">
-      <h3>7. Extending the Solution</h3>
-      <p>
-        To extend the solution to multiple sites, data collection and visualization can be centralized on a single IoT platform. This allows for individual visualizations for each site and advanced analysis through a centralized database.
-      </p>
-    </div>
-  </section>
+        <section class="process-step process-step-height-50">
+          <div class="content">
+            <h3>6. Cloud Setup</h3>
+            <p>
+              The cloud setup follows the tutorial from Random Nerd Tutorials,
+              with adjustments made for the ESP32. This setup enables real-time
+              data monitoring and storage, providing a comprehensive overview of
+              the greenhouse conditions.
+            </p>
+          </div>
+        </section>
 
-  <section class="process-step process-step-height-50">
-    <div class="content">
-      <h3>8. Libraries Used</h3>
-      <p>
-        The project utilizes several libraries to enhance functionality:
-        <ul>
-          <li><a href="https://github.com/mathworks/ThingSpeak">mathworks/ThingSpeak</a></li>
-          <li><a href="https://github.com/adafruit/Adafruit_SHT31_Library">adafruit/Adafruit_SHT31_Library</a></li>
-          <li><a href="https://github.com/adafruit/Adafruit_DotStar">adafruit/Adafruit_DotStar</a></li>
-          <li><a href="https://github.com/adafruit/Adafruit_LTR329">adafruit/Adafruit_LTR329</a></li>
-          <li><a href="https://github.com/bblanchon/ArduinoJson">bblanchon/ArduinoJson</a></li>
-        </ul>
-      </p>
-    </div>
-  </section>
-</div>
+        <section class="process-step process-step-height-50">
+          <div class="content">
+            <h3>7. Extending the Solution</h3>
+            <p>
+              To extend the solution to multiple sites, data collection and
+              visualization can be centralized on a single IoT platform. This
+              allows for individual visualizations for each site and advanced
+              analysis through a centralized database.
+            </p>
+          </div>
+        </section>
+
+        <section class="process-step process-step-height-50">
+          <div class="content">
+            <h3>8. Libraries Used</h3>
+            <p>
+              The project utilizes several libraries to enhance functionality:
+            </p>
+            <ul>
+              <li>
+                <a href="https://github.com/mathworks/ThingSpeak"
+                  >mathworks/ThingSpeak</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/adafruit/Adafruit_SHT31_Library"
+                  >adafruit/Adafruit_SHT31_Library</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/adafruit/Adafruit_DotStar"
+                  >adafruit/Adafruit_DotStar</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/adafruit/Adafruit_LTR329"
+                  >adafruit/Adafruit_LTR329</a
+                >
+              </li>
+              <li>
+                <a href="https://github.com/bblanchon/ArduinoJson"
+                  >bblanchon/ArduinoJson</a
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
 
       <section id="footer-section">
         <footer class="footer">
