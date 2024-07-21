@@ -349,7 +349,6 @@ blockquote footer {
     padding: 10% 0;
   }
   .footer__link {
-    /* flex-wrap: wrap; */
     font-size: 0.7rem;
   }
 }
