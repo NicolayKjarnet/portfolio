@@ -819,8 +819,12 @@ a {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   font-size: 1rem;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
   margin-right: 1rem;
+}
+
+.project-btn:active {
+  transform: scale(0.9);
 }
 
 .project-btn-github {
