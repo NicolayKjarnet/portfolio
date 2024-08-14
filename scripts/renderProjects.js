@@ -8,8 +8,7 @@
  * @property {string} classes
  * @property {string} imgClass
  * @property {string} [gitLink]
- * @property {string} [projectBtnText]
- * @property {string} [gitBtnText]
+ * @property {boolean} [isFigma]
  */
 
 /**
@@ -25,41 +24,41 @@ const renderProjectItem = ({
   classes,
   imgClass,
   gitLink = "",
-  projectBtnText = "See more",
-  gitBtnText = "GitHub",
+  isFigma = false,
 }) => {
   return `
-    <article class="project-section__article ${classes}">
-      <div class="project-section__img-container">
-        <img class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">
-      </div>
-      <div class="project-section__about">
-        <h2 class="project-section__project-title">${title}</h2>
-        <hr class="about__divider divider">
-        <h3 class="about__title">About</h3>
-        <figcaption class="about__caption">${description}
-          <div class="noteworthy-techniques-container">
-            <span class="noteworthy-techniques">
-              <ul>
-                ${techniques
-                  .map((technique) => `<li>${technique}</li>`)
-                  .join("")}
-              </ul>
-            </span>
-          </div>
-        </figcaption>
-        <div class="project-links">
-          <a class="project-link" href="${link}">
-            <button class="project-btn">${projectBtnText}</button>
+      <article class="project-section__article ${classes}">
+        ${
+          gitLink
+            ? `
+          <a href="${gitLink}" target="_blank" class="git-icon-link" onclick="event.stopPropagation();">
+            <i class="${isFigma ? "fab fa-figma" : "fab fa-github"} fa-2x"></i>
           </a>
-          ${
-            gitLink
-              ? `<a class="project-git-link" href="${gitLink}" target="_blank"><button class="project-btn project-btn-github">${gitBtnText}</button></a>`
-              : ""
-          }
+        `
+            : ""
+        }
+        <a href="${link}" class="project-link">
+        <div class="project-section__img-container">
+          <img class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">
         </div>
-      </div>
-    </article>
+        <div class="project-section__about">
+          <h2 class="project-section__project-title">${title}</h2>
+          <hr class="about__divider divider">
+          <h3 class="about__title">About</h3>
+          <figcaption class="about__caption">${description}
+            <div class="noteworthy-techniques-container">
+              <span class="noteworthy-techniques">
+                <ul>
+                  ${techniques
+                    .map((technique) => `<li>${technique}</li>`)
+                    .join("")}
+                </ul>
+              </span>
+            </div>
+          </figcaption>
+        </div>
+        </a>
+      </article>
   `;
 };
 
@@ -69,6 +68,26 @@ const renderProjectItem = ({
  */
 export const renderProjects = () => {
   return `
+    ${renderProjectItem({
+      link: "wolve.html",
+      imgSrc: "/images/Wolve-min.png",
+      title: "Wolve Redesign",
+      description:
+        "Bachelor's project for Wolve IT. Full redesign of their loyalty platform.",
+      techniques: [
+        "Prototype",
+        "Figma",
+        "UX",
+        "User testing",
+        "Universal Design",
+        "Design Principles",
+      ],
+      classes: "project-section__article--ux",
+      imgClass: "project-img",
+      gitLink:
+        "https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype",
+      isFigma: true,
+    })}
     ${renderProjectItem({
       link: "artist-api.html",
       imgSrc: "/images/Popartist-2-min.png",
@@ -88,29 +107,6 @@ export const renderProjects = () => {
       classes: "project-section__article--fullstack",
       imgClass: "project-img",
       gitLink: "https://github.com/NicolayKjarnet/pop-artists",
-      projectBtnText: "View Project",
-      gitBtnText: "See on GitHub",
-    })}
-    ${renderProjectItem({
-      link: "wolve.html",
-      imgSrc: "/images/Wolve-min.png",
-      title: "Wolve Redesign",
-      description:
-        "Bachelor's project for Wolve IT. Full redesign of their loyalty platform.",
-      techniques: [
-        "Prototype",
-        "Figma",
-        "UX",
-        "User testing",
-        "Universal Design",
-        "Design Principles",
-      ],
-      classes: "project-section__article--ux",
-      imgClass: "project-img",
-      projectBtnText: "View Project",
-      gitBtnText: "See in Figma",
-      gitLink:
-        "https://www.figma.com/design/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype?node-id=0-1&t=lqFe0VzCIJxuaZ80-1",
     })}
     ${renderProjectItem({
       link: "greenhouse-system.html",
@@ -132,8 +128,6 @@ export const renderProjects = () => {
         "project-section__article--fullstack project-section__article--iot",
       imgClass: "project-img",
       gitLink: "https://github.com/NicolayKjarnet/greenhouse-system",
-      projectBtnText: "View Project",
-      gitBtnText: "See on GitHub",
     })}
     ${renderProjectItem({
       link: "munchAR.html",
@@ -151,7 +145,6 @@ export const renderProjects = () => {
       ],
       classes: "project-section__article--android",
       imgClass: "project-img",
-      projectBtnText: "View Project",
     })}
     ${renderProjectItem({
       link: "munchQR.html",
@@ -163,7 +156,6 @@ export const renderProjects = () => {
       classes:
         "project-section__article--fullstack project-section__article--crossplattform project-section__article--ux",
       imgClass: "project-img",
-      projectBtnText: "View Project",
     })}
     ${renderProjectItem({
       link: "https://rick-and-morty-api.nicolaykjaernet.com/",
@@ -182,7 +174,6 @@ export const renderProjects = () => {
       ],
       classes: "project-section__article--frontend",
       imgClass: "project-img",
-      projectBtnText: "View Website",
     })}
     ${renderProjectItem({
       link: "Dagens-latter.html",
@@ -201,8 +192,6 @@ export const renderProjects = () => {
       classes: "project-section__article--ios",
       imgClass: "project-img",
       gitLink: "https://github.com/NicolayKjarnet/DagensLatter",
-      projectBtnText: "View Project",
-      gitBtnText: "See on GitHub",
     })}
     ${renderProjectItem({
       link: "split.html",
@@ -218,10 +207,9 @@ export const renderProjects = () => {
       ],
       classes: "project-section__article--ux",
       imgClass: "project-img",
-      projectBtnText: "View Project",
-      gitBtnText: "See in Figma",
       gitLink:
-        "https://www.figma.com/design/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype?node-id=198-27456&t=P0AXLc4lQswTkrrs-1",
+        "https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype",
+      isFigma: true,
     })}
     ${renderProjectItem({
       link: "https://scrollfolio.nicolaykjaernet.com/",
@@ -231,7 +219,6 @@ export const renderProjects = () => {
       techniques: ["HTML", "CSS", "JS", "Grid", "Flexbox", "Animation"],
       classes: "project-section__article--frontend",
       imgClass: "project-img",
-      projectBtnText: "View Website",
     })}
   `;
 };

@@ -391,6 +391,9 @@ a {
 
 /* -------------------- PROJECTS HOVER STATES -------------------- */
 
+.project-section__article:hover {
+  cursor: pointer;
+}
 .project-section__article:hover .project-section__img {
   transform: scale(1.1);
 }
@@ -834,4 +837,84 @@ a {
 .project-btn:hover {
   background-color: var(--clr-orange);
   cursor: pointer;
+}
+
+/* Project card adjustments for better UX */
+
+.project-process-divider {
+  margin: 5rem 0;
+}
+
+.project-card {
+  transition: transform 0.3s ease;
+}
+
+.git-icon-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  color: var(--clr-white);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.git-icon-link:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.project-section__article {
+  position: relative;
+}
+
+.git-icon-link {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+  color: var(--clr-white);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+
+.git-icon-link:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.git-icon-link i {
+  font-size: 20px;
+}
+
+.dark {
+  background: linear-gradient(
+    135deg,
+    var(--clr-dark) 0%,
+    var(--clr-dark-3) 100%
+  );
+  padding: 7rem 10vw;
+}
+
+/* You might want to adjust the text color to ensure readability */
+.dark h2,
+.dark h3,
+.dark p {
+  color: var(--clr-white);
+}
+
+.project-section__article {
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-section__article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
