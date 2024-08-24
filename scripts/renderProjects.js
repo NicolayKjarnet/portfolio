@@ -9,12 +9,11 @@
  * @property {string} imgClass
  * @property {string} [gitLink]
  * @property {boolean} [isFigma]
+ * @property {boolean} [ongoingProject]
+ * @property {boolean} [readMore]
+ * @property {boolean} [visitWebsite]
  */
 
-/**
- * Renders a single project item.
- * @returns {string} HTML string for the project item
- */
 const renderProjectItem = ({
   link,
   imgSrc,
@@ -25,9 +24,14 @@ const renderProjectItem = ({
   imgClass,
   gitLink = "",
   isFigma = false,
+  ongoingProject = false,
+  readMore = true,
+  visitWebsite = false,
 }) => {
   return `
-      <article class="project-section__article ${classes}">
+      <article class="project-section__article ${classes} ${
+    ongoingProject ? "project-section__article--ongoing" : ""
+  }">
         ${
           gitLink
             ? `
@@ -38,25 +42,32 @@ const renderProjectItem = ({
             : ""
         }
         <a href="${link}" class="project-link">
-        <div class="project-section__img-container">
-          <img class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">
-        </div>
-        <div class="project-section__about">
-          <h2 class="project-section__project-title">${title}</h2>
-          <hr class="about__divider divider">
-          <h3 class="about__title">About</h3>
-          <figcaption class="about__caption">${description}
-            <div class="noteworthy-techniques-container">
-              <span class="noteworthy-techniques">
-                <ul>
-                  ${techniques
-                    .map((technique) => `<li>${technique}</li>`)
-                    .join("")}
-                </ul>
-              </span>
-            </div>
-          </figcaption>
-        </div>
+          <div class="project-section__img-container">
+            <img class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">
+            ${
+              ongoingProject
+                ? '<div class="ongoing-indicator"><i class="fas fa-cog fa-spin"></i> In Progress</div>'
+                : ""
+            }
+            ${readMore ? '<div class="read-more-overlay"><span>Read More</span></div>' : ""}
+            ${visitWebsite ? '<div class="read-more-overlay"><span>Visit Website</span></div>' : ""}
+          </div>
+          <div class="project-section__about">
+            <h2 class="project-section__project-title">${
+              ongoingProject ? `${title} (Ongoing)` : title
+            }</h2>
+            <hr class="about__divider divider">
+            <h3 class="about__title">About</h3>
+            <figcaption class="about__caption">${description}
+              <div class="noteworthy-techniques-container">
+                <span class="noteworthy-techniques">
+                  <ul>
+                    ${techniques.map((technique) => `<li>${technique}</li>`).join("")}
+                  </ul>
+                </span>
+              </div>
+            </figcaption>
+          </div>
         </a>
       </article>
   `;
@@ -68,24 +79,27 @@ const renderProjectItem = ({
  */
 export const renderProjects = () => {
   return `
+   ${renderProjectItem({
+     link: "#",
+     imgSrc: "/images/kitchen-planner.gif",
+     title: "Kitchen Planner",
+     description:
+       "An interactive platform for designing high-end, sustainable kitchens, including a parts list and DIY assembly instructions. This commercial project is not yet publicly available.",
+     techniques: ["React", "TypeScript", "Three.js", "3D Modeling", "UX/UI Design"],
+     classes: "project-section__article--frontend project-section__article--ongoing",
+     imgClass: "project-img",
+     ongoingProject: true,
+     readMore: false,
+   })}
     ${renderProjectItem({
       link: "wolve.html",
       imgSrc: "/images/Wolve-min.png",
       title: "Wolve Redesign",
-      description:
-        "Bachelor's project for Wolve IT. Full redesign of their loyalty platform.",
-      techniques: [
-        "Prototype",
-        "Figma",
-        "UX",
-        "User testing",
-        "Universal Design",
-        "Design Principles",
-      ],
+      description: "Bachelor's project for Wolve IT. Full redesign of their loyalty platform.",
+      techniques: ["Prototype", "Figma", "UX", "User testing", "Universal Design", "Design Principles"],
       classes: "project-section__article--ux",
       imgClass: "project-img",
-      gitLink:
-        "https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype",
+      gitLink: "https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype",
       isFigma: true,
     })}
     ${renderProjectItem({
@@ -94,16 +108,7 @@ export const renderProjects = () => {
       title: "Artist API",
       description:
         "Running a music company and need to manage information about your artists? Look no further.",
-      techniques: [
-        "React",
-        ".net",
-        "C#",
-        "CRUD",
-        "Axios",
-        "Context",
-        "Routing",
-        "Bootstrap",
-      ],
+      techniques: ["React", ".net", "C#", "CRUD", "Axios", "Context", "Routing", "Bootstrap"],
       classes: "project-section__article--fullstack",
       imgClass: "project-img",
       gitLink: "https://github.com/NicolayKjarnet/pop-artists",
@@ -114,18 +119,8 @@ export const renderProjects = () => {
       title: "Greenhouse System",
       description:
         "Monitor your greenhouse(s) on your desktop or mobile and get notified when something is wrong.",
-      techniques: [
-        "IoT",
-        "Arduino",
-        "C++",
-        "Mongo DB",
-        "Express",
-        "React",
-        "Node",
-        "Tailwind",
-      ],
-      classes:
-        "project-section__article--fullstack project-section__article--iot",
+      techniques: ["IoT", "Arduino", "C++", "Mongo DB", "Express", "React", "Node", "Tailwind"],
+      classes: "project-section__article--fullstack project-section__article--iot",
       imgClass: "project-img",
       gitLink: "https://github.com/NicolayKjarnet/greenhouse-system",
     })}
@@ -135,14 +130,7 @@ export const renderProjects = () => {
       title: "Munch AR",
       description:
         "Let Mr. Scream guide you through the streets of Oslo to the Munch Museum. Perhaps you'll learn some trivia along the way?",
-      techniques: [
-        "Prototype",
-        "UX",
-        "Figma",
-        "Android",
-        "Google Maps API",
-        "Kotlin",
-      ],
+      techniques: ["Prototype", "UX", "Figma", "Android", "Google Maps API", "Kotlin"],
       classes: "project-section__article--android",
       imgClass: "project-img",
     })}
@@ -161,34 +149,19 @@ export const renderProjects = () => {
       link: "https://rick-and-morty-api.nicolaykjaernet.com/",
       imgSrc: "/images/Rick and Morty-min.png",
       title: "Rick and Morty",
-      description:
-        "If you like the Rick and Morty series, you'll love this website.",
-      techniques: [
-        "API",
-        "Grid",
-        "Media Queries",
-        "BEM",
-        "Fetch",
-        "Module",
-        "IIFE",
-      ],
+      description: "If you like the Rick and Morty series, you'll love this website.",
+      techniques: ["API", "Grid", "Media Queries", "BEM", "Fetch", "Module", "IIFE"],
       classes: "project-section__article--frontend",
       imgClass: "project-img",
+      readMore: false,
+      visitWebsite: true,
     })}
     ${renderProjectItem({
       link: "Dagens-latter.html",
       imgSrc: "/images/DagensLatter-min.png",
       title: "Laughter Of The Day",
-      description:
-        "iOS app for daily laughs. Fetches jokes from an API. Add your own jokes as well.",
-      techniques: [
-        "Swift",
-        "API",
-        "Core Data",
-        "Bindings",
-        "Navigation",
-        "Persistence",
-      ],
+      description: "iOS app for daily laughs. Fetches jokes from an API. Add your own jokes as well.",
+      techniques: ["Swift", "API", "Core Data", "Bindings", "Navigation", "Persistence"],
       classes: "project-section__article--ios",
       imgClass: "project-img",
       gitLink: "https://github.com/NicolayKjarnet/DagensLatter",
@@ -199,16 +172,10 @@ export const renderProjects = () => {
       title: "Split",
       description:
         "Prototype for a finance app that automatically allocates your freelance income to various accounts for taxes, savings, and expenses based on predefined percentages.",
-      techniques: [
-        "UX",
-        "Figma",
-        "Universal Design",
-        "Don Norman's principles",
-      ],
+      techniques: ["UX", "Figma", "Universal Design", "Don Norman's principles"],
       classes: "project-section__article--ux",
       imgClass: "project-img",
-      gitLink:
-        "https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype",
+      gitLink: "https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype",
       isFigma: true,
     })}
     ${renderProjectItem({
@@ -219,6 +186,8 @@ export const renderProjects = () => {
       techniques: ["HTML", "CSS", "JS", "Grid", "Flexbox", "Animation"],
       classes: "project-section__article--frontend",
       imgClass: "project-img",
+      readMore: false,
+      visitWebsite: true,
     })}
   `;
 };
