@@ -641,7 +641,7 @@ a {
   height: auto;
   object-fit: cover;
   border-radius: 10px;
-  aspect-ratio: 16/9;
+  aspect-ratio: 4/3;
 }
 
 .left {
@@ -707,12 +707,22 @@ a {
     padding-right: 25px;
   }
 
+  .timeline-image {
+    aspect-ratio: 9/12;
+  }
+
   .timeline-circle {
     left: 30px !important;
   }
 
   .right {
     left: 0;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .timeline-image {
+    aspect-ratio: 16/9;
   }
 }
 
