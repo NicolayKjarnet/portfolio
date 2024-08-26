@@ -17,17 +17,26 @@ export const setupSmoothScrolling = () => {
 };
 
 export const setupScrollArrow = () => {
-  document
-    .querySelector(".scroll-arrow")
-    .addEventListener("click", function () {
-      const projectsSection = document.getElementById("projects");
-      const headerOffset = 80;
-      const elementPosition = projectsSection.getBoundingClientRect().top;
-      const offsetPosition = elementPosition - headerOffset;
+  const scrollArrow = document.querySelector(".scroll-arrow");
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById("projects");
+    const headerOffset = 80;
+    const elementPosition = projectsSection.getBoundingClientRect().top;
+    const offsetPosition = elementPosition - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
     });
+  };
+
+  scrollArrow.addEventListener("click", scrollToProjects);
+
+  scrollArrow.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      scrollToProjects();
+    }
+  });
 };

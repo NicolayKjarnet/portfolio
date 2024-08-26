@@ -50,6 +50,7 @@ const createTimeline = () => {
 
   const title = document.createElement("h2");
   title.className = "timeline-title";
+  title.ariaLabel = "timeline-heading";
   title.textContent = "Experience";
   timelineContainer.appendChild(title);
 

@@ -22,13 +22,10 @@
   <body>
     <!-- Header -->
     <section class="red">
-      <header class="header">
+      <header role="banner" class="header">
         <div class="header__title-section">
           <h1 class="header__title">NICOLAY KJÆRNET</h1>
           <p class="header__paragraph">Developer & Content Producer</p>
-        </div>
-        <div class="scroll-arrow">
-          <p>Scroll down</p>
         </div>
         <div class="nav-section">
           <nav class="nav">
@@ -44,6 +41,9 @@
               <li class="list-item"><a href="#about">About me</a></li>
             </ul>
           </nav>
+          <div tabindex="0" role="button" aria-label="Scroll down to projects section" class="scroll-arrow">
+            <p>Scroll down</p>
+          </div>
         </div>
       </header>
     </section>
@@ -61,7 +61,7 @@
           <p class="title-element title-element-3">}</p>
         </div>
       </div>
-      <div class="filter-box">
+      <div class="filter-box" aria-labelledby="filter-heading">
         <select class="filter-dropdown">
           <option value="all">All</option>
           <option value="fullstack">Full Stack</option>
@@ -72,7 +72,7 @@
           <option value="crossplattform">Cross-Platform</option>
           <option value="iot">IoT</option>
         </select>
-        <ul class="filter-list">
+        <ul class="filter-list" role="list">
           <li class="filter-item active" data-filter="all">All</li>
           <li class="filter-item" data-filter="fullstack">Full Stack</li>
           <li class="filter-item" data-filter="frontend">Front-End</li>
@@ -83,7 +83,7 @@
           <li class="filter-item" data-filter="iot">IoT</li>
         </ul>
       </div>
-      <div class="project-section"></div>
+      <div class="project-section" role="list"></div>
       <div class="wave">
         <svg
           data-name="Layer 1"
@@ -113,7 +113,7 @@
     </section>
 
     <section class="green">
-      <div id="contact" class="projects__title-section title-section">
+      <div id="contact" class="projects__title-section title-section" aria-labelledby="contact-heading">
         <div class="projects__title-element-container title-element-container">
           <p class="title-element title-element-1">{</p>
         </div>
@@ -136,19 +136,19 @@
           <p><i class="fas fa-map-marker-alt"></i> Oslo, Norway</p>
         </div>
 
-        <div class="social-links">
+        <div class="social-links" aria-label="Social media links">
           <h3>Connect with me</h3>
           <div class="social-icons">
-            <a href="https://github.com/NicolayKjarnet" class="social-icon"
+            <a href="https://github.com/NicolayKjarnet" class="social-icon" aria-label="GitHub"
               ><i class="fab fa-github"></i
             ></a>
-            <a href="https://www.linkedin.com/in/nicolaykjaernet/" class="social-icon"
+            <a href="https://www.linkedin.com/in/nicolaykjaernet/" class="social-icon" aria-label="LinkedIn"
               ><i class="fab fa-linkedin"></i
             ></a>
-            <a href="https://www.instagram.com/nicolaykjaernet/" class="social-icon"
+            <a href="https://www.instagram.com/nicolaykjaernet/" class="social-icon" aria-label="Instagram"
               ><i class="fab fa-instagram"></i
             ></a>
-            <a href="https://www.facebook.com/profile.php?id=100002866518273" class="social-icon"
+            <a href="https://www.facebook.com/profile.php?id=100002866518273" class="social-icon" aria-label="Facebook"
               ><i class="fab fa-facebook"></i
             ></a>
           </div>
@@ -157,7 +157,7 @@
     </section>
 
     <!-- About -->
-    <section class="orange">
+    <section class="orange" aria-labelledby="about-heading">
       <div class="wave-2">
         <svg
           data-name="Layer 1"
@@ -192,7 +192,7 @@
               <h3 class="profile-card__title">Nicolay Kjærnet</h3>
               <p class="profile-card__description">Developer & Content Producer</p>
             </div>
-              <div class="skill-tags">
+              <div class="skill-tags" aria-label="Skills">
                 <span>HTML</span>
                 <span>CSS</span>
                 <span>JavaScript</span>
