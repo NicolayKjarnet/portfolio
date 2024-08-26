@@ -84,8 +84,8 @@ export const renderProjects = () => {
      imgSrc: "/images/kitchen-planner.gif",
      title: "Kitchen Planner",
      description:
-       "An interactive platform for designing high-end, sustainable kitchens, including a parts list and DIY assembly instructions. This commercial project is not yet publicly available.",
-     techniques: ["React", "TypeScript", "Three.js", "3D Modeling", "UX/UI Design"],
+       "An interactive platform for designing high-end, sustainable kitchens, including a parts list and DIY assembly instructions. Not yet publicly available.",
+     techniques: ["React", "TypeScript", "Three.js", "TaillwindCSS", "UX/UI Design"],
      classes: "project-section__article--frontend project-section__article--ongoing",
      imgClass: "project-img",
      ongoingProject: true,

@@ -44,8 +44,7 @@ const timelineData = [
   },
 ];
 
-// Function to create timeline HTML
-function createTimeline() {
+const createTimeline = () => {
   const timelineContainer = document.createElement("div");
   timelineContainer.className = "timeline-container";
 
@@ -58,9 +57,20 @@ function createTimeline() {
   timelineLine.className = "timeline-line";
   timelineContainer.appendChild(timelineLine);
 
+  const updateTimelineClasses = () => {
+    const timelineItems = timelineContainer.querySelectorAll(".timeline-item");
+    timelineItems.forEach((item, index) => {
+      if (window.innerWidth > 768) {
+        item.className = `timeline-item ${index % 2 === 0 ? "left" : "right"}`;
+      } else {
+        item.className = "timeline-item";
+      }
+    });
+  };
+
   timelineData.forEach((item, index) => {
     const timelineItem = document.createElement("div");
-    timelineItem.className = `timeline-item ${index % 2 === 0 ? "left" : "right"}`;
+    timelineItem.className = "timeline-item";
 
     const content = document.createElement("div");
     content.className = "timeline-content";
@@ -106,18 +116,24 @@ function createTimeline() {
     timelineContainer.appendChild(timelineItem);
   });
 
+  // Initial class assignment
+  updateTimelineClasses();
+
+  // Update classes when window is resized
+  window.addEventListener("resize", updateTimelineClasses);
+
   return timelineContainer;
-}
+};
 
 // Function to add the timeline to the page
-function addTimelineToPage() {
+const addTimelineToPage = () => {
   const timeline = createTimeline();
   const targetElement = document.querySelector(".timeline-content"); // Adjust this selector as needed
   if (targetElement) {
     targetElement.innerHTML = ""; // Clear existing content
     targetElement.appendChild(timeline);
   }
-}
+};
 
 // Call the function when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", addTimelineToPage);
