@@ -781,6 +781,22 @@ a {
   aspect-ratio: 1;
   background-color: var(--clr-white-3);
   color: var(--clr-red);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.2rem;
+  height: 1.2rem;
+  min-width: 1rem;
+  aspect-ratio: 1;
+  flex-shrink: 0;
+}
+
+.about-me__list-element img,
+.about-me__list-element i {
+  width: 1.2rem;
+  height: 1.2rem;
+  object-fit: contain;
 }
 
 .profile-card:hover .skill-tags span {
