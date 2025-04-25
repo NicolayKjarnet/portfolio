@@ -678,6 +678,9 @@ a {
   border-radius: 1.5rem;
   background-color: var(--clr-red);
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
 }
 
 .profile-card > * {
@@ -692,6 +695,8 @@ a {
 }
 
 .profile-image {
+  position: relative;
+  z-index: 1;
   margin-bottom: 1.5rem;
 }
 
@@ -701,7 +706,7 @@ a {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--clr-orange);
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
 .profile-card__title {
@@ -764,15 +769,9 @@ a {
 }
 
 /*! ---------------------------- PROFILE CARD HOVER STATES ---------------------------- */
-
-.profile-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-}
-
 .profile-card:hover .profile-image img {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(3deg);
+  filter: brightness(1.1);
 }
 
 .profile-card:hover .list-element-icon {
