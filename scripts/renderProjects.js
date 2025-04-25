@@ -22,7 +22,7 @@ const renderProjectItem = ({
   techniques,
   classes,
   imgClass,
-  gitLink = "",
+  gitLink = '',
   isFigma = false,
   ongoingProject = false,
   readMore = true,
@@ -30,16 +30,16 @@ const renderProjectItem = ({
 }) => {
   return `
       <article class="project-section__article ${classes} ${
-    ongoingProject ? "project-section__article--ongoing" : ""
+    ongoingProject ? 'project-section__article--ongoing' : ''
   }">
         ${
           gitLink
             ? `
           <a href="${gitLink}" target="_blank" class="git-icon-link" onclick="event.stopPropagation();">
-            <i class="${isFigma ? "fab fa-figma" : "fab fa-github"} fa-2x"></i>
+            <i class="${isFigma ? 'fab fa-figma' : 'fab fa-github'} fa-2x"></i>
           </a>
         `
-            : ""
+            : ''
         }
         <a href="${link}" class="project-link">
           <div class="project-section__img-container">
@@ -47,10 +47,10 @@ const renderProjectItem = ({
             ${
               ongoingProject
                 ? '<div class="ongoing-indicator"><i class="fas fa-cog fa-spin"></i> In Progress</div>'
-                : ""
+                : ''
             }
-            ${readMore ? '<div class="read-more-overlay"><span>Read More</span></div>' : ""}
-            ${visitWebsite ? '<div class="read-more-overlay"><span>Visit Website</span></div>' : ""}
+            ${readMore ? '<div class="read-more-overlay"><span>Read More</span></div>' : ''}
+            ${visitWebsite ? '<div class="read-more-overlay"><span>Visit Website</span></div>' : ''}
           </div>
           <div class="project-section__about">
             <h2 class="project-section__project-title">${
@@ -62,7 +62,7 @@ const renderProjectItem = ({
               <div class="noteworthy-techniques-container">
                 <span class="noteworthy-techniques">
                   <ul>
-                    ${techniques.map((technique) => `<li>${technique}</li>`).join("")}
+                    ${techniques.map((technique) => `<li>${technique}</li>`).join('')}
                   </ul>
                 </span>
               </div>
@@ -80,112 +80,120 @@ const renderProjectItem = ({
 export const renderProjects = () => {
   return `
    ${renderProjectItem({
-     link: "#",
-     imgSrc: "/images/kitchen-planner.gif",
-     title: "Kitchen Planner",
+     link: '#',
+     imgSrc: '/images/kitchen-planner.gif',
+     title: 'Kitchen Planner',
      description:
-       "An interactive platform for designing high-end, sustainable kitchens, including a parts list and DIY assembly instructions. Not yet publicly available.",
-     techniques: ["React", "TypeScript", "Three.js", "TaillwindCSS", "UX/UI Design"],
-     classes: "project-section__article--frontend project-section__article--ongoing",
-     imgClass: "project-img",
+       'An interactive platform for designing high-end, sustainable kitchens, including a parts list and DIY assembly instructions. Not yet publicly available.',
+     techniques: ['React', 'TypeScript', 'Three.js', 'TaillwindCSS', 'UX/UI Design'],
+     classes: 'project-section__article--frontend project-section__article--ongoing',
+     imgClass: 'project-img',
      ongoingProject: true,
      readMore: false,
    })}
     ${renderProjectItem({
-      link: "wolve.html",
-      imgSrc: "/images/Wolve-min.png",
-      title: "Wolve Redesign",
+      link: 'wolve.html',
+      imgSrc: '/images/Wolve-min.png',
+      title: 'Wolve Redesign',
       description: "Bachelor's project for Wolve IT. Full redesign of their loyalty platform.",
-      techniques: ["Prototype", "Figma", "UX", "User testing", "Universal Design", "Design Principles"],
-      classes: "project-section__article--ux",
-      imgClass: "project-img",
-      gitLink: "https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype",
+      techniques: [
+        'Prototype',
+        'Figma',
+        'UX',
+        'User testing',
+        'Universal Design',
+        'Design Principles',
+      ],
+      classes: 'project-section__article--ux',
+      imgClass: 'project-img',
+      gitLink: 'https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype',
       isFigma: true,
     })}
     ${renderProjectItem({
-      link: "artist-api.html",
-      imgSrc: "/images/Popartist-2-min.png",
-      title: "Artist API",
+      link: 'artist-api.html',
+      imgSrc: '/images/Popartist-2-min.png',
+      title: 'Artist API',
       description:
-        "Running a music company and need to manage information about your artists? Look no further.",
-      techniques: ["React", ".net", "C#", "CRUD", "Axios", "Context", "Routing", "Bootstrap"],
-      classes: "project-section__article--fullstack",
-      imgClass: "project-img",
-      gitLink: "https://github.com/NicolayKjarnet/pop-artists",
+        'Running a music company and need to manage information about your artists? Look no further.',
+      techniques: ['React', '.net', 'C#', 'CRUD', 'Axios', 'Context', 'Routing', 'Bootstrap'],
+      classes: 'project-section__article--fullstack',
+      imgClass: 'project-img',
+      gitLink: 'https://github.com/NicolayKjarnet/pop-artists',
     })}
     ${renderProjectItem({
-      link: "greenhouse-system.html",
-      imgSrc: "/images/GreenhouseMonitoring-min.png",
-      title: "Greenhouse System",
+      link: 'greenhouse-system.html',
+      imgSrc: '/images/greenhouse.jpg',
+      title: 'Greenhouse System',
       description:
-        "Monitor your greenhouse(s) on your desktop or mobile and get notified when something is wrong.",
-      techniques: ["IoT", "Arduino", "C++", "Mongo DB", "Express", "React", "Node", "Tailwind"],
-      classes: "project-section__article--fullstack project-section__article--iot",
-      imgClass: "project-img",
-      gitLink: "https://github.com/NicolayKjarnet/greenhouse-system",
+        'Monitor your greenhouse(s) on your desktop or mobile and get notified when something is wrong.',
+      techniques: ['IoT', 'Arduino', 'C++', 'Mongo DB', 'Express', 'React', 'Node', 'Tailwind'],
+      classes: 'project-section__article--fullstack project-section__article--iot',
+      imgClass: 'project-img',
+      gitLink: 'https://github.com/NicolayKjarnet/greenhouse-system',
     })}
     ${renderProjectItem({
-      link: "munchAR.html",
-      imgSrc: "/images/MunchAR-min.png",
-      title: "Munch AR",
+      link: 'munchAR.html',
+      imgSrc: '/images/MunchAR-min.png',
+      title: 'Munch AR',
       description:
         "Let Mr. Scream guide you through the streets of Oslo to the Munch Museum. Perhaps you'll learn some trivia along the way?",
-      techniques: ["Prototype", "UX", "Figma", "Android", "Google Maps API", "Kotlin"],
-      classes: "project-section__article--android",
-      imgClass: "project-img",
+      techniques: ['Prototype', 'UX', 'Figma', 'Android', 'Google Maps API', 'Kotlin'],
+      classes: 'project-section__article--android',
+      imgClass: 'project-img',
     })}
     ${renderProjectItem({
-      link: "munchQR.html",
-      imgSrc: "/images/MunchQR-min.png",
-      title: "Discover Munch",
+      link: 'munchQR.html',
+      imgSrc: '/images/MunchQR-min.png',
+      title: 'Discover Munch',
       description:
         "Tourist? Scan QR codes to read about Munch's art. Are you an admin at the Munch Museum and needs to do some CRUD operations? We got you covered.",
-      techniques: ["React Native", "React", ".net", "C#", "CRUD"],
+      techniques: ['React Native', 'React', '.net', 'C#', 'CRUD'],
       classes:
-        "project-section__article--fullstack project-section__article--crossplattform project-section__article--ux",
-      imgClass: "project-img",
+        'project-section__article--fullstack project-section__article--crossplattform project-section__article--ux',
+      imgClass: 'project-img',
     })}
     ${renderProjectItem({
-      link: "https://rick-and-morty-api.nicolaykjaernet.com/",
-      imgSrc: "/images/Rick and Morty-min.png",
-      title: "Rick and Morty",
+      link: 'https://rick-and-morty-api.nicolaykjaernet.com/',
+      imgSrc: '/images/Rick and Morty-min.png',
+      title: 'Rick and Morty',
       description: "If you like the Rick and Morty series, you'll love this website.",
-      techniques: ["API", "Grid", "Media Queries", "BEM", "Fetch", "Module", "IIFE"],
-      classes: "project-section__article--frontend",
-      imgClass: "project-img",
+      techniques: ['API', 'Grid', 'Media Queries', 'BEM', 'Fetch', 'Module', 'IIFE'],
+      classes: 'project-section__article--frontend',
+      imgClass: 'project-img',
       readMore: false,
       visitWebsite: true,
     })}
     ${renderProjectItem({
-      link: "Dagens-latter.html",
-      imgSrc: "/images/DagensLatter-min.png",
-      title: "Laughter Of The Day",
-      description: "iOS app for daily laughs. Fetches jokes from an API. Add your own jokes as well.",
-      techniques: ["Swift", "API", "Core Data", "Bindings", "Navigation", "Persistence"],
-      classes: "project-section__article--ios",
-      imgClass: "project-img",
-      gitLink: "https://github.com/NicolayKjarnet/DagensLatter",
+      link: 'Dagens-latter.html',
+      imgSrc: '/images/DagensLatter-min.png',
+      title: 'Laughter Of The Day',
+      description:
+        'iOS app for daily laughs. Fetches jokes from an API. Add your own jokes as well.',
+      techniques: ['Swift', 'API', 'Core Data', 'Bindings', 'Navigation', 'Persistence'],
+      classes: 'project-section__article--ios',
+      imgClass: 'project-img',
+      gitLink: 'https://github.com/NicolayKjarnet/DagensLatter',
     })}
     ${renderProjectItem({
-      link: "split.html",
-      imgSrc: "/images/Split-min.png",
-      title: "Split",
+      link: 'split.html',
+      imgSrc: '/images/Split-min.png',
+      title: 'Split',
       description:
-        "Prototype for a finance app that automatically allocates your freelance income to various accounts for taxes, savings, and expenses based on predefined percentages.",
-      techniques: ["UX", "Figma", "Universal Design", "Don Norman's principles"],
-      classes: "project-section__article--ux",
-      imgClass: "project-img",
-      gitLink: "https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype",
+        'Prototype for a finance app that automatically allocates your freelance income to various accounts for taxes, savings, and expenses based on predefined percentages.',
+      techniques: ['UX', 'Figma', 'Universal Design', "Don Norman's principles"],
+      classes: 'project-section__article--ux',
+      imgClass: 'project-img',
+      gitLink: 'https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype',
       isFigma: true,
     })}
     ${renderProjectItem({
-      link: "https://scrollfolio.nicolaykjaernet.com/",
-      imgSrc: "/images/Scrollfolio-min-2.png",
-      title: "Scrollfolio",
+      link: 'https://scrollfolio.nicolaykjaernet.com/',
+      imgSrc: '/images/Scrollfolio-min-2.png',
+      title: 'Scrollfolio',
       description: "A portfolio based on Apple's appear-on-scroll-effect.",
-      techniques: ["HTML", "CSS", "JS", "Grid", "Flexbox", "Animation"],
-      classes: "project-section__article--frontend",
-      imgClass: "project-img",
+      techniques: ['HTML', 'CSS', 'JS', 'Grid', 'Flexbox', 'Animation'],
+      classes: 'project-section__article--frontend',
+      imgClass: 'project-img',
       readMore: false,
       visitWebsite: true,
     })}
