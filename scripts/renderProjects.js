@@ -2,6 +2,7 @@
  * @typedef {Object} ProjectItem
  * @property {string} link
  * @property {string} imgSrc
+ * @property {string} videoSrc
  * @property {string} title
  * @property {string} description
  * @property {string[]} techniques
@@ -17,6 +18,7 @@
 const renderProjectItem = ({
   link,
   imgSrc,
+  videoSrc,
   title,
   description,
   techniques,
@@ -43,7 +45,11 @@ const renderProjectItem = ({
         }
         <a href="${link}" class="project-link">
           <div class="project-section__img-container">
-            <img class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">
+          ${
+            videoSrc
+              ? `<video class="project-section__img ${imgClass}" src="${videoSrc}" autoplay muted loop playsinline></video>`
+              : `<img class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">`
+          }
             ${
               ongoingProject
                 ? '<div class="ongoing-indicator"><i class="fas fa-cog fa-spin"></i> In Progress</div>'
@@ -80,16 +86,17 @@ const renderProjectItem = ({
 export const renderProjects = () => {
   return `
    ${renderProjectItem({
-     link: '#',
-     imgSrc: '/images/kitchen-planner.gif',
+     link: 'https://kitchenbuilder.studiotorshov.no/',
+     videoSrc: '/images/kithcen-builder.mp4',
      title: 'Kitchen Planner',
      description:
-       'An interactive platform for designing high-end, sustainable kitchens, including a parts list and DIY assembly instructions. Not yet publicly available.',
+       'WIP: An interactive platform for designing high-end, sustainable kitchens, including a parts list and DIY assembly instructions.',
      techniques: ['React', 'TypeScript', 'Three.js', 'TaillwindCSS', 'UX/UI Design'],
      classes: 'project-section__article--frontend project-section__article--ongoing',
      imgClass: 'project-img',
      ongoingProject: true,
      readMore: false,
+     visitWebsite: true,
    })}
     ${renderProjectItem({
       link: 'wolve.html',
