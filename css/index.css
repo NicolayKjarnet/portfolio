@@ -646,7 +646,7 @@ a {
 /*! ---------------------------- PROJECTS HOVER STATES ---------------------------- */
 
 .project-section__article:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -1235,6 +1235,7 @@ a {
 @media only screen and (min-width: 1px) {
   .project-section__article {
     grid-column: auto / span 12;
+    max-width: 500px;
   }
 
   .header {
@@ -1316,6 +1317,7 @@ a {
 @media only screen and (min-width: 902px) {
   .project-section__article {
     grid-column: auto / span 6;
+    max-width: 400px;
   }
 
   .header {
@@ -1339,6 +1341,14 @@ a {
 @media only screen and (min-width: 1450px) {
   .project-section__article {
     grid-column: auto / span 4;
+    max-width: 400px;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .project-section__article {
+    grid-column: auto / span 3;
+    max-width: 500px;
   }
 }
 
