@@ -56,6 +56,12 @@ section {
   overflow: hidden;
 }
 
+.divider {
+  background-color: var(--clr-white);
+  height: 0.1px;
+  border: none;
+}
+
 .long-divider {
   height: 0.1px;
   width: 80%;
@@ -512,6 +518,7 @@ a {
   display: flex;
   justify-content: space-between;
   max-width: fit-content;
+  transition: 0.2s ease-in-out;
 }
 
 .project-btn {
@@ -1081,6 +1088,7 @@ a {
   filter: invert(1);
   display: flex;
   flex-direction: column;
+  transition: 0.2s ease-in-out;
 }
 
 .footer__img {
@@ -1088,15 +1096,18 @@ a {
   height: 10rem;
   filter: blur(1px);
   animation: blurry-face 10s ease-in-out infinite;
+  transition: 0.2s ease-in-out;
 }
 
 .footer__caption {
   color: transparent;
+  transition: 0.2s ease-in-out;
 }
 
 .footer__link {
   font-size: 0.8rem;
   text-decoration: none;
+  transition: 0.2s ease-in-out;
 }
 
 /*! ---------------------------- FOOTER HOVER & ANIMATION ---------------------------- */
