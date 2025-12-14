@@ -1,6 +1,7 @@
 /**
  * @typedef {Object} ProjectItem
  * @property {string} link
+ * @property {boolean} [newTab]
  * @property {string} imgSrc
  * @property {string} videoSrc
  * @property {string} title
@@ -17,6 +18,7 @@
 
 const renderProjectItem = ({
   link,
+  newTab,
   imgSrc,
   videoSrc,
   title,
@@ -43,7 +45,7 @@ const renderProjectItem = ({
         `
             : ''
         }
-        <a href="${link}" class="project-link">
+        <a href="${link}"${newTab ? ' target="_blank"' : ''} class="project-link">
           <div class="project-section__img-container">
           ${
             videoSrc
@@ -87,6 +89,7 @@ export const renderProjects = () => {
   return `
    ${renderProjectItem({
      link: 'https://kitchenbuilder.studiotorshov.no/',
+     newTab: true,
      videoSrc: '/images/kithcen-builder.mp4',
      title: 'Kitchen Planner',
      description: 'WIP: An interactive platform for designing high-end, sustainable kitchens.',
@@ -98,7 +101,8 @@ export const renderProjects = () => {
      visitWebsite: true,
    })}
     ${renderProjectItem({
-      link: 'https:/studiotorshov.no/',
+      link: 'https://studiotorshov.no/',
+      newTab: true,
       imgSrc: '/images/studio-torshov.jpg',
       title: 'Studio Torshov',
       description:
@@ -112,6 +116,7 @@ export const renderProjects = () => {
     })}
      ${renderProjectItem({
        link: 'https://campaign.site/teriyaki-ninja',
+       newTab: true,
        imgSrc: '/images/teriyaki-ninja.jpg',
        title: 'Teriyaki Ninja',
        description:
