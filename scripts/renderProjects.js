@@ -89,15 +89,39 @@ export const renderProjects = () => {
      link: 'https://kitchenbuilder.studiotorshov.no/',
      videoSrc: '/images/kithcen-builder.mp4',
      title: 'Kitchen Planner',
-     description:
-       'WIP: An interactive platform for designing high-end, sustainable kitchens, including a parts list and DIY assembly instructions.',
+     description: 'WIP: An interactive platform for designing high-end, sustainable kitchens.',
      techniques: ['React', 'TypeScript', 'Three.js', 'TaillwindCSS', 'UX/UI Design'],
-     classes: 'project-section__article--frontend project-section__article--ongoing',
+     classes: 'project-section__article--fullstack project-section__article--ongoing',
      imgClass: 'project-img',
      ongoingProject: true,
      readMore: false,
      visitWebsite: true,
    })}
+    ${renderProjectItem({
+      link: 'https:/studiotorshov.no/',
+      imgSrc: '/images/studio-torshov.jpg',
+      title: 'Studio Torshov',
+      description:
+        'WIP: The companion webshop to the kitchen builder, featuring handcrafted items by Studio Torshov.',
+      techniques: ['Vue', 'TypeScript', 'Supabase', 'UX/UI Design'],
+      classes: 'project-section__article--fullstack project-section__article--ongoing',
+      imgClass: 'project-img',
+      ongoingProject: true,
+      readMore: false,
+      visitWebsite: true,
+    })}
+     ${renderProjectItem({
+       link: 'https://campaign.site/teriyaki-ninja',
+       imgSrc: '/images/teriyaki-ninja.jpg',
+       title: 'Teriyaki Ninja',
+       description:
+         "Who says ads just have to be watched? I built this interactive game for Grilstad's Stranda campaign at Cavai. Design by Live Skarbø, assets by POL.",
+       techniques: ['JS', 'CSS', 'HTML', 'Cavai', 'UX/UI Design'],
+       classes: 'project-section__article--ad project-section__article--ongoing',
+       imgClass: 'project-img',
+       readMore: false,
+       visitWebsite: true,
+     })}
     ${renderProjectItem({
       link: 'wolve.html',
       imgSrc: '/images/Wolve-min.png',
