@@ -402,7 +402,11 @@ a {
   overflow: hidden;
   border-radius: 1rem;
   background-color: var(--clr-red);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
 }
 
 .project-section__img-container {
@@ -623,10 +627,6 @@ a {
   transition: transform 0.3s ease;
 }
 
-.current-project:hover {
-  transform: translateY(-5px);
-}
-
 .project-preview {
   margin: 1rem 0;
   overflow: hidden;
@@ -644,11 +644,6 @@ a {
 }
 
 /*! ---------------------------- PROJECTS HOVER STATES ---------------------------- */
-
-.project-section__article:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
 
 .project-section__article:hover .read-more-overlay {
   opacity: 1;
