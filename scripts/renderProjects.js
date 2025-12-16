@@ -103,7 +103,7 @@ export const renderProjects = () => {
     ${renderProjectItem({
       link: 'https://studiotorshov.no/',
       newTab: true,
-      imgSrc: '/images/studio-torshov.jpg',
+      imgSrc: '/images/studio-torshov.webp',
       title: 'Studio Torshov',
       description:
         'WIP: The companion webshop to the kitchen builder, featuring handcrafted items by Studio Torshov.',
@@ -117,7 +117,7 @@ export const renderProjects = () => {
      ${renderProjectItem({
        link: 'https://campaign.site/teriyaki-ninja',
        newTab: true,
-       imgSrc: '/images/teriyaki-ninja.jpg',
+       imgSrc: '/images/teriyaki-ninja.webp',
        title: 'Teriyaki Ninja',
        description:
          "Who says ads just have to be watched? I built this interactive game for Grilstad's Stranda campaign at Cavai. Design by Live Skarbø, assets by POL.",
@@ -129,7 +129,7 @@ export const renderProjects = () => {
      })}
     ${renderProjectItem({
       link: 'wolve.html',
-      imgSrc: '/images/Wolve-min.png',
+      imgSrc: '/images/wolve.webp',
       title: 'Wolve Redesign',
       description: "Bachelor's project for Wolve IT. Full redesign of their loyalty platform.",
       techniques: ['Figma', 'UX', 'User testing'],
@@ -140,7 +140,7 @@ export const renderProjects = () => {
     })}
     ${renderProjectItem({
       link: 'artist-api.html',
-      imgSrc: '/images/Popartist-2-min.png',
+      imgSrc: '/images/popartist.webp',
       title: 'Artist API',
       description:
         'Running a music company and need to manage information about your artists? Look no further.',
@@ -151,7 +151,7 @@ export const renderProjects = () => {
     })}
     ${renderProjectItem({
       link: 'greenhouse-system.html',
-      imgSrc: '/images/greenhouse.jpg',
+      imgSrc: '/images/greenhouse.webp',
       title: 'Greenhouse System',
       description:
         'Monitor your greenhouse(s) on your desktop or mobile and get notified when something is wrong.',
@@ -162,7 +162,7 @@ export const renderProjects = () => {
     })}
      ${renderProjectItem({
        link: 'Dagens-latter.html',
-       imgSrc: '/images/DagensLatter-min.png',
+       imgSrc: '/images/dagens-latter.webp',
        title: 'Laughter Of The Day',
        description:
          'iOS app for daily laughs. Fetches jokes from an API. Add your own jokes as well.',
@@ -173,7 +173,7 @@ export const renderProjects = () => {
      })}
     ${renderProjectItem({
       link: 'munchAR.html',
-      imgSrc: '/images/MunchAR-min.png',
+      imgSrc: '/images/munch-ar.webp',
       title: 'Munch AR',
       description:
         "Let Mr. Scream guide you through the streets of Oslo to the Munch Museum. Perhaps you'll learn some trivia along the way?",
@@ -181,9 +181,22 @@ export const renderProjects = () => {
       classes: 'project-section__article--mobile',
       imgClass: 'project-img',
     })}
+     ${renderProjectItem({
+       link: '',
+       imgSrc: '/images/wrd.webp',
+       title: 'Wrd',
+       ongoingProject: true,
+       description:
+         'WIP: a cross-platform quiz/game app with a concept I think a lot of people are going to like.',
+       techniques: ['Vue', 'Capacitor', 'Crossplatform'],
+       classes: 'project-section__article--mobile project-section__article--ongoing',
+       imgClass: 'project-img',
+       readMore: false,
+       visitWebsite: false,
+     })}
     ${renderProjectItem({
       link: 'munchQR.html',
-      imgSrc: '/images/MunchQR-min.png',
+      imgSrc: '/images/munch-qr.webp',
       title: 'Discover Munch',
       description:
         "Tourist? Scan QR codes to read about Munch's art. Are you an admin at the Munch Museum and needs to do some CRUD operations? We got you covered.",
@@ -193,7 +206,7 @@ export const renderProjects = () => {
     })}
     ${renderProjectItem({
       link: 'https://rick-and-morty-api.nicolaykjaernet.com/',
-      imgSrc: '/images/Rick and Morty-min.png',
+      imgSrc: '/images/rick-and-morty.webp',
       title: 'Rick and Morty',
       description: "If you like the Rick and Morty series, you'll love this website.",
       techniques: ['API', 'Grid', 'Media Queries', 'BEM', 'Fetch', 'Module', 'IIFE'],
@@ -204,7 +217,7 @@ export const renderProjects = () => {
     })}
     ${renderProjectItem({
       link: 'split.html',
-      imgSrc: '/images/Split-min.png',
+      imgSrc: '/images/split.webp',
       title: 'Split',
       description:
         'Prototype for a finance app that automatically allocates your freelance income to various accounts for taxes, savings, and expenses based on predefined percentages.',
@@ -216,7 +229,7 @@ export const renderProjects = () => {
     })}
     ${renderProjectItem({
       link: 'https://scrollfolio.nicolaykjaernet.com/',
-      imgSrc: '/images/Scrollfolio-min-2.png',
+      imgSrc: '/images/scrollfolio.webp',
       title: 'Scrollfolio',
       description: "A portfolio based on Apple's appear-on-scroll-effect.",
       techniques: ['HTML', 'CSS', 'JS', 'Grid', 'Flexbox', 'Animation'],
