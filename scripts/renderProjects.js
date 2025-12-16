@@ -9,7 +9,7 @@
  * @property {string[]} techniques
  * @property {string} classes
  * @property {string} imgClass
- * @property {string} [gitLink]
+ * @property {string} [clickoutLink]
  * @property {boolean} [isFigma]
  * @property {boolean} [ongoingProject]
  * @property {boolean} [readMore]
@@ -26,7 +26,7 @@ const renderProjectItem = ({
   techniques,
   classes,
   imgClass,
-  gitLink = '',
+  clickoutLink = '',
   isFigma = false,
   ongoingProject = false,
   readMore = true,
@@ -37,9 +37,9 @@ const renderProjectItem = ({
     ongoingProject ? 'project-section__article--ongoing' : ''
   }">
         ${
-          gitLink
+          clickoutLink
             ? `
-          <a href="${gitLink}" target="_blank" class="git-icon-link" onclick="event.stopPropagation();">
+          <a href="${clickoutLink}" target="_blank" class="icon-clickout-link" onclick="event.stopPropagation();">
             <i class="${isFigma ? 'fab fa-figma' : 'fab fa-github'} fa-2x"></i>
           </a>
         `
@@ -135,7 +135,7 @@ export const renderProjects = () => {
       techniques: ['Figma', 'UX', 'User testing'],
       classes: 'project-section__article--ux',
       imgClass: 'project-img',
-      gitLink: 'https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype',
+      clickoutLink: 'https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype',
       isFigma: true,
     })}
     ${renderProjectItem({
@@ -147,7 +147,7 @@ export const renderProjects = () => {
       techniques: ['React', '.net/C#', 'CRUD', 'Bootstrap'],
       classes: 'project-section__article--fullstack',
       imgClass: 'project-img',
-      gitLink: 'https://github.com/NicolayKjarnet/pop-artists',
+      clickoutLink: 'https://github.com/NicolayKjarnet/pop-artists',
     })}
     ${renderProjectItem({
       link: 'greenhouse-system.html',
@@ -158,7 +158,7 @@ export const renderProjects = () => {
       techniques: ['IoT', 'Arduino', 'C++', 'Mongo DB', 'React', 'Tailwind'],
       classes: 'project-section__article--fullstack project-section__article--iot',
       imgClass: 'project-img',
-      gitLink: 'https://github.com/NicolayKjarnet/greenhouse-system',
+      clickoutLink: 'https://github.com/NicolayKjarnet/greenhouse-system',
     })}
      ${renderProjectItem({
        link: 'Dagens-latter.html',
@@ -169,7 +169,7 @@ export const renderProjects = () => {
        techniques: ['Swift', 'API', 'Core Data'],
        classes: 'project-section__article--mobile',
        imgClass: 'project-img',
-       gitLink: 'https://github.com/NicolayKjarnet/DagensLatter',
+       clickoutLink: 'https://github.com/NicolayKjarnet/DagensLatter',
      })}
     ${renderProjectItem({
       link: 'munchAR.html',
@@ -211,7 +211,7 @@ export const renderProjects = () => {
       techniques: ['UX', 'Figma', 'Universal Design', "Don Norman's principles"],
       classes: 'project-section__article--ux',
       imgClass: 'project-img',
-      gitLink: 'https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype',
+      clickoutLink: 'https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype',
       isFigma: true,
     })}
     ${renderProjectItem({
