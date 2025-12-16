@@ -41,7 +41,12 @@
               <li class="list-item"><a href="#about">About me</a></li>
             </ul>
           </nav>
-          <div tabindex="0" role="button" aria-label="Scroll down to projects section" class="scroll-arrow">
+          <div
+            tabindex="0"
+            role="button"
+            aria-label="Scroll down to projects section"
+            class="scroll-arrow"
+          >
             <p>Scroll down</p>
           </div>
         </div>
@@ -109,7 +114,11 @@
     </section>
 
     <section class="green">
-      <div id="contact" class="projects__title-section title-section" aria-labelledby="contact-heading">
+      <divw
+        id="contact"
+        class="projects__title-section title-section"
+        aria-labelledby="contact-heading"
+      >
         <div class="projects__title-element-container title-element-container">
           <p class="title-element title-element-1">{</p>
         </div>
@@ -120,15 +129,16 @@
           <p class="title-element title-element-3">}</p>
         </div>
       </div>
-      
+
       <div class="contact-content">
         <div class="contact-card">
           <div class="contact-card__glow"></div>
-          
+
           <div class="contact-header">
             <h3 class="contact-header__title">Let's create something together</h3>
             <p class="contact-header__subtitle">
-              Whether you have a project in mind, a job opportunity, or just want to say hello - I'd love to hear from you.
+              Whether you have a project in mind, a job opportunity, or just want to say hello - I'd
+              love to hear from you.
             </p>
           </div>
 
@@ -143,7 +153,7 @@
               </div>
               <i class="fas fa-arrow-right contact-item__arrow"></i>
             </a>
-            
+
             <div class="contact-item contact-item--static">
               <div class="contact-item__icon">
                 <i class="fas fa-map-marker-alt"></i>
@@ -164,15 +174,27 @@
               <i class="fab fa-github"></i>
               <span>GitHub</span>
             </a>
-            <a href="https://www.linkedin.com/in/nicolaykjaernet/" class="social-link" aria-label="LinkedIn">
+            <a
+              href="https://www.linkedin.com/in/nicolaykjaernet/"
+              class="social-link"
+              aria-label="LinkedIn"
+            >
               <i class="fab fa-linkedin"></i>
               <span>LinkedIn</span>
             </a>
-            <a href="https://www.instagram.com/nicolaykjaernet/" class="social-link" aria-label="Instagram">
+            <a
+              href="https://www.instagram.com/nicolaykjaernet/"
+              class="social-link"
+              aria-label="Instagram"
+            >
               <i class="fab fa-instagram"></i>
               <span>Instagram</span>
             </a>
-            <a href="https://www.facebook.com/profile.php?id=100002866518273" class="social-link" aria-label="Facebook">
+            <a
+              href="https://www.facebook.com/profile.php?id=100002866518273"
+              class="social-link"
+              aria-label="Facebook"
+            >
               <i class="fab fa-facebook"></i>
               <span>Facebook</span>
             </a>
@@ -209,62 +231,68 @@
       </div>
       <div class="about-content">
         <div class="profile-card">
-          <div class="profile-header">
-            <div class="profile-header__hero">
-              <div class="profile-image">
-                <img src="/images/profile-pic.png" alt="Nicolay Kjærnet" />
-              </div>
-              <h3 class="profile-card__title">Nicolay Kjærnet</h3>
-              <p class="profile-card__description">Developer & Content Producer</p>
+          <!-- Profilbilde med subtil animert ring -->
+          <div class="profile-header__hero">
+            <div class="profile-image">
+              <div class="profile-image__ring"></div>
+              <img src="/images/profile-pic.png" alt="Nicolay Kjærnet" />
             </div>
-              <div class="skill-tags" aria-label="Skills">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>Java</span>
-                <span>SQL</span>
-                <span>React</span>
-                <span>TypeScript</span>
-                <span>.NET/C#</span>
-                <span>Swift</span>
-                <span>Vue.js</span>
-                <span>UX/UI</span>
-                <span>IoT</span>
-                <span>Agile Methodologies</span>
-              </div>
+            <h3 class="profile-card__title">Nicolay Kjærnet</h3>
+            <p class="profile-card__description">Frontend Developer & Content Producer</p>
           </div>
-
+          <!-- Skills -->
+          <div class="skill-tags" aria-label="Skills">
+            <span>Vue.js</span> <span>TypeScript</span> <span>JavaScript</span> <span>HTML</span>
+            <span>CSS</span> <span>React</span> <span>UX/UI</span> <span>Figma</span>
+            <span>Video Production</span>
+          </div>
+          <!-- Bio -->
           <div class="bio-container">
             <p class="bio-intro">
-              I'm a creative and idea-driven problem solver with a strong interest in technology and visual storytelling. With a background in screenwriting and 8 years of experience as a content producer, I bring a unique blend of technical skills and artistic vision to my work as a developer.
+              I'm a Frontend Developer at Cavai, where I build and improve the platform powering our
+              interactive advertising solutions. I started as a Creative Developer in September
+              2024, creating games, quizzes and interactive campaigns from concept to code - a role
+              where my background in visual storytelling enriched every technical solution. Now I
+              work with Vue and TypeScript, developing the tools that bring these creatives to life.
             </p>
-            
-            <ul class="about-me__list">
-              <li class="about-me__list-element">
-                <i class="list-element-icon fas fa-wrench"></i>
-                I love to tinker with things and find innovative solutions to complex problems.
-              </li>
-              <li class="about-me__list-element">
-                <i class="list-element-icon fas fa-code"></i>
-                My passion lies in crafting engaging user experiences through clean, efficient code.
-              </li>
-              <li class="about-me__list-element">
-                <i class="list-element-icon fas fa-book"></i>
-                I thrive on learning new technologies and continuously expanding my skill set.
-              </li>
-              <li class="about-me__list-element">
-                <i class="list-element-icon fas fa-music"></i>
-                As a music enthusiast, I play bass and handle visuals for the band trueandtrue, blending my love for music and design.
-              </li>
-            </ul>
-            
+            <div class="traits-grid">
+              <div class="trait-item">
+                <div class="trait-item__icon"><i class="fas fa-film"></i></div>
+                <p>
+                  7+ years as a content producer in the music industry, working with artists from
+                  emerging talents to household names.
+                </p>
+              </div>
+              <div class="trait-item">
+                <div class="trait-item__icon"><i class="fas fa-couch"></i></div>
+                <p>
+                  Co-founder of Kjærnet-Wesseltoft, an interior design consultancy where I'm
+                  currently building an interactive kitchen design platform and a webshop.
+                </p>
+              </div>
+              <div class="trait-item">
+                <div class="trait-item__icon"><i class="fas fa-code"></i></div>
+                <p>
+                  I thrive on optimizing workflows and creating efficient solutions that actually
+                  work.
+                </p>
+              </div>
+              <div class="trait-item">
+                <div class="trait-item__icon"><i class="fas fa-music"></i></div>
+                <p>
+                  Been a bass player and visual designer for the band trueandtrue since 2023, but
+                  quit playing in the band mid 2025 - still desiging and making all design elements.
+                </p>
+              </div>
+            </div>
             <p class="bio-outro">
-              My goal is to leverage my diverse background in technology, storytelling, and content production to create meaningful and impactful digital experiences.
+              I've swapped scripts and storyboards for functions and error messages - but I still
+              tell stories that engage.
             </p>
           </div>
-
         </div>
         <div class="timeline-content"></div>
+      </div>
     </section>
 
     <!-- Footer -->
