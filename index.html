@@ -66,22 +66,16 @@
           <option value="all">All</option>
           <option value="fullstack">Full Stack</option>
           <option value="frontend">Front-End</option>
-          <option value="ad">Ads</option>
           <option value="ux">UX</option>
-          <option value="ios">iOS</option>
-          <option value="android">Android</option>
-          <option value="crossplattform">Cross-Platform</option>
+          <option value="mobile">Mobile</option>
           <option value="iot">IoT</option>
         </select>
         <ul class="filter-list" role="list">
           <li class="filter-item active" data-filter="all">All</li>
           <li class="filter-item" data-filter="fullstack">Full Stack</li>
           <li class="filter-item" data-filter="frontend">Front-End</li>
-          <li class="filter-item" data-filter="ad">Ads / Cavai</li>
           <li class="filter-item" data-filter="ux">UX</li>
-          <li class="filter-item" data-filter="ios">iOS</li>
-          <li class="filter-item" data-filter="android">Android</li>
-          <li class="filter-item" data-filter="crossplattform">Cross-Platform</li>
+          <li class="filter-item" data-filter="mobile">Mobile</li>
           <li class="filter-item" data-filter="iot">IoT</li>
         </ul>
       </div>
@@ -126,33 +120,62 @@
           <p class="title-element title-element-3">}</p>
         </div>
       </div>
+      
       <div class="contact-content">
-        <div class="contact-info">
-          <h3>Let's work together</h3>
-          <p>
-            I'm always open to new opportunities and collaborations. Whether you have a job opportunity in mind
-            or just want to say hello, feel free to reach out!
-          </p>
+        <div class="contact-card">
+          <div class="contact-card__glow"></div>
+          
+          <div class="contact-header">
+            <h3 class="contact-header__title">Let's create something together</h3>
+            <p class="contact-header__subtitle">
+              Whether you have a project in mind, a job opportunity, or just want to say hello - I'd love to hear from you.
+            </p>
+          </div>
 
-          <p><i class="fas fa-envelope"></i> <a href="nicolay@hotmail.no">nicolay@hotmail.no</a></p>
-          <p><i class="fas fa-map-marker-alt"></i> Tønsberg, Norway</p>
-        </div>
+          <div class="contact-details">
+            <a href="mailto:nicolay@hotmail.no" class="contact-item">
+              <div class="contact-item__icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-item__content">
+                <span class="contact-item__label">Email</span>
+                <span class="contact-item__value">nicolay@hotmail.no</span>
+              </div>
+              <i class="fas fa-arrow-right contact-item__arrow"></i>
+            </a>
+            
+            <div class="contact-item contact-item--static">
+              <div class="contact-item__icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-item__content">
+                <span class="contact-item__label">Location</span>
+                <span class="contact-item__value">Tønsberg, Norway</span>
+              </div>
+            </div>
+          </div>
 
-        <div class="social-links" aria-label="Social media links">
-          <h3>Connect with me</h3>
-          <div class="social-icons">
-            <a href="https://github.com/NicolayKjarnet" class="social-icon" aria-label="GitHub"
-              ><i class="fab fa-github"></i
-            ></a>
-            <a href="https://www.linkedin.com/in/nicolaykjaernet/" class="social-icon" aria-label="LinkedIn"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-            <a href="https://www.instagram.com/nicolaykjaernet/" class="social-icon" aria-label="Instagram"
-              ><i class="fab fa-instagram"></i
-            ></a>
-            <a href="https://www.facebook.com/profile.php?id=100002866518273" class="social-icon" aria-label="Facebook"
-              ><i class="fab fa-facebook"></i
-            ></a>
+          <div class="contact-divider">
+            <span>or connect on</span>
+          </div>
+
+          <div class="social-links-grid">
+            <a href="https://github.com/NicolayKjarnet" class="social-link" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/nicolaykjaernet/" class="social-link" aria-label="LinkedIn">
+              <i class="fab fa-linkedin"></i>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://www.instagram.com/nicolaykjaernet/" class="social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=100002866518273" class="social-link" aria-label="Facebook">
+              <i class="fab fa-facebook"></i>
+              <span>Facebook</span>
+            </a>
           </div>
         </div>
       </div>
