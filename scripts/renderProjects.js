@@ -92,7 +92,8 @@ export const renderProjects = () => {
      newTab: true,
      videoSrc: '/images/kithcen-builder.mp4',
      title: 'Kitchen Planner',
-     description: 'WIP: An interactive platform for designing high-end, sustainable kitchens.',
+     description:
+       'An interactive 3D platform for designing custom, sustainable kitchens. Visualize your design kitchen in real-time.',
      techniques: ['React', 'TypeScript', 'Three.js', 'Taillwind'],
      classes: 'project-section__article--fullstack project-section__article--ongoing',
      imgClass: 'project-img',
@@ -106,7 +107,7 @@ export const renderProjects = () => {
       imgSrc: '/images/studio-torshov.webp',
       title: 'Studio Torshov',
       description:
-        'WIP: The companion webshop to the kitchen builder, featuring handcrafted items by Studio Torshov.',
+        'E-commerce platform for handcrafted clothes, furniture and other interior products. Built to complement the Kitchen Planner.',
       techniques: ['Vue', 'TypeScript', 'Supabase'],
       classes: 'project-section__article--fullstack project-section__article--ongoing',
       imgClass: 'project-img',
@@ -120,7 +121,7 @@ export const renderProjects = () => {
        imgSrc: '/images/teriyaki-ninja.webp',
        title: 'Teriyaki Ninja',
        description:
-         "Who says ads just have to be watched? I built this interactive game for Grilstad's Stranda campaign at Cavai. Design by Live Skarbø, assets by POL.",
+         "Interactive mobile game built for Grilstad's Stranda campaign at Cavai. Slice your way through falling teriyaki - sound on recommended! Design by Live Skarbø, assets by POL.",
        techniques: ['JS', 'CSS', 'HTML', 'Cavai'],
        classes: 'project-section__article--frontend project-section__article--ongoing',
        imgClass: 'project-img',
@@ -131,7 +132,8 @@ export const renderProjects = () => {
       link: 'wolve.html',
       imgSrc: '/images/wolve.webp',
       title: 'Wolve Redesign',
-      description: "Bachelor's project for Wolve IT. Full redesign of their loyalty platform.",
+      description:
+        "Complete UX overhaul of Wolve IT's loyalty platform. User research, prototyping, and testing resulted in top marks.",
       techniques: ['Figma', 'UX', 'User testing'],
       classes: 'project-section__article--ux',
       imgClass: 'project-img',
@@ -143,7 +145,7 @@ export const renderProjects = () => {
       imgSrc: '/images/popartist.webp',
       title: 'Artist API',
       description:
-        'Running a music company and need to manage information about your artists? Look no further.',
+        'Full-stack artist management system for music labels. Create, read, update, and delete artist profiles with a clean, intuitive interface.',
       techniques: ['React', '.net/C#', 'CRUD', 'Bootstrap'],
       classes: 'project-section__article--fullstack',
       imgClass: 'project-img',
@@ -154,8 +156,8 @@ export const renderProjects = () => {
       imgSrc: '/images/greenhouse.webp',
       title: 'Greenhouse System',
       description:
-        'Monitor your greenhouse(s) on your desktop or mobile and get notified when something is wrong.',
-      techniques: ['IoT', 'Arduino', 'C++', 'Mongo DB', 'React', 'Tailwind'],
+        'IoT monitoring dashboard for greenhouse environments. Real-time sensor data, mobile alerts, and historical tracking.',
+      techniques: ['IoT', 'Arduino', 'C++', 'Mongo DB'],
       classes: 'project-section__article--fullstack project-section__article--iot',
       imgClass: 'project-img',
       clickoutLink: 'https://github.com/NicolayKjarnet/greenhouse-system',
@@ -165,7 +167,7 @@ export const renderProjects = () => {
        imgSrc: '/images/dagens-latter.webp',
        title: 'Laughter Of The Day',
        description:
-         'iOS app for daily laughs. Fetches jokes from an API. Add your own jokes as well.',
+         'iOS app serving daily jokes from an API. Save favorites and contribute your own to the collection.',
        techniques: ['Swift', 'API', 'Core Data'],
        classes: 'project-section__article--mobile',
        imgClass: 'project-img',
@@ -176,7 +178,7 @@ export const renderProjects = () => {
       imgSrc: '/images/munch-ar.webp',
       title: 'Munch AR',
       description:
-        "Let Mr. Scream guide you through the streets of Oslo to the Munch Museum. Perhaps you'll learn some trivia along the way?",
+        'AR navigation prototype guiding tourists through Oslo to the Munch Museum, with trivia and artwork previews along the way.',
       techniques: ['Figma', 'Android', 'Google Maps API'],
       classes: 'project-section__article--mobile',
       imgClass: 'project-img',
@@ -187,7 +189,7 @@ export const renderProjects = () => {
        title: 'Wrd',
        ongoingProject: true,
        description:
-         'WIP: a cross-platform quiz/game app with a concept I think a lot of people are going to like.',
+         "Cross-platform word game with a twist. Coming soon - I think you're going to like this one.",
        techniques: ['Vue', 'Capacitor', 'Crossplatform'],
        classes: 'project-section__article--mobile project-section__article--ongoing',
        imgClass: 'project-img',
@@ -199,7 +201,7 @@ export const renderProjects = () => {
       imgSrc: '/images/munch-qr.webp',
       title: 'Discover Munch',
       description:
-        "Tourist? Scan QR codes to read about Munch's art. Are you an admin at the Munch Museum and needs to do some CRUD operations? We got you covered.",
+        'QR-powered museum guide for tourists, paired with an admin dashboard for museum staff to manage artwork information.',
       techniques: ['React Native', 'React', '.net', 'C#', 'CRUD'],
       classes: 'project-section__article--mobile project-section__article--ux',
       imgClass: 'project-img',
@@ -208,8 +210,9 @@ export const renderProjects = () => {
       link: 'https://rick-and-morty-api.nicolaykjaernet.com/',
       imgSrc: '/images/rick-and-morty.webp',
       title: 'Rick and Morty',
-      description: "If you like the Rick and Morty series, you'll love this website.",
-      techniques: ['API', 'Grid', 'Media Queries', 'BEM', 'Fetch', 'Module', 'IIFE'],
+      description:
+        'Character encyclopedia pulling from the Rick and Morty API. Search, filter, and explore the multiverse.',
+      techniques: ['API', 'Grid', 'Media Queries', 'BEM'],
       classes: 'project-section__article--frontend',
       imgClass: 'project-img',
       readMore: false,
@@ -220,8 +223,8 @@ export const renderProjects = () => {
       imgSrc: '/images/split.webp',
       title: 'Split',
       description:
-        'Prototype for a finance app that automatically allocates your freelance income to various accounts for taxes, savings, and expenses based on predefined percentages.',
-      techniques: ['UX', 'Figma', 'Universal Design', "Don Norman's principles"],
+        'Finance app prototype for freelancers. Automatically splits income into tax, savings, and expense accounts based on your rules.',
+      techniques: ['UX', 'Figma', 'Universal Design'],
       classes: 'project-section__article--ux',
       imgClass: 'project-img',
       clickoutLink: 'https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype',
@@ -231,8 +234,9 @@ export const renderProjects = () => {
       link: 'https://scrollfolio.nicolaykjaernet.com/',
       imgSrc: '/images/scrollfolio.webp',
       title: 'Scrollfolio',
-      description: "A portfolio based on Apple's appear-on-scroll-effect.",
-      techniques: ['HTML', 'CSS', 'JS', 'Grid', 'Flexbox', 'Animation'],
+      description:
+        "Experimental portfolio showcasing scroll-triggered animations inspired by Apple's product pages.",
+      techniques: ['GSAP', 'HTML', 'CSS', 'JS', 'Grid'],
       classes: 'project-section__article--frontend',
       imgClass: 'project-img',
       readMore: false,
