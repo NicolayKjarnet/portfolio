@@ -52,6 +52,7 @@ const timelineData = [
       'Conducted user research and market analysis to inform design decisions.',
       'Project received top marks and positive feedback from the company.',
     ],
+    media: { type: 'video', src: './images/wolve-showcase-short.mp4' },
   },
   {
     year: 'Aug 2020 - Jun 2024',
