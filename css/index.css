@@ -1181,7 +1181,6 @@ a {
   transform: scale(1.1);
 }
 
-/* Responsiv tilpasning */
 @media (max-width: 768px) {
   .contact-card {
     padding: 2rem 1.5rem;
@@ -1491,7 +1490,7 @@ a {
   }
 }
 
-@media only screen and (min-width: 1450px) {
+@media only screen and (min-width: 1400px) {
   .project-section__article {
     grid-column: auto / span 4;
     max-width: 400px;
