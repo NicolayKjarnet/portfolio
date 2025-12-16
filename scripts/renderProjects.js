@@ -49,8 +49,8 @@ const renderProjectItem = ({
           <div class="project-section__img-container">
           ${
             videoSrc
-              ? `<video class="project-section__img ${imgClass}" src="${videoSrc}" autoplay muted loop playsinline></video>`
-              : `<img class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">`
+              ? `<video class="project-section__img ${imgClass}" width="500" height="250" preload="metadata" src="${videoSrc}" autoplay muted loop playsinline></video>`
+              : `<img loading="lazy" decoding="async" width="500" height="250" class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">`
           }
             ${
               ongoingProject
@@ -93,7 +93,7 @@ export const renderProjects = () => {
      videoSrc: '/images/kithcen-builder.mp4',
      title: 'Kitchen Planner',
      description: 'WIP: An interactive platform for designing high-end, sustainable kitchens.',
-     techniques: ['React', 'TypeScript', 'Three.js', 'TaillwindCSS', 'UX/UI Design'],
+     techniques: ['React', 'TypeScript', 'Three.js', 'Taillwind'],
      classes: 'project-section__article--fullstack project-section__article--ongoing',
      imgClass: 'project-img',
      ongoingProject: true,
@@ -107,7 +107,7 @@ export const renderProjects = () => {
       title: 'Studio Torshov',
       description:
         'WIP: The companion webshop to the kitchen builder, featuring handcrafted items by Studio Torshov.',
-      techniques: ['Vue', 'TypeScript', 'Supabase', 'UX/UI Design'],
+      techniques: ['Vue', 'TypeScript', 'Supabase'],
       classes: 'project-section__article--fullstack project-section__article--ongoing',
       imgClass: 'project-img',
       ongoingProject: true,
@@ -121,8 +121,8 @@ export const renderProjects = () => {
        title: 'Teriyaki Ninja',
        description:
          "Who says ads just have to be watched? I built this interactive game for Grilstad's Stranda campaign at Cavai. Design by Live Skarbø, assets by POL.",
-       techniques: ['JS', 'CSS', 'HTML', 'Cavai', 'UX/UI Design'],
-       classes: 'project-section__article--ad project-section__article--ongoing',
+       techniques: ['JS', 'CSS', 'HTML', 'Cavai'],
+       classes: 'project-section__article--frontend project-section__article--ongoing',
        imgClass: 'project-img',
        readMore: false,
        visitWebsite: true,
@@ -132,14 +132,7 @@ export const renderProjects = () => {
       imgSrc: '/images/Wolve-min.png',
       title: 'Wolve Redesign',
       description: "Bachelor's project for Wolve IT. Full redesign of their loyalty platform.",
-      techniques: [
-        'Prototype',
-        'Figma',
-        'UX',
-        'User testing',
-        'Universal Design',
-        'Design Principles',
-      ],
+      techniques: ['Figma', 'UX', 'User testing'],
       classes: 'project-section__article--ux',
       imgClass: 'project-img',
       gitLink: 'https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype',
@@ -151,7 +144,7 @@ export const renderProjects = () => {
       title: 'Artist API',
       description:
         'Running a music company and need to manage information about your artists? Look no further.',
-      techniques: ['React', '.net', 'C#', 'CRUD', 'Axios', 'Context', 'Routing', 'Bootstrap'],
+      techniques: ['React', '.net/C#', 'CRUD', 'Bootstrap'],
       classes: 'project-section__article--fullstack',
       imgClass: 'project-img',
       gitLink: 'https://github.com/NicolayKjarnet/pop-artists',
@@ -162,19 +155,30 @@ export const renderProjects = () => {
       title: 'Greenhouse System',
       description:
         'Monitor your greenhouse(s) on your desktop or mobile and get notified when something is wrong.',
-      techniques: ['IoT', 'Arduino', 'C++', 'Mongo DB', 'Express', 'React', 'Node', 'Tailwind'],
+      techniques: ['IoT', 'Arduino', 'C++', 'Mongo DB', 'React', 'Tailwind'],
       classes: 'project-section__article--fullstack project-section__article--iot',
       imgClass: 'project-img',
       gitLink: 'https://github.com/NicolayKjarnet/greenhouse-system',
     })}
+     ${renderProjectItem({
+       link: 'Dagens-latter.html',
+       imgSrc: '/images/DagensLatter-min.png',
+       title: 'Laughter Of The Day',
+       description:
+         'iOS app for daily laughs. Fetches jokes from an API. Add your own jokes as well.',
+       techniques: ['Swift', 'API', 'Core Data'],
+       classes: 'project-section__article--mobile',
+       imgClass: 'project-img',
+       gitLink: 'https://github.com/NicolayKjarnet/DagensLatter',
+     })}
     ${renderProjectItem({
       link: 'munchAR.html',
       imgSrc: '/images/MunchAR-min.png',
       title: 'Munch AR',
       description:
         "Let Mr. Scream guide you through the streets of Oslo to the Munch Museum. Perhaps you'll learn some trivia along the way?",
-      techniques: ['Prototype', 'UX', 'Figma', 'Android', 'Google Maps API', 'Kotlin'],
-      classes: 'project-section__article--android',
+      techniques: ['Figma', 'Android', 'Google Maps API'],
+      classes: 'project-section__article--mobile',
       imgClass: 'project-img',
     })}
     ${renderProjectItem({
@@ -184,8 +188,7 @@ export const renderProjects = () => {
       description:
         "Tourist? Scan QR codes to read about Munch's art. Are you an admin at the Munch Museum and needs to do some CRUD operations? We got you covered.",
       techniques: ['React Native', 'React', '.net', 'C#', 'CRUD'],
-      classes:
-        'project-section__article--fullstack project-section__article--crossplattform project-section__article--ux',
+      classes: 'project-section__article--mobile project-section__article--ux',
       imgClass: 'project-img',
     })}
     ${renderProjectItem({
@@ -198,17 +201,6 @@ export const renderProjects = () => {
       imgClass: 'project-img',
       readMore: false,
       visitWebsite: true,
-    })}
-    ${renderProjectItem({
-      link: 'Dagens-latter.html',
-      imgSrc: '/images/DagensLatter-min.png',
-      title: 'Laughter Of The Day',
-      description:
-        'iOS app for daily laughs. Fetches jokes from an API. Add your own jokes as well.',
-      techniques: ['Swift', 'API', 'Core Data', 'Bindings', 'Navigation', 'Persistence'],
-      classes: 'project-section__article--ios',
-      imgClass: 'project-img',
-      gitLink: 'https://github.com/NicolayKjarnet/DagensLatter',
     })}
     ${renderProjectItem({
       link: 'split.html',
