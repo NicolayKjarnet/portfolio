@@ -8,15 +8,9 @@
     <title>Nicolay Kjærnet</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+
     <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body>
@@ -66,8 +60,13 @@
           <p class="title-element title-element-3">}</p>
         </div>
       </div>
+
       <div class="filter-box" aria-labelledby="filter-heading">
-        <select class="filter-dropdown">
+        <h2 id="filter-heading" class="visually-hidden">Filter projects</h2>
+
+        <label class="visually-hidden" for="project-filter"> Filter projects </label>
+
+        <select id="project-filter" class="filter-dropdown">
           <option value="all">All</option>
           <option value="fullstack">Full Stack</option>
           <option value="frontend">Front-End</option>
@@ -75,16 +74,34 @@
           <option value="mobile">Mobile</option>
           <option value="iot">IoT</option>
         </select>
-        <ul class="filter-list" role="list">
-          <li class="filter-item active" data-filter="all">All</li>
-          <li class="filter-item" data-filter="fullstack">Full Stack</li>
-          <li class="filter-item" data-filter="frontend">Front-End</li>
-          <li class="filter-item" data-filter="ux">UX</li>
-          <li class="filter-item" data-filter="mobile">Mobile</li>
-          <li class="filter-item" data-filter="iot">IoT</li>
+
+        <ul class="filter-list">
+          <li>
+            <button class="filter-item active" data-filter="all" aria-pressed="true">All</button>
+          </li>
+          <li>
+            <button class="filter-item" data-filter="fullstack" aria-pressed="false">
+              Full Stack
+            </button>
+          </li>
+          <li>
+            <button class="filter-item" data-filter="frontend" aria-pressed="false">
+              Front-End
+            </button>
+          </li>
+          <li>
+            <button class="filter-item" data-filter="ux" aria-pressed="false">UX</button>
+          </li>
+          <li>
+            <button class="filter-item" data-filter="mobile" aria-pressed="false">Mobile</button>
+          </li>
+          <li>
+            <button class="filter-item" data-filter="iot" aria-pressed="false">IoT</button>
+          </li>
         </ul>
       </div>
-      <div class="project-section" role="list"></div>
+
+      <div class="project-section"></div>
       <div class="wave">
         <svg
           data-name="Layer 1"

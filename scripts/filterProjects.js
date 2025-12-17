@@ -104,30 +104,37 @@ export const setupProjectFiltering = () => {
     [...matches, ...nonMatches].forEach((article) => projectSection.appendChild(article));
   };
 
-  filterItems.forEach((item) => {
-    item.addEventListener('click', function () {
-      const filterValue = this.getAttribute('data-filter');
+  const setActiveFilter = (filterValue) => {
+    filterItems.forEach((btn) => {
+      const isActive = btn.dataset.filter === filterValue;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', String(isActive));
+    });
+
+    if (filterDropdown) {
+      filterDropdown.value = filterValue;
+    }
+
+    filterProjects(filterValue);
+  };
+
+  filterItems.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const filterValue = btn.dataset.filter;
 
       runWithFlipAnimation(() => {
-        filterItems.forEach((el) => el.classList.remove('active'));
-        this.classList.add('active');
-
-        filterProjects(filterValue);
+        setActiveFilter(filterValue);
       });
     });
   });
 
-  filterDropdown.addEventListener('change', function () {
-    const filterValue = this.value;
+  if (filterDropdown) {
+    filterDropdown.addEventListener('change', () => {
+      const filterValue = filterDropdown.value;
 
-    runWithFlipAnimation(() => {
-      filterItems.forEach((el) => el.classList.remove('active'));
-      const matchingFilterItem = Array.from(filterItems).find(
-        (el) => el.getAttribute('data-filter') === filterValue
-      );
-      if (matchingFilterItem) matchingFilterItem.classList.add('active');
-
-      filterProjects(filterValue);
+      runWithFlipAnimation(() => {
+        setActiveFilter(filterValue);
+      });
     });
-  });
+  }
 };

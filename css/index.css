@@ -42,6 +42,15 @@ a {
   text-underline-offset: var(--offset, 0.2em);
   text-decoration: none;
   transition: 0.5s ease-in-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--clr-orange);
+    outline-offset: 3px;
+  }
 }
 
 /* Section base */
@@ -122,6 +131,15 @@ section {
 .list-item > a {
   transition: 0.3s ease-in-out;
   text-decoration: none var(--clr-green) 0.12rem;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--clr-orange);
+    outline-offset: 3px;
+  }
 }
 
 .list-item a:hover {
@@ -158,6 +176,11 @@ section {
 
   &:focus {
     outline: none;
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--clr-orange);
+    outline-offset: 3px;
   }
 }
 
@@ -305,11 +328,24 @@ section {
   padding: 0.4rem 0.8rem;
   cursor: pointer;
   transition: 0.3s ease-in-out;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .filter-item:hover,
 .filter-item.active {
   background-color: var(--clr-orange);
+}
+
+.filter-item[aria-pressed='true'] {
+  background-color: var(--clr-orange);
+}
+
+.filter-item:focus-visible {
+  outline: 3px solid var(--clr-orange);
+  outline-offset: 3px;
 }
 
 .filter-dropdown {
@@ -373,7 +409,7 @@ section {
 }
 
 .project-section__article:focus-within {
-  box-shadow: 0 0 0 3px #4a90e2;
+  box-shadow: 0 0 0 3px var(--clr-orange), 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
 }
 
 .project-section__article--dimmed {
@@ -1190,12 +1226,12 @@ section {
 a:focus,
 button:focus,
 [tabindex='0']:focus {
-  outline: 3px solid #4a90e2;
+  outline: 3px solid var(--clr-orange);
   outline-offset: 2px;
 }
 
 .footer__img-container:focus {
-  outline: 3px solid #4a90e2;
+  outline: 3px solid var(--clr-orange)
   outline-offset: 2px;
 }
 

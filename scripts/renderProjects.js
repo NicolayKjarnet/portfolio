@@ -95,7 +95,7 @@ export const renderProjects = () => {
      description:
        'An interactive 3D platform for designing custom, sustainable kitchens. Visualize your design kitchen in real-time.',
      techniques: ['React', 'TypeScript', 'Three.js', 'Taillwind'],
-     classes: 'project-section__article--fullstack project-section__article--ongoing',
+     classes: 'project-section__article--fullstack',
      imgClass: 'project-img',
      ongoingProject: true,
      readMore: false,
@@ -109,7 +109,7 @@ export const renderProjects = () => {
       description:
         'E-commerce platform for handcrafted clothes, furniture and other interior products. Built to complement the Kitchen Planner.',
       techniques: ['Vue', 'TypeScript', 'Supabase'],
-      classes: 'project-section__article--fullstack project-section__article--ongoing',
+      classes: 'project-section__article--fullstack',
       imgClass: 'project-img',
       ongoingProject: true,
       readMore: false,
@@ -123,7 +123,7 @@ export const renderProjects = () => {
        description:
          "Interactive mobile game built for Grilstad's Stranda campaign at Cavai. Slice your way through falling teriyaki - sound on recommended! Design by Live Skarbø, assets by POL.",
        techniques: ['JS', 'CSS', 'HTML', 'Cavai'],
-       classes: 'project-section__article--frontend project-section__article--ongoing',
+       classes: 'project-section__article--frontend',
        imgClass: 'project-img',
        readMore: false,
        visitWebsite: true,
@@ -191,7 +191,7 @@ export const renderProjects = () => {
        description:
          "Cross-platform word game with a twist. Coming soon - I think you're going to like this one.",
        techniques: ['Vue', 'Capacitor', 'Crossplatform'],
-       classes: 'project-section__article--mobile project-section__article--ongoing',
+       classes: 'project-section__article--mobile',
        imgClass: 'project-img',
        readMore: false,
        visitWebsite: false,
