@@ -1324,27 +1324,28 @@ button:focus,
 
   /* Timeline */
   .timeline-content {
-    max-width: 350px;
+    max-width: 100%;
   }
 
   .timeline-line {
-    left: 40px;
+    left: 25px;
   }
 
   .timeline-item {
     width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
+    height: clamp(50dvh, 100%, 100dvh);
+    padding-left: 50px;
+    padding-right: 10px;
     margin-top: 2rem;
   }
 
   .timeline-circle {
-    left: 25px;
+    left: 10px;
   }
 
   .timeline-image,
   .timeline-video {
-    aspect-ratio: 9/12;
+    aspect-ratio: 9/10;
   }
 }
 

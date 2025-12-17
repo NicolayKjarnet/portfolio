@@ -39,7 +39,6 @@ const timelineData = [
     details: [
       'Producing music videos, promotional content, and graphic design for artists ranging from emerging talents to household names.',
       'Managing the full production pipeline - from concept and pre-production through filming to final delivery.',
-      'Building long-term client relationships through quality work and clear communication.',
     ],
     media: { type: 'video', src: './images/video-content-showreel-short.mp4' },
   },
