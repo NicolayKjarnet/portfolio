@@ -309,7 +309,7 @@ section {
 @keyframes curly-right {
   0%,
   100% {
-    transform: translateX(-1rem);
+    transform: translateX(0);
   }
   50% {
     transform: translateX(3rem);
@@ -319,7 +319,7 @@ section {
 @keyframes curly-left {
   0%,
   100% {
-    transform: translateX(1rem);
+    transform: translateX(0);
   }
   50% {
     transform: translateX(-3rem);
@@ -566,7 +566,7 @@ section {
 }
 
 .icon-clickout-link i {
-  font-size: 20px;
+  font-size: 30px;
 }
 
 /* Project Buttons */
