@@ -825,7 +825,6 @@ section {
 .profile-image {
   position: relative;
   margin-bottom: 1.5rem;
-  padding-top: 1rem;
   border-radius: 50%;
   corner-top-left-shape: squircle;
   corner-top-right-shape: squircle;
@@ -900,6 +899,7 @@ section {
 }
 
 .profile-image img {
+  padding-top: 1rem;
   box-sizing: border-box;
   width: 160px;
   height: 100%;
