@@ -1434,9 +1434,13 @@ button:focus,
     padding: 2rem 1.5rem;
   }
 
+  .profile-image {
+    background-color: transparent;
+  }
+
   .profile-image img {
     width: 150px;
-    height: 150px;
+    border-radius: 0;
   }
 
   .profile-card__title {
