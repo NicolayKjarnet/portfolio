@@ -1504,6 +1504,22 @@ button:focus,
   .timeline-video {
     aspect-ratio: 9/10;
   }
+
+  .wave svg {
+    height: 40px;
+  }
+
+  .wave-2 svg {
+    height: 40px;
+  }
+
+  .wave-3 svg {
+    height: 40px;
+  }
+
+  .curve svg {
+    height: 40px;
+  }
 }
 
 /* Tablets & up */
