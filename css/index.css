@@ -10,6 +10,7 @@
   --clr-white: oklab(93.642% 0.00319 -0.00332);
   --clr-white-2: oklab(94.912% 0 -0.00011);
   --clr-white-3: oklab(95.119% -0.01071 0.04177);
+  --clr-red: #995860;
   --clr-red: oklab(53.721% 0.0841 0.01853);
   --clr-green: oklab(67.138% -0.02042 0.00441);
   --clr-dark: oklab(21.232% 0.01482 -0.01155);
@@ -824,16 +825,69 @@ section {
 .profile-image {
   position: relative;
   margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  border-radius: 50%;
+  corner-top-left-shape: squircle;
+  corner-top-right-shape: squircle;
+  corner-bottom-left-shape: square;
+  corner-bottom-right-shape: square;
+  background-color: var(--clr-orange);
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  transition: .3s ease-in-out;
+  outline: none;
+  border: none;
+  padding: 0;
+  
+  &:focus {
+    outline: none;
+  }
 }
 
 .profile-image__ring {
+  box-sizing: border-box;
   position: absolute;
-  inset: -8px;
+  width: 180px;
+  aspect-ratio: 1;
+  inset: 0;
+  corner-shape: squircle;
+  border-radius: 50%;
+  z-index: 3;
+  opacity: 0;
+  border: 2px dashed var(--clr-orange);
+  transition: 0.3s ease-in-out;
+  animation: ring-rotate 35s linear infinite;
+}
+
+
+.profile-image__ring::after {
+  content: '';
+  box-sizing: border-box;
+  z-index: 1;
+  position: absolute;
+  width: 180px;
+  inset: 0;
+  aspect-ratio: 1;
+  corner-shape: squircle;
   border-radius: 50%;
   border: 2px dashed var(--clr-orange);
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: 1s ease-in-out;
   animation: ring-rotate 40s linear infinite;
+}
+
+.profile-image__ring::before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0;
+  width: 180px;
+  aspect-ratio: 1;
+  corner-shape: squircle;
+  border-radius: 50%;
+  border: 2px dashed var(--clr-orange);
+  transition: 1s ease-in-out;
+  animation: ring-rotate 30s linear infinite;
 }
 
 @keyframes ring-rotate {
@@ -846,12 +900,14 @@ section {
 }
 
 .profile-image img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
+  box-sizing: border-box;
+  width: 160px;
+  height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease, filter 0.5s ease;
   position: relative;
+  corner-shape: squircle;
+  border-radius: 0%;
   z-index: 1;
 }
 
@@ -962,12 +1018,33 @@ section {
 
 /* Profile Card Hover States */
 .profile-card:hover .profile-image img {
+  filter: brightness(1.05);
+}
+
+.profile-card:hover .profile-image  {
   transform: scale(1.07);
   filter: brightness(1.05);
 }
 
-.profile-card:hover .profile-image__ring {
+.profile-image:hover .profile-image__ring {
   opacity: 1;
+  cursor: url('/images/pointing-finger.png'),
+      auto;
+}
+
+.profile-image:hover {
+  opacity: 1;
+  /* background-image: url('/images/footer-gif.gif'); */
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.profile-card:hover .profile-image:active {
+  transform: scale(0.975);
+}
+
+.profile-card:hover {
+  background-color: var(--clr-dark-2);
 }
 
 /* ============================================
