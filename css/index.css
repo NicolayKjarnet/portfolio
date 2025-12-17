@@ -141,8 +141,7 @@ section {
 }
 
 /* Scroll Arrow */
-.scroll-arrow {
-  border: 2px dashed red;
+#scroll-arrow {
   position: fixed;
   z-index: 1;
   width: 2rem;
@@ -154,9 +153,15 @@ section {
   bottom: 20px;
   margin-left: -15px;
   animation: bounce 2s infinite;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+
+  &:focus {
+    outline: none;
+  }
 }
 
-.scroll-arrow p {
+#scroll-arrow p {
   position: absolute;
   text-align: center;
   top: -100%;
@@ -169,9 +174,14 @@ section {
   font-family: Poppins, sans-serif;
 }
 
-.scroll-arrow:hover,
-.scroll-arrow p:hover {
+#scroll-arrow:hover,
+#scroll-arrow p:hover {
   cursor: pointer;
+}
+
+#scroll-arrow.hide {
+  opacity: 0;
+  pointer-events: none;
 }
 
 @keyframes bounce {
