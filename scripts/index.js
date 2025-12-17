@@ -1,20 +1,19 @@
-import { saveScrollPosition, restoreScrollPosition } from "./scrollPosition.js";
-import { setupSmoothScrolling, setupScrollArrow } from "./smoothScrolling.js";
-import { setupGSAPAnimations } from "./gsapAnimations.js";
-import { setupProjectFiltering } from "./filterProjects.js";
-import { renderProjects } from "./renderProjects.js";
+import { saveScrollPosition, restoreScrollPosition } from './scrollPosition.js';
+import { setupSmoothScrolling, setupScrollArrow } from './smoothScrolling.js';
+import { setupProjectFiltering } from './filterProjects.js';
+import { renderProjects } from './renderProjects.js';
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   // Render projects first
-  const projectSection = document.querySelector(".project-section");
+  const projectSection = document.querySelector('.project-section');
   projectSection.innerHTML = renderProjects();
 
   // Restore scroll position on page load
   restoreScrollPosition();
 
   // Attach saveScrollPosition function to all project links
-  document.querySelectorAll(".project-link").forEach(function (link) {
-    link.addEventListener("click", saveScrollPosition);
+  document.querySelectorAll('.project-link').forEach(function (link) {
+    link.addEventListener('click', saveScrollPosition);
   });
 
   // Initialize smooth scrolling
@@ -22,9 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize scroll arrow
   setupScrollArrow();
-
-  // Initialize GSAP animations
-  setupGSAPAnimations();
 
   // Initialize project filtering
   setupProjectFiltering();
