@@ -418,17 +418,11 @@ section {
 /* Project Grid */
 .project-section {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
-}
-
-.project-section {
-  container-type: inline-size;
-  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 400px));
   justify-content: center;
   gap: 1.5rem;
   width: 100%;
+  min-height: 100dvh;
 }
 
 /* Project Cards */
