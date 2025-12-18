@@ -50,7 +50,7 @@ const renderProjectItem = ({
           ${
             videoSrc
               ? `<video class="project-section__img ${imgClass}" width="500" height="250" preload="metadata" src="${videoSrc}" autoplay muted loop playsinline></video>`
-              : `<img loading="lazy" decoding="async" width="500" height="250" class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">`
+              : `<img width="500" height="250" class="project-section__img ${imgClass}" src="${imgSrc}" alt="Image of ${title}.">`
           }
             ${
               ongoingProject
