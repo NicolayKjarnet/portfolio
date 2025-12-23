@@ -1375,6 +1375,10 @@ button:focus,
     margin: 0;
   }
 
+  .profile-image__ring {
+    display: none;
+  }
+
   .list-container {
     flex-direction: column;
     align-items: center;
@@ -1430,6 +1434,10 @@ button:focus,
 
   .profile-image {
     background-color: transparent;
+  }
+
+  .profile-image__ring {
+    display: none;
   }
 
   .profile-image img {
