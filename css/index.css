@@ -820,6 +820,10 @@ section {
   position: relative;
   margin-bottom: 1.5rem;
   border-radius: 50%;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 0%;
+  border-bottom-right-radius: 0%;
   corner-top-left-shape: squircle;
   corner-top-right-shape: squircle;
   corner-bottom-left-shape: square;
@@ -838,14 +842,35 @@ section {
   }
 }
 
+.profile-image__ring,
+.profile-image__ring::before,
+.profile-image__ring::after {
+  display: none;
+}
+
+@supports (corner-shape: squircle) {
+  .profile-image {
+    corner-top-left-shape: squircle;
+    corner-top-right-shape: squircle;
+    corner-bottom-left-shape: square;
+    corner-bottom-right-shape: square;
+  }
+
+  .profile-image__ring,
+  .profile-image__ring::before,
+  .profile-image__ring::after {
+    corner-shape: squircle;
+    width: 180px;
+    border-radius: 50%;
+    display: block;
+  }
+}
+
 .profile-image__ring {
   box-sizing: border-box;
   position: absolute;
-  width: 180px;
   aspect-ratio: 1;
   inset: 0;
-  corner-shape: squircle;
-  border-radius: 50%;
   z-index: 3;
   opacity: 0;
   border: 2px dashed var(--clr-orange);
@@ -859,11 +884,8 @@ section {
   box-sizing: border-box;
   z-index: 1;
   position: absolute;
-  width: 180px;
   inset: 0;
   aspect-ratio: 1;
-  corner-shape: squircle;
-  border-radius: 50%;
   border: 2px dashed var(--clr-orange);
   transition: 1s ease-in-out;
   animation: ring-rotate 40s linear infinite;
@@ -874,10 +896,7 @@ section {
   box-sizing: border-box;
   position: absolute;
   inset: 0;
-  width: 180px;
   aspect-ratio: 1;
-  corner-shape: squircle;
-  border-radius: 50%;
   border: 2px dashed var(--clr-orange);
   transition: 1s ease-in-out;
   animation: ring-rotate 30s linear infinite;
@@ -900,7 +919,6 @@ section {
   object-fit: cover;
   transition: transform 0.5s ease, filter 0.5s ease;
   position: relative;
-  corner-shape: squircle;
   border-radius: 0%;
   z-index: 1;
 }
