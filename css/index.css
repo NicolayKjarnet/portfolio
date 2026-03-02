@@ -1365,7 +1365,7 @@ button:focus,
 }
 
 .footer__img-container:focus {
-  outline: 3px solid var(--clr-orange)
+  outline: 3px solid var(--clr-orange);
   outline-offset: 2px;
 }
 
