@@ -2,6 +2,7 @@ import { saveScrollPosition, restoreScrollPosition } from './scrollPosition.js';
 import { setupSmoothScrolling, setupScrollArrow } from './smoothScrolling.js';
 import { setupProjectFiltering } from './filterProjects.js';
 import { renderProjects } from './renderProjects.js';
+import { setupWaveAnimation } from './waveAnimation.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   // Render projects first
@@ -24,4 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize project filtering
   setupProjectFiltering();
+
+  // Initialize wave animations
+  setupWaveAnimation();
 });
