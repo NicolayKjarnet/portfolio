@@ -22,6 +22,7 @@
 
   /* Font sizes */
   --title-font-size: 5rem;
+
 }
 
 html,
@@ -418,7 +419,7 @@ section {
 /* Project Grid */
 .project-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 400px));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
   justify-content: center;
   gap: 1.5rem;
   width: 100%;
@@ -434,7 +435,6 @@ section {
   will-change: transform;
   transform: translateZ(0);
   contain: layout paint;
-  backdrop-filter: blur(5px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   outline: none;
 }
@@ -465,7 +465,7 @@ section {
 .project-section__img-container {
   position: relative;
   overflow: hidden;
-  height: 250px;
+  aspect-ratio: 2 / 1;
 }
 
 .project-section__img {
@@ -473,6 +473,10 @@ section {
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
+}
+
+video.project-section__img {
+  background-color: var(--clr-dark-2);
 }
 
 .project-section__about {
@@ -645,21 +649,23 @@ section {
   z-index: 1;
 }
 
+.contact-card__glow {
+  display: none;
+}
+
 .contact-item {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.25rem;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--clr-dark-2);
   border-radius: 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-item:not(.contact-item--static):hover {
-  background: rgba(178, 125, 62, 0.15);
-  border-color: rgba(178, 125, 62, 0.3);
+  background: var(--clr-dark);
   transform: translateX(4px);
 }
 
@@ -679,7 +685,7 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--clr-dark);
   border-radius: 0.75rem;
   color: var(--clr-orange);
   font-size: 1.1rem;
@@ -756,8 +762,7 @@ section {
   justify-content: center;
   gap: 0.6rem;
   padding: 0.9rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--clr-dark-2);
   border-radius: 0.75rem;
   color: var(--clr-white);
   text-decoration: none;
