@@ -142,7 +142,7 @@ const createTimeline = () => {
         video.muted = true;
         video.loop = true;
         video.playsInline = true;
-        video.preload = 'none';
+        video.preload = 'metadata';
 
         // Intersection Observer - play when visible, pause when not
         const observer = new IntersectionObserver(

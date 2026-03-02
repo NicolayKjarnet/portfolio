@@ -41,15 +41,29 @@ function generatePath(phase, { amplitude, frequency, baseY, anchor }) {
   return `M0,${HEIGHT} ${waveLine} L${WIDTH},${HEIGHT} Z`;
 }
 
+/**
+ * Build a data-URI SVG mask from a path `d` string.
+ * The mask uses white fill so the gradient background shows through.
+ */
+function buildMaskURI(d) {
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${WIDTH} ${HEIGHT}' preserveAspectRatio='none'><path fill='white' d='${d}'/></svg>`;
+  return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
+
 export function setupWaveAnimation() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
+
+  // Find the masked wave container (.dark > .wave) for syncing mask-image
+  const maskedWaveContainer = document.querySelector('.dark > .wave');
 
   const entries = Object.entries(WAVE_CONFIG)
     .map(([className, config]) => {
       const path = document.querySelector(`.${className} svg path`);
       if (!path) return null;
-      return { path, config, offset: Math.random() * Math.PI * 2 };
+      const container = path.closest(`.${className}`);
+      const isMasked = container === maskedWaveContainer;
+      return { path, config, offset: Math.random() * Math.PI * 2, container, isMasked };
     })
     .filter(Boolean);
 
@@ -61,9 +75,17 @@ export function setupWaveAnimation() {
     if (!startTime) startTime = timestamp;
     const elapsed = (timestamp - startTime) / 1000;
 
-    for (const { path, config, offset } of entries) {
+    for (const { path, config, offset, container, isMasked } of entries) {
       const phase = elapsed * SPEED + offset;
-      path.setAttribute('d', generatePath(phase, config));
+      const d = generatePath(phase, config);
+      path.setAttribute('d', d);
+
+      // For the masked header wave, also update the CSS mask to match the animated path
+      if (isMasked && container) {
+        const maskValue = buildMaskURI(d);
+        container.style.webkitMaskImage = maskValue;
+        container.style.maskImage = maskValue;
+      }
     }
 
     requestAnimationFrame(animate);
