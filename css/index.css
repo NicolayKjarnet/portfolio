@@ -2187,15 +2187,10 @@ button:focus,
     width: 100%;
     padding-left: 3rem;
     padding-right: 0;
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-  }
-
-  /* Text-only items: compact, no need for full viewport height */
-  .timeline-item:not(:has(.timeline-image, .timeline-video)) {
-    min-height: 60vh;
   }
 
   .timeline-item.left,
