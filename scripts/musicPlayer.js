@@ -10,8 +10,10 @@ export function setupMusicPlayer() {
     e.preventDefault();
     e.stopPropagation();
 
+    // Preview URL lives on the track <li> for tracklists, or on the card for singles
+    const track = playBtn.closest('.music-card__track');
     const card = playBtn.closest('.music-card');
-    const previewUrl = card?.dataset.previewUrl;
+    const previewUrl = track?.dataset.previewUrl || card?.dataset.previewUrl;
     if (!previewUrl) return;
 
     // If clicking the same button, toggle

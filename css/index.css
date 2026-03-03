@@ -1562,6 +1562,87 @@ button:focus,
   color: var(--clr-orange);
 }
 
+/* Tracklist (albums/EPs) */
+.music-card__tracklist {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.music-card__track {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--clr-white-2);
+  font-size: 0.9rem;
+}
+
+.music-card__track--playable {
+  cursor: pointer;
+}
+
+.music-card__track--playable:hover {
+  color: var(--clr-white);
+}
+
+.music-card__track-num {
+  width: 1.2rem;
+  text-align: right;
+  font-size: 0.8rem;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.music-card__track--playable:hover .music-card__track-num {
+  opacity: 0;
+}
+
+.music-card__track-play {
+  background: none;
+  border: none;
+  color: var(--clr-orange);
+  cursor: pointer;
+  font-size: 0.7rem;
+  padding: 0;
+  width: 0;
+  overflow: hidden;
+  transition: width 0.2s ease, opacity 0.2s ease;
+  opacity: 0;
+  flex-shrink: 0;
+}
+
+.music-card__track-play-spacer {
+  width: 0;
+  flex-shrink: 0;
+}
+
+.music-card__track--playable:hover .music-card__track-play,
+.music-card__track-play.playing {
+  width: 0.9rem;
+  opacity: 1;
+}
+
+.music-card__track-play.playing i::before {
+  content: '\f04c'; /* fa-pause */
+}
+
+.music-card__track-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-card__track-duration {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
 /* ============================================
    VISUAL CARDS
    ============================================ */
