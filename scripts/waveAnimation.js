@@ -54,6 +54,9 @@ export function setupWaveAnimation() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
+  // Skip wave path animation on small screens — static SVGs look fine at 40px height
+  if (window.innerWidth < 769) return;
+
   // Find the masked wave container (.dark > .wave) for syncing mask-image
   const maskedWaveContainer = document.querySelector('.dark > .wave');
 
