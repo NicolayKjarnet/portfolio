@@ -9,8 +9,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const projectSection = document.querySelector('.project-section');
   projectSection.innerHTML = renderProjects();
 
-  // Reset horizontal scroll so mobile starts at first project
-  projectSection.scrollLeft = 0;
+  // Reset horizontal scroll so mobile starts at first project.
+  // Double rAF ensures we run after the browser's scroll restoration.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      projectSection.scrollLeft = 0;
+    });
+  });
 
   // Restore vertical scroll position on page load
   restoreScrollPosition();

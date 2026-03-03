@@ -1530,19 +1530,6 @@ button:focus,
     display: none;
   }
 
-  /* Fade hint on right edge — signals more cards */
-  .dark:has(.project-section)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 3rem;
-    background: linear-gradient(to right, transparent, var(--clr-dark));
-    pointer-events: none;
-    z-index: 2;
-  }
-
   .title-section {
     margin: 2rem 0;
   }
