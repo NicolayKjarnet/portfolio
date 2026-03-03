@@ -2075,14 +2075,14 @@ button:focus,
     position: relative;
   }
 
-  /* Top fade: solid background color → transparent */
+  /* Top fade: subtle vignette into background */
   .scrollytelling-media::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 25%;
+    height: 10%;
     background: linear-gradient(
       to bottom,
       var(--clr-dark-2) 0%,
