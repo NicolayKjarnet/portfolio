@@ -1482,6 +1482,16 @@ button:focus,
     display: none;
   }
 
+  /* Disable gradient animation on mobile — static color matches wave perfectly */
+  :root {
+    animation: none;
+  }
+
+  .red {
+    background: var(--gradient-color-1);
+    background-attachment: scroll;
+  }
+
   .profile-image__ring {
     display: none;
   }
