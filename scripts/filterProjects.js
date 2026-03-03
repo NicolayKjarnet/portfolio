@@ -64,19 +64,6 @@ export const setupProjectFiltering = () => {
       if (!baseSet.has(el)) orderedBase.push(el);
     });
 
-    if (filterValue === 'all') {
-      orderedBase.forEach((article) => {
-        article.classList.remove('project-section__article--dimmed');
-        const link = article.querySelector('.project-link');
-        if (link) {
-          link.removeAttribute('aria-disabled');
-          link.removeAttribute('tabindex');
-        }
-        projectSection.appendChild(article);
-      });
-      return;
-    }
-
     const matches = [];
     const nonMatches = [];
 
@@ -102,6 +89,7 @@ export const setupProjectFiltering = () => {
     });
 
     [...matches, ...nonMatches].forEach((article) => projectSection.appendChild(article));
+    projectSection.scrollTo({ left: 0, behavior: 'instant' });
   };
 
   const setActiveFilter = (filterValue) => {
@@ -137,4 +125,6 @@ export const setupProjectFiltering = () => {
       });
     });
   }
+
+  setActiveFilter('web');
 };
