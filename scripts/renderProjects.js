@@ -140,7 +140,7 @@ export const renderProjects = () => {
       clickoutLink: 'https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype',
       isFigma: true,
     })}
-    ${renderProjectItem({
+    /* ${renderProjectItem({
       link: 'artist-api.html',
       imgSrc: '/images/popartist.webp',
       title: 'Artist API',
@@ -150,7 +150,7 @@ export const renderProjects = () => {
       classes: 'project-section__article--fullstack',
       imgClass: 'project-img',
       clickoutLink: 'https://github.com/NicolayKjarnet/pop-artists',
-    })}
+    })} */
     ${renderProjectItem({
       link: 'greenhouse-system.html',
       imgSrc: '/images/greenhouse.webp',
@@ -162,7 +162,7 @@ export const renderProjects = () => {
       imgClass: 'project-img',
       clickoutLink: 'https://github.com/NicolayKjarnet/greenhouse-system',
     })}
-     ${renderProjectItem({
+     /* ${renderProjectItem({
        link: 'Dagens-latter.html',
        imgSrc: '/images/dagens-latter.webp',
        title: 'Laughter Of The Day',
@@ -172,7 +172,7 @@ export const renderProjects = () => {
        classes: 'project-section__article--mobile',
        imgClass: 'project-img',
        clickoutLink: 'https://github.com/NicolayKjarnet/DagensLatter',
-     })}
+     })} */
     ${renderProjectItem({
       link: 'munchAR.html',
       imgSrc: '/images/munch-ar.webp',
@@ -183,7 +183,7 @@ export const renderProjects = () => {
       classes: 'project-section__article--mobile',
       imgClass: 'project-img',
     })}
-     ${renderProjectItem({
+     /* ${renderProjectItem({
        link: '',
        imgSrc: '/images/wrd.webp',
        title: 'Wrd',
@@ -195,7 +195,7 @@ export const renderProjects = () => {
        imgClass: 'project-img',
        readMore: false,
        visitWebsite: false,
-     })}
+     })} */
     ${renderProjectItem({
       link: 'munchQR.html',
       imgSrc: '/images/munch-qr.webp',
@@ -206,7 +206,7 @@ export const renderProjects = () => {
       classes: 'project-section__article--mobile project-section__article--ux',
       imgClass: 'project-img',
     })}
-    ${renderProjectItem({
+    /* ${renderProjectItem({
       link: 'https://rick-and-morty-api.nicolaykjaernet.com/',
       imgSrc: '/images/rick-and-morty.webp',
       title: 'Rick and Morty',
@@ -217,7 +217,7 @@ export const renderProjects = () => {
       imgClass: 'project-img',
       readMore: false,
       visitWebsite: true,
-    })}
+    })} */
     ${renderProjectItem({
       link: 'split.html',
       imgSrc: '/images/split.webp',

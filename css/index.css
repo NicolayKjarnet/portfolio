@@ -1523,7 +1523,7 @@ button:focus,
 
   .project-section__article {
     flex: 0 0 85vw;
-    scroll-snap-align: center;
+    scroll-snap-align: start;
   }
 
   .project-section__article--dimmed {
@@ -1653,6 +1653,21 @@ button:focus,
 
   .wave svg {
     height: 40px;
+  }
+
+  /* Mobile: skip gradient+mask on dark wave — background-attachment:fixed breaks on mobile */
+  .dark > .wave {
+    background: none;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .dark > .wave svg {
+    visibility: visible;
+  }
+
+  .dark > .wave .shape-fill {
+    fill: var(--gradient-color-1);
   }
 
   .wave-2 svg {
