@@ -2233,7 +2233,7 @@ button:focus,
   }
 
   .timeline-circle {
-    left: calc(var(--timeline-line-w) / 2 - var(--timeline-circle-size) / 2);
+    left: calc(-1 * var(--timeline-circle-size) / 2);
     right: auto;
     top: 50%;
     transform: translateY(-50%);
@@ -2241,7 +2241,7 @@ button:focus,
 
   .left .timeline-circle,
   .right .timeline-circle {
-    left: calc(var(--timeline-line-w) / 2 - var(--timeline-circle-size) / 2);
+    left: calc(-1 * var(--timeline-circle-size) / 2);
     right: auto;
   }
 
