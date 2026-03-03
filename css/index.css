@@ -1187,13 +1187,7 @@ video.project-section__img {
   left: -20px;
 }
 
-.timeline-circle-0,
-.timeline-circle-1,
-.timeline-circle-2,
-.timeline-circle-3,
-.timeline-circle-4,
-.timeline-circle-5,
-.timeline-circle-6 {
+.timeline-circle {
   background-color: var(--clr-white);
 }
 
@@ -1478,6 +1472,16 @@ button:focus,
     margin: 0 0 1.5rem 0;
   }
 
+  .list-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .nav-section__divider-container {
+    display: none;
+  }
+
   .profile-image__ring {
     display: none;
   }
@@ -1499,6 +1503,44 @@ button:focus,
 @media (max-width: 768px) {
   section {
     padding: 3rem 1rem;
+  }
+
+  /* Swipeable project cards */
+  .project-section {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 1rem;
+    min-height: auto;
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+  }
+
+  .project-section::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-section__article {
+    flex: 0 0 85vw;
+    scroll-snap-align: center;
+  }
+
+  .project-section__article--dimmed {
+    display: none;
+  }
+
+  /* Fade hint on right edge — signals more cards */
+  .dark:has(.project-section)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 3rem;
+    background: linear-gradient(to right, transparent, var(--clr-dark));
+    pointer-events: none;
+    z-index: 2;
   }
 
   .title-section {
