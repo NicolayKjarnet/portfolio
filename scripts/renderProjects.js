@@ -92,7 +92,7 @@ const projects = [
     description:
       'An interactive 3D platform for designing custom, sustainable kitchens. Visualize your design kitchen in real-time.',
     techniques: ['React', 'TypeScript', 'Three.js', 'Taillwind'],
-    classes: 'project-section__article--fullstack',
+    classes: 'project-section__article--web project-section__article--fullstack',
     imgClass: 'project-img',
     ongoingProject: true,
     readMore: false,
@@ -106,7 +106,7 @@ const projects = [
     description:
       'E-commerce platform for handcrafted clothes, furniture and other interior products. Built to complement the Kitchen Planner.',
     techniques: ['Vue', 'TypeScript', 'Supabase'],
-    classes: 'project-section__article--fullstack',
+    classes: 'project-section__article--web project-section__article--fullstack',
     imgClass: 'project-img',
     ongoingProject: true,
     readMore: false,
@@ -120,7 +120,7 @@ const projects = [
     description:
       "Interactive mobile game built for Grilstad's Stranda campaign at Cavai. Slice your way through falling teriyaki - sound on recommended! Design by Live Skarbø, assets by POL.",
     techniques: ['JS', 'CSS', 'HTML', 'Cavai'],
-    classes: 'project-section__article--frontend',
+    classes: 'project-section__article--web project-section__article--frontend',
     imgClass: 'project-img',
     readMore: false,
     visitWebsite: true,
@@ -132,7 +132,7 @@ const projects = [
     description:
       "Complete UX overhaul of Wolve IT's loyalty platform. User research, prototyping, and testing resulted in top marks.",
     techniques: ['Figma', 'UX', 'User testing'],
-    classes: 'project-section__article--ux',
+    classes: 'project-section__article--web project-section__article--ux',
     imgClass: 'project-img',
     clickoutLink: 'https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype',
     isFigma: true,
@@ -144,7 +144,7 @@ const projects = [
     description:
       'Full-stack artist management system for music labels. Create, read, update, and delete artist profiles with a clean, intuitive interface.',
     techniques: ['React', '.net/C#', 'CRUD', 'Bootstrap'],
-    classes: 'project-section__article--fullstack',
+    classes: 'project-section__article--web project-section__article--fullstack',
     imgClass: 'project-img',
     clickoutLink: 'https://github.com/NicolayKjarnet/pop-artists',
     hidden: true,
@@ -156,7 +156,7 @@ const projects = [
     description:
       'IoT monitoring dashboard for greenhouse environments. Real-time sensor data, mobile alerts, and historical tracking.',
     techniques: ['IoT', 'Arduino', 'C++', 'Mongo DB'],
-    classes: 'project-section__article--fullstack project-section__article--iot',
+    classes: 'project-section__article--web project-section__article--fullstack project-section__article--iot',
     imgClass: 'project-img',
     clickoutLink: 'https://github.com/NicolayKjarnet/greenhouse-system',
   },
@@ -167,7 +167,7 @@ const projects = [
     description:
       'iOS app serving daily jokes from an API. Save favorites and contribute your own to the collection.',
     techniques: ['Swift', 'API', 'Core Data'],
-    classes: 'project-section__article--mobile',
+    classes: 'project-section__article--web project-section__article--mobile',
     imgClass: 'project-img',
     clickoutLink: 'https://github.com/NicolayKjarnet/DagensLatter',
     hidden: true,
@@ -179,7 +179,7 @@ const projects = [
     description:
       'AR navigation prototype guiding tourists through Oslo to the Munch Museum, with trivia and artwork previews along the way.',
     techniques: ['Figma', 'Android', 'Google Maps API'],
-    classes: 'project-section__article--mobile',
+    classes: 'project-section__article--web project-section__article--mobile',
     imgClass: 'project-img',
   },
   {
@@ -190,7 +190,7 @@ const projects = [
     description:
       "Cross-platform word game with a twist. Coming soon - I think you're going to like this one.",
     techniques: ['Vue', 'Capacitor', 'Crossplatform'],
-    classes: 'project-section__article--mobile',
+    classes: 'project-section__article--web project-section__article--mobile',
     imgClass: 'project-img',
     readMore: false,
     visitWebsite: false,
@@ -203,7 +203,7 @@ const projects = [
     description:
       'QR-powered museum guide for tourists, paired with an admin dashboard for museum staff to manage artwork information.',
     techniques: ['React Native', 'React', '.net', 'C#', 'CRUD'],
-    classes: 'project-section__article--mobile project-section__article--ux',
+    classes: 'project-section__article--web project-section__article--mobile project-section__article--ux',
     imgClass: 'project-img',
   },
   {
@@ -213,7 +213,7 @@ const projects = [
     description:
       'Character encyclopedia pulling from the Rick and Morty API. Search, filter, and explore the multiverse.',
     techniques: ['API', 'Grid', 'Media Queries', 'BEM'],
-    classes: 'project-section__article--frontend',
+    classes: 'project-section__article--web project-section__article--frontend',
     imgClass: 'project-img',
     readMore: false,
     visitWebsite: true,
@@ -226,7 +226,7 @@ const projects = [
     description:
       'Finance app prototype for freelancers. Automatically splits income into tax, savings, and expense accounts based on your rules.',
     techniques: ['UX', 'Figma', 'Universal Design'],
-    classes: 'project-section__article--ux',
+    classes: 'project-section__article--web project-section__article--ux',
     imgClass: 'project-img',
     clickoutLink: 'https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype',
     isFigma: true,
@@ -238,7 +238,7 @@ const projects = [
     description:
       "Experimental portfolio showcasing scroll-triggered animations inspired by Apple's product pages.",
     techniques: ['GSAP', 'HTML', 'CSS', 'JS', 'Grid'],
-    classes: 'project-section__article--frontend',
+    classes: 'project-section__article--web project-section__article--frontend',
     imgClass: 'project-img',
     readMore: false,
     visitWebsite: true,
