@@ -10,21 +10,18 @@
 
 /** @type {VisualItem[]} */
 const visualProjects = [
-  // Add visual items here. Set hidden: true to hide.
-  // Example image:
-  // {
-  //   title: 'Album Cover Design',
-  //   description: 'Cover art for ...',
-  //   imgSrc: '/images/visual/cover-art.webp',
-  //   type: 'image',
-  // },
-  // Example video:
-  // {
-  //   title: 'Music Video',
-  //   description: 'Directed and edited for ...',
-  //   youtubeId: 'dQw4w9WgXcQ',
-  //   type: 'video',
-  // },
+  {
+    title: 'Placeholder Image',
+    description: 'Replace with your actual visual work. Click to test lightbox.',
+    imgSrc: '/images/self-portrait.webp',
+    type: 'image',
+  },
+  {
+    title: 'Placeholder Video',
+    description: 'Replace with your actual YouTube video ID.',
+    youtubeId: 'dQw4w9WgXcQ',
+    type: 'video',
+  },
 ];
 
 const renderVisualItem = ({ title, description, imgSrc, youtubeId, type }) => {

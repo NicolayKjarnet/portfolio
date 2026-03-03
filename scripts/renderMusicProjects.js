@@ -12,17 +12,22 @@
 
 /** @type {MusicItem[]} */
 const musicProjects = [
-  // Add music items here. Set hidden: true to hide.
-  // Example:
-  // {
-  //   title: 'Song Name',
-  //   artist: 'trueandtrue',
-  //   description: 'Short description of the track or project.',
-  //   imgSrc: '/images/music/album-cover.webp',
-  //   previewUrl: 'https://p.scdn.co/mp3-preview/...',
-  //   externalUrl: 'https://open.spotify.com/track/...',
-  //   platform: 'spotify',
-  // },
+  {
+    title: 'Placeholder Track',
+    artist: 'trueandtrue',
+    description: 'Replace with your actual track. This is a placeholder to verify layout.',
+    imgSrc: '/images/self-portrait.webp',
+    externalUrl: 'https://open.spotify.com/track/placeholder',
+    platform: 'spotify',
+  },
+  {
+    title: 'Another Track',
+    artist: 'trueandtrue',
+    description: 'Second placeholder for layout testing. Replace with real content.',
+    imgSrc: '/images/self-portrait.webp',
+    externalUrl: 'https://soundcloud.com/placeholder',
+    platform: 'soundcloud',
+  },
 ];
 
 const renderMusicItem = ({ title, artist, description, imgSrc, previewUrl, externalUrl, platform }) => {
