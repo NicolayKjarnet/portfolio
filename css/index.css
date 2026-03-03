@@ -858,6 +858,11 @@ video.project-section__img {
   gap: 2rem;
 }
 
+/* Scrollytelling display: desktop only */
+.scrollytelling-display {
+  display: none;
+}
+
 /* Profile Card */
 .profile-card {
   display: flex;
@@ -2008,7 +2013,7 @@ button:focus,
     z-index: 2;
   }
 
-  /* --- Profile panel: refined identity --- */
+  /* --- Profile panel: scrollytelling display --- */
   .profile-card {
     position: sticky;
     top: 0;
@@ -2020,11 +2025,11 @@ button:focus,
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 3rem 4rem 3rem 5vw;
+    padding: 0;
     box-sizing: border-box;
     max-width: none;
     align-self: flex-start;
-    overflow-y: auto;
+    overflow: hidden;
     background-color: var(--clr-dark-2);
   }
 
@@ -2032,58 +2037,108 @@ button:focus,
     background-color: var(--clr-dark-2);
   }
 
-  .profile-header__hero {
-    margin-bottom: 1.5rem;
-  }
-
-  .profile-image {
-    width: 220px;
-    margin-bottom: 2rem;
-  }
-
-  .profile-image img {
-    width: 200px;
-  }
-
-  @supports (corner-shape: squircle) {
-    .profile-image {
-      width: 220px;
-    }
-
-    .profile-image__ring,
-    .profile-image__ring::before,
-    .profile-image__ring::after {
-      width: 220px;
-    }
-  }
-
-  .profile-card__title {
-    font-size: 2.8rem;
-    letter-spacing: -0.02em;
-  }
-
-  .profile-card__description {
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    font-weight: 300;
-    margin-top: 0.25rem;
-  }
-
+  /* Hide mobile-only elements on desktop */
+  .profile-header__hero,
+  .skill-tags,
   .bio-container {
     display: none;
   }
 
-  .skill-tags {
-    margin-bottom: 0;
-    gap: 0.5rem;
+  /* --- Scrollytelling display --- */
+  .scrollytelling-display {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 
-  .skill-tags span {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.1);
-    font-size: 0.85rem;
+  .scrollytelling-slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+  }
+
+  .scrollytelling-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .scrollytelling-media {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .scrollytelling-media video,
+  .scrollytelling-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .scrollytelling-media .scrollytelling-fallback {
+    object-fit: contain;
+    background-color: var(--clr-dark-2);
+    padding: 4rem;
+  }
+
+  /* Dim overlay so skill tags are readable */
+  .scrollytelling-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    pointer-events: none;
+  }
+
+  .scrollytelling-skills {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 2.5rem;
+    right: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    z-index: 1;
+  }
+
+  .scrollytelling-skills span {
+    padding: 0.35rem 0.85rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
     letter-spacing: 0.03em;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--clr-light);
+  }
+
+  /* Hide inline media on desktop (shown in scrollytelling panel instead) */
+  .timeline-video,
+  .timeline-image {
+    display: none;
+  }
+
+  /* Active timeline entry highlight */
+  .timeline-item {
+    opacity: 0.35;
+    transition: opacity 0.4s ease;
+  }
+
+  .timeline-item--active {
+    opacity: 1;
   }
 
   /* --- Timeline side: divider is the line itself --- */
