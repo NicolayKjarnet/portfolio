@@ -516,16 +516,6 @@ section {
 }
 
 .project-section__article--dimmed {
-  opacity: 0.35;
-  filter: grayscale(0.8);
-  cursor: not-allowed;
-}
-
-.project-section__article--dimmed .project-link {
-  pointer-events: none;
-}
-
-.project-section__article--dimmed .icon-clickout-link {
   display: none;
 }
 
@@ -658,15 +648,15 @@ video.project-section__img {
 }
 
 /* Project Card Hover States */
-.project-section__article:not(.project-section__article--dimmed):hover .read-more-overlay {
+.project-section__article:hover .read-more-overlay {
   opacity: 1;
 }
 
-.project-section__article:not(.project-section__article--dimmed):hover {
+.project-section__article:hover {
   cursor: pointer;
 }
 
-.project-section__article:not(.project-section__article--dimmed):hover .project-section__img {
+.project-section__article:hover .project-section__img {
   transform: scale(1.1);
 }
 

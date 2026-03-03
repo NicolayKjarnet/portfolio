@@ -69,21 +69,12 @@ export const setupProjectFiltering = () => {
 
     orderedBase.forEach((article) => {
       const isMatch = article.classList.contains(`project-section__article--${filterValue}`);
-      const link = article.querySelector('.project-link');
 
       if (isMatch) {
         article.classList.remove('project-section__article--dimmed');
-        if (link) {
-          link.removeAttribute('aria-disabled');
-          link.removeAttribute('tabindex');
-        }
         matches.push(article);
       } else {
         article.classList.add('project-section__article--dimmed');
-        if (link) {
-          link.setAttribute('aria-disabled', 'true');
-          link.setAttribute('tabindex', '-1');
-        }
         nonMatches.push(article);
       }
     });
