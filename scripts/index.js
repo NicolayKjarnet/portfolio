@@ -10,8 +10,9 @@ import { setupWaveAnimation } from './waveAnimation.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   // Render all project types into the same container
+  // TODO: uncomment visual/music when content is ready
   const projectSection = document.querySelector('.project-section');
-  projectSection.innerHTML = renderProjects() + renderVisualProjects() + renderMusicProjects();
+  projectSection.innerHTML = renderProjects(); // + renderVisualProjects() + renderMusicProjects();
 
   // Restore vertical scroll position on page load
   restoreScrollPosition();
@@ -27,14 +28,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // Initialize scroll arrow
   setupScrollArrow();
 
-  // Initialize project filtering (applies 'web' filter by default)
-  setupProjectFiltering();
-
-  // Initialize music player
-  setupMusicPlayer();
-
-  // Initialize lightbox
-  setupLightbox();
+  // TODO: uncomment when filter/music/visual content is ready
+  // setupProjectFiltering();
+  // setupMusicPlayer();
+  // setupLightbox();
 
   // Initialize wave animations
   setupWaveAnimation();
