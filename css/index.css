@@ -1651,7 +1651,9 @@ button:focus,
     aspect-ratio: 9/10;
   }
 
-  .wave svg {
+  .wave svg,
+  .curve svg {
+    width: calc(100% + 1.3px);
     height: 40px;
   }
 
@@ -1675,10 +1677,6 @@ button:focus,
   }
 
   .wave-3 svg {
-    height: 40px;
-  }
-
-  .curve svg {
     height: 40px;
   }
 

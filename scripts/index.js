@@ -9,7 +9,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const projectSection = document.querySelector('.project-section');
   projectSection.innerHTML = renderProjects();
 
-  // Restore scroll position on page load
+  // Reset horizontal scroll so mobile starts at first project
+  projectSection.scrollLeft = 0;
+
+  // Restore vertical scroll position on page load
   restoreScrollPosition();
 
   // Attach saveScrollPosition function to all project links
