@@ -42,6 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
   setupScrollArrow();
 
   setupProjectFiltering();
+
+  // Ensure project section starts at first item on page load
+  const projectSection = document.querySelector('.project-section');
+  if (projectSection) projectSection.scrollLeft = 0;
+
   setupMusicPlayer();
   setupLightbox();
 
