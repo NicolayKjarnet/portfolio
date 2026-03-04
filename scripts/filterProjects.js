@@ -4,6 +4,17 @@ export const setupProjectFiltering = () => {
   const projectSection = document.querySelector('.project-section');
   const darkSection = projectSection?.closest('.dark');
 
+  // Bracket symbols per filter category
+  const bracketSymbols = {
+    web:    ['{', '}'],
+    visual: ['◆', '◆'],
+    music:  ['♪', '♪'],
+  };
+
+  const titleSection = document.querySelector('.projects__title-section');
+  const bracket1 = titleSection?.querySelector('.title-element-1');
+  const bracket2 = titleSection?.querySelector('.title-element-3');
+
   const filterProjects = (filterValue) => {
     if (!projectSection) return;
 
@@ -20,6 +31,11 @@ export const setupProjectFiltering = () => {
       if (filterValue === 'music') darkSection.classList.add('dark--music');
       if (filterValue === 'visual') darkSection.classList.add('dark--visual');
     }
+
+    // Update bracket symbols
+    const symbols = bracketSymbols[filterValue] || bracketSymbols.web;
+    if (bracket1) bracket1.textContent = symbols[0];
+    if (bracket2) bracket2.textContent = symbols[1];
   };
 
   const setActiveFilter = (filterValue) => {
