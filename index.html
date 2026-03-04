@@ -17,30 +17,38 @@
     <!-- Header -->
     <section class="red">
       <header role="banner" class="header">
+        <button class="lang-toggle" data-lang-toggle data-i18n-aria="langToggle.ariaLabel" aria-label="Switch language">
+          <span class="lang-toggle__option lang-toggle__option--active" data-lang="en">EN</span>
+          <span class="lang-toggle__divider">|</span>
+          <span class="lang-toggle__option" data-lang="no">NO</span>
+        </button>
         <div class="header__title-section">
-          <img
-            class="header__cutout"
-            src="/images/footer-gif.gif"
-            alt=""
-            width="120"
-            height="120"
-            loading="eager"
-          />
+          <div class="header__cutout-wrap">
+            <img
+              class="header__cutout"
+              src="/images/footer-gif.gif"
+              alt=""
+              width="120"
+              height="120"
+              loading="eager"
+            />
+            <span class="header__cutout-caption"></span>
+          </div>
           <h1 class="header__title">NICOLAY KJÆRNET</h1>
-          <p class="header__paragraph">Developer & Content Producer</p>
+          <p class="header__paragraph" data-i18n="header.subtitle">Developer & Content Producer</p>
         </div>
         <div class="nav-section">
           <nav class="nav">
             <ul class="list-container">
-              <li class="list-item"><a href="#projects">Projects</a></li>
+              <li class="list-item"><a href="#projects"><span data-i18n="nav.projects">Projects</span></a></li>
               <div class="nav-section__divider-container">
                 <hr class="nav-section__divider" />
               </div>
-              <li class="list-item"><a href="#contact">Get in touch</a></li>
+              <li class="list-item"><a href="#contact"><span data-i18n="nav.contact">Get in touch</span></a></li>
               <div class="nav-section__divider-container">
                 <hr class="nav-section__divider" />
               </div>
-              <li class="list-item"><a href="#about">About me</a></li>
+              <li class="list-item"><a href="#about"><span data-i18n="nav.about">About me</span></a></li>
             </ul>
           </nav>
           <div
@@ -48,8 +56,9 @@
             role="button"
             aria-label="Scroll down to projects section"
             id="scroll-arrow"
+            data-i18n-aria="scroll.ariaLabel"
           >
-            <p>Scroll down</p>
+            <p data-i18n="scroll.down">Scroll down</p>
           </div>
         </div>
       </header>
@@ -62,38 +71,36 @@
           <p class="title-element title-element-1">{</p>
         </div>
         <div class="title-element-container">
-          <h2 class="title-element title-element-2">projects</h2>
+          <h2 class="title-element title-element-2" data-i18n="projects.title">projects</h2>
         </div>
         <div class="title-element-container">
           <p class="title-element title-element-3">}</p>
         </div>
       </div>
 
-      <!-- Filter hidden until music/visual content is added
       <div class="filter-box" aria-labelledby="filter-heading">
-        <h2 id="filter-heading" class="visually-hidden">Filter projects</h2>
+        <h2 id="filter-heading" class="visually-hidden" data-i18n="projects.filterHeading">Filter projects</h2>
 
-        <label class="visually-hidden" for="project-filter">Filter projects</label>
+        <label class="visually-hidden" for="project-filter" data-i18n="projects.filterLabel">Filter projects</label>
 
         <select id="project-filter" class="filter-dropdown">
-          <option value="web">Web</option>
-          <option value="visual">Visuelt</option>
-          <option value="music">Musikk</option>
+          <option value="web" data-i18n="filter.web">Web</option>
+          <option value="visual" data-i18n="filter.visual">Visual</option>
+          <option value="music" data-i18n="filter.music">Music</option>
         </select>
 
         <ul class="filter-list">
           <li>
-            <button class="filter-item active" data-filter="web" aria-pressed="true">Web</button>
+            <button class="filter-item active" data-filter="web" aria-pressed="true" data-i18n="filter.web">Web</button>
           </li>
           <li>
-            <button class="filter-item" data-filter="visual" aria-pressed="false">Visuelt</button>
+            <button class="filter-item" data-filter="visual" aria-pressed="false" data-i18n="filter.visual">Visual</button>
           </li>
           <li>
-            <button class="filter-item" data-filter="music" aria-pressed="false">Musikk</button>
+            <button class="filter-item" data-filter="music" aria-pressed="false" data-i18n="filter.music">Music</button>
           </li>
         </ul>
       </div>
-      -->
 
       <div class="project-section"></div>
       <div class="wave">
@@ -130,7 +137,7 @@
           <p class="title-element title-element-1">{</p>
         </div>
         <div class="title-element-container">
-          <h2 class="title-element title-element-2">Get in touch</h2>
+          <h2 class="title-element title-element-2" data-i18n="contact.title">Get in touch</h2>
         </div>
         <div class="title-element-container">
           <p class="title-element title-element-3">}</p>
@@ -142,8 +149,8 @@
           <div class="contact-card__glow"></div>
 
           <div class="contact-header">
-            <h3 class="contact-header__title">Let's create something together</h3>
-            <p class="contact-header__subtitle">
+            <h3 class="contact-header__title" data-i18n="contact.heading">Let's create something together</h3>
+            <p class="contact-header__subtitle" data-i18n="contact.subtitle">
               Whether you have a project in mind, a job opportunity, or just want to say hello - I'd
               love to hear from you.
             </p>
@@ -155,7 +162,7 @@
                 <i class="fas fa-envelope"></i>
               </div>
               <div class="contact-item__content">
-                <span class="contact-item__label">Email</span>
+                <span class="contact-item__label" data-i18n="contact.email">Email</span>
                 <span class="contact-item__value">nicolay.webdev@gmail.com</span>
               </div>
               <i class="fas fa-arrow-right contact-item__arrow"></i>
@@ -166,14 +173,14 @@
                 <i class="fas fa-map-marker-alt"></i>
               </div>
               <div class="contact-item__content">
-                <span class="contact-item__label">Location</span>
-                <span class="contact-item__value">Tønsberg, Norway</span>
+                <span class="contact-item__label" data-i18n="contact.location">Location</span>
+                <span class="contact-item__value" data-i18n="contact.locationValue">Tønsberg, Norway</span>
               </div>
             </div>
           </div>
 
           <div class="contact-divider">
-            <span>or connect on</span>
+            <span data-i18n="contact.divider">or connect on</span>
           </div>
 
           <div class="social-links-grid">
@@ -230,7 +237,7 @@
           <p class="title-element title-element-1">{</p>
         </div>
         <div class="title-element-container">
-          <h2 class="title-element title-element-2">About me</h2>
+          <h2 class="title-element title-element-2" data-i18n="about.title">About me</h2>
         </div>
         <div class="title-element-container">
           <p class="title-element title-element-3">}</p>
@@ -252,16 +259,16 @@
               />
             </div>
           </div>
-          <div class="skill-tags" aria-label="Skills">
+          <div class="skill-tags" aria-label="Skills" data-i18n-aria="about.skillsLabel">
             <span>Vue.js</span> <span>TypeScript</span> <span>JavaScript</span> <span>HTML</span>
             <span>CSS</span> <span>React</span> <span>UX/UI</span> <span>Figma</span>
-            <span>Video Production</span>
+            <span data-i18n="skills.videoProduction">Video Production</span>
           </div>
           <!-- Desktop: scrollytelling display (populated by JS) -->
           <div class="scrollytelling-display"></div>
           <!-- Bio -->
           <div class="bio-container">
-            <p class="bio-intro">
+            <p class="bio-intro" data-i18n="about.bio">
               I'm a Frontend Developer at Cavai, where I build and improve the platform powering our
               interactive advertising solutions. I started as a Creative Developer in September
               2024, creating games, quizzes and interactive campaigns from concept to code - a role
@@ -271,28 +278,28 @@
             <div class="traits-grid">
               <div class="trait-item">
                 <div class="trait-item__icon"><i class="fas fa-film"></i></div>
-                <p>
+                <p data-i18n="about.trait1">
                   7+ years as a content producer in the music industry, working with artists from
                   emerging talents to household names.
                 </p>
               </div>
               <div class="trait-item">
                 <div class="trait-item__icon"><i class="fas fa-couch"></i></div>
-                <p>
+                <p data-i18n="about.trait2">
                   Co-founder of Kjærnet-Wesseltoft, an interior design consultancy where I'm
                   currently building an interactive kitchen design platform and a webshop.
                 </p>
               </div>
               <div class="trait-item">
                 <div class="trait-item__icon"><i class="fas fa-code"></i></div>
-                <p>
+                <p data-i18n="about.trait3">
                   I thrive on optimizing workflows and creating efficient solutions that actually
                   work.
                 </p>
               </div>
               <div class="trait-item">
                 <div class="trait-item__icon"><i class="fas fa-music"></i></div>
-                <p>
+                <p data-i18n="about.trait4">
                   Bass player and visual designer for the band trueandtrue since 2023. Stepped back
                   from playing in 2025, but still handle all design and visual elements.
                 </p>
@@ -331,7 +338,8 @@
             class="footer__link footer__link--copyright"
             href="https://github.com/NicolayKjarnet"
             target="_blank"
-            >©2025 Nicolay Kjærnet</a
+            data-i18n="footer.copyright"
+            >©2026 Nicolay Kjærnet</a
           >
           <div class="footer__img-container">
             <img
@@ -342,15 +350,15 @@
               class="footer__img"
               src="/images/footer-gif.gif"
               alt="Footer GIF"
+              data-i18n-alt="footer.altText"
             />
-            <figcaption class="footer__caption">Hi there!</figcaption>
+            <figcaption class="footer__caption" data-i18n="footer.caption">Hi there!</figcaption>
           </div>
-          <a class="footer__link footer__link--back-to-top" href="#projects">BACK TO TOP ▲</a>
+          <a class="footer__link footer__link--back-to-top" href="#projects" data-i18n="footer.backToTop">BACK TO TOP ▲</a>
         </div>
       </footer>
     </section>
 
-    <script src="./scripts/timelineData.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
     <script src="./scripts/parallax.js" defer></script>

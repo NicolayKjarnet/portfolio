@@ -1,0 +1,114 @@
+export default {
+  header: {
+    subtitle: 'Developer & Content Producer',
+  },
+  nav: {
+    projects: 'Projects',
+    contact: 'Get in touch',
+    about: 'About me',
+  },
+  scroll: {
+    down: 'Scroll down',
+    ariaLabel: 'Scroll down to projects section',
+  },
+  projects: {
+    title: 'projects',
+    filterHeading: 'Filter projects',
+    filterLabel: 'Filter projects',
+  },
+  filter: {
+    web: 'Web',
+    visual: 'Visual',
+    music: 'Music',
+  },
+  contact: {
+    title: 'Get in touch',
+    heading: "Let's create something together",
+    subtitle:
+      "Whether you have a project in mind, a job opportunity, or just want to say hello - I'd love to hear from you.",
+    email: 'Email',
+    location: 'Location',
+    locationValue: 'Tønsberg, Norway',
+    divider: 'or connect on',
+  },
+  about: {
+    title: 'About me',
+    skillsLabel: 'Skills',
+    bio: "I'm a Frontend Developer at Cavai, where I build and improve the platform powering our interactive advertising solutions. I started as a Creative Developer in September 2024, creating games, quizzes and interactive campaigns from concept to code - a role where my background in visual storytelling enriched every technical solution. Now I work with Vue and TypeScript, developing the tools that bring these creatives to life.",
+    trait1:
+      '7+ years as a content producer in the music industry, working with artists from emerging talents to household names.',
+    trait2:
+      "Co-founder of Kjærnet-Wesseltoft, an interior design consultancy where I'm currently building an interactive kitchen design platform and a webshop.",
+    trait3: 'I thrive on optimizing workflows and creating efficient solutions that actually work.',
+    trait4:
+      'Bass player and visual designer for the band trueandtrue since 2023. Stepped back from playing in 2025, but still handle all design and visual elements.',
+  },
+  skills: {
+    videoProduction: 'Video Production',
+  },
+  footer: {
+    copyright: '©2026 Nicolay Kjærnet',
+    altText: 'Footer GIF',
+    caption: 'Hi there!',
+    backToTop: 'BACK TO TOP ▲',
+    approachMessages: [
+      'Hey! Back off.',
+      "Don't even think about it.",
+      'Go away!',
+      'Leave me alone!',
+      'Personal space, please.',
+      "I'm shy...",
+      'Not cool, dude.',
+      'Boundaries!',
+      'You again?',
+      'Read the room.',
+      'Nope nope nope.',
+      'I see you...',
+      "Don't you dare.",
+      'Keep walking.',
+    ],
+    hitMessages: [
+      'OUCH!',
+      'OW! Stop it!',
+      'That HURT!',
+      'HEY!!',
+      'RUDE!!!',
+      'I SAID NO!',
+      'QUIT IT!',
+      'SERIOUSLY?!',
+      'OW OW OW!',
+      'I WILL BITE!',
+      'AAARGH!',
+      'NOT OKAY!',
+    ],
+  },
+  project: {
+    inProgress: 'In Progress',
+    readMore: 'Read More',
+    visitWebsite: 'Visit Website',
+    aboutHeading: 'About',
+    ongoing: '(Ongoing)',
+    imageAlt: 'Image of {title}.',
+  },
+  music: {
+    playPreview: 'Play preview',
+    coverAlt: 'Cover art for {title}',
+  },
+  visual: {
+    watchOnYoutube: 'Watch on YouTube',
+    playVideo: 'Play video',
+  },
+  lightbox: {
+    close: 'Close',
+  },
+  miniPlayer: {
+    playPause: 'Play/Pause',
+    closePlayer: 'Close player',
+  },
+  langToggle: {
+    ariaLabel: 'Switch language',
+  },
+  timeline: {
+    title: 'Experience',
+  },
+};

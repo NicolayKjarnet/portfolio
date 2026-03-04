@@ -1,9 +1,11 @@
+import { t } from './i18n.js';
+
 export function setupLightbox() {
   // Create lightbox DOM
   const overlay = document.createElement('div');
   overlay.className = 'lightbox';
   overlay.innerHTML = `
-    <button class="lightbox__close" aria-label="Close">&times;</button>
+    <button class="lightbox__close" data-i18n-aria="lightbox.close" aria-label="${t('lightbox.close')}">&times;</button>
     <img class="lightbox__img" src="" alt="" />
   `;
   document.body.appendChild(overlay);

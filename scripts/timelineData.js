@@ -1,82 +1,141 @@
+import { t } from './i18n.js';
+
 // Timeline data
 const timelineData = [
   {
-    year: 'May 2025 - Present',
-    title: 'Frontend Developer',
+    year: { en: 'May 2025 - Present', no: 'Mai 2025 - Nåværende' },
+    title: { en: 'Frontend Developer', no: 'Frontend-utvikler' },
     company: 'Cavai',
     details: [
-      "Building and improving the platform that powers Cavai's interactive advertising solutions.",
-      'Working with Vue.js and TypeScript to develop scalable, maintainable frontend architecture.',
-      'Collaborating with the team to enhance developer experience and platform capabilities.',
+      {
+        en: "Building and improving the platform that powers Cavai's interactive advertising solutions.",
+        no: 'Bygger og forbedrer plattformen som driver Cavais interaktive annonseløsninger.',
+      },
+      {
+        en: 'Working with Vue.js and TypeScript to develop scalable, maintainable frontend architecture.',
+        no: 'Jobber med Vue.js og TypeScript for å utvikle skalerbar, vedlikeholdbar frontend-arkitektur.',
+      },
+      {
+        en: 'Collaborating with the team to enhance developer experience and platform capabilities.',
+        no: 'Samarbeider med teamet for å forbedre utvikleropplevelsen og plattformens kapasitet.',
+      },
     ],
-    skills: ['Vue.js', 'TypeScript', 'JavaScript', 'CSS'],
+    skills: ['Vue.js', 'TypeScript', 'JavaScript', 'SASS/CSS'],
     media: { type: 'video', src: './images/cavai-frontend-showreel-short.mp4' },
   },
   {
-    year: 'Sep 2024 - May 2025',
-    title: 'Creative Developer',
+    year: { en: 'Sep 2024 - May 2025', no: 'Sep 2024 - Mai 2025' },
+    title: { en: 'Creative Developer', no: 'Kreativ utvikler' },
     company: 'Cavai',
     details: [
-      'Created interactive advertising experiences from concept to finished product - games, quizzes, and engaging campaigns.',
-      'Combined technical development with visual storytelling to deliver solutions that resonated with audiences.',
-      'Worked closely with the creative team, translating their ideas into functional, polished experiences.',
+      {
+        en: 'Created interactive advertising experiences from concept to finished product - games, quizzes, and engaging campaigns.',
+        no: 'Skapte interaktive annonseopplevelser fra konsept til ferdig produkt – spill, quizer og engasjerende kampanjer.',
+      },
+      {
+        en: 'Combined technical development with visual storytelling to deliver solutions that resonated with audiences.',
+        no: 'Kombinerte teknisk utvikling med visuell historiefortelling for å levere løsninger som traff publikum.',
+      },
+      {
+        en: 'Worked closely with the creative team, translating their ideas into functional, polished experiences.',
+        no: 'Jobbet tett med det kreative teamet, og oversatte ideene deres til funksjonelle, polerte opplevelser.',
+      },
     ],
-    skills: ['JavaScript', 'CSS', 'HTML', 'Game Dev'],
+    skills: ['JavaScript', 'CSS', 'HTML', '"Vanilla" Game Dev'],
     media: { type: 'video', src: './images/cavai-showreel-2024.mp4' },
   },
   {
-    year: 'May 2024 - Present',
-    title: 'Developer, Designer & Content Producer',
+    year: { en: 'May 2024 - Present', no: 'Mai 2024 - Nåværende' },
+    title: { en: 'Developer, Designer & Content Producer', no: 'Utvikler, designer & innholdsprodusent' },
     company: 'Kjærnet-Wesseltoft AS',
     details: [
-      'Developing an interactive platform for designing high-end, sustainable kitchens and a webshop for handcrafted items.',
-      'Producing promotional videos, product photos, and marketing content.',
+      {
+        en: 'Developing an interactive platform for designing high-end, sustainable kitchens and a webshop for handcrafted items.',
+        no: 'Utvikler en interaktiv plattform for å designe eksklusive, bærekraftige kjøkken og en nettbutikk for håndlagde produkter.',
+      },
+      {
+        en: 'Producing promotional videos, product photos, and marketing content.',
+        no: 'Produserer reklamevideoer, produktfoto og markedsføringsinnhold.',
+      },
     ],
-    skills: ['React', 'TypeScript', 'Three.js', 'Vue', 'Supabase'],
+    skills: ['React', 'TypeScript', 'Three.js', 'Supabase'],
     media: { type: 'video', src: 'images/kithcen-builder.mp4' },
   },
   {
-    year: 'Aug 2018 - Present',
-    title: 'Freelance Content Producer',
+    year: { en: 'Aug 2018 - Present', no: 'Aug 2018 - Nåværende' },
+    title: { en: 'Freelance Content Producer', no: 'Frilanser innholdsprodusent' },
     company: 'Universal Music, EMI Music, Island Records, and more',
     details: [
-      'Producing music videos, promotional content, and graphic design for artists ranging from emerging talents to household names.',
-      'Managing the full production pipeline - from concept and pre-production through filming to final delivery.',
+      {
+        en: 'Producing music videos, promotional content, and graphic design for artists ranging from emerging talents to household names.',
+        no: 'Produserer musikkvideoer, reklameinnhold og grafisk design for artister fra nye talenter til kjente navn.',
+      },
+      {
+        en: 'Managing the full production pipeline - from concept and pre-production through filming to final delivery.',
+        no: 'Styrer hele produksjonslinjen – fra konsept og forproduksjon via filming til endelig levering.',
+      },
     ],
-    skills: ['Premiere Pro', 'After Effects', 'Photography', 'Graphic Design'],
+    skills: ['Premiere Pro', 'Davinci Resolve', 'Photography', 'Graphic Design'],
     media: { type: 'video', src: './images/video-content-showreel-short.mp4' },
   },
   {
-    year: 'Jan 2024 - Jun 2024',
-    title: 'UX Designer (Internship)',
+    year: { en: 'Jan 2024 - Jun 2024', no: 'Jan 2024 - Jun 2024' },
+    title: { en: 'UX Designer (Internship)', no: 'UX-designer (praksis)' },
     company: 'Wolve IT',
     details: [
-      "Redesigned the company's loyalty platform with a focus on improved usability and user experience.",
-      'Conducted user research and market analysis to inform design decisions.',
-      'Project received top marks and positive feedback from the company.',
+      {
+        en: "Redesigned the company's loyalty platform with a focus on improved usability and user experience.",
+        no: 'Redesignet selskapets lojalitetsplattform med fokus på forbedret brukervennlighet og brukeropplevelse.',
+      },
+      {
+        en: 'Conducted user research and market analysis to inform design decisions.',
+        no: 'Gjennomførte brukerundersøkelser og markedsanalyse for å informere designvalg.',
+      },
+      {
+        en: 'Project received top marks and positive feedback from the company.',
+        no: 'Prosjektet fikk toppkarakter og positive tilbakemeldinger fra selskapet.',
+      },
     ],
     skills: ['Figma', 'UX Research', 'User Testing', 'Prototyping'],
     media: { type: 'video', src: './images/wolve-showcase-short.mp4' },
   },
   {
-    year: 'Aug 2020 - Jun 2024',
-    title: 'Bachelor in Frontend and Mobile Development',
+    year: { en: 'Aug 2020 - Jun 2024', no: 'Aug 2020 - Jun 2024' },
+    title: { en: 'Bachelor in Frontend and Mobile Development', no: 'Bachelor i frontend- og mobilutvikling' },
     company: 'Kristiania University College',
     details: [
-      'Studied web development, mobile app development, UX/UI design, and agile methodologies.',
-      'Built projects with HTML, CSS, JavaScript, React, React Native, Swift, and more.',
-      'Developed collaboration and problem-solving skills through team projects.',
+      {
+        en: 'Studied web development, mobile app development, UX/UI design, and agile methodologies.',
+        no: 'Studerte webutvikling, mobilapputvikling, UX/UI-design og smidige metoder.',
+      },
+      {
+        en: 'Built projects with HTML, CSS, JavaScript, React, React Native, Swift, and more.',
+        no: 'Bygget prosjekter med HTML, CSS, JavaScript, React, React Native, Swift og mer.',
+      },
+      {
+        en: 'Developed collaboration and problem-solving skills through team projects.',
+        no: 'Utviklet samarbeids- og problemløsningsferdigheter gjennom teamprosjekter.',
+      },
     ],
     skills: ['React', 'React Native', 'Swift', 'JavaScript', 'Agile'],
   },
   {
-    year: 'Aug 2015 - Jun 2018',
-    title: 'Bachelor in Screenwriting',
+    year: { en: 'Aug 2015 - Jun 2018', no: 'Aug 2015 - Jun 2018' },
+    title: { en: 'Bachelor in Screenwriting', no: 'Bachelor i manus' },
     company: 'Westerdals Oslo ACT',
     details: [
-      'Developed a strong foundation in storytelling, narrative structure, and visual communication.',
-      'Worked on short films, TV series concepts, and feature film scripts.',
-      'The storytelling skills from this degree now inform how I approach user experiences and product narratives.',
+      {
+        en: 'Developed a strong foundation in storytelling, narrative structure, and visual communication.',
+        no: 'Utviklet et solid fundament innen historiefortelling, narrativ struktur og visuell kommunikasjon.',
+      },
+      {
+        en: 'Worked on short films, TV series concepts, and feature film scripts.',
+        no: 'Jobbet med kortfilmer, TV-seriekonsepter og spillefilmmanus.',
+      },
+      {
+        en: 'The storytelling skills from this degree now inform how I approach user experiences and product narratives.',
+        no: 'Historiefortellerferdighetene fra denne graden påvirker nå hvordan jeg tilnærmer meg brukeropplevelser og produktnarrativer.',
+      },
     ],
     skills: ['Storytelling', 'Screenwriting', 'Film', 'Narrative Design'],
   },
@@ -91,7 +150,7 @@ const createTimeline = () => {
   const title = document.createElement('h2');
   title.className = 'timeline-title';
   title.ariaLabel = 'timeline-heading';
-  title.textContent = 'Experience';
+  title.textContent = t('timeline.title');
   timelineContainer.appendChild(title);
 
   const timelineLine = document.createElement('div');
@@ -100,12 +159,15 @@ const createTimeline = () => {
 
   const updateTimelineClasses = () => {
     const timelineItems = timelineContainer.querySelectorAll('.timeline-item');
+    const w = window.innerWidth;
     timelineItems.forEach((item, index) => {
-      if (window.innerWidth > 768) {
+      if (w > 768 && w < DESKTOP_BREAKPOINT) {
         item.className = `timeline-item ${index % 2 === 0 ? 'left' : 'right'}`;
       } else {
         item.className = 'timeline-item';
       }
+      // Preserve data-index
+      item.dataset.index = index;
     });
   };
 
@@ -119,11 +181,11 @@ const createTimeline = () => {
 
     const year = document.createElement('span');
     year.className = 'timeline-year';
-    year.textContent = item.year;
+    year.textContent = t(item.year);
 
     const itemTitle = document.createElement('h3');
     itemTitle.className = 'timeline-item-title';
-    itemTitle.textContent = item.title;
+    itemTitle.textContent = t(item.title);
 
     const company = document.createElement('h4');
     company.className = 'timeline-company';
@@ -134,7 +196,7 @@ const createTimeline = () => {
 
     item.details.forEach((detail) => {
       const listItem = document.createElement('li');
-      listItem.textContent = detail;
+      listItem.textContent = t(detail);
       detailsList.appendChild(listItem);
     });
 
@@ -285,19 +347,31 @@ const setupScrollytelling = () => {
   // Activate first slide
   activate(0);
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const index = parseInt(entry.target.dataset.index, 10);
-          if (!isNaN(index)) activate(index);
+  // Scroll-based: find which timeline item is closest to viewport center
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      const center = window.innerHeight / 2;
+      let closestIndex = 0;
+      let closestDist = Infinity;
+
+      timelineItems.forEach((item, i) => {
+        const rect = item.getBoundingClientRect();
+        const dist = Math.abs(rect.top + rect.height / 2 - center);
+        if (dist < closestDist) {
+          closestDist = dist;
+          closestIndex = i;
         }
       });
-    },
-    { rootMargin: '-40% 0px -40% 0px' }
-  );
 
-  timelineItems.forEach((item) => observer.observe(item));
+      activate(closestIndex);
+    });
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
 };
 
 const addTimelineToPage = () => {
@@ -312,4 +386,27 @@ const addTimelineToPage = () => {
   setupScrollytelling();
 };
 
-document.addEventListener('DOMContentLoaded', addTimelineToPage);
+/** Update timeline text in-place without destroying DOM (preserves GSAP ScrollTriggers). */
+const updateTimelineText = () => {
+  const titleEl = document.querySelector('.timeline-title');
+  if (titleEl) titleEl.textContent = t('timeline.title');
+
+  document.querySelectorAll('.timeline-item').forEach((item) => {
+    const index = parseInt(item.dataset.index, 10);
+    const data = timelineData[index];
+    if (!data) return;
+
+    const yearEl = item.querySelector('.timeline-year');
+    if (yearEl) yearEl.textContent = t(data.year);
+
+    const itemTitle = item.querySelector('.timeline-item-title');
+    if (itemTitle) itemTitle.textContent = t(data.title);
+
+    const details = item.querySelectorAll('.timeline-details li');
+    data.details.forEach((detail, i) => {
+      if (details[i]) details[i].textContent = t(detail);
+    });
+  });
+};
+
+export { addTimelineToPage, updateTimelineText };

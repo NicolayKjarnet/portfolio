@@ -1,3 +1,5 @@
+import { t } from './i18n.js';
+
 /**
  * @typedef {Object} MusicLink
  * @property {string} url
@@ -9,13 +11,17 @@
  * @property {string} title
  * @property {string} [previewUrl] - Spotify 30s preview MP3 URL
  * @property {string} [duration] - e.g. '3:24'
+ * @property {string} [singleImg] - Cover art for this single (swaps album cover during playback)
+ * @property {string} [canvasVideo] - Spotify Canvas looping video
  */
 
 /**
  * @typedef {Object} MusicItem
  * @property {string} title
  * @property {string} artist
- * @property {string} description
+ * @property {string | {en: string, no: string}} role - e.g. 'Bass & Songwriter'
+ * @property {number} year
+ * @property {string | {en: string, no: string}} description
  * @property {string} imgSrc - Album/single cover
  * @property {string} [previewUrl] - Preview URL (for single tracks)
  * @property {Track[]} [tracks] - Track list (for albums/EPs)
@@ -33,31 +39,48 @@ const platformConfig = {
 /** @type {MusicItem[]} */
 const musicProjects = [
   {
-    title: 'Placeholder EP',
+    title: 'This Won\u2019t Last When You Know the Beginning',
     artist: 'trueandtrue',
-    description: 'Replace with your actual EP/album. Tracks with preview URLs get a play button.',
-    imgSrc: '/images/self-portrait.webp',
+    role: { en: 'Bass & Songwriter', no: 'Bass & låtskriver' },
+    year: 2024,
+    description: {
+      en: 'Six tracks blending post-punk, hardcore and screamo — featuring jazz pianist Bugge Wesseltoft.',
+      no: 'Seks spor som blander post-punk, hardcore og screamo – med jazzpianist Bugge Wesseltoft.',
+    },
+    imgSrc: '/images/this-wont-last-cover.png',
     tracks: [
-      { title: 'Track One', duration: '3:24', previewUrl: '' },
-      { title: 'Track Two', duration: '4:01', previewUrl: '' },
-      { title: 'Track Three', duration: '2:58', previewUrl: '' },
-      { title: 'Track Four', duration: '3:42', previewUrl: '' },
+      { title: 'Doomed', duration: '3:43', previewUrl: 'https://p.scdn.co/mp3-preview/812e1fd7de66d482eb952f44f1bd73ecfe35a5f8' },
+      { title: 'Pin My Gaze', duration: '2:39', previewUrl: 'https://p.scdn.co/mp3-preview/7761960c681348dfb4267134bc3bdbadfd245fd9', singleImg: '/images/pin-my-gaze-cover.png'},
+      { title: 'Hollowed Out, Pt. 1', duration: '2:37', previewUrl: 'https://p.scdn.co/mp3-preview/4a4e8c4de7a673d0b59d49793900a130f8ef8633', singleImg: '/images/hollowed-out-cover.png'},
+      { title: 'Hollowed Out, Pt. 2 (feat. Bugge Wesseltoft)', duration: '4:23', previewUrl: 'https://p.scdn.co/mp3-preview/00db74e96fe7a8e745247e81632f3123e1df894c' },
+      { title: 'Nothing Revealed', duration: '2:16', previewUrl: 'https://p.scdn.co/mp3-preview/b898c5cf19242606a4052abab9054278feea2207' },
+      { title: 'Watch Me Dance (Again)', duration: '4:08', previewUrl: 'https://p.scdn.co/mp3-preview/d8ee1ac23f62f253deb44a063e886186f8f88200' },
     ],
     links: [
-      { url: 'https://open.spotify.com/album/placeholder', platform: 'spotify' },
-      { url: 'https://music.apple.com/placeholder', platform: 'apple' },
-      { url: 'https://tidal.com/placeholder', platform: 'tidal' },
-      { url: 'https://www.qobuz.com/placeholder', platform: 'qobuz' },
+      { url: 'https://open.spotify.com/album/2qbFTbHiWJZS9BsaVj5dFy', platform: 'spotify' },
+      { url: 'https://music.apple.com/no/album/this-wont-last-when-you-know-the-beginning-ep/1760354407', platform: 'apple' },
     ],
   },
   {
-    title: 'Placeholder Single',
+    title: 'Back into Quiet',
     artist: 'trueandtrue',
-    description: 'A single track card without a tracklist.',
-    imgSrc: '/images/self-portrait.webp',
+    role: { en: 'Bass & Songwriter', no: 'Bass & låtskriver' },
+    year: 2024,
+    description: {
+      en: 'Five tracks from hardcore fury to shoegaze nostalgia.',
+      no: 'Fem spor fra hardcore-raseri til shoegaze-nostalgi.',
+    },
+    imgSrc: '/images/biq-ep-cover.png',
+    tracks: [
+      { title: 'Reset', duration: '2:43', previewUrl: 'https://p.scdn.co/mp3-preview/b688b8c98e4f31089fed92730278b5461888c860' },
+      { title: 'Erased U', duration: '4:09', previewUrl: 'https://p.scdn.co/mp3-preview/ea940eb5ec0cee6745383cfbdbbcb131cefbc00d' },
+      { title: 'Lay Down', duration: '3:36', previewUrl: 'https://p.scdn.co/mp3-preview/a3a56ff5717f2fc1b4c8d2ffa8a3c39ff3e2aeaa' },
+      { title: 'Blindfold', duration: '3:00', previewUrl: 'https://p.scdn.co/mp3-preview/9be22302109e16cbbc4aa27273f5425e381049b4' },
+      { title: 'Back into Quiet', duration: '3:34', previewUrl: 'https://p.scdn.co/mp3-preview/0cc757b27976fd07590340aaf1eec74a857f73ee', canvasVideo: '/images/BIQ_Canvas_V1.mov'},
+    ],
     links: [
-      { url: 'https://open.spotify.com/track/placeholder2', platform: 'spotify' },
-      { url: 'https://tidal.com/placeholder2', platform: 'tidal' },
+      { url: 'https://open.spotify.com/album/3SpmM3eIcpzURJB3JpMFkn', platform: 'spotify' },
+      { url: 'https://music.apple.com/no/album/back-into-quiet-ep/1727145686', platform: 'apple' },
     ],
   },
 ];
@@ -74,11 +97,12 @@ const renderTracklist = (tracks) => {
   const rows = tracks
     .map(
       (track, i) => `
-      <li class="music-card__track${track.previewUrl ? ' music-card__track--playable' : ''}" data-preview-url="${track.previewUrl || ''}">
+      <li class="music-card__track${track.previewUrl ? ' music-card__track--playable' : ''}" data-preview-url="${track.previewUrl || ''}"${track.singleImg ? ` data-single-img="${track.singleImg}"` : ''}${track.canvasVideo ? ` data-canvas-video="${track.canvasVideo}"` : ''}>
         <span class="music-card__track-num">${i + 1}</span>
-        ${track.previewUrl ? '<button class="music-card__play music-card__track-play" aria-label="Play preview"><i class="fas fa-play"></i></button>' : '<span class="music-card__track-play-spacer"></span>'}
+        ${track.previewUrl ? `<button class="music-card__play music-card__track-play" aria-label="${t('music.playPreview')}"><i class="fas fa-play"></i></button>` : '<span class="music-card__track-play-spacer"></span>'}
         <span class="music-card__track-title">${track.title}</span>
         ${track.duration ? `<span class="music-card__track-duration">${track.duration}</span>` : ''}
+        <div class="music-card__track-progress"><div class="music-card__track-progress-fill"></div></div>
       </li>`
     )
     .join('');
@@ -86,20 +110,26 @@ const renderTracklist = (tracks) => {
   return `<ol class="music-card__tracklist">${rows}</ol>`;
 };
 
-const renderMusicItem = ({ title, artist, description, imgSrc, previewUrl, tracks, links }) => {
+const renderMusicItem = ({ title, artist, role, year, description, imgSrc, previewUrl, tracks, links }) => {
   const hasTracklist = tracks && tracks.length > 0;
+  const hasCanvas = tracks?.some(tr => tr.canvasVideo);
+
+  const coverMedia = `
+    ${hasCanvas ? '<video class="music-card__canvas" muted loop playsinline preload="none"></video>' : ''}
+    <img class="music-card__img${hasCanvas ? ' music-card__img--fallback' : ''}" src="${imgSrc}" alt="${t('music.coverAlt', { title })}" width="500" height="500" />`;
 
   return `
     <article class="project-section__article project-section__article--music">
       <div class="music-card"${!hasTracklist && previewUrl ? ` data-preview-url="${previewUrl}"` : ''}>
         <div class="music-card__cover">
-          <img class="music-card__img" src="${imgSrc}" alt="Cover art for ${title}" width="500" height="500" />
-          ${!hasTracklist && previewUrl ? '<button class="music-card__play" aria-label="Play preview"><i class="fas fa-play"></i></button>' : ''}
+          ${coverMedia}
+          ${!hasTracklist && previewUrl ? `<button class="music-card__play" aria-label="${t('music.playPreview')}"><i class="fas fa-play"></i></button>` : ''}
         </div>
         <div class="music-card__info">
           <h2 class="music-card__title">${title}</h2>
           <p class="music-card__artist">${artist}</p>
-          <p class="music-card__description">${description}</p>
+          <p class="music-card__meta">${t(role)} &middot; ${year}</p>
+          <p class="music-card__description">${t(description)}</p>
           ${hasTracklist ? renderTracklist(tracks) : ''}
           <div class="music-card__links">${renderLinks(links)}</div>
         </div>
