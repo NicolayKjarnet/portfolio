@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <!-- Mallet head -->
+  <rect x="3" y="1" width="20" height="10" rx="3" fill="#888" stroke="#444" stroke-width="1.2"/>
+  <rect x="3" y="1" width="20" height="5" rx="3" fill="#999" opacity="0.4"/>
+  <!-- Handle -->
+  <rect x="11" y="10" width="4.5" height="20" rx="2" fill="#A0642D" stroke="#6B3F1D" stroke-width="0.8"/>
+</svg>
