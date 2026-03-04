@@ -2,7 +2,7 @@
    BASE & GLOBAL STYLES
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Syne:wght@700;800;900&display=swap');
 
 @property --gradient-color-1 { syntax: "<color>"; inherits: true; initial-value: oklch(53.7% 0.084 13); }
 @property --gradient-color-2 { syntax: "<color>"; inherits: true; initial-value: oklch(45% 0.06 350); }
@@ -185,10 +185,11 @@ section {
 }
 
 .header__title {
+  font-family: 'Syne', sans-serif;
   font-size: clamp(3.5rem, 8vw + 1rem, 9rem);
   word-spacing: 100vw;
   line-height: 0.95;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   font-weight: 700;
 }
 
@@ -396,6 +397,7 @@ section {
 }
 
 .title-element {
+  font-family: 'Syne', sans-serif;
   font-size: var(--title-font-size);
   margin: 0;
 }
@@ -739,6 +741,7 @@ video.project-section__img {
 }
 
 .contact-header__title {
+  font-family: 'Syne', sans-serif;
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--clr-white);
@@ -1206,6 +1209,7 @@ video.project-section__img {
 }
 
 .timeline-title {
+  font-family: 'Syne', sans-serif;
   text-align: center;
   font-size: 2.5rem;
   color: var(--clr-white);
@@ -1260,6 +1264,7 @@ video.project-section__img {
 }
 
 .timeline-item-title {
+  font-family: 'Syne', sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--clr-white);
@@ -1585,6 +1590,7 @@ body.gif-cursor-striking * {
 }
 
 .gif-game__timer-num {
+  font-family: 'Syne', sans-serif;
   font-size: 1.6rem;
   font-weight: 900;
 }
@@ -1616,6 +1622,7 @@ body.gif-cursor-striking * {
 }
 
 .gif-game__score-num {
+  font-family: 'Syne', sans-serif;
   font-size: 1.6rem;
   font-weight: 900;
 }
@@ -1628,6 +1635,7 @@ body.gif-cursor-striking * {
 /* "+1" popup — fixed position, appears over the GIF head */
 .gif-game__hit-pop {
   position: fixed;
+  font-family: 'Syne', sans-serif;
   font-size: 1.4rem;
   font-weight: 900;
   color: var(--clr-green);
@@ -1668,6 +1676,7 @@ body.gif-cursor-striking * {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.5);
+  font-family: 'Syne', sans-serif;
   font-size: 5rem;
   font-weight: 900;
   color: white;
@@ -1675,7 +1684,6 @@ body.gif-cursor-striking * {
   animation: go-flash 0.65s ease-out forwards;
   z-index: 10001;
   pointer-events: none;
-  font-family: Poppins, sans-serif;
 }
 
 @keyframes go-flash {
@@ -1730,7 +1738,7 @@ body.gif-cursor-striking * {
   font-size: 3rem;
   font-weight: 900;
   margin: 0 0 0.3rem;
-  font-family: Poppins, sans-serif;
+  font-family: 'Syne', sans-serif;
 }
 
 .gif-game-results__record {
