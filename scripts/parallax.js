@@ -169,3 +169,45 @@ if (window.innerWidth >= 768) {
     });
   });
 }
+
+// ============================================
+// SCROLL ENTRANCE ANIMATIONS
+// ============================================
+
+// 1. Project cards — stagger fade-up when project section enters viewport
+// Project cards are rendered dynamically by JS, so we wait for DOMContentLoaded.
+document.addEventListener("DOMContentLoaded", () => {
+  requestAnimationFrame(() => {
+    gsap.utils.toArray(".project-section__article:not(.project-section__article--dimmed)").forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: { trigger: card, start: "top 85%", toggleActions: "play none none none" },
+        opacity: 0, y: 40, duration: 0.6, delay: i * 0.1,
+        ease: "power2.out"
+      });
+    });
+  });
+});
+
+// 2. Contact items — stagger slide-in from left
+gsap.from(".contact-item", {
+  scrollTrigger: { trigger: ".contact-content", start: "top 70%", toggleActions: "play none none none" },
+  opacity: 0, x: -30, duration: 0.5, stagger: 0.12, ease: "power2.out"
+});
+
+// 3. Social links — stagger scale-in
+gsap.from(".social-link", {
+  scrollTrigger: { trigger: ".social-links-grid", start: "top 80%", toggleActions: "play none none none" },
+  opacity: 0, scale: 0.8, duration: 0.4, stagger: 0.08, ease: "back.out(1.5)"
+});
+
+// 4. Trait items — stagger from bottom
+gsap.from(".trait-item", {
+  scrollTrigger: { trigger: ".traits-grid", start: "top 80%", toggleActions: "play none none none" },
+  opacity: 0, y: 30, duration: 0.5, stagger: 0.1, ease: "power2.out"
+});
+
+// 5. Skill tags — stagger pop-in
+gsap.from(".skill-tags span", {
+  scrollTrigger: { trigger: ".skill-tags", start: "top 80%", toggleActions: "play none none none" },
+  opacity: 0, scale: 0.5, duration: 0.3, stagger: 0.05, ease: "back.out(2)"
+});
