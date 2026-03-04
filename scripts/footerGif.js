@@ -469,6 +469,8 @@ function makeFlee(el, img, opts = {}) {
   let mouseX = 0;
   let mouseY = 0;
   let needsUpdate = false;
+  let idleChatTimer = null;
+  const isTouch = matchMedia('(pointer: coarse)').matches;
 
   function pick(arr, lastIdx) {
     if (!arr.length) return { text: '', index: -1 };
@@ -483,6 +485,25 @@ function makeFlee(el, img, opts = {}) {
     caption.textContent = text;
     caption.classList.add('footer__caption--visible');
     msgTimer = setTimeout(() => caption.classList.remove('footer__caption--visible'), 1500);
+  }
+
+  function startIdleChat() {
+    if (idleChatTimer || !isTouch) return;
+    const loop = () => {
+      if (isGameActive() || isClose) { idleChatTimer = null; return; }
+      if (getLingerMessages().length) {
+        const { text, index } = pick(getLingerMessages(), lastLingerIdx);
+        lastLingerIdx = index;
+        showCaption(text);
+      }
+      idleChatTimer = setTimeout(loop, 4000 + Math.random() * 3000);
+    };
+    idleChatTimer = setTimeout(loop, 3500);
+  }
+
+  function stopIdleChat() {
+    clearTimeout(idleChatTimer);
+    idleChatTimer = null;
   }
 
   function pushAwayFromMouse(multiplier) {
@@ -670,7 +691,22 @@ function makeFlee(el, img, opts = {}) {
     mouseY = touch.clientY;
     needsUpdate = true;
     ensureRunning();
+    // Reset idle chat timer on touch
+    stopIdleChat();
+    startIdleChat();
   }, { passive: true });
+
+  // Start idle chat when GIF is visible on touch devices
+  if (isTouch) {
+    const idleObs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !isGameActive()) {
+        startIdleChat();
+      } else {
+        stopIdleChat();
+      }
+    }, { threshold: 0.3 });
+    idleObs.observe(el);
+  }
 }
 
 // ============================================
