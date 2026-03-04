@@ -23,13 +23,13 @@ export default {
   },
   contact: {
     title: 'Ta kontakt',
-    heading: 'La oss skape noe sammen',
+    heading: 'La oss bygge noe sammen',
     subtitle:
-      'Enten du har et prosjekt i tankene, en jobbmulighet, eller bare vil si hei – jeg hører gjerne fra deg.',
+      'Har du et prosjekt i tankene? En jobbmulighet? Eller kanskje du bare vil si hei? Jeg hører gjerne fra deg, jeg.',
     email: 'E-post',
     location: 'Sted',
     locationValue: 'Tønsberg, Norge',
-    divider: 'eller finn meg på',
+    divider: 'ellers finner du meg her',
   },
   about: {
     title: 'Om meg',
