@@ -151,7 +151,7 @@ section {
 }
 
 .dark--visual {
-  background: linear-gradient(135deg, oklch(21% 0.04 290) 0%, oklch(28% 0.05 310) 100%);
+  background: linear-gradient(135deg, oklch(21% 0.08 290) 0%, oklch(28% 0.10 310) 100%);
 }
 
 .dark h2,
