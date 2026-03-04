@@ -151,7 +151,20 @@ section {
 }
 
 .dark--visual {
-  background: linear-gradient(135deg, oklch(22% 0.04 55) 0%, oklch(28% 0.05 45) 100%);
+  background: linear-gradient(135deg, oklch(20% 0.04 220) 0%, oklch(26% 0.05 200) 100%);
+}
+
+.dark--visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 
@@ -423,7 +436,7 @@ section {
 
 .dark--visual .title-element-container .title-element-1,
 .dark--visual .title-element-container .title-element-3 {
-  color: oklch(60% 0.06 55);
+  color: oklch(65% 0.08 200);
 }
 
 .dark--music .title-element-container .title-element-1,
@@ -580,7 +593,7 @@ section {
 }
 
 .project-section__article--visual {
-  background-color: #5e564e;
+  background-color: oklch(30% 0.04 210);
 }
 
 .project-section__article--music {
@@ -1405,6 +1418,66 @@ video.project-section__img {
   transition: 0.2s ease-in-out;
 }
 
+/* ---- Peeking GIF ---- */
+.peek-gif {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.peek-gif__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: invert(1);
+}
+
+.peek-gif__bubble {
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7), 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.peek-gif--chatbot {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.peek-gif__bubble--chatbot {
+  background: oklch(40% 0.12 265);
+  padding: 0.45rem 0.8rem;
+  border-radius: 1rem;
+  text-shadow: none;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.peek-gif__bubble--reveal {
+  white-space: normal;
+  max-width: min(320px, 80vw);
+  text-align: center;
+}
+
+.peek-gif__bubble--visible {
+  opacity: 1;
+}
+
 /* ---- Googly Eyes ---- */
 .gif-face {
   position: relative;
@@ -1668,17 +1741,42 @@ body.gif-cursor-striking * {
   display: flex;
   align-items: baseline;
   gap: 0.3rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  padding-left: 1rem;
+}
+
+.gif-game__score-icon {
+  font-size: 0.9rem;
+  margin-right: 0.1rem;
 }
 
 .gif-game__score-num {
   font-family: 'Syne', sans-serif;
   font-size: 1.6rem;
   font-weight: 900;
+  color: var(--clr-green);
 }
 
 .gif-game__score-label {
   font-size: 0.8rem;
   opacity: 0.5;
+}
+
+.gif-game__close {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 0 0 0.8rem;
+  margin-left: 0.2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  transition: color 0.15s;
+}
+
+.gif-game__close:hover {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* "+1" popup — fixed position, appears over the GIF head */

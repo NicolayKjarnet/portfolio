@@ -141,6 +141,25 @@ export default {
   timeline: {
     title: 'Experience',
   },
+  peek: {
+    messages: [
+      'Psst!',
+      '...see you.',
+      'Hey..',
+      'Thought you wouldn\'t notice me?',
+      '*lurking*',
+      'Just me!',
+      'Nothing to see here...',
+      'Who, me?',
+      'Shhh!',
+    ],
+    chatbotLure: [
+      'Hi! Need any help? 💬',
+      'Hey! Ask me anything 👋',
+      'Chat with me! 💬',
+    ],
+    chatbotReveal: 'Gotcha! You really thought I\'d put a chatbot on my portfolio? 😂',
+  },
   game: {
     go: 'GO!',
     hits: 'hits',

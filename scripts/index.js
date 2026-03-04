@@ -9,6 +9,7 @@ import { setupMusicPlayer } from './musicPlayer.js';
 import { setupLightbox } from './lightbox.js';
 import { setupWaveAnimation } from './waveAnimation.js';
 import { setupFooterGif, setupHeaderGif } from './footerGif.js';
+import { setupPeekingGif } from './peekingGif.js';
 import { addTimelineToPage, updateTimelineText } from './timelineData.js';
 
 function renderAllProjects() {
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // GIFs flee from cursor
   setupFooterGif();
   setupHeaderGif();
+  setupPeekingGif();
 
   // Contact card mouse-following glow
   const contactCard = document.querySelector('.contact-card');

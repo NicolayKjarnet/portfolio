@@ -3,7 +3,7 @@ import { getTranslations } from './i18n.js';
 /**
  * Create googly eyes overlay positioned on a face container.
  */
-function createEyes(wrapper, opts = {}) {
+export function createEyes(wrapper, opts = {}) {
   const leftTop = opts.leftTop ?? opts.top ?? '37%';
   const rightTop = opts.rightTop ?? opts.top ?? '32%';
   const leftX = opts.leftX ?? '26%';
@@ -97,6 +97,8 @@ function createEyes(wrapper, opts = {}) {
       el.classList.add('gif-eyes--blink');
       setTimeout(() => el.classList.remove('gif-eyes--blink'), 300);
     },
+    startIdle,
+    stopIdle,
     reset() {
       pupils.forEach((p) => {
         p.style.transition = '';
@@ -118,6 +120,8 @@ const HIT_ANIMATIONS = [
 let game = null;
 // All GIF containers registered for visibility tracking
 const gifContainers = [];
+// Track which flee instances report cursor-near (to avoid fights between listeners)
+const cursorNearSet = new Set();
 
 function t(key) {
   const tr = getTranslations();
@@ -187,13 +191,17 @@ function initGame() {
       </div>
       <div class="gif-game__progress"><div class="gif-game__progress-fill"></div></div>
       <div class="gif-game__score-section">
+        <span class="gif-game__score-icon">&#x1f528;</span>
         <span class="gif-game__score-num">0</span>
         <span class="gif-game__score-label">${t('game.hits')}</span>
       </div>
+      <button class="gif-game__close" aria-label="Close">&times;</button>
     </div>
   `;
   document.body.appendChild(hud);
   game.hud = hud;
+
+  hud.querySelector('.gif-game__close').addEventListener('click', () => quitGame());
 
   // Results overlay
   const results = document.createElement('div');
@@ -257,6 +265,17 @@ function resumeGame() {
   game.hud.classList.remove('gif-game--paused');
   game.backdrop.classList.add('gif-game-backdrop--active');
   game.rafId = requestAnimationFrame(gameLoop);
+}
+
+function quitGame() {
+  if (!game?.active) return;
+  game.active = false;
+  cancelAnimationFrame(game.rafId);
+  game.hud.classList.remove('gif-game--active');
+  game.backdrop.classList.remove('gif-game-backdrop--active');
+  document.body.classList.remove('gif-game-playing');
+  game.cooldown = true;
+  setTimeout(() => { game.cooldown = false; }, 2000);
 }
 
 function closeResults() {
@@ -657,16 +676,18 @@ function makeFlee(el, img, opts = {}) {
     needsUpdate = true;
     ensureRunning();
 
-    // Show hammer cursor when near any GIF
+    // Show hammer cursor when near any GIF (only if GIF is in viewport)
     const rect = el.getBoundingClientRect();
+    const inViewport = rect.bottom > 0 && rect.top < window.innerHeight;
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
     const d = Math.sqrt((cx - mouseX) ** 2 + (cy - mouseY) ** 2);
-    if (d < CURSOR_RANGE) {
-      document.body.classList.add('gif-cursor-near');
+    if (d < CURSOR_RANGE && inViewport) {
+      cursorNearSet.add(el);
     } else {
-      document.body.classList.remove('gif-cursor-near');
+      cursorNearSet.delete(el);
     }
+    document.body.classList.toggle('gif-cursor-near', cursorNearSet.size > 0);
   });
 
   document.addEventListener('mouseleave', () => {
