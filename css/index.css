@@ -151,7 +151,17 @@ section {
 }
 
 .dark--visual {
-  background: linear-gradient(135deg, oklch(21% 0.02 200) 0%, oklch(28% 0.03 220) 100%);
+  background: linear-gradient(135deg, oklch(21% 0.015 220) 0%, oklch(28% 0.02 240) 100%);
+}
+
+.dark--visual .title-element-1,
+.dark--visual .title-element-3 {
+  color: oklch(65% 0.05 240);
+}
+
+.dark--music .title-element-1,
+.dark--music .title-element-3 {
+  color: oklch(65% 0.08 300);
 }
 
 .dark h2,
@@ -405,6 +415,7 @@ section {
 .title-element-container .title-element-1 {
   color: var(--clr-red);
   animation: curly-right 5s ease-in-out infinite;
+  transition: color 0.6s ease;
 }
 
 .title-element-container .title-element-2 {
@@ -416,6 +427,7 @@ section {
 .title-element-container .title-element-3 {
   color: var(--clr-red);
   animation: curly-left 5s ease-in-out infinite;
+  transition: color 0.6s ease;
 }
 
 /* Title Animations */
@@ -567,7 +579,7 @@ section {
 }
 
 .project-section__article--visual {
-  background-color: #4e5a5a;
+  background-color: #555a5e;
 }
 
 .project-section__article--music {
