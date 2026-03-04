@@ -2002,6 +2002,7 @@ body.gif-cursor-striking * {
   width: 100%;
   overflow: hidden;
   line-height: 0;
+  z-index: 2;
 }
 
 .curve svg {
