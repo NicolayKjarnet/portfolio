@@ -36,6 +36,15 @@ export const setupProjectFiltering = () => {
     const symbols = bracketSymbols[filterValue] || bracketSymbols.web;
     if (bracket1) bracket1.textContent = symbols[0];
     if (bracket2) bracket2.textContent = symbols[1];
+
+    // Animate visible cards with a stagger reveal
+    const visible = projectSection.querySelectorAll('.project-section__article:not(.project-section__article--dimmed)');
+    if (typeof gsap !== 'undefined') {
+      gsap.from(visible, {
+        opacity: 0, y: 20, duration: 0.4, stagger: 0.06, ease: "power2.out",
+        clearProps: "opacity,y"
+      });
+    }
   };
 
   const setActiveFilter = (filterValue) => {
