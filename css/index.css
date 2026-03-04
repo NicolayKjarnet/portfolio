@@ -2585,6 +2585,11 @@ button:focus-visible,
     margin: 0 0 1.5rem 0;
   }
 
+  .header__cutout-wrap {
+    width: 5rem;
+    height: 5rem;
+  }
+
   .header__cutout {
     width: 5rem;
   }

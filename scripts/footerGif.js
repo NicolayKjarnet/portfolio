@@ -27,9 +27,57 @@ function createEyes(wrapper, opts = {}) {
   wrapper.appendChild(el);
   const pupils = el.querySelectorAll('.gif-eye__pupil');
 
+  let idleTimer = null;
+
+  function lookAt(angle, intensity) {
+    pupils.forEach((pupil) => {
+      const eye = pupil.parentElement;
+      const maxOff = eye.getBoundingClientRect().width * 0.28;
+      const off = maxOff * intensity;
+      pupil.style.transition = 'transform 0.4s ease';
+      pupil.style.transform = `translate(${Math.cos(angle) * off}px, ${Math.sin(angle) * off}px)`;
+    });
+  }
+
+  function startIdle() {
+    if (idleTimer) return;
+    const step = () => {
+      // Random direction and intensity, occasionally center
+      if (Math.random() < 0.25) {
+        pupils.forEach((p) => {
+          p.style.transition = 'transform 0.5s ease';
+          p.style.transform = '';
+        });
+      } else {
+        const angle = Math.random() * Math.PI * 2;
+        const intensity = 0.3 + Math.random() * 0.7;
+        lookAt(angle, intensity);
+      }
+      // Occasional blink
+      if (Math.random() < 0.2) {
+        setTimeout(() => {
+          el.classList.add('gif-eyes--blink');
+          setTimeout(() => el.classList.remove('gif-eyes--blink'), 300);
+        }, 200);
+      }
+      idleTimer = setTimeout(step, 1500 + Math.random() * 2500);
+    };
+    idleTimer = setTimeout(step, 1000);
+  }
+
+  function stopIdle() {
+    clearTimeout(idleTimer);
+    idleTimer = null;
+  }
+
+  // Start idle on touch devices
+  const isTouch = matchMedia('(pointer: coarse)').matches;
+  if (isTouch) startIdle();
+
   return {
     el,
     track(mx, my) {
+      stopIdle();
       pupils.forEach((pupil) => {
         const eye = pupil.parentElement;
         const rect = eye.getBoundingClientRect();
@@ -41,6 +89,7 @@ function createEyes(wrapper, opts = {}) {
         const dist = Math.sqrt(dx * dx + dy * dy);
         const maxOff = rect.width * 0.28;
         const t = Math.min(dist / 100, 1);
+        pupil.style.transition = '';
         pupil.style.transform = `translate(${Math.cos(angle) * maxOff * t}px, ${Math.sin(angle) * maxOff * t}px)`;
       });
     },
@@ -49,7 +98,11 @@ function createEyes(wrapper, opts = {}) {
       setTimeout(() => el.classList.remove('gif-eyes--blink'), 300);
     },
     reset() {
-      pupils.forEach((p) => (p.style.transform = ''));
+      pupils.forEach((p) => {
+        p.style.transition = '';
+        p.style.transform = '';
+      });
+      if (isTouch) startIdle();
     },
   };
 }
@@ -108,8 +161,10 @@ function initGame() {
 
     if (allHidden && !game.paused) {
       pauseGame();
+      document.body.classList.remove('gif-game-playing');
     } else if (!allHidden && game.paused) {
       resumeGame();
+      document.body.classList.add('gif-game-playing');
     }
   }, { threshold: 0 });
 
@@ -502,19 +557,36 @@ function makeFlee(el, img, opts = {}) {
         targetY = Math.sin(angle) * MAX_PUSH * strength;
         if (!isClose && dist < INFLUENCE * 0.7) {
           isClose = true;
-          if (!hitCooldown && !isGameActive() && getMessages().length) {
-            const { text, index } = pick(getMessages(), lastMsgIdx);
-            lastMsgIdx = index;
-            showCaption(text);
-          }
-          // Keep showing new messages while staying close
-          clearInterval(approachTimer);
-          approachTimer = setInterval(() => {
-            if (!isClose || isGameActive()) { clearInterval(approachTimer); return; }
-            if (!hitCooldown && getMessages().length) {
+          approachCount++;
+          if (!hitCooldown && !isGameActive()) {
+            // First approach after returning → use return messages
+            if (hasLeftOnce && getReturnMessages().length) {
+              const { text, index } = pick(getReturnMessages(), lastReturnIdx);
+              lastReturnIdx = index;
+              showCaption(text);
+            } else if (getMessages().length) {
               const { text, index } = pick(getMessages(), lastMsgIdx);
               lastMsgIdx = index;
               showCaption(text);
+            }
+          }
+          // Keep showing new messages while staying close
+          clearInterval(approachTimer);
+          let lingerCount = 0;
+          approachTimer = setInterval(() => {
+            if (!isClose || isGameActive()) { clearInterval(approachTimer); return; }
+            lingerCount++;
+            if (!hitCooldown) {
+              // After a few messages, switch to linger messages
+              if (lingerCount >= 3 && getLingerMessages().length) {
+                const { text, index } = pick(getLingerMessages(), lastLingerIdx);
+                lastLingerIdx = index;
+                showCaption(text);
+              } else if (getMessages().length) {
+                const { text, index } = pick(getMessages(), lastMsgIdx);
+                lastMsgIdx = index;
+                showCaption(text);
+              }
             }
           }, 2500);
         }
@@ -523,6 +595,7 @@ function makeFlee(el, img, opts = {}) {
         targetY = 0;
         if (isClose) {
           isClose = false;
+          hasLeftOnce = true;
           clearInterval(approachTimer);
         }
       }
@@ -626,6 +699,8 @@ export function setupFooterGif() {
     ease: 0.15,
     messages: () => getTranslations().footer.approachMessages,
     hitMessages: () => getTranslations().footer.hitMessages,
+    returnMessages: () => getTranslations().footer.returnMessages,
+    lingerMessages: () => getTranslations().footer.lingerMessages,
     captionEl: container.querySelector('.footer__caption'),
     eyes,
     onHit: onGifHit,
@@ -640,7 +715,13 @@ export function setupHeaderGif() {
 
   gifContainers.push(wrap);
 
-  const eyes = createEyes(wrap);
+  const eyes = createEyes(wrap, {
+    size: '14%',
+    leftTop: '38%',
+    rightTop: '34%',
+    leftX: '30%',
+    rightX: '52%',
+  });
 
   makeFlee(wrap, wrap.querySelector('.header__cutout'), {
     maxPush: 40,
@@ -648,6 +729,8 @@ export function setupHeaderGif() {
     ease: 0.1,
     messages: () => getTranslations().footer.approachMessages,
     hitMessages: () => getTranslations().footer.hitMessages,
+    returnMessages: () => getTranslations().footer.returnMessages,
+    lingerMessages: () => getTranslations().footer.lingerMessages,
     captionEl: wrap.querySelector('.header__cutout-caption'),
     eyes,
     onHit: onGifHit,
