@@ -6,6 +6,23 @@ gsap.registerPlugin(ScrollTrigger);
 (function headerEntrance() {
   const tl = gsap.timeline({ delay: 0.3 });
 
+  // GIF cutout — scale + rotate in
+  tl.from(".header__cutout-wrap", {
+    scale: 0,
+    opacity: 0,
+    rotation: -180,
+    duration: 0.8,
+    ease: "back.out(1.7)",
+  });
+
+  // Language toggle — fade in at absolute time 0
+  tl.from(".lang-toggle", {
+    opacity: 0,
+    y: -20,
+    duration: 0.4,
+    ease: "power2.out",
+  }, 0);
+
   // Title — split into lines (word-spacing: 100vw makes each word a line)
   const title = document.querySelector(".header__title");
   if (title) {
@@ -23,10 +40,11 @@ gsap.registerPlugin(ScrollTrigger);
     });
   }
 
-  // Subtitle — fade up
+  // Subtitle — fade up with letter-spacing narrowing
   tl.from(".header__paragraph", {
     opacity: 0,
     y: 20,
+    letterSpacing: "0.5em",
     duration: 0.6,
     ease: "power2.out",
   }, "-=0.3");
