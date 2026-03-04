@@ -34,6 +34,7 @@ const platformConfig = {
   apple: { icon: 'fab fa-apple', label: 'Apple Music' },
   tidal: { icon: 'fas fa-water', label: 'Tidal' },
   qobuz: { icon: 'fas fa-headphones', label: 'Qobuz' },
+  soundcloud: { icon: 'fab fa-soundcloud', label: 'SoundCloud' },
 };
 
 /** @type {MusicItem[]} */
@@ -44,8 +45,8 @@ const musicProjects = [
     role: { en: 'Bass & Songwriter', no: 'Bass & låtskriver' },
     year: 2024,
     description: {
-      en: 'Six tracks blending post-punk, hardcore and screamo — featuring jazz pianist Bugge Wesseltoft.',
-      no: 'Seks spor som blander post-punk, hardcore og screamo – med jazzpianist Bugge Wesseltoft.',
+      en: 'Six tracks blending post-punk, hardcore and screamo — featuring jazz pianist Bugge Wesseltoft. I designed all cover art, Spotify Canvas visuals, and visual identity for the band.',
+      no: 'Seks spor som blander post-punk, hardcore og screamo – med jazzpianist Bugge Wesseltoft. Jeg designet all coverkunst, Spotify Canvas-videoer og visuell identitet for bandet.',
     },
     imgSrc: '/images/this-wont-last-cover.png',
     tracks: [
@@ -67,8 +68,8 @@ const musicProjects = [
     role: { en: 'Bass & Songwriter', no: 'Bass & låtskriver' },
     year: 2024,
     description: {
-      en: 'Five tracks from hardcore fury to shoegaze nostalgia.',
-      no: 'Fem spor fra hardcore-raseri til shoegaze-nostalgi.',
+      en: 'Five tracks from hardcore fury to shoegaze nostalgia. Cover art, Spotify Canvas and all visuals by me.',
+      no: 'Fem spor fra hardcore-raseri til shoegaze-nostalgi. Coverkunst, Spotify Canvas og alt visuelt av meg.',
     },
     imgSrc: '/images/biq-ep-cover.png',
     tracks: [
@@ -81,6 +82,26 @@ const musicProjects = [
     links: [
       { url: 'https://open.spotify.com/album/3SpmM3eIcpzURJB3JpMFkn', platform: 'spotify' },
       { url: 'https://music.apple.com/no/album/back-into-quiet-ep/1727145686', platform: 'apple' },
+    ],
+  },
+  {
+    title: 'Indie/Post-Rock Demos',
+    artist: 'Whatever Floats',
+    role: { en: 'Multi-instrumentalist, Producer & Mix', no: 'Multi-instrumentalist, produsent & miks' },
+    year: 2021,
+    description: {
+      en: 'Self-produced demos with real bass, guitar and keys, MIDI drums — written, recorded and mixed by me.',
+      no: 'Egenproduserte demoer med ekte bass, gitar og keys, MIDI-trommer — skrevet, spilt inn og mikset av meg.',
+    },
+    imgSrc: '/images/whatever-floats-allergic-to-the-21st-century-cover.png',
+    tracks: [
+      { title: 'Allergic To The 21st Century', duration: '3:44', previewUrl: '/audio/whatever-floats/allergic-to-the-21st-century.wav', previewStart: '1:13' },
+      { title: 'Grey Matter', duration: '3:53', previewUrl: '/audio/whatever-floats/grey-matter.wav', previewStart: '1:34' },
+      { title: 'My Vision Is Just Fine, Thank You (Interlude)', duration: '1:00', previewUrl: '/audio/whatever-floats/my-vision-is-just-fine-thank-you.wav', previewStart: '0:15' },
+      { title: 'We Know What You Did', duration: '2:01', previewUrl: '/audio/whatever-floats/we-know-what-you-did.wav', previewStart: '0:30N' },
+    ],
+    links: [
+      { url: 'https://soundcloud.com/nicolaykjaernet/sets/indie-post-rock', platform: 'soundcloud' },
     ],
   },
 ];
@@ -97,7 +118,7 @@ const renderTracklist = (tracks) => {
   const rows = tracks
     .map(
       (track, i) => `
-      <li class="music-card__track${track.previewUrl ? ' music-card__track--playable' : ''}" data-preview-url="${track.previewUrl || ''}"${track.singleImg ? ` data-single-img="${track.singleImg}"` : ''}${track.canvasVideo ? ` data-canvas-video="${track.canvasVideo}"` : ''}>
+      <li class="music-card__track${track.previewUrl ? ' music-card__track--playable' : ''}" data-preview-url="${track.previewUrl || ''}"${track.previewStart ? ` data-preview-start="${track.previewStart}"` : ''}${track.singleImg ? ` data-single-img="${track.singleImg}"` : ''}${track.canvasVideo ? ` data-canvas-video="${track.canvasVideo}"` : ''}>
         <span class="music-card__track-num">${i + 1}</span>
         ${track.previewUrl ? `<button class="music-card__play music-card__track-play" aria-label="${t('music.playPreview')}"><i class="fas fa-play"></i></button>` : '<span class="music-card__track-play-spacer"></span>'}
         <span class="music-card__track-title">${track.title}</span>
