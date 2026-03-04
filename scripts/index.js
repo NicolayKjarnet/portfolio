@@ -57,6 +57,17 @@ document.addEventListener('DOMContentLoaded', function () {
   setupFooterGif();
   setupHeaderGif();
 
+  // Contact card mouse-following glow
+  const contactCard = document.querySelector('.contact-card');
+  const glow = document.querySelector('.contact-card__glow');
+  if (contactCard && glow) {
+    contactCard.addEventListener('mousemove', (e) => {
+      const rect = contactCard.getBoundingClientRect();
+      glow.style.left = `${e.clientX - rect.left}px`;
+      glow.style.top = `${e.clientY - rect.top}px`;
+    });
+  }
+
   // Re-render JS content on language change
   onLangChange(() => {
     const currentFilter = document.querySelector('.filter-item.active')?.dataset.filter || 'web';
