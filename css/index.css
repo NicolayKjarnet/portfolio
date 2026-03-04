@@ -205,6 +205,8 @@ section {
   width: 7rem;
   height: 7rem;
   margin: 0 auto 1rem;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .header__cutout {
@@ -1317,6 +1319,8 @@ video.project-section__img {
   filter: invert(1);
   cursor: pointer;
   will-change: transform;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .footer__img {
@@ -1347,10 +1351,71 @@ video.project-section__img {
   transition: 0.2s ease-in-out;
 }
 
-/* Footer & header GIF hit state — angry shake */
-.flee-gif--hit {
-  animation: shake 0.4s ease-in-out !important;
+/* ---- Googly Eyes ---- */
+.gif-face {
+  position: relative;
+  display: inline-block;
 }
+
+.gif-eyes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.gif-eyes--invert {
+  filter: invert(1);
+}
+
+.gif-eye {
+  position: absolute;
+  aspect-ratio: 1;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  transition: transform 0.1s ease;
+}
+
+.gif-eye__pupil {
+  width: 55%;
+  height: 55%;
+  background: #1a1a1a;
+  border-radius: 50%;
+  position: relative;
+  will-change: transform;
+}
+
+.gif-eye__pupil::after {
+  content: '';
+  position: absolute;
+  width: 28%;
+  height: 28%;
+  background: white;
+  border-radius: 50%;
+  top: 12%;
+  right: 12%;
+}
+
+/* Blink: squeeze eyes shut */
+.gif-eyes--blink .gif-eye {
+  transform: scaleY(0.08);
+  transition: transform 0.06s ease-in;
+}
+
+/* Footer & header GIF hit state — random animations */
+.flee-gif--hit { animation: shake 0.4s ease-in-out !important; }
+.flee-gif--hit[data-hit-anim="shake"] { animation: shake 0.4s ease-in-out !important; }
+.flee-gif--hit[data-hit-anim="shake-hard"] { animation: shake-hard 0.4s ease-in-out !important; }
+.flee-gif--hit[data-hit-anim="spin"] { animation: hit-spin 0.5s ease-in-out !important; }
+.flee-gif--hit[data-hit-anim="bounce"] { animation: hit-bounce 0.4s ease-in-out !important; }
+.flee-gif--hit[data-hit-anim="wobble"] { animation: hit-wobble 0.5s ease-in-out !important; }
+.flee-gif--hit[data-hit-anim="flip"] { animation: hit-flip 0.5s ease-in-out !important; }
+.flee-gif--hit[data-hit-anim="jello"] { animation: hit-jello 0.6s ease-in-out !important; }
 
 @keyframes shake {
   0%, 100% { transform: translate(0, 0) rotate(0deg); }
@@ -1359,6 +1424,362 @@ video.project-section__img {
   45% { transform: translate(-3px, 1px) rotate(-3deg); }
   60% { transform: translate(3px, -1px) rotate(3deg); }
   75% { transform: translate(-2px, 1px) rotate(-2deg); }
+}
+
+@keyframes shake-hard {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  10% { transform: translate(-8px, 4px) rotate(-10deg); }
+  30% { transform: translate(8px, -4px) rotate(10deg); }
+  50% { transform: translate(-6px, 2px) rotate(-6deg); }
+  70% { transform: translate(6px, -2px) rotate(6deg); }
+  90% { transform: translate(-3px, 1px) rotate(-3deg); }
+}
+
+@keyframes hit-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes hit-bounce {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-15px); }
+  60% { transform: translateY(5px); }
+  80% { transform: translateY(-3px); }
+}
+
+@keyframes hit-wobble {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  20% { transform: rotate(-12deg) scale(0.9); }
+  40% { transform: rotate(10deg) scale(1.1); }
+  60% { transform: rotate(-6deg) scale(0.95); }
+  80% { transform: rotate(4deg) scale(1.02); }
+}
+
+@keyframes hit-flip {
+  0% { transform: perspective(200px) rotateY(0deg); }
+  100% { transform: perspective(200px) rotateY(360deg); }
+}
+
+@keyframes hit-jello {
+  0%, 100% { transform: skewX(0deg) skewY(0deg); }
+  15% { transform: skewX(-10deg) skewY(-5deg); }
+  30% { transform: skewX(8deg) skewY(4deg); }
+  45% { transform: skewX(-5deg) skewY(-3deg); }
+  60% { transform: skewX(3deg) skewY(2deg); }
+  75% { transform: skewX(-1deg) skewY(-1deg); }
+}
+
+/* ---- Minigame ---- */
+
+/* Backdrop dims the page during game with spotlight on GIF */
+.gif-game-backdrop {
+  --spot-x: 50%;
+  --spot-y: 50%;
+  --spot-r: 150px;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  mask-image: radial-gradient(
+    circle var(--spot-r) at var(--spot-x) var(--spot-y),
+    transparent 60%,
+    black 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle var(--spot-r) at var(--spot-x) var(--spot-y),
+    transparent 60%,
+    black 100%
+  );
+}
+
+.gif-game-backdrop--active {
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Fun cursor — on GIF containers, when near, and during game */
+.footer__img-container,
+.header__cutout-wrap {
+  cursor: url('/images/hammer-cursor-lg.svg') 19 3, pointer;
+}
+body.gif-cursor-near {
+  cursor: url('/images/hammer-cursor-lg.svg') 19 3, pointer;
+}
+body.gif-game-playing,
+body.gif-game-playing * {
+  cursor: url('/images/hammer-cursor-lg.svg') 19 3, pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+/* Hide real cursor during hammer strike so only the animated one shows */
+body.gif-cursor-striking,
+body.gif-cursor-striking * {
+  cursor: none !important;
+}
+
+/* Hammer strike effect on click — replaces cursor momentarily */
+.gif-hammer-strike {
+  position: fixed;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+  z-index: 10003;
+  margin-left: -19px;
+  margin-top: -3px;
+  background: url('/images/hammer-cursor-lg.svg') no-repeat center / contain;
+  animation: hammer-swing 0.3s ease-out forwards;
+}
+
+@keyframes hammer-swing {
+  0% { transform: rotate(-25deg) scale(1.1); transform-origin: 13px 2px; }
+  35% { transform: rotate(20deg) scale(1); transform-origin: 13px 2px; }
+  70% { transform: rotate(-5deg) scale(1); transform-origin: 13px 2px; opacity: 1; }
+  100% { transform: rotate(0deg) scale(1); opacity: 0; }
+}
+
+.gif-game {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  z-index: 10000;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0s linear 0.3s;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.gif-game--active {
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+  visibility: visible;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0s;
+}
+
+.gif-game--paused {
+  transform: translateX(-50%) translateY(-100%);
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), visibility 0s linear 0.3s;
+}
+
+.gif-game__hud {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(12px);
+  padding: 0.7rem 1.5rem;
+  border-radius: 0 0 1rem 1rem;
+  color: white;
+  font-family: Poppins, sans-serif;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.gif-game__timer-section {
+  display: flex;
+  align-items: baseline;
+  min-width: 3ch;
+}
+
+.gif-game__timer-num {
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+.gif-game__timer-s {
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.gif-game__progress {
+  width: 100px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.gif-game__progress-fill {
+  height: 100%;
+  background: var(--clr-green);
+  border-radius: 3px;
+  transition: background-color 0.5s ease;
+}
+
+.gif-game__score-section {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.gif-game__score-num {
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+
+.gif-game__score-label {
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+/* "+1" popup — fixed position, appears over the GIF head */
+.gif-game__hit-pop {
+  position: fixed;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--clr-green);
+  animation: hit-pop 0.6s ease-out forwards;
+  pointer-events: none;
+  z-index: 10002;
+  transform: translateX(-50%);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes hit-pop {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-30px) scale(1.3); }
+}
+
+/* Game comment popup — appears over the GIF with random offset */
+.gif-game__comment {
+  position: fixed;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--clr-orange);
+  animation: comment-float 0.8s ease-out forwards;
+  pointer-events: none;
+  z-index: 10002;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes comment-float {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(10px) scale(0.9); }
+}
+
+/* "GO!" flash */
+.gif-game__go {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  font-size: 5rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+  animation: go-flash 0.65s ease-out forwards;
+  z-index: 10001;
+  pointer-events: none;
+  font-family: Poppins, sans-serif;
+}
+
+@keyframes go-flash {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  25% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
+}
+
+/* Results overlay */
+.gif-game-results {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 10001;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.gif-game-results--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.gif-game-results__card {
+  background: var(--clr-dark-2);
+  border-radius: 1.5rem;
+  padding: 2.5rem 3rem;
+  text-align: center;
+  color: white;
+  min-width: 260px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  animation: results-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes results-pop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.gif-game-results__title {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  opacity: 0.6;
+}
+
+.gif-game-results__score {
+  font-size: 3rem;
+  font-weight: 900;
+  margin: 0 0 0.3rem;
+  font-family: Poppins, sans-serif;
+}
+
+.gif-game-results__record {
+  font-size: 1.1rem;
+  color: gold;
+  min-height: 1.5em;
+  margin: 0;
+}
+
+.gif-game-results__best {
+  font-size: 0.85rem;
+  opacity: 0.5;
+  margin: 0 0 1.5rem;
+}
+
+.gif-game-results__actions {
+  display: flex;
+  gap: 0.7rem;
+  justify-content: center;
+}
+
+.gif-game-results__btn {
+  padding: 0.55rem 1.4rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: transform 0.1s ease;
+}
+
+.gif-game-results__btn:hover {
+  transform: scale(1.05);
+}
+
+.gif-game-results__btn--play {
+  background: var(--clr-green);
+  color: white;
+}
+
+.gif-game-results__btn--close {
+  background: transparent;
+  color: white;
+  opacity: 0.5;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.gif-game-results__btn--close:hover {
+  opacity: 1;
 }
 
 .footer__link:hover {
@@ -1590,6 +2011,10 @@ button:focus-visible,
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+.music-card__img--fading {
+  opacity: 0;
+}
+
 .music-card__canvas {
   position: absolute;
   inset: 0;
@@ -1781,10 +2206,11 @@ button:focus-visible,
   bottom: 0;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 3px;
   background: rgba(255, 255, 255, 0.08);
   opacity: 0;
   transition: opacity 0.2s ease;
+  cursor: pointer;
 }
 
 .music-card__track--active .music-card__track-progress {
@@ -1796,6 +2222,39 @@ button:focus-visible,
   width: 0%;
   background: var(--clr-orange);
   transition: width 0.1s linear;
+}
+
+/* Seek timestamp tooltip — speech bubble like Qobuz */
+.seek-tooltip {
+  position: fixed;
+  background: var(--clr-dark-2);
+  color: var(--clr-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  pointer-events: none;
+  z-index: 10010;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.seek-tooltip--visible {
+  opacity: 1;
+}
+
+.seek-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--clr-dark-2);
 }
 
 /* Active track highlight */
@@ -1972,14 +2431,31 @@ button:focus-visible,
   transform: translateY(0);
 }
 
+.mini-player__prev,
+.mini-player__next,
 .mini-player__btn {
   background: none;
   border: none;
   color: var(--clr-white);
-  font-size: 1rem;
   cursor: pointer;
   padding: 0.3rem;
   flex-shrink: 0;
+}
+
+.mini-player__btn {
+  font-size: 1rem;
+}
+
+.mini-player__prev,
+.mini-player__next {
+  font-size: 0.75rem;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.mini-player__prev:hover,
+.mini-player__next:hover {
+  opacity: 1;
 }
 
 .mini-player__info {
@@ -2015,11 +2491,19 @@ button:focus-visible,
 
 .mini-player__progress {
   position: absolute;
-  top: 0;
+  top: -12px;
   left: 0;
   right: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.1);
+  height: 3px;
+  padding: 12px 0;
+  background: transparent;
+  background-clip: content-box;
+  cursor: pointer;
+}
+
+.mini-player__progress:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  background-clip: content-box;
 }
 
 .mini-player__progress-fill {
