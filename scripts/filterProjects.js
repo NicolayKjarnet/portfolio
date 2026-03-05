@@ -32,6 +32,7 @@ export const setupProjectFiltering = () => {
     const render = renderers[filterValue];
     if (render) {
       projectSection.innerHTML = render();
+      projectSection.scrollLeft = 0;
       if (filterValue === 'visual') setupVisualPlayers();
     }
 
