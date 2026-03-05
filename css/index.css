@@ -240,7 +240,9 @@ section {
 }
 
 .section-about {
-  background-color: var(--clr-orange);
+  --clr-about: oklch(42% 0.045 135);
+  --clr-about-light: oklch(90% 0.02 100);
+  background-color: var(--clr-about);
 }
 
 .section-projects {
@@ -433,7 +435,7 @@ section {
   bottom: 20px;
   margin-left: -15px;
   animation: bounce 2s infinite;
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.3s ease-in-out;
 
   &:focus {
@@ -462,6 +464,10 @@ section {
 #scroll-arrow:hover,
 #scroll-arrow p:hover {
   cursor: pointer;
+}
+
+#scroll-arrow.show {
+  opacity: 1;
 }
 
 #scroll-arrow.hide {
@@ -561,6 +567,11 @@ section {
 .section-contact .title-element-container .title-element-1,
 .section-contact .title-element-container .title-element-3 {
   color: oklch(65% 0.03 80);
+}
+
+.section-about .title-element-container .title-element-1,
+.section-about .title-element-container .title-element-3 {
+  color: oklch(62% 0.06 135);
 }
 
 .section-contact .title-element-container .title-element-2 {
@@ -1058,6 +1069,17 @@ video.project-section__img {
    ABOUT SECTION
    ============================================ */
 
+.about-intro {
+  max-width: 560px;
+  margin: 0 auto 3rem;
+  padding: 0 2rem;
+  text-align: center;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: oklch(85% 0.02 135);
+  font-style: italic;
+}
+
 .about-content {
   width: 100%;
   display: flex;
@@ -1105,7 +1127,7 @@ video.project-section__img {
   corner-top-right-shape: squircle;
   corner-bottom-left-shape: square;
   corner-bottom-right-shape: square;
-  background-color: var(--clr-orange);
+  background-color: var(--clr-about, var(--clr-orange));
   width: 120px;
   display: flex;
   justify-content: center;
@@ -1164,7 +1186,7 @@ video.project-section__img {
   inset: 0;
   z-index: 3;
   opacity: 0;
-  border: 2px dashed var(--clr-orange);
+  border: 2px dashed var(--clr-about, var(--clr-orange));
   transition: 0.3s ease-in-out;
   animation: ring-rotate 35s linear infinite;
 }
@@ -1177,7 +1199,7 @@ video.project-section__img {
   position: absolute;
   inset: 0;
   aspect-ratio: 1;
-  border: 2px dashed var(--clr-orange);
+  border: 2px dashed var(--clr-about, var(--clr-orange));
   transition: 1s ease-in-out;
   animation: ring-rotate 40s linear infinite;
 }
@@ -1188,7 +1210,7 @@ video.project-section__img {
   position: absolute;
   inset: 0;
   aspect-ratio: 1;
-  border: 2px dashed var(--clr-orange);
+  border: 2px dashed var(--clr-about, var(--clr-orange));
   transition: 1s ease-in-out;
   animation: ring-rotate 30s linear infinite;
 }
@@ -1249,7 +1271,7 @@ video.project-section__img {
 }
 
 .skill-tags span:hover {
-  background: var(--clr-orange);
+  background: var(--clr-about, var(--clr-orange));
   transform: translateY(-2px);
 }
 
@@ -1301,7 +1323,7 @@ video.project-section__img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--clr-orange);
+  background: var(--clr-about, var(--clr-orange));
   border-radius: 0.6rem;
   color: var(--clr-dark);
   font-size: 0.9rem;
@@ -1384,7 +1406,7 @@ video.project-section__img {
 }
 
 .timeline-item {
-  padding: 10px 40px;
+  padding: 10px 3rem 10px 40px;
   position: relative;
   width: 50%;
   box-sizing: border-box;
@@ -1445,7 +1467,7 @@ video.project-section__img {
 
 .timeline-details {
   list-style-type: none;
-  padding: 0;
+  padding: 0 2rem 0 0;
 }
 
 .timeline-details li {
@@ -1520,6 +1542,10 @@ video.project-section__img {
   font-size: 0.8rem;
   text-decoration: none;
   transition: 0.2s ease-in-out;
+  position: relative;
+  z-index: 2;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
 }
 
 /* ---- Peeking GIF ---- */
@@ -2120,6 +2146,7 @@ body.gif-cursor-striking * {
   mask-size: calc(123% + 1.3px) 100%;
   mask-repeat: no-repeat;
   z-index: 5;
+  pointer-events: none;
 }
 
 .section-projects > .wave-top svg {
@@ -2156,7 +2183,7 @@ body.gif-cursor-striking * {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
-  height: 318px;
+  height: 200px;
 }
 
 .wave-about-top .shape-fill {
@@ -2172,7 +2199,7 @@ body.gif-cursor-striking * {
 }
 
 .wave-footer-top .shape-fill {
-  fill: var(--clr-orange);
+  fill: oklch(42% 0.045 135);
 }
 
 /* ============================================
@@ -3146,11 +3173,11 @@ button:focus-visible,
    ============================================ */
 @media (min-width: 1024px) {
   .section-about {
-    padding: 20rem 0 0;
+    padding: 10rem 0 0;
     justify-content: flex-start;
   }
 
-  /* Panel background extends through entire section — offwhite */
+  /* Panel background extends through entire section */
   .section-about::before {
     content: '';
     position: absolute;
@@ -3158,12 +3185,12 @@ button:focus-visible,
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: var(--clr-orange);
+    background-color: var(--clr-about);
     z-index: 1;
   }
 
-  /* Divider line with fade at top and bottom */
-  .section-about::after {
+  /* Divider line — anchored to about-content so it starts at the split */
+  .about-content::before {
     content: '';
     position: absolute;
     top: 0;
@@ -3172,9 +3199,7 @@ button:focus-visible,
     height: 100%;
     background: linear-gradient(
       180deg,
-      transparent 0%,
-      transparent 550px,
-      var(--clr-white) 700px,
+      var(--clr-white) 0%,
       var(--clr-white) calc(100% - 400px),
       transparent 100%
     );
@@ -3199,11 +3224,20 @@ button:focus-visible,
 
   .section-about .title-element-container .title-element-1,
   .section-about .title-element-container .title-element-3 {
-    color: oklch(45% 0.04 60);
+    color: oklch(60% 0.04 135);
+    color: var(--clr-orange)
   }
 
   .section-contact > .title-section {
     margin-top: 3rem;
+  }
+
+  .about-intro {
+    position: relative;
+    z-index: 2;
+    max-width: 480px;
+    font-size: 1.2rem;
+    margin-bottom: 4rem;
   }
 
   .about-content {
@@ -3212,6 +3246,8 @@ button:focus-visible,
     gap: 0;
     position: relative;
     z-index: 2;
+    border-top: var(--timeline-line-w) solid var(--clr-white);
+    padding-top: 0;
   }
 
   /* --- Profile panel: scrollytelling display --- */
@@ -3231,11 +3267,11 @@ button:focus-visible,
     max-width: none;
     align-self: flex-start;
     overflow: hidden;
-    background-color: var(--clr-orange);
+    background-color: var(--clr-about);
   }
 
   .profile-card:hover {
-    background-color: var(--clr-orange);
+    background-color: var(--clr-about);
   }
 
   /* Hide mobile-only elements on desktop */
@@ -3286,7 +3322,7 @@ button:focus-visible,
     height: 10%;
     background: linear-gradient(
       to bottom,
-      var(--clr-orange) 0%,
+      var(--clr-about) 0%,
       transparent 100%
     );
     z-index: 1;
@@ -3302,7 +3338,7 @@ button:focus-visible,
 
   .scrollytelling-media .scrollytelling-fallback {
     object-fit: contain;
-    background-color: var(--clr-orange);
+    background-color: var(--clr-about);
     padding: 4rem;
   }
 
@@ -3317,7 +3353,7 @@ button:focus-visible,
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      var(--clr-orange) 100%
+      var(--clr-about) 100%
     );
     pointer-events: none;
   }

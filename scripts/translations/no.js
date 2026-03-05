@@ -33,6 +33,8 @@ export default {
   },
   about: {
     title: 'Om meg',
+    intro:
+      'Utvikler om dagen, kreativ av natur. Jeg er opptatt av å skape gode og morsomme brukeropplevelser der hvert besøk føles litt unikt — og bygger broen mellom kode og visuell historiefortelling for å lage ting som fungerer, overrasker, og ser bra ut mens de gjør det.',
     skillsLabel: 'Ferdigheter',
     bio: 'Nå for tiden er jeg frontend-utvikler hos Cavai, hvor jeg bygger og forbedrer plattformen som driver våre interaktive annonseløsninger. Jeg begynte som Creative Developer i september 2024, der jeg skapte spill, quizer og interaktive kampanjer fra konsept til kode – en rolle hvor bakgrunnen min innen visuell historiefortelling beriket hver tekniske løsning. Nå jobber jeg med Vue og TypeScript, og utvikler verktøyene som gir disse kreasjonene liv.',
     trait1:

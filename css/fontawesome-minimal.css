@@ -1,0 +1,68 @@
+/* Font Awesome 5 — only the 25 icons actually used on the site
+   Down from ~80 KB (all.min.css) to ~2 KB */
+
+@font-face {
+  font-family: 'Font Awesome 5 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-solid-900.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/webfonts/fa-brands-400.woff2') format('woff2');
+}
+
+.fas,
+.fab {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+}
+
+.fas { font-family: 'Font Awesome 5 Free'; font-weight: 900; }
+.fab { font-family: 'Font Awesome 5 Brands'; font-weight: 400; }
+
+/* Sizing */
+.fa-2x { font-size: 2em; }
+
+/* Animation */
+.fa-spin { animation: fa-spin 2s infinite linear; }
+@keyframes fa-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* ---- Solid icons (fas) ---- */
+.fa-arrow-right::before   { content: '\f061'; }
+.fa-code::before          { content: '\f121'; }
+.fa-cog::before           { content: '\f013'; }
+.fa-couch::before         { content: '\f4b8'; }
+.fa-envelope::before      { content: '\f0e0'; }
+.fa-expand::before        { content: '\f065'; }
+.fa-film::before          { content: '\f008'; }
+.fa-headphones::before    { content: '\f025'; }
+.fa-map-marker-alt::before { content: '\f3c5'; }
+.fa-music::before         { content: '\f001'; }
+.fa-pause::before         { content: '\f04c'; }
+.fa-play::before          { content: '\f04b'; }
+.fa-step-backward::before { content: '\f048'; }
+.fa-step-forward::before  { content: '\f051'; }
+.fa-times::before         { content: '\f00d'; }
+.fa-water::before         { content: '\f773'; }
+
+/* ---- Brand icons (fab) ---- */
+.fa-apple::before         { content: '\f179'; }
+.fa-facebook::before      { content: '\f09a'; }
+.fa-figma::before         { content: '\f799'; }
+.fa-github::before        { content: '\f09b'; }
+.fa-instagram::before     { content: '\f16d'; }
+.fa-linkedin::before      { content: '\f0e1'; }
+.fa-soundcloud::before    { content: '\f1be'; }
+.fa-spotify::before       { content: '\f1bc'; }
+.fa-youtube::before       { content: '\f167'; }

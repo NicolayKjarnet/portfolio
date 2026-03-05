@@ -45,15 +45,19 @@ export const setupScrollArrow = () => {
     }
   });
 
-  window.addEventListener(
-    'scroll',
-    () => {
-      if (window.scrollY > header.offsetHeight * 0) {
-        scrollArrow.classList.add('hide');
-      } else {
-        scrollArrow.classList.remove('hide');
-      }
-    },
-    { passive: true }
-  );
+  // Show arrow only when at the very top
+  const updateArrow = () => {
+    if (window.scrollY === 0) {
+      scrollArrow.classList.add('show');
+      scrollArrow.classList.remove('hide');
+    } else {
+      scrollArrow.classList.remove('show');
+      scrollArrow.classList.add('hide');
+    }
+  };
+
+  // Initial check after DOM is ready
+  updateArrow();
+
+  window.addEventListener('scroll', updateArrow, { passive: true });
 };

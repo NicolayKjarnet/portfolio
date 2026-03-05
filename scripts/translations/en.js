@@ -33,6 +33,8 @@ export default {
   },
   about: {
     title: 'About me',
+    intro:
+      "Developer by day, creative by nature.\nI'm obsessed with crafting delightful user experiences where every visit feels a little different — bridging code and visual storytelling to build things that work, surprise, and look good doing it.",
     skillsLabel: 'Skills',
     bio: "I'm a Frontend Developer at Cavai, where I build and improve the platform powering our interactive advertising solutions. I started as a Creative Developer in September 2024, creating games, quizzes and interactive campaigns from concept to code - a role where my background in visual storytelling enriched every technical solution. Now I work with Vue and TypeScript, developing the tools that bring these creatives to life.",
     trait1:
