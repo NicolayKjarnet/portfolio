@@ -185,9 +185,9 @@ section {
 }
 
 @keyframes light-swing {
-  0%, 100% { transform: translateX(-50%) rotate(0deg); }
-  25% { transform: translateX(calc(-50% - 0.56rem)) rotate(5deg); }
-  75% { transform: translateX(calc(-50% + 0.56rem)) rotate(-5deg); }
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: translateX(-0.56rem) rotate(5deg); }
+  75% { transform: translateX(0.56rem) rotate(-5deg); }
 }
 
 /* Spotlight cone — sways with lamp but amplified */
