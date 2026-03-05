@@ -232,7 +232,7 @@ section {
 .section-contact > .wave-bottom {
   position: absolute;
   bottom: 100%;
-  z-index: 3;
+  z-index: 5;
 }
 
 .section-contact > .title-section {
@@ -3325,10 +3325,6 @@ button:focus-visible,
   .section-about .title-element-container .title-element-3 {
     color: oklch(60% 0.04 135);
     color: var(--clr-orange)
-  }
-
-  .section-contact > .lamp-cord {
-    clip-path: inset(14rem 0 0 0);
   }
 
   .section-contact > .title-section {
