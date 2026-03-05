@@ -1,3 +1,13 @@
+import { renderProjects } from './renderProjects.js';
+import { renderVisualProjects, setupVisualPlayers } from './renderVisualProjects.js';
+import { renderMusicProjects } from './renderMusicProjects.js';
+
+const renderers = {
+  web: () => renderProjects(),
+  visual: () => { const html = renderVisualProjects(); return html; },
+  music: () => renderMusicProjects(),
+};
+
 export const setupProjectFiltering = () => {
   const filterItems = document.querySelectorAll('.filter-item');
   const filterDropdown = document.querySelector('.filter-dropdown');
@@ -18,18 +28,12 @@ export const setupProjectFiltering = () => {
   const filterProjects = (filterValue) => {
     if (!projectSection) return;
 
-    projectSection.querySelectorAll('.project-section__article').forEach((article) => {
-      const isMatch = article.classList.contains(`project-section__article--${filterValue}`);
-      article.classList.toggle('project-section__article--dimmed', !isMatch);
-    });
-
-    // Disable snap, reset scroll, re-enable after layout settles (double-rAF for Safari)
-    projectSection.style.scrollSnapType = 'none';
-    projectSection.scrollLeft = 0;
-    requestAnimationFrame(() => {
-      projectSection.scrollLeft = 0;
-      requestAnimationFrame(() => { projectSection.style.scrollSnapType = ''; });
-    });
+    // Re-render only the matching category's cards
+    const render = renderers[filterValue];
+    if (render) {
+      projectSection.innerHTML = render();
+      if (filterValue === 'visual') setupVisualPlayers();
+    }
 
     // Shift section vibe based on active filter
     if (darkSection) {
@@ -44,7 +48,7 @@ export const setupProjectFiltering = () => {
     if (bracket2) bracket2.textContent = symbols[1];
 
     // Animate visible cards with a stagger reveal
-    const visible = projectSection.querySelectorAll('.project-section__article:not(.project-section__article--dimmed)');
+    const visible = projectSection.querySelectorAll('.project-section__article');
     if (typeof gsap !== 'undefined') {
       gsap.from(visible, {
         opacity: 0, y: 20, duration: 0.4, stagger: 0.06, ease: "power2.out",

@@ -2,9 +2,6 @@ import { initI18n, onLangChange } from './i18n.js';
 import { saveScrollPosition, restoreScrollPosition } from './scrollPosition.js';
 import { setupSmoothScrolling, setupScrollArrow } from './smoothScrolling.js';
 import { setupProjectFiltering } from './filterProjects.js';
-import { renderProjects } from './renderProjects.js';
-import { renderMusicProjects } from './renderMusicProjects.js';
-import { renderVisualProjects, setupVisualPlayers } from './renderVisualProjects.js';
 import { setupMusicPlayer } from './musicPlayer.js';
 import { setupLightbox } from './lightbox.js';
 import { setupWaveAnimation } from './waveAnimation.js';
@@ -12,30 +9,9 @@ import { setupFooterGif, setupHeaderGif } from './footerGif.js';
 import { setupPeekingGif } from './peekingGif.js';
 import { addTimelineToPage, updateTimelineText } from './timelineData.js';
 
-function resetProjectScroll() {
-  const ps = document.querySelector('.project-section');
-  if (!ps) return;
-  ps.style.scrollSnapType = 'none';
-  ps.scrollLeft = 0;
-  // Re-enable snap after layout settles (double-rAF for Safari)
-  requestAnimationFrame(() => {
-    ps.scrollLeft = 0;
-    requestAnimationFrame(() => { ps.style.scrollSnapType = ''; });
-  });
-}
-
-function renderAllProjects() {
-  const projectSection = document.querySelector('.project-section');
-  projectSection.innerHTML = renderProjects() + renderVisualProjects() + renderMusicProjects();
-  setupVisualPlayers();
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize i18n first (detects language, updates static DOM)
   initI18n();
-
-  // Render all project types
-  renderAllProjects();
 
   // Build timeline
   addTimelineToPage();
@@ -43,22 +19,20 @@ document.addEventListener('DOMContentLoaded', function () {
   // Restore vertical scroll position on page load
   restoreScrollPosition();
 
-  // Attach saveScrollPosition function to all project links
-  document.querySelectorAll('.project-link').forEach(function (link) {
-    link.addEventListener('click', saveScrollPosition);
-  });
-
   // Initialize smooth scrolling
   setupSmoothScrolling();
 
   // Initialize scroll arrow
   setupScrollArrow();
 
+  // Filter setup renders the initial project set (web by default)
   setupProjectFiltering();
 
-  // Ensure project section starts at first item on page load
-  resetProjectScroll();
-  window.addEventListener('load', resetProjectScroll);
+  // Attach saveScrollPosition to project links (delegated)
+  document.querySelector('.project-section')?.addEventListener('click', (e) => {
+    const link = e.target.closest('.project-link');
+    if (link) saveScrollPosition();
+  });
 
   setupMusicPlayer();
   setupLightbox();
@@ -71,19 +45,12 @@ document.addEventListener('DOMContentLoaded', function () {
   setupHeaderGif();
   setupPeekingGif();
 
-
   // Re-render JS content on language change
   onLangChange(() => {
     const currentFilter = document.querySelector('.filter-item.active')?.dataset.filter || 'web';
-    renderAllProjects();
     updateTimelineText();
 
-    // Re-attach project link handlers
-    document.querySelectorAll('.project-link').forEach(function (link) {
-      link.addEventListener('click', saveScrollPosition);
-    });
-
-    // Re-apply current filter
+    // Re-apply current filter (re-renders project cards)
     document.querySelector(`.filter-item[data-filter="${currentFilter}"]`)?.click();
   });
 });

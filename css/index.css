@@ -600,9 +600,6 @@ section {
   background-color: #6b4a4e;
 }
 
-.project-section__article--dimmed {
-  display: none;
-}
 
 /* Project Image Container */
 .project-section__img-container {
@@ -2819,10 +2816,6 @@ button:focus-visible,
   .project-section__article {
     flex: 0 0 85vw;
     scroll-snap-align: start;
-  }
-
-  .project-section__article--dimmed {
-    display: none;
   }
 
   .title-section {
