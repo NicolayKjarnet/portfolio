@@ -3191,10 +3191,10 @@ button:focus-visible,
   }
 
   .forest-treeline {
-    height: 40px;
+    height: 60px;
   }
 
-  .leaf { width: 12px; height: 12px; }
+  .leaf { width: 12px; height: 12px; opacity: 0.25; }
 
   .wave-footer-top svg {
     height: 40px;
