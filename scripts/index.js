@@ -46,7 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Ensure project section starts at first item on page load
   const projectSection = document.querySelector('.project-section');
-  if (projectSection) projectSection.scrollLeft = 0;
+  if (projectSection) {
+    projectSection.style.scrollSnapType = 'none';
+    projectSection.scrollLeft = 0;
+    requestAnimationFrame(() => { projectSection.style.scrollSnapType = ''; });
+  }
 
   setupMusicPlayer();
   setupLightbox();

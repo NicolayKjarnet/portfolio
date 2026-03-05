@@ -23,7 +23,12 @@ export const setupProjectFiltering = () => {
       article.classList.toggle('project-section__article--dimmed', !isMatch);
     });
 
-    projectSection.scrollTo({ left: 0, behavior: 'instant' });
+    // Temporarily disable scroll-snap so the reset isn't overridden
+    projectSection.style.scrollSnapType = 'none';
+    projectSection.scrollLeft = 0;
+    requestAnimationFrame(() => {
+      projectSection.style.scrollSnapType = '';
+    });
 
     // Shift section vibe based on active filter
     if (darkSection) {
