@@ -12,7 +12,7 @@ export const setupProjectFiltering = () => {
   const filterItems = document.querySelectorAll('.filter-item');
   const filterDropdown = document.querySelector('.filter-dropdown');
   const projectSection = document.querySelector('.project-section');
-  const darkSection = projectSection?.closest('.dark');
+  const darkSection = projectSection?.closest('.section-projects');
 
   // Bracket symbols per filter category
   const bracketSymbols = {
@@ -37,9 +37,9 @@ export const setupProjectFiltering = () => {
 
     // Shift section vibe based on active filter
     if (darkSection) {
-      darkSection.classList.remove('dark--music', 'dark--visual');
-      if (filterValue === 'music') darkSection.classList.add('dark--music');
-      if (filterValue === 'visual') darkSection.classList.add('dark--visual');
+      darkSection.classList.remove('section-projects--music', 'section-projects--visual');
+      if (filterValue === 'music') darkSection.classList.add('section-projects--music');
+      if (filterValue === 'visual') darkSection.classList.add('section-projects--visual');
     }
 
     // Update bracket symbols
