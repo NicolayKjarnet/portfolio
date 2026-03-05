@@ -31,6 +31,9 @@ export const setupProjectFiltering = () => {
     // Re-render only the matching category's cards
     const render = renderers[filterValue];
     if (render) {
+      // Disable scroll-snap before rendering to prevent browser from
+      // snapping to a non-first card during layout
+      projectSection.style.scrollSnapType = 'none';
       projectSection.innerHTML = render();
       projectSection.scrollLeft = 0;
       if (filterValue === 'visual') setupVisualPlayers();
@@ -53,8 +56,14 @@ export const setupProjectFiltering = () => {
     if (typeof gsap !== 'undefined') {
       gsap.from(visible, {
         opacity: 0, y: 20, duration: 0.4, stagger: 0.06, ease: "power2.out",
-        clearProps: "opacity,y"
+        clearProps: "opacity,y",
+        onComplete: () => {
+          // Re-enable scroll-snap after animation finishes
+          projectSection.style.scrollSnapType = '';
+        }
       });
+    } else {
+      projectSection.style.scrollSnapType = '';
     }
   };
 
