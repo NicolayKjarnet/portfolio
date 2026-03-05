@@ -12,6 +12,18 @@ import { setupFooterGif, setupHeaderGif } from './footerGif.js';
 import { setupPeekingGif } from './peekingGif.js';
 import { addTimelineToPage, updateTimelineText } from './timelineData.js';
 
+function resetProjectScroll() {
+  const ps = document.querySelector('.project-section');
+  if (!ps) return;
+  ps.style.scrollSnapType = 'none';
+  ps.scrollLeft = 0;
+  // Re-enable snap after layout settles (double-rAF for Safari)
+  requestAnimationFrame(() => {
+    ps.scrollLeft = 0;
+    requestAnimationFrame(() => { ps.style.scrollSnapType = ''; });
+  });
+}
+
 function renderAllProjects() {
   const projectSection = document.querySelector('.project-section');
   projectSection.innerHTML = renderProjects() + renderVisualProjects() + renderMusicProjects();
@@ -45,12 +57,8 @@ document.addEventListener('DOMContentLoaded', function () {
   setupProjectFiltering();
 
   // Ensure project section starts at first item on page load
-  const projectSection = document.querySelector('.project-section');
-  if (projectSection) {
-    projectSection.style.scrollSnapType = 'none';
-    projectSection.scrollLeft = 0;
-    requestAnimationFrame(() => { projectSection.style.scrollSnapType = ''; });
-  }
+  resetProjectScroll();
+  window.addEventListener('load', resetProjectScroll);
 
   setupMusicPlayer();
   setupLightbox();

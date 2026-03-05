@@ -23,11 +23,12 @@ export const setupProjectFiltering = () => {
       article.classList.toggle('project-section__article--dimmed', !isMatch);
     });
 
-    // Temporarily disable scroll-snap so the reset isn't overridden
+    // Disable snap, reset scroll, re-enable after layout settles (double-rAF for Safari)
     projectSection.style.scrollSnapType = 'none';
     projectSection.scrollLeft = 0;
     requestAnimationFrame(() => {
-      projectSection.style.scrollSnapType = '';
+      projectSection.scrollLeft = 0;
+      requestAnimationFrame(() => { projectSection.style.scrollSnapType = ''; });
     });
 
     // Shift section vibe based on active filter
