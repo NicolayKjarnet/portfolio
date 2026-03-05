@@ -1692,6 +1692,7 @@ body.gif-cursor-striking * {
   color: white;
   font-family: Poppins, sans-serif;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .gif-game__timer-section {
