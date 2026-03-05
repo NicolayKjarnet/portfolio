@@ -1456,11 +1456,13 @@ video.project-section__img {
   text-shadow: none;
   font-weight: 400;
   white-space: nowrap;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .peek-gif__bubble--reveal {
   white-space: normal;
-  max-width: min(320px, 80vw);
+  max-width: min(420px, 85vw);
   text-align: center;
 }
 
