@@ -15,7 +15,7 @@
   </head>
   <body>
     <!-- Header -->
-    <section class="red">
+    <section class="section-hero">
       <header role="banner" class="header">
         <button class="lang-toggle" data-lang-toggle data-i18n-aria="langToggle.ariaLabel" aria-label="Switch language">
           <span class="lang-toggle__option lang-toggle__option--active" data-lang="en">EN</span>
@@ -65,7 +65,7 @@
     </section>
 
     <!-- Projects -->
-    <section class="dark">
+    <section class="section-projects">
       <div id="projects" class="projects__title-section title-section">
         <div class="title-element-container">
           <p class="title-element title-element-1">{</p>
@@ -103,7 +103,7 @@
       </div>
 
       <div class="project-section"></div>
-      <div class="wave">
+      <div class="wave-top">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +116,10 @@
           ></path>
         </svg>
       </div>
-      <div class="curve">
+    </section>
+
+    <section class="section-contact">
+      <div class="wave-bottom">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -129,9 +132,8 @@
           ></path>
         </svg>
       </div>
-    </section>
-
-    <section class="green">
+      <div class="grain-overlay" aria-hidden="true"></div>
+      <div class="lamp-cord" aria-hidden="true"></div>
       <div id="contact" class="title-section" aria-labelledby="contact-heading">
         <div class="title-element-container">
           <p class="title-element title-element-1">{</p>
@@ -151,8 +153,7 @@
           <div class="contact-header">
             <h3 class="contact-header__title" data-i18n="contact.heading">Let's create something together</h3>
             <p class="contact-header__subtitle" data-i18n="contact.subtitle">
-              Whether you have a project in mind, a job opportunity, or just want to say hello - I'd
-              love to hear from you.
+              Got a project in mind? A job opportunity? Or just want to say hello? I'd love to hear from you.
             </p>
           </div>
 
@@ -218,8 +219,8 @@
     </section>
 
     <!-- About -->
-    <section class="orange" aria-labelledby="about-heading">
-      <div class="wave-2">
+    <section class="section-about" aria-labelledby="about-heading">
+      <div class="wave-about-top">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -252,8 +253,8 @@
               <img
                 loading="lazy"
                 decoding="async"
-                width="300px"
-                height="300px"
+                width="120"
+                height="120"
                 src="/images/profile-pic-no-bg.webp"
                 alt="Nicolay Kjærnet"
               />
@@ -313,7 +314,7 @@
 
     <!-- Footer -->
     <section id="footer-section">
-      <div class="wave-3">
+      <div class="wave-footer-top">
         <svg
           data-name="Layer 1"
           xmlns="http://www.w3.org/2000/svg"
@@ -322,7 +323,7 @@
         >
           <defs>
             <linearGradient id="wave3-split" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="50%" stop-color="var(--clr-dark-2)" />
+              <stop offset="50%" stop-color="oklch(95% 0.01 80)" />
               <stop offset="50%" stop-color="var(--clr-orange)" />
             </linearGradient>
           </defs>

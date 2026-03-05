@@ -116,7 +116,7 @@ section {
   padding: 7rem 20vw;
 }
 
-.red {
+.section-hero {
   background: linear-gradient(
     135deg,
     var(--gradient-color-1) 0%,
@@ -128,33 +128,145 @@ section {
   min-height: 100dvh;
 }
 
-.green {
-  background-color: var(--clr-green);
+.section-contact {
+  --clr-spotlight: oklch(88% 0.04 80);
+  background-color: oklch(13% 0.008 60);
 }
 
-.green > .title-section {
+.section-contact > .grain-overlay {
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+/* Lamp cord — div inside .section-contact, extends above into .section-projects area.
+   No explicit z-index → z-index: auto (layer 0), so it paints
+   BEHIND .wave-bottom (z-index: 2) and BEHIND .wave-about-top (auto, later DOM). */
+.section-contact > .lamp-cord {
+  position: absolute;
+  z-index: 4;
+  clip-path: inset(12rem 0 0 0);
+  top: -16rem;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 16.3rem;
+  background: #555;
+  pointer-events: none;
+  transform-origin: 50% 0%;
+  animation: lamp-swing 6s ease-in-out infinite;
+}
+
+/* Lamp shade — ::before on .section-contact, z-index: 2 so it paints
+   IN FRONT of .wave-bottom (same z-index, later DOM order). */
+.section-contact::before {
+  content: '';
+  position: absolute;
+  top: -0.2rem;
+  left: calc(50% - 1.5rem);
+  width: 3rem;
+  height: 3.5rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 40'%3E%3Cpolygon points='12,0 36,0 42,40 6,40' fill='%23555'/%3E%3C/svg%3E") no-repeat center / contain;
+  z-index: 5;
+  pointer-events: none;
+  transform-origin: 50% -15.8rem;
+  animation: lamp-swing 6s ease-in-out infinite;
+}
+
+@keyframes lamp-swing {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(2deg); }
+  75% { transform: rotate(-2deg); }
+}
+
+@keyframes light-swing {
+  0%, 100% { transform: translateX(-50%) rotate(0deg); }
+  25% { transform: translateX(calc(-50% - 0.56rem)) rotate(5deg); }
+  75% { transform: translateX(calc(-50% + 0.56rem)) rotate(-5deg); }
+}
+
+/* Spotlight cone — sways with lamp but amplified */
+.section-contact::after {
+  content: '';
+  position: absolute;
+  top: 3.5rem;
+  left: 50%;
+  width: 100%;
+  height: 85%;
+  background: conic-gradient(
+    from 0deg at 50% 0%,
+    transparent 0deg,
+    transparent 155deg,
+    oklch(75% 0.08 70 / 0.15) 163deg,
+    oklch(75% 0.08 70 / 0.35) 172deg,
+    oklch(75% 0.08 70 / 0.45) 180deg,
+    oklch(75% 0.08 70 / 0.35) 188deg,
+    oklch(75% 0.08 70 / 0.15) 197deg,
+    transparent 205deg,
+    transparent 360deg
+  );
+  mask: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+  -webkit-mask: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 6;
+  mix-blend-mode: difference;
+  transform-origin: 50% 0%;
+  animation: light-swing 6s ease-in-out infinite;
+}
+
+/* Hide the glow div — grain is now on section background */
+.section-contact .contact-card__glow {
+  display: none;
+}
+
+.section-contact > * {
+  position: relative;
+  z-index: 4;
+}
+
+.section-contact > .wave-bottom {
+  position: absolute;
+  bottom: 100%;
+  z-index: 3;
+}
+
+.section-contact > .title-section {
   margin-top: 2rem;
 }
 
-.orange {
+.section-about {
   background-color: var(--clr-orange);
 }
 
-.dark {
+.section-projects {
   background: linear-gradient(135deg, var(--clr-dark) 0%, var(--clr-dark-2) 100%);
   padding: 7rem 10vw 14rem;
   transition: background 0.6s ease;
+  z-index: 2;
 }
 
-.dark--music {
+/* Dark section content above lamp cord (z-index: 3) */
+.section-projects > .projects__title-section,
+.section-projects > .filter-box,
+.section-projects > .project-section {
+  position: relative;
+  z-index: 5;
+}
+
+.section-projects--music {
   background: linear-gradient(135deg, oklch(21% 0.03 280) 0%, oklch(28% 0.04 300) 100%);
 }
 
-.dark--visual {
-  background: linear-gradient(135deg, oklch(20% 0.04 220) 0%, oklch(26% 0.05 200) 100%);
+.section-projects--visual {
+  background: linear-gradient(135deg, oklch(15% 0.03 220) 0%, oklch(20% 0.04 200) 100%);
 }
 
-.dark--visual::after {
+.section-projects--visual::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -168,9 +280,9 @@ section {
 }
 
 
-.dark h2,
-.dark h3,
-.dark p {
+.section-projects h2,
+.section-projects h3,
+.section-projects p {
   color: var(--clr-white);
 }
 
@@ -204,12 +316,14 @@ section {
   word-spacing: 100vw;
   line-height: 0.95;
   letter-spacing: 0.02em;
+  text-indent: 0.02em;
   font-weight: 700;
 }
 
 .header__paragraph {
   font-weight: 300;
   letter-spacing: 0.2em;
+  text-indent: 0.2em;
   text-transform: uppercase;
   font-size: clamp(0.875rem, 1.5vw + 0.5rem, 1.35rem);
   opacity: 0.85;
@@ -272,7 +386,7 @@ section {
 
 .list-item > a {
   transition: 0.3s ease-in-out;
-  text-decoration: none var(--clr-green) 0.12rem;
+  text-decoration: none oklch(80% 0.04 80) 0.12rem;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-size: 0.9rem;
@@ -289,7 +403,7 @@ section {
 
 .list-item a:hover {
   color: var(--clr-white);
-  text-decoration: underline wavy var(--clr-green) 0.12rem;
+  text-decoration: underline wavy oklch(80% 0.04 80) 0.12rem;
   text-underline-offset: 0.3rem;
 }
 
@@ -434,14 +548,23 @@ section {
   transition: color 0.6s ease;
 }
 
-.dark--visual .title-element-container .title-element-1,
-.dark--visual .title-element-container .title-element-3 {
+.section-projects--visual .title-element-container .title-element-1,
+.section-projects--visual .title-element-container .title-element-3 {
   color: oklch(65% 0.08 200);
 }
 
-.dark--music .title-element-container .title-element-1,
-.dark--music .title-element-container .title-element-3 {
+.section-projects--music .title-element-container .title-element-1,
+.section-projects--music .title-element-container .title-element-3 {
   color: oklch(60% 0.08 300);
+}
+
+.section-contact .title-element-container .title-element-1,
+.section-contact .title-element-container .title-element-3 {
+  color: oklch(65% 0.03 80);
+}
+
+.section-contact .title-element-container .title-element-2 {
+  color: oklch(90% 0.04 80);
 }
 
 /* Title Animations */
@@ -767,7 +890,7 @@ video.project-section__img {
   font-family: 'Syne', sans-serif;
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--clr-white);
+  color: oklch(90% 0.04 80);
   margin: 0 0 0.75rem 0;
   line-height: 1.2;
 }
@@ -795,23 +918,21 @@ video.project-section__img {
   overflow: hidden;
 }
 
-.contact-card__glow {
-  display: none;
-}
+/* .contact-card__glow repurposed as grain overlay — see .section-contact section */
 
 .contact-item {
   display: flex;
   align-items: center;
   gap: 1rem;
   padding: 1rem 1.25rem;
-  background: var(--clr-dark-2);
+  background: oklch(18% 0.008 60);
   border-radius: 1rem;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-item:not(.contact-item--static):hover {
-  background: var(--clr-dark);
+  background: oklch(22% 0.01 60);
   transform: translateX(4px);
 }
 
@@ -821,8 +942,8 @@ video.project-section__img {
 }
 
 .contact-item:not(.contact-item--static):hover .contact-item__icon {
-  background: var(--clr-orange);
-  color: var(--clr-dark);
+  background: oklch(85% 0.04 80);
+  color: oklch(13% 0.008 60);
 }
 
 .contact-item__icon {
@@ -831,9 +952,9 @@ video.project-section__img {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--clr-dark);
+  background: oklch(18% 0.008 60);
   border-radius: 0.75rem;
-  color: var(--clr-orange);
+  color: oklch(80% 0.04 80);
   font-size: 1.1rem;
   transition: all 0.3s ease;
   flex-shrink: 0;
@@ -858,12 +979,10 @@ video.project-section__img {
   font-size: 1rem;
   color: var(--clr-white);
   font-weight: 500;
-  overflow-wrap: break-word;
-  word-break: break-all;
 }
 
 .contact-item__arrow {
-  color: var(--clr-orange);
+  color: oklch(80% 0.04 80);
   opacity: 0.5;
   transition: all 0.3s ease;
   font-size: 0.9rem;
@@ -884,7 +1003,7 @@ video.project-section__img {
   content: '';
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--clr-orange), transparent);
+  background: linear-gradient(90deg, transparent, oklch(70% 0.03 80 / 0.4), transparent);
 }
 
 .contact-divider span {
@@ -910,7 +1029,7 @@ video.project-section__img {
   justify-content: center;
   gap: 0.6rem;
   padding: 0.9rem 1rem;
-  background: var(--clr-dark-2);
+  background: oklch(18% 0.008 60);
   border-radius: 0.75rem;
   color: var(--clr-white);
   text-decoration: none;
@@ -925,11 +1044,10 @@ video.project-section__img {
 }
 
 .social-link:hover {
-  background: var(--clr-orange);
-  border-color: var(--clr-orange);
-  color: var(--clr-dark);
+  background: oklch(85% 0.04 80);
+  color: oklch(13% 0.008 60);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px -8px rgba(178, 125, 62, 0.5);
+  box-shadow: 0 8px 20px -8px oklch(85% 0.04 80 / 0.3);
 }
 
 .social-link:hover i {
@@ -988,7 +1106,7 @@ video.project-section__img {
   corner-bottom-left-shape: square;
   corner-bottom-right-shape: square;
   background-color: var(--clr-orange);
-  width: 180px;
+  width: 120px;
   display: flex;
   justify-content: center;
   transition: transform 0.5s ease, filter 0.3s ease-in-out;
@@ -996,6 +1114,7 @@ video.project-section__img {
   border: none;
   padding: 0;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 
   &:focus {
     outline: none;
@@ -1032,7 +1151,7 @@ video.project-section__img {
   .profile-image__ring::before,
   .profile-image__ring::after {
     corner-shape: squircle;
-    width: 180px;
+    width: 120px;
     border-radius: 50%;
     display: block;
   }
@@ -1443,6 +1562,11 @@ video.project-section__img {
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7), 0 0 2px rgba(0, 0, 0, 0.5);
 }
 
+/* Counter-flip bubble when GIF is mirrored (peeking from left) */
+.peek-gif--flipped .peek-gif__bubble {
+  transform: translateX(-50%) scaleX(-1);
+}
+
 .peek-gif--chatbot {
   pointer-events: auto;
   cursor: pointer;
@@ -1461,7 +1585,7 @@ video.project-section__img {
 
 .peek-gif__bubble--reveal {
   white-space: normal;
-  max-width: min(420px, 85vw);
+  width: min(500px, 92vw);
   text-align: center;
 }
 
@@ -1959,9 +2083,9 @@ body.gif-cursor-striking * {
    SVG DECORATIONS (Waves & Curves)
    ============================================ */
 
-.wave,
-.wave-2,
-.wave-3 {
+.wave-top,
+.wave-about-top,
+.wave-footer-top {
   position: absolute;
   top: 0;
   left: 0;
@@ -1970,18 +2094,18 @@ body.gif-cursor-striking * {
   line-height: 0;
 }
 
-.wave svg {
+.wave-top svg {
   position: relative;
   display: block;
   width: calc(123% + 1.3px);
   height: 237px;
 }
 
-.wave .shape-fill {
+.wave-top .shape-fill {
   fill: var(--clr-red);
 }
 
-.dark > .wave {
+.section-projects > .wave-top {
   background: linear-gradient(
     135deg,
     var(--gradient-color-1) 0%,
@@ -1995,56 +2119,59 @@ body.gif-cursor-striking * {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z'/%3E%3C/svg%3E");
   mask-size: calc(123% + 1.3px) 100%;
   mask-repeat: no-repeat;
+  z-index: 5;
 }
 
-.dark > .wave svg {
+.section-projects > .wave-top svg {
   visibility: hidden;
 }
 
-.curve {
+.wave-bottom {
   position: absolute;
-  bottom: 0;
+  bottom: 100%;
   left: 0;
   width: 100%;
   overflow: hidden;
   line-height: 0;
-  z-index: 2;
+  z-index: 0;
 }
 
-.curve svg {
+.wave-bottom svg {
   position: relative;
   display: block;
   width: calc(130% + 1.3px);
   height: 180px;
 }
 
-.curve .shape-fill {
-  fill: var(--clr-green);
+.wave-bottom .shape-fill {
+  fill: oklch(13% 0.008 60);
 }
 
-.wave-2 {
+
+.wave-about-top {
   transform: rotate(180deg);
 }
 
-.wave-2 svg {
+.wave-about-top svg {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
   height: 318px;
 }
 
-.wave-2 .shape-fill {
-  fill: var(--clr-green);
+.wave-about-top .shape-fill {
+  fill: oklch(13% 0.008 60);
 }
 
-.wave-3 svg {
+
+.wave-footer-top svg {
   position: relative;
   display: block;
   width: calc(100% + 1.3px);
   height: 384px;
 }
 
-.wave-3 .shape-fill {
+.wave-footer-top .shape-fill {
   fill: var(--clr-orange);
 }
 
@@ -2757,7 +2884,7 @@ button:focus-visible,
     animation: none;
   }
 
-  .red {
+  .section-hero {
     background: var(--gradient-color-1);
     background-attachment: scroll;
   }
@@ -2824,7 +2951,7 @@ button:focus-visible,
     margin: 2rem 0;
   }
 
-  .dark {
+  .section-projects {
     padding: 3rem 1rem;
   }
 
@@ -2881,8 +3008,12 @@ button:focus-visible,
 
   /* Contact */
   .contact-card {
-    padding: 2rem 1.5rem;
-    margin: 0 1rem;
+    padding: 2rem 1rem;
+    margin: 0 0.5rem;
+  }
+
+  .contact-item__value {
+    font-size: 0.85rem;
   }
 
   .contact-header__title {
@@ -2928,32 +3059,32 @@ button:focus-visible,
     aspect-ratio: 9/10;
   }
 
-  .wave svg,
-  .curve svg {
+  .wave-top svg,
+  .wave-bottom svg {
     width: calc(100% + 1.3px);
     height: 40px;
   }
 
   /* Mobile: skip gradient+mask on dark wave — background-attachment:fixed breaks on mobile */
-  .dark > .wave {
+  .section-projects > .wave-top {
     background: none;
     -webkit-mask-image: none;
     mask-image: none;
   }
 
-  .dark > .wave svg {
+  .section-projects > .wave-top svg {
     visibility: visible;
   }
 
-  .dark > .wave .shape-fill {
+  .section-projects > .wave-top .shape-fill {
     fill: var(--gradient-color-1);
   }
 
-  .wave-2 svg {
+  .wave-about-top svg {
     height: 40px;
   }
 
-  .wave-3 svg {
+  .wave-footer-top svg {
     height: 40px;
   }
 
@@ -3014,25 +3145,25 @@ button:focus-visible,
    ABOUT SECTION: 50/50 PINNED LAYOUT (Desktop)
    ============================================ */
 @media (min-width: 1024px) {
-  .orange {
+  .section-about {
     padding: 20rem 0 0;
     justify-content: flex-start;
   }
 
-  /* Panel background extends through entire section */
-  .orange::before {
+  /* Panel background extends through entire section — offwhite */
+  .section-about::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 50%;
     height: 100%;
-    background-color: var(--clr-dark-2);
+    background-color: var(--clr-orange);
     z-index: 1;
   }
 
   /* Divider line with fade at top and bottom */
-  .orange::after {
+  .section-about::after {
     content: '';
     position: absolute;
     top: 0;
@@ -3053,24 +3184,26 @@ button:focus-visible,
   }
 
   /* Wave-2 (top of about): keep original green, sit above ::before */
-  .orange > .wave-2 {
+  .section-about > .wave-about-top {
     z-index: 2;
   }
 
-  /* Wave-3 (top of footer): split fill via SVG gradient — JS animates path like other waves */
-  #footer-section > .wave-3 .shape-fill {
-    fill: url(#wave3-split);
-  }
+  /* Wave-3 (top of footer): solid orange — base rule handles it */
 
-  .orange > .title-section {
+  .section-about > .title-section {
     margin-top: 0;
     margin-bottom: 3rem;
     position: relative;
     z-index: 2;
   }
 
-  .green > .title-section {
-    margin-top: 1rem;
+  .section-about .title-element-container .title-element-1,
+  .section-about .title-element-container .title-element-3 {
+    color: oklch(45% 0.04 60);
+  }
+
+  .section-contact > .title-section {
+    margin-top: 3rem;
   }
 
   .about-content {
@@ -3098,11 +3231,11 @@ button:focus-visible,
     max-width: none;
     align-self: flex-start;
     overflow: hidden;
-    background-color: var(--clr-dark-2);
+    background-color: var(--clr-orange);
   }
 
   .profile-card:hover {
-    background-color: var(--clr-dark-2);
+    background-color: var(--clr-orange);
   }
 
   /* Hide mobile-only elements on desktop */
@@ -3153,7 +3286,7 @@ button:focus-visible,
     height: 10%;
     background: linear-gradient(
       to bottom,
-      var(--clr-dark-2) 0%,
+      var(--clr-orange) 0%,
       transparent 100%
     );
     z-index: 1;
@@ -3169,7 +3302,7 @@ button:focus-visible,
 
   .scrollytelling-media .scrollytelling-fallback {
     object-fit: contain;
-    background-color: var(--clr-dark-2);
+    background-color: var(--clr-orange);
     padding: 4rem;
   }
 
@@ -3184,7 +3317,7 @@ button:focus-visible,
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      var(--clr-dark-2) 100%
+      var(--clr-orange) 100%
     );
     pointer-events: none;
   }
@@ -3206,11 +3339,11 @@ button:focus-visible,
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.03em;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.06);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--clr-light);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: oklch(25% 0.01 60);
   }
 
   /* Hide inline media on desktop (shown in scrollytelling panel instead) */
