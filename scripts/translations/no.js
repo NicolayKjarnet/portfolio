@@ -25,7 +25,7 @@ export default {
     title: 'Ta kontakt',
     heading: 'La oss bygge noe sammen',
     subtitle:
-      'Har du et prosjekt i tankene? En jobbmulighet? Eller kanskje du bare vil si hei? Jeg hører gjerne fra deg, jeg.',
+      'Har du et prosjekt i tankene? En jobbmulighet? Eller bare vil si hei? Jeg hører gjerne fra deg.',
     email: 'E-post',
     location: 'Sted',
     locationValue: 'Tønsberg, Norge',
@@ -34,7 +34,7 @@ export default {
   about: {
     title: 'Om meg',
     skillsLabel: 'Ferdigheter',
-    bio: 'Jeg er frontend-utvikler hos Cavai, hvor jeg bygger og forbedrer plattformen som driver våre interaktive annonseløsninger. Jeg begynte som Creative Developer i september 2024, der jeg skapte spill, quizer og interaktive kampanjer fra konsept til kode – en rolle hvor bakgrunnen min innen visuell historiefortelling beriket hver tekniske løsning. Nå jobber jeg med Vue og TypeScript, og utvikler verktøyene som gir disse kreasjonene liv.',
+    bio: 'Nå for tiden er jeg frontend-utvikler hos Cavai, hvor jeg bygger og forbedrer plattformen som driver våre interaktive annonseløsninger. Jeg begynte som Creative Developer i september 2024, der jeg skapte spill, quizer og interaktive kampanjer fra konsept til kode – en rolle hvor bakgrunnen min innen visuell historiefortelling beriket hver tekniske løsning. Nå jobber jeg med Vue og TypeScript, og utvikler verktøyene som gir disse kreasjonene liv.',
     trait1:
       '7+ år som innholdsprodusent i musikkbransjen, med artister fra nye talenter til kjente navn.',
     trait2:
@@ -114,7 +114,7 @@ export default {
     ],
   },
   project: {
-    inProgress: 'Pågående',
+    inProgress: 'Arbeid pågår',
     readMore: 'Les mer',
     visitWebsite: 'Besøk nettsted',
     aboutHeading: 'Om',

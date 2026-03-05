@@ -25,7 +25,7 @@ export default {
     title: 'Get in touch',
     heading: "Let's create something together",
     subtitle:
-      "Whether you have a project in mind, a job opportunity, or just want to say hello - I'd love to hear from you.",
+      "Got a project in mind? A job opportunity? Or just want to say hello? I'd love to hear from you.",
     email: 'Email',
     location: 'Location',
     locationValue: 'Tønsberg, Norway',
