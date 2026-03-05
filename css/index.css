@@ -3327,6 +3327,10 @@ button:focus-visible,
     color: var(--clr-orange)
   }
 
+  .section-contact > .lamp-cord {
+    clip-path: inset(14rem 0 0 0);
+  }
+
   .section-contact > .title-section {
     margin-top: 3rem;
   }
