@@ -12,10 +12,7 @@ const SPEED = 0.22;
 const SEGMENTS = 150;
 
 const WAVE_CONFIG = {
-  wave: { amplitude: 12, frequency: 2.5, baseY: 45, anchor: 'top' },
-  curve: { amplitude: 10, frequency: 1.5, baseY: 30, anchor: 'bottom' },
-  'wave-2': { amplitude: 14, frequency: 2, baseY: 35, anchor: 'bottom' },
-  'wave-3': { amplitude: 12, frequency: 2.5, baseY: 45, anchor: 'top' },
+  'wave-top': { amplitude: 12, frequency: 2.5, baseY: 45, anchor: 'top' },
 };
 
 const WIDTH = 1200;
@@ -57,8 +54,8 @@ export function setupWaveAnimation() {
   // Skip wave path animation on small screens — static SVGs look fine at 40px height
   if (window.innerWidth < 769) return;
 
-  // Find the masked wave container (.dark > .wave) for syncing mask-image
-  const maskedWaveContainer = document.querySelector('.dark > .wave');
+  // Find the masked wave container (.section-projects > .wave-top) for syncing mask-image
+  const maskedWaveContainer = document.querySelector('.section-projects > .wave-top');
 
   const entries = Object.entries(WAVE_CONFIG)
     .map(([className, config]) => {
