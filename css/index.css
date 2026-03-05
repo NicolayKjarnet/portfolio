@@ -1412,6 +1412,10 @@ video.project-section__img {
   z-index: 900;
   pointer-events: none;
   opacity: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .peek-gif__img {
