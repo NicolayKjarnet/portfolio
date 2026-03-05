@@ -127,6 +127,10 @@ export function setupPeekingGif() {
     return PEEK_HOLD_MIN + Math.random() * (PEEK_HOLD_MAX - PEEK_HOLD_MIN);
   }
 
+  function flipSuffix() {
+    return wrapper.classList.contains('peek-gif--flipped') ? ' scaleX(-1)' : '';
+  }
+
   function clampBubble() {
     requestAnimationFrame(() => {
       const r = bubble.getBoundingClientRect();
@@ -137,7 +141,9 @@ export function setupPeekingGif() {
         shiftX = (window.innerWidth - 4) - r.right;
       }
       if (shiftX !== 0) {
-        bubble.style.transform = `translateX(calc(-50% + ${shiftX}px))`;
+        // When flipped, invert the shift direction
+        const dir = wrapper.classList.contains('peek-gif--flipped') ? -1 : 1;
+        bubble.style.transform = `translateX(calc(-50% + ${shiftX * dir}px))${flipSuffix()}`;
       }
       if (r.top < 4) {
         bubble.style.bottom = '';
@@ -149,7 +155,7 @@ export function setupPeekingGif() {
   function showBubble(text) {
     bubble.textContent = text;
     bubble.style.left = '50%';
-    bubble.style.transform = 'translateX(-50%)';
+    bubble.style.transform = `translateX(-50%)${flipSuffix()}`;
     bubble.style.bottom = '105%';
     bubble.style.top = '';
     bubble.classList.add('peek-gif__bubble--visible');
@@ -178,7 +184,7 @@ export function setupPeekingGif() {
     const text = lures[Math.floor(Math.random() * lures.length)];
     bubble.textContent = text;
     bubble.style.left = '50%';
-    bubble.style.transform = 'translateX(-50%)';
+    bubble.style.transform = `translateX(-50%)${flipSuffix()}`;
     bubble.style.bottom = '105%';
     bubble.style.top = '';
     bubble.classList.add('peek-gif__bubble--chatbot', 'peek-gif__bubble--visible');
@@ -252,6 +258,8 @@ export function setupPeekingGif() {
       },
     });
     currentTl = tl;
+
+    wrapper.classList.toggle('peek-gif--flipped', !!pos.flipX);
 
     tl.set(wrapper, {
       x: pos.fromX,

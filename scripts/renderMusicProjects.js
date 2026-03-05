@@ -42,11 +42,11 @@ const musicProjects = [
   {
     title: 'This Won\u2019t Last When You Know the Beginning',
     artist: 'trueandtrue',
-    role: { en: 'Bass & Songwriter', no: 'Bass & låtskriver' },
+    role: { en: 'Songwriter, Bassist & visual identity', no: 'Låtskriver, bassist og visuell identitet' },
     year: 2024,
     description: {
-      en: 'Six tracks blending post-punk, hardcore and screamo — featuring jazz pianist Bugge Wesseltoft. I designed all cover art, Spotify Canvas visuals, and visual identity for the band.',
-      no: 'Seks spor som blander post-punk, hardcore og screamo – med jazzpianist Bugge Wesseltoft. Jeg designet all coverkunst, Spotify Canvas-videoer og visuell identitet for bandet.',
+      en: 'Six tracks blending post-punk, hardcore and screamo - featuring jazz pianist Bugge Wesseltoft on track 4. Visuals by me, from cover art to Spotify Canvas and music videos.',
+      no: 'Seks spor som blander post-punk, hardcore og screamo, med jazzpianist Bugge Wesseltoft på spor 4. Alt visuelt for bandet, fra coverart til Spotify Canvas og musikkvideoer, er laget av meg. Med gode innspill fra bandet selvfølgelig, særlig Vincent Engebretsen.',
     },
     imgSrc: '/images/this-wont-last-cover.png',
     tracks: [
@@ -65,11 +65,11 @@ const musicProjects = [
   {
     title: 'Back into Quiet',
     artist: 'trueandtrue',
-    role: { en: 'Bass & Songwriter', no: 'Bass & låtskriver' },
+    role: { en: 'Songwriter, Bassist, visuals', no: 'Låtskriver, bassist, visuelt' },
     year: 2024,
     description: {
-      en: 'Five tracks from hardcore fury to shoegaze nostalgia. Cover art, Spotify Canvas and all visuals by me.',
-      no: 'Fem spor fra hardcore-raseri til shoegaze-nostalgi. Coverkunst, Spotify Canvas og alt visuelt av meg.',
+      en: 'Five tracks from hardcore fury to shoegaze nostalgia.',
+      no: 'Fem spor fra hardcore til shoegaze-nostalgi.',
     },
     imgSrc: '/images/biq-ep-cover.png',
     tracks: [
@@ -87,11 +87,11 @@ const musicProjects = [
   {
     title: 'Indie/Post-Rock Demos',
     artist: 'Whatever Floats',
-    role: { en: 'Multi-instrumentalist, Producer & Mix', no: 'Multi-instrumentalist, produsent & miks' },
+    role: { en: 'Instruments, Producer & Mix', no: 'Instrumenter, produsent & miks' },
     year: 2021,
     description: {
-      en: 'Self-produced demos with real bass, guitar and keys, MIDI drums — written, recorded and mixed by me.',
-      no: 'Egenproduserte demoer med ekte bass, gitar og keys, MIDI-trommer — skrevet, spilt inn og mikset av meg.',
+      en: 'Self-produced demos where I play guitar, bass, keys and MIDI drums — written, recorded and mixed by me.',
+      no: 'Egenproduserte demoer hvor jeg spiller gitar, bass, keys og MIDI-trommer - skrevet, spilt inn og mikset av meg.',
     },
     imgSrc: '/images/whatever-floats-allergic-to-the-21st-century-cover.png',
     tracks: [

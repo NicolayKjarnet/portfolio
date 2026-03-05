@@ -18,7 +18,7 @@ export const setupSmoothScrolling = () => {
 
 export const setupScrollArrow = () => {
   const scrollArrow = document.querySelector('#scroll-arrow');
-  const header = document.querySelector('.red');
+  const header = document.querySelector('.section-hero');
 
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
