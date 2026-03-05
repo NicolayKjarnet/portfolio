@@ -3093,8 +3093,11 @@ button:focus-visible,
   }
 
   .profile-image img {
-    width: 160px;
-    padding-top: 0.8rem;
+    width: 100%;
+    height: 100%;
+    padding-top: 0;
+    object-fit: cover;
+    object-position: center 15%;
     border-radius: 0;
   }
 
