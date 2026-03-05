@@ -9,11 +9,6 @@ import { setupFooterGif, setupHeaderGif } from './footerGif.js';
 import { setupPeekingGif } from './peekingGif.js';
 import { addTimelineToPage, updateTimelineText } from './timelineData.js';
 
-// Prevent browser from auto-restoring scroll positions on nested containers
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize i18n first (detects language, updates static DOM)
   initI18n();

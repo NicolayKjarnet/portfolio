@@ -8,6 +8,8 @@ const renderers = {
   music: () => renderMusicProjects(),
 };
 
+const isMobile = window.innerWidth < 769;
+
 export const setupProjectFiltering = () => {
   const filterItems = document.querySelectorAll('.filter-item');
   const filterDropdown = document.querySelector('.filter-dropdown');
@@ -31,11 +33,7 @@ export const setupProjectFiltering = () => {
     // Re-render only the matching category's cards
     const render = renderers[filterValue];
     if (render) {
-      // Disable scroll-snap before rendering to prevent browser from
-      // snapping to a non-first card during layout
-      projectSection.style.scrollSnapType = 'none';
       projectSection.innerHTML = render();
-      projectSection.scrollLeft = 0;
       if (filterValue === 'visual') setupVisualPlayers();
     }
 
@@ -51,19 +49,15 @@ export const setupProjectFiltering = () => {
     if (bracket1) bracket1.textContent = symbols[0];
     if (bracket2) bracket2.textContent = symbols[1];
 
-    // Animate visible cards with a stagger reveal
-    const visible = projectSection.querySelectorAll('.project-section__article');
-    if (typeof gsap !== 'undefined') {
-      gsap.from(visible, {
-        opacity: 0, y: 20, duration: 0.4, stagger: 0.06, ease: "power2.out",
-        clearProps: "opacity,y",
-        onComplete: () => {
-          // Re-enable scroll-snap after animation finishes
-          projectSection.style.scrollSnapType = '';
-        }
-      });
-    } else {
-      projectSection.style.scrollSnapType = '';
+    // Animate visible cards — desktop only (gsap interferes with scroll-snap on mobile)
+    if (!isMobile) {
+      const visible = projectSection.querySelectorAll('.project-section__article');
+      if (typeof gsap !== 'undefined') {
+        gsap.from(visible, {
+          opacity: 0, y: 20, duration: 0.4, stagger: 0.06, ease: "power2.out",
+          clearProps: "opacity,y"
+        });
+      }
     }
   };
 
