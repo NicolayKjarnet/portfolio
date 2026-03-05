@@ -28,8 +28,8 @@ function randomPosition() {
   const margin = s + 20;
   const randRotation = (Math.random() - 0.5) * 20;
 
-  // ~40% chance to only peek halfway in
-  const partial = Math.random() < 0.4;
+  // On mobile: always partial peek so GIF stays at screen edge
+  const partial = isTouch ? true : Math.random() < 0.4;
   const peekDepth = partial ? s * 0.4 : s + 5;
 
   const ry = margin + Math.random() * (vh - margin * 2);
@@ -39,12 +39,14 @@ function randomPosition() {
       x: vw - peekDepth, y: ry,
       fromX: vw + overshoot, fromY: ry,
       rotation: randRotation,
+      flipX: false,
     };
   } else {
     return {
       x: -s + peekDepth, y: ry,
       fromX: -overshoot, fromY: ry,
       rotation: randRotation,
+      flipX: true,
     };
   }
 }
@@ -255,6 +257,7 @@ export function setupPeekingGif() {
       x: pos.fromX,
       y: pos.fromY,
       rotation: 0,
+      scaleX: pos.flipX ? -1 : 1,
       opacity: 1,
     });
 

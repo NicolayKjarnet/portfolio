@@ -858,6 +858,8 @@ video.project-section__img {
   font-size: 1rem;
   color: var(--clr-white);
   font-weight: 500;
+  overflow-wrap: break-word;
+  word-break: break-all;
 }
 
 .contact-item__arrow {
@@ -2558,7 +2560,7 @@ button:focus-visible,
 
 .mini-player {
   position: fixed;
-  bottom: 0;
+  bottom: env(safe-area-inset-bottom, 0px);
   left: 0;
   right: 0;
   z-index: 999;
@@ -2566,11 +2568,10 @@ button:focus-visible,
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 0.6rem 1.2rem;
-  padding-bottom: calc(0.6rem + env(safe-area-inset-bottom, 0px));
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  transform: translateY(100%);
+  transform: translateY(calc(100% + env(safe-area-inset-bottom, 0px)));
   transition: transform 0.3s ease;
 }
 
