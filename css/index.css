@@ -2151,6 +2151,19 @@ body.gif-cursor-striking * {
   visibility: hidden;
 }
 
+/* Sailboat on wave */
+.wave-boat {
+  position: absolute;
+  width: 40px;
+  height: 54px;
+  left: 75%;
+  bottom: 45%;
+  z-index: 10;
+  transform-origin: center bottom;
+  filter: drop-shadow(0 2px 4px oklch(0% 0 0 / 0.3));
+  pointer-events: none;
+}
+
 .wave-bottom {
   position: absolute;
   bottom: 100%;
@@ -3103,6 +3116,12 @@ button:focus-visible,
 
   .section-projects > .wave-top .shape-fill {
     fill: oklch(25% 0.06 240);
+  }
+
+  .wave-boat {
+    width: 24px;
+    height: 32px;
+    bottom: 40%;
   }
 
   .wave-about-top svg {
