@@ -195,8 +195,8 @@ section {
   content: '';
   position: absolute;
   top: 3.5rem;
-  left: 50%;
-  width: 100%;
+  left: -50%;
+  width: 200%;
   height: 85%;
   background: conic-gradient(
     from 0deg at 50% 0%,
