@@ -3028,6 +3028,7 @@ button:focus-visible,
   /* Swipeable project cards */
   .project-section {
     display: flex;
+    justify-content: flex-start;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
