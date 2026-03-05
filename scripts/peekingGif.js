@@ -8,9 +8,9 @@ const MAX_INTERVAL = isTouch ? 10000 : 7000;
 const PEEK_HOLD_MIN = 2000;
 const PEEK_HOLD_MAX = 4000;
 const FLEE_DISTANCE = 150;
-const CHATBOT_CHANCE = 0.08;
-const CHATBOT_MIN_PEEKS = 4;
-const CHATBOT_HOLD = 7000;
+const CHATBOT_CHANCE = 0.2;
+const CHATBOT_MIN_PEEKS = 2;
+const CHATBOT_HOLD = 8000;
 
 /**
  * Generate a random peek position from any screen edge.

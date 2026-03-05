@@ -2776,6 +2776,20 @@ button:focus-visible,
 
 /* Tablets & down */
 @media (max-width: 768px) {
+  :root {
+    --title-font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  @keyframes curly-right {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(1rem); }
+  }
+
+  @keyframes curly-left {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-1rem); }
+  }
+
   section {
     padding: 3rem 1rem;
   }
