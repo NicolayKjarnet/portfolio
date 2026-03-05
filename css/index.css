@@ -246,7 +246,9 @@ section {
 }
 
 .section-projects {
-  background: linear-gradient(135deg, var(--clr-dark) 0%, var(--clr-dark-2) 100%);
+  background:
+    linear-gradient(to bottom, oklch(30% 0.08 245) 0%, var(--clr-dark) 320px, var(--clr-dark-2) 100%),
+    linear-gradient(135deg, var(--clr-dark) 0%, var(--clr-dark-2) 100%);
   padding: 7rem 10vw 14rem;
   transition: background 0.6s ease;
   z-index: 2;
@@ -261,11 +263,15 @@ section {
 }
 
 .section-projects--music {
-  background: linear-gradient(135deg, oklch(21% 0.03 280) 0%, oklch(28% 0.04 300) 100%);
+  background:
+    linear-gradient(to bottom, oklch(30% 0.08 245) 0%, oklch(21% 0.03 280) 320px, oklch(28% 0.04 300) 100%),
+    linear-gradient(135deg, oklch(21% 0.03 280) 0%, oklch(28% 0.04 300) 100%);
 }
 
 .section-projects--visual {
-  background: linear-gradient(135deg, oklch(15% 0.03 220) 0%, oklch(20% 0.04 200) 100%);
+  background:
+    linear-gradient(to bottom, oklch(30% 0.08 245) 0%, oklch(15% 0.03 220) 320px, oklch(20% 0.04 200) 100%),
+    linear-gradient(135deg, oklch(15% 0.03 220) 0%, oklch(20% 0.04 200) 100%);
 }
 
 .section-projects--visual::after {
@@ -2128,15 +2134,17 @@ body.gif-cursor-striking * {
 }
 
 .wave-top .shape-fill {
-  fill: oklch(25% 0.06 240);
+  fill: var(--clr-red);
 }
 
 .section-projects > .wave-top {
   background: linear-gradient(
-    to bottom,
-    oklch(30% 0.08 245) 0%,
-    var(--clr-dark) 100%
+    135deg,
+    var(--gradient-color-1) 0%,
+    var(--gradient-color-2) 50%,
+    var(--gradient-color-3) 100%
   );
+  background-attachment: fixed;
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath fill='white' d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z'/%3E%3C/svg%3E");
   -webkit-mask-size: calc(123% + 1.3px) 100%;
   -webkit-mask-repeat: no-repeat;
@@ -2151,13 +2159,13 @@ body.gif-cursor-striking * {
   visibility: hidden;
 }
 
-/* Sailboat on wave */
+/* Sailboat on wave — positioned in .section-projects, sits at the wave line */
 .wave-boat {
   position: absolute;
   width: 40px;
   height: 54px;
   left: 75%;
-  bottom: 45%;
+  top: 0;
   z-index: 10;
   transform-origin: center bottom;
   filter: drop-shadow(0 2px 4px oklch(0% 0 0 / 0.3));
@@ -3105,7 +3113,7 @@ button:focus-visible,
 
   /* Mobile: skip gradient+mask on dark wave — background-attachment:fixed breaks on mobile */
   .section-projects > .wave-top {
-    background: linear-gradient(to bottom, oklch(30% 0.08 245) 0%, var(--clr-dark) 100%);
+    background: none;
     -webkit-mask-image: none;
     mask-image: none;
   }
@@ -3115,13 +3123,13 @@ button:focus-visible,
   }
 
   .section-projects > .wave-top .shape-fill {
-    fill: oklch(25% 0.06 240);
+    fill: var(--gradient-color-1);
   }
 
   .wave-boat {
     width: 24px;
     height: 32px;
-    bottom: 40%;
+    top: 20px;
   }
 
   .wave-about-top svg {

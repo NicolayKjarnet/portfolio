@@ -18,8 +18,10 @@ const WAVE_CONFIG = {
 const WIDTH = 1200;
 const HEIGHT = 120;
 
-/** Boat horizontal position as fraction of wave width (0–1) */
-const BOAT_X_RATIO = 0.75;
+/** Boat CSS left: 75%. On desktop, wave SVG/mask is 123% wide,
+ *  so 0.75 / 1.23 ≈ 0.61. On mobile, wave is 100% wide → 0.75. */
+const BOAT_X_RATIO_DESKTOP = 0.61;
+const BOAT_X_RATIO_MOBILE = 0.75;
 
 function generatePath(phase, { amplitude, frequency, baseY, anchor }) {
   const points = [];
@@ -64,8 +66,8 @@ export function setupWaveAnimation() {
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) return;
 
-  if (window.innerWidth < 769) return;
-
+  const isDesktop = window.innerWidth >= 769;
+  const boatXRatio = isDesktop ? BOAT_X_RATIO_DESKTOP : BOAT_X_RATIO_MOBILE;
   const maskedWaveContainer = document.querySelector('.section-projects > .wave-top');
   const boat = document.querySelector('.wave-boat');
 
@@ -92,21 +94,22 @@ export function setupWaveAnimation() {
       const d = generatePath(phase, config);
       path.setAttribute('d', d);
 
-      if (isMasked && container) {
+      if (isMasked && container && isDesktop) {
         const maskValue = buildMaskURI(d);
         container.style.webkitMaskImage = maskValue;
         container.style.maskImage = maskValue;
       }
 
-      // Sync boat position to wave
-      if (boat && isMasked) {
-        const waveY = getWaveY(BOAT_X_RATIO, phase, config);
-        const slope = getWaveSlope(BOAT_X_RATIO, phase, config);
+      // Sync boat position to wave — boat is in .section-projects, wave-top is sibling
+      if (boat && isMasked && container) {
+        const waveY = getWaveY(boatXRatio, phase, config);
+        const slope = getWaveSlope(boatXRatio, phase, config);
         const rotation = Math.atan(slope) * (180 / Math.PI) * 0.6;
-        // waveY is in SVG units (0–120). Convert to percentage of container height.
-        const yPercent = (waveY / HEIGHT) * 100;
-        boat.style.bottom = `${100 - yPercent}%`;
-        boat.style.transform = `translateY(50%) rotate(${rotation.toFixed(1)}deg)`;
+        // waveY is in SVG units (0–120). Convert to px using container height.
+        const containerH = container.offsetHeight;
+        const topPx = (waveY / HEIGHT) * containerH;
+        boat.style.top = `${topPx}px`;
+        boat.style.transform = `translateY(-90%) rotate(${rotation.toFixed(1)}deg)`;
       }
     }
 
