@@ -3109,6 +3109,7 @@ button:focus-visible,
   .wave-bottom svg {
     width: calc(100% + 1.3px);
     height: 40px;
+    margin-bottom: -1px;
   }
 
   /* Mobile: skip gradient+mask on dark wave — background-attachment:fixed breaks on mobile */
