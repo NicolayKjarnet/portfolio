@@ -3025,6 +3025,10 @@ button:focus-visible,
     padding: 3rem 1rem;
   }
 
+  .section-contact > .lamp-cord {
+    display: none;
+  }
+
   /* Swipeable project cards */
   .project-section {
     display: flex;
@@ -3325,10 +3329,6 @@ button:focus-visible,
   .section-about .title-element-container .title-element-3 {
     color: oklch(60% 0.04 135);
     color: var(--clr-orange)
-  }
-
-  .section-contact > .lamp-cord {
-    display: none;
   }
 
   .section-contact > .title-section {
