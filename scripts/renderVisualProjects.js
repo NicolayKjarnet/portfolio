@@ -19,8 +19,8 @@ const visualProjects = [
   {
     title: 'Hammok - One Minute',
     description: {
-      en: 'Official music video. Skate footage with Eloi Gonzalez Granados, Hampus Bergh & more.',
-      no: 'Offisiell musikkvideo. Skatefootage med Eloi Gonzalez Granados, Hampus Bergh med flere.',
+      en: 'Music video for Hammok. Filmed on an afternoon in Oslo with no real plan. Fun project where I got to experiment with visuals and editing.',
+      no: 'Musikkvideo for Hammok. Filmet på en ettermiddag i Oslo uten noen skikkelig plan. Et morsomt prosjekt hvor jeg fikk eksperimentere med kameravinkler og redigering.',
     },
     role: { en: 'Director, Camera, Editor', no: 'Regissør, kamera, redigering' },
     year: 2024,
@@ -31,8 +31,8 @@ const visualProjects = [
    {
     title: 'trueandtrue - Pin My Gaze',
     description: {
-      en: 'Music video from the EP "This Won\'t Last When You Know the Beginning."',
-      no: 'Musikkvideo fra EP-en \u00ABThis Won\'t Last When You Know the Beginning\u00BB.',
+      en: 'Music video from the EP "This Won\'t Last When You Know the Beginning. Filmed on Hvaler in Norway with me behind the camera and Vincent Engebretsen in front of it.',
+      no: 'Musikkvideo fra EP-en \u00ABThis Won\'t Last When You Know the Beginning\u00BB. Filmet på hvaler med meg bak kamera og Vincent Engebretsen foran.',
     },
     role: { en: 'Director, Camera, Editor', no: 'Regissør, kamera, redigering' },
     year: 2024,
@@ -43,8 +43,8 @@ const visualProjects = [
   {
     title: 'Ushikawa - Everlasting Green',
     description: {
-      en: 'Official music video starring Emma-Sofie Feen Kvarsnes.',
-      no: 'Offisiell musikkvideo med Emma-Sofie Feen Kvarsnes.',
+      en: 'Music video starring Emma-Sofie Feen Kvarsnes.',
+      no: 'Musikkvideo med Emma-Sofie Feen Kvarsnes.',
     },
     role: { en: 'Director, Camera, Editor', no: 'Regissør, kamera, redigering' },
     year: 2021,
@@ -55,10 +55,10 @@ const visualProjects = [
   {
     title: 'Victoria Nadine - Nerve',
     description: {
-      en: 'Official music video.',
-      no: 'Offisiell musikkvideo.',
+      en: 'Official music video. A cool project to be part of, and a bit outside of the other projects in this list in terms of popularity and reach.',
+      no: 'Offisiell musikkvideo. Et kult prosjekt å være en del av, og langt utenfor de andre prosjektene i denne lista mtp. popularitet og reach. Jeg har for øvrig jobbet med store navn før, men mest SoMe og mindre synlige prosjekter, så her er det faktisk noe å vise frem.',
     },
-    role: { en: 'Editor, Text', no: 'Redigering, tekst' },
+    role: { en: 'Editor, Texting', no: 'Redigering, teksting' },
     year: 2022,
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Pop'],
     youtubeId: '2Lh7zL49Lyo',
@@ -68,7 +68,7 @@ const visualProjects = [
     title: 'Ushikawa - Invite the Grief',
     description: {
       en: 'Official music video.',
-      no: 'Offisiell musikkvideo.',
+      no: 'Sær musikkvideo for Ushikawa. Morsom gjeng å jobbe med.',
     },
     role: { en: 'Director, DP, Editor', no: 'Regissør, fotograf, redigering' },
     year: 2022,
@@ -79,8 +79,8 @@ const visualProjects = [
    {
     title: 'Brother Savannah - When You\'re Gone',
     description: {
-      en: 'Official music video.',
-      no: 'Offisiell musikkvideo.',
+      en: 'Music video. A fun, low-budget project where I got to experiment with different filming techniques and editing styles. Towards the end, there\'s a little surprise cameo from Atle Antonsen. Not what you\'d expect from a low-budget indie music video.',
+      no: 'Musikkvideo. Et morsomt lavbudsjett-prosjekt hvor jeg fikk eksperimentere masse. Mot slutten dukker det opp en liten overraskelse i form av Atle Antonsen. Ikke det man forventer av en lavbudsjett indie-musikkvideo.',
     },
     role: { en: 'Director, DP, Editor', no: 'Regissør, fotograf, redigering' },
     year: 2019,

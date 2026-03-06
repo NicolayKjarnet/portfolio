@@ -248,9 +248,9 @@ section {
   background: linear-gradient(
     to bottom,
     var(--clr-about) 0%,
-    var(--clr-about) 30%,
-    oklch(35% 0.04 90) 55%,
-    var(--clr-earth) 75%,
+    var(--clr-about) 15%,
+    oklch(35% 0.04 90) 35%,
+    var(--clr-earth) 55%,
     var(--clr-earth) 100%
   );
 }
@@ -2169,8 +2169,8 @@ body.gif-cursor-striking * {
 /* Sailboat on wave — positioned in .section-projects, sits at the wave line */
 .wave-boat {
   position: absolute;
-  width: 40px;
-  height: 54px;
+  width: 60px;
+  height: 84px;
   left: 75%;
   top: 0;
   z-index: 10;
@@ -3341,9 +3341,9 @@ button:focus-visible,
     background: linear-gradient(
       to bottom,
       var(--clr-about) 0%,
-      var(--clr-about) 30%,
-      oklch(35% 0.04 90) 55%,
-      var(--clr-earth) 75%,
+      var(--clr-about) 15%,
+      oklch(35% 0.04 90) 35%,
+      var(--clr-earth) 55%,
       var(--clr-earth) 100%
     );
     z-index: 1;
@@ -3489,17 +3489,19 @@ button:focus-visible,
   .scrollytelling-media .scrollytelling-fallback {
     object-fit: contain;
     background-color: transparent;
-    padding: 4rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
     max-width: 55%;
-    max-height: 55%;
-    margin: auto;
+    max-height: 70%;
     border-radius: 2rem;
     animation: gentleFloat 6s ease-in-out infinite;
   }
 
   @keyframes gentleFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-12px); }
   }
 
   /* Darken bottom area behind skill tags */

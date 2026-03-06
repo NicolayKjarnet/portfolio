@@ -9,6 +9,7 @@ const PEEK_HOLD_MIN = 2000;
 const PEEK_HOLD_MAX = 4000;
 const FLEE_DISTANCE = 150;
 const CHATBOT_CHANCE = 0.2;
+let lastEdge = Math.random() < 0.5 ? 'right' : 'left';
 const CHATBOT_MIN_PEEKS = 2;
 const CHATBOT_HOLD = 8000;
 
@@ -22,8 +23,9 @@ function randomPosition() {
   const s = GIF_SIZE;
   const overshoot = s + 10;
 
-  // Only peek from left or right sides
-  const edge = Math.random() < 0.5 ? 'right' : 'left';
+  // Alternate sides each peek
+  lastEdge = lastEdge === 'right' ? 'left' : 'right';
+  const edge = lastEdge;
 
   const margin = s + 20;
   const randRotation = (Math.random() - 0.5) * 20;
@@ -105,6 +107,7 @@ export function setupPeekingGif() {
   let hasRevealedPrank = false;
   let peekCount = 0;
   let revealTimer = null;
+  let hasShownChatbot = false;
 
   // Watch footer/header GIF containers — don't peek when they're visible
   const gifEls = document.querySelectorAll('.footer__img-container, .header__cutout-wrap');
@@ -239,8 +242,9 @@ export function setupPeekingGif() {
 
     peekCount++;
 
-    // Rare chatbot prank — only after enough normal peeks
-    isChatbotMode = peekCount > CHATBOT_MIN_PEEKS && Math.random() < CHATBOT_CHANCE;
+    // Rare chatbot prank — only once, and only after enough normal peeks
+    isChatbotMode = !hasShownChatbot && peekCount > CHATBOT_MIN_PEEKS && Math.random() < CHATBOT_CHANCE;
+    if (isChatbotMode) hasShownChatbot = true;
     hasRevealedPrank = false;
 
     const pos = isChatbotMode ? chatbotPosition() : randomPosition();
@@ -330,7 +334,7 @@ export function setupPeekingGif() {
           revealChatbotPrank();
         }
       } else {
-        if (dist < FLEE_DISTANCE * 2) {
+        if (dist < FLEE_DISTANCE * 3) {
           showMessage();
         }
         if (dist < FLEE_DISTANCE) {
