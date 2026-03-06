@@ -1979,10 +1979,11 @@ body.gif-cursor-striking * {
   left: 50%;
   transform: translate(-50%, -50%) scale(0.5);
   font-family: 'Syne', sans-serif;
-  font-size: 5rem;
+  font-size: clamp(3rem, 12vw, 5rem);
   font-weight: 900;
   color: white;
   text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
   animation: go-flash 0.65s ease-out forwards;
   z-index: 10001;
   pointer-events: none;
@@ -2970,6 +2971,67 @@ button:focus-visible,
 
 .lightbox__close:hover {
   opacity: 0.7;
+}
+
+/* ---- Video Cinema Modal ---- */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  pointer-events: none;
+  display: none;
+}
+
+.video-modal--open {
+  display: block;
+  pointer-events: auto;
+}
+
+.video-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  opacity: 0;
+}
+
+.video-modal__video {
+  position: fixed;
+  border-radius: 0.75rem;
+  z-index: 1001;
+  background: black;
+}
+
+.video-modal__close {
+  position: fixed;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--clr-white);
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 1002;
+  opacity: 0;
+  transition: color 0.2s ease;
+}
+
+.video-modal__close:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.video-modal__yt-link {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  color: var(--clr-white);
+  font-size: 1.6rem;
+  z-index: 1002;
+  opacity: 0;
+  transition: color 0.2s ease;
+}
+
+.video-modal__yt-link:hover {
+  color: #ff0000;
 }
 
 /* ============================================
