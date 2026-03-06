@@ -3191,9 +3191,9 @@ button:focus-visible,
   }
 
   .wave-boat {
-    width: 24px;
-    height: 32px;
-    top: 20px;
+    width: 34px;
+    height: 46px;
+    top: 10px;
   }
 
   .wave-about-top svg {
@@ -3328,7 +3328,7 @@ button:focus-visible,
   }
 
   .section-contact > .lamp-cord {
-    clip-path: inset(15rem 0 0 0);
+    display: none;
   }
 
   .section-contact > .title-section {
