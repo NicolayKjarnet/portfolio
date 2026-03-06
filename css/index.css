@@ -2246,9 +2246,9 @@ body.gif-cursor-striking * {
 
 .leaf {
   position: absolute;
-  width: 18px;
-  height: 18px;
-  fill: oklch(55% 0.06 100);
+  width: 24px;
+  aspect-ratio: 1;
+  fill: oklch(100% 0.06 100);
   opacity: 0.35;
   animation: leafFall linear infinite;
 }
