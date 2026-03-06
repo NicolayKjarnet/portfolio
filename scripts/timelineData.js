@@ -16,7 +16,7 @@ const timelineData = [
         no: 'Vue og TypeScript i hverdagen. Mye komponentarbeid, state management og å sørge for at ting ikke går i stykker.',
       },
       {
-        en: "I used work in this platform as a creative for nine months, so I know where the pain points are.",
+        en: "I used to work in this platform as a creative for nine months, so I know where the pain points are.",
         no: 'Jeg jobbet i denne plattformen selv i ni måneder, så jeg vet hvor skoen trykker.',
       },
     ],
@@ -51,16 +51,16 @@ const timelineData = [
       },
       {
         en: 'I do everything from code to product photos and videos.',
-        no: 'Jeg gjør alt fra utvkiling til produktfoto og videoer.',
+        no: 'Jeg gjør alt fra utvikling til produktfoto og videoer.',
       },
     ],
     skills: ['React', 'TypeScript', 'Three.js', 'Supabase'],
-    media: { type: 'video', src: 'images/kithcen-builder.mp4' },
+    media: { type: 'video', src: 'images/kitchen-builder.mp4' },
   },
   {
     year: { en: 'Aug 2018 - Present', no: 'Aug 2018 - Nåværende' },
     title: { en: 'Freelance Content Producer', no: 'Freelance innholdsprodusent' },
-    company: 'Universal Music, EMI Music, Island Records ++',
+    company: 'Universal Music, EMI Records, Island Records ++',
     details: [
       {
         en: "Music videos, promo content and some graphic design. I've worked with everyone from small indie acts to some of Norway's biggest artists.",
@@ -80,11 +80,11 @@ const timelineData = [
     company: 'Wolve IT',
     details: [
       {
-        en: 'Redesigned Wolves loyalty platform. Did user research, testing, prototyping — the whole UX toolkit.',
+        en: "Redesigned Wolve's loyalty platform. Did user research, testing, prototyping — the whole UX toolkit.",
         no: 'Sammen med gruppa mi, gjorde vi en full redesign av lojalitetsplattformen til Wolve. Brukerundersøkelser, testing og prototyping.',
       },
       {
-        en: 'Got top marks and the company was happy. Not bad for a practice run.',
+        en: 'The work resulted in top marks, and the company was very happy with the outcome.',
         no: 'Arbeidet endte i toppkarakter, og selskapet var superfornøyde med resultatet.',
       },
     ],

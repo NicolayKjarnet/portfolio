@@ -91,13 +91,13 @@ const projects = [
   {
     link: 'https://kitchenbuilder.studiotorshov.no/',
     newTab: true,
-    videoSrc: '/images/kithcen-builder.mp4',
+    videoSrc: '/images/kitchen-builder.mp4',
     title: { en: 'Kitchen Planner', no: 'Kjøkkenplanlegger' },
     description: {
-      en: 'An interactive 3D platform for designing custom, sustainable kitchens. Visualize your design kitchen in real-time.',
+      en: 'An interactive 3D platform for designing custom, sustainable kitchens. Visualize your dream kitchen in real-time.',
       no: 'En interaktiv 3D-plattform for å designe tilpassede, bærekraftige kjøkken. Visualiser kjøkkenet ditt i sanntid.',
     },
-    techniques: ['React', 'TypeScript', 'Three.js', 'Taillwind'],
+    techniques: ['React', 'TypeScript', 'Three.js', 'Tailwind'],
     classes: 'project-section__article--web',
     imgClass: 'project-img',
     ongoingProject: true,

@@ -34,8 +34,8 @@ export default {
   about: {
     title: 'Om meg',
     intro:
-      'La meg være ærlig; jeg er ikke den mest tekniske utvikleren du har møtt. Men jeg er idérik og veldig opptatt av å skape gode og morsomme brukeropplevelser der hvert besøk føles litt unikt. Med bakgrunn i video, tekst og grafiske medier, og nå kode (og AI) som verktøy, kan jeg bygge hva jeg vil. Og det er gøy, spesielt når de små detaljene som overrasker lander, og UX-en virkelig sitter.',
-    oneliner: 'Frontend @ Cavai · Tønsberg',
+      'Jeg er en kreativ utvikler som brenner for å lage morsomme, engasjerende brukeropplevelser der hvert besøk føles litt unikt. Med bakgrunn i video, tekst og grafiske medier, og nå kode (og AI) som verktøy, kan jeg bygge hva jeg vil. Og det er gøy, spesielt når de små detaljene som overrasker lander, og UX-en virkelig sitter.',
+    oneliner: 'Frontend-utvikler @ Cavai · Tønsberg',
     skillsLabel: 'Ferdigheter',
     bio: 'Jeg er frontend-utvikler hos Cavai, hvor jeg vedlikeholder og videreutvikler plattformen som driver våre interaktive annonseløsninger, tenk Figma for reklame. Jeg begynte som "Creative Developer" i september 2024 etter å ha fullført en bachelor i Frontend- og mobilutvikling. I denne rollen kodet jeg quizer, spill og andre interaktive kampanjer, noen ganger fra konsept til ferdig løsning, andre ganger bisto jeg kreatørene våre. En rolle hvor bakgrunnen min innen visuell historiefortelling beriket hver tekniske løsning. Nå jobber jeg med plattformen jeg selv jobbet (og jobber) i, noe som gir meg unik innsikt i å gjøre kreatørenes arbeidsdag litt enklere.',
     trait1:

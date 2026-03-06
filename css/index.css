@@ -2728,6 +2728,7 @@ button:focus-visible,
   height: 100%;
   object-fit: cover;
   cursor: pointer;
+  display: block;
 }
 
 .visual-card__play-overlay {
@@ -2766,6 +2767,9 @@ button:focus-visible,
 
 .visual-card__info {
   padding: 1rem;
+  min-height: 9rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .visual-card__title {
@@ -2994,11 +2998,19 @@ button:focus-visible,
   opacity: 0;
 }
 
-.video-modal__video {
+.video-modal__wrap {
   position: fixed;
-  border-radius: 0.75rem;
+  border-radius: 1rem;
+  overflow: hidden;
   z-index: 1001;
   background: black;
+  box-shadow: 0 8px 60px rgba(0, 0, 0, 0.6), 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.video-modal__video {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 .video-modal__close {
@@ -3017,6 +3029,38 @@ button:focus-visible,
 
 .video-modal__close:hover {
   color: rgba(255, 255, 255, 0.7);
+}
+
+.video-modal__prev,
+.video-modal__next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--clr-white);
+  font-size: 1.2rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1002;
+  opacity: 0;
+  transition: background 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-modal__prev { left: 1.2rem; }
+.video-modal__next { right: 1.2rem; }
+
+.video-modal__prev:hover,
+.video-modal__next:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%) scale(1.1);
 }
 
 .video-modal__yt-link {

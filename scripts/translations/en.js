@@ -34,10 +34,10 @@ export default {
   about: {
     title: 'About me',
     intro:
-      "Let me be honest; I'm not the most technical developer you've met. But I'm creative and genuinely passionate about building fun, engaging user experiences where every visit feels a little different. With a background in video, writing and graphic media, and now code (and AI) as my tools, I can build whatever I want. And that's fun — especially when the small surprising details land, and the UX actually feels right.",
-    oneliner: 'Frontend @ Cavai · Tønsberg',
+      "I'm a creative developer who's genuinely passionate about building fun, engaging user experiences where every visit feels a little different. With a background in video, writing and graphic media, and now code (and AI) as my tools, I can build whatever I want. And that's fun — especially when the small surprising details land, and the UX actually feels right.",
+    oneliner: 'Frontend Developer @ Cavai · Tønsberg',
     skillsLabel: 'Skills',
-    bio: "I'm a Frontend Developer at Cavai, where I build and improve the platform powering our interactive advertising solutions. I started as a Creative Developer in September 2024, creating games, quizzes and interactive campaigns from concept to code - a role where my background in visual storytelling enriched every technical solution. Now I work with Vue and TypeScript, developing the tools that bring these creatives to life.",
+    bio: "I'm a Frontend Developer at Cavai, where I maintain and develop the platform powering our interactive advertising solutions — think Figma for ads. I started as a Creative Developer in September 2024, building games, quizzes and interactive campaigns from concept to code. A role where my background in visual storytelling enriched every technical solution. Now I work on the platform I used to work in, which gives me a unique perspective on making the creatives' day-to-day a little easier.",
     trait1:
       '7+ years as a content producer in the music industry, working with artists from emerging talents to household names.',
     trait2:

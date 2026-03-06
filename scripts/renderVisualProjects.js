@@ -27,6 +27,7 @@ const visualProjects = [
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Skateboarding'],
     youtubeId: 'SfcEUHwksBU',
     videoSrc: '/videos/hammok-one-minute.mp4',
+    imgSrc: '/images/hammok-one-minute-thumb-2.png',
     type: 'video',
   },
    {
@@ -39,6 +40,8 @@ const visualProjects = [
     year: 2024,
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Post-Punk'],
     youtubeId: 'dU_fG-5h6gQ',
+    videoSrc: '/videos/trueandtrue-pin-my-gaze.mp4',
+    imgSrc: '/images/pin-my-gaze-2.png',
     type: 'video',
   },
   {
@@ -51,13 +54,15 @@ const visualProjects = [
     year: 2021,
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Indie'],
     youtubeId: 'vOinWBPNyTQ',
+    videoSrc: '/videos/ushikawa-everlasting-green.mp4',
+    imgSrc: '/images/everlasting-green-thumb.png',
     type: 'video',
   },
   {
     title: 'Victoria Nadine - Nerve',
     description: {
-      en: 'Official music video. A cool project to be part of, and a step up from the other projects in this list in terms of reach. I\'ve worked with bigger names before, but mostly social media and less visible projects — so this one\'s actually something to show.',
-      no: 'Offisiell musikkvideo. Et kult prosjekt å være en del av, og langt utenfor de andre prosjektene i denne lista mtp. popularitet og reach. Jeg har for øvrig jobbet med store navn før, men mest SoMe og mindre synlige prosjekter, så her er det faktisk noe å vise frem.',
+      en: 'Official music video. A cool project to be part of, and a step up from the other projects here in terms of reach.',
+      no: 'Offisiell musikkvideo. Et kult prosjekt å være en del av, og et steg opp fra de andre prosjektene her mtp. popularitet og reach.',
     },
     role: { en: 'Editor, Texting', no: 'Redigering, teksting' },
     year: 2022,
@@ -75,6 +80,8 @@ const visualProjects = [
     year: 2022,
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Indie'],
     youtubeId: 'S7cxHb0GZcQ',
+    videoSrc: '/videos/ushikawa-invite-the-grief.mp4',
+    imgSrc: '/images/invite-the-grief-thumb.png',
     type: 'video',
   },
    {
@@ -99,7 +106,7 @@ const renderVisualItem = ({ title, description, role, year, imgSrc, videoSrc, yo
   const media =
     type === 'video' && videoSrc
       ? `<div class="visual-card__video visual-card__video--cinema" data-video-src="${videoSrc}"${youtubeId ? ` data-youtube-id="${youtubeId}"` : ''}>
-            <img class="visual-card__poster" src="${youtubeId ? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg` : ''}" alt="${title}" loading="lazy" />
+            <img class="visual-card__poster" src="${imgSrc}" alt="${title}" loading="lazy" />
             <button class="visual-card__play-overlay" aria-label="${t('visual.playVideo')}"><i class="fas fa-play"></i></button>
             ${ytLink}
           </div>`

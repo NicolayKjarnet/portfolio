@@ -98,7 +98,7 @@ const musicProjects = [
       { title: 'Allergic To The 21st Century', duration: '3:44', previewUrl: '/audio/whatever-floats/allergic-to-the-21st-century.wav', previewStart: '1:13' },
       { title: 'Grey Matter', duration: '3:53', previewUrl: '/audio/whatever-floats/grey-matter.wav', previewStart: '1:34' },
       { title: 'My Vision Is Just Fine, Thank You (Interlude)', duration: '1:00', previewUrl: '/audio/whatever-floats/my-vision-is-just-fine-thank-you.wav', previewStart: '0:15' },
-      { title: 'We Know What You Did', duration: '2:01', previewUrl: '/audio/whatever-floats/we-know-what-you-did.wav', previewStart: '0:30N' },
+      { title: 'We Know What You Did', duration: '2:01', previewUrl: '/audio/whatever-floats/we-know-what-you-did.wav', previewStart: '0:30' },
     ],
     links: [
       { url: 'https://soundcloud.com/nicolaykjaernet/sets/indie-post-rock', platform: 'soundcloud' },
