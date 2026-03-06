@@ -3439,17 +3439,17 @@ button:focus-visible,
     position: relative;
   }
 
-  /* Top fade: subtle vignette into background */
+  /* Top fade: soft vignette into background */
   .scrollytelling-media::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 10%;
+    height: 20%;
     background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.4) 0%,
+      rgba(0, 0, 0, 0.55) 0%,
       transparent 100%
     );
     z-index: 1;
@@ -3469,19 +3469,20 @@ button:focus-visible,
     padding: 4rem;
   }
 
-  /* Bottom fade: transparent → dark blend */
+  /* Bottom fade: transparent → dark blend for tags readability */
   .scrollytelling-media::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 30%;
+    height: 40%;
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(0, 0, 0, 0.4) 100%
+      rgba(0, 0, 0, 0.6) 100%
     );
+    z-index: 1;
     pointer-events: none;
   }
 
@@ -3502,11 +3503,11 @@ button:focus-visible,
     font-size: 0.8rem;
     font-weight: 500;
     letter-spacing: 0.03em;
-    background: rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.12);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: oklch(25% 0.01 60);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
   }
 
   /* Hide inline media on desktop (shown in scrollytelling panel instead) */
