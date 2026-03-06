@@ -2251,10 +2251,11 @@ body.gif-cursor-striking * {
 
 .leaf {
   position: absolute;
+  top: -40px;
   width: 24px;
   aspect-ratio: 1;
   fill: oklch(65% 0.13 120);
-  opacity: 0.6;
+  opacity: 0;
   animation: leafFall linear infinite;
 }
 
@@ -2268,8 +2269,9 @@ body.gif-cursor-striking * {
 .leaf--8 { left: 93%; animation-duration: 19s; animation-delay: 2s;  width: 11px; height: 11px; fill: oklch(50% 0.09 75); }
 
 @keyframes leafFall {
-  0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
-  5%   { opacity: 0.6; }
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  3%   { opacity: 0; }
+  8%   { opacity: 0.6; }
   100% { transform: translateY(calc(100vh + 40px)) rotate(720deg); opacity: 0; }
 }
 
@@ -3229,7 +3231,29 @@ button:focus-visible,
     height: 60px;
   }
 
-  .leaf { width: 12px; height: 12px; opacity: 0.25; }
+  .leaf { width: 12px; height: 12px; opacity: 0.25; top: -30px; }
+
+  .forest-roots,
+  .timeline-title {
+    display: none;
+  }
+
+  /* Drop the card — content flows directly on forest background */
+  .profile-card {
+    background-color: transparent;
+    padding: 1.5rem;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  .profile-card:hover {
+    background-color: transparent;
+  }
+
+  /* Hide verbose bio on mobile — intro + timeline is enough */
+  .bio-container {
+    display: none;
+  }
 
   .wave-footer-top svg {
     height: 40px;
