@@ -4,6 +4,7 @@ import { setupSmoothScrolling, setupScrollArrow } from './smoothScrolling.js';
 import { setupProjectFiltering } from './filterProjects.js';
 import { setupMusicPlayer } from './musicPlayer.js';
 import { setupLightbox } from './lightbox.js';
+import { setupVideoModal } from './videoModal.js';
 import { setupWaveAnimation } from './waveAnimation.js';
 import { setupFooterGif, setupHeaderGif } from './footerGif.js';
 import { setupPeekingGif } from './peekingGif.js';
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   setupMusicPlayer();
   setupLightbox();
+  setupVideoModal();
 
   // Initialize wave animations
   setupWaveAnimation();
