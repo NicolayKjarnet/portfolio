@@ -210,8 +210,8 @@ section {
     transparent 205deg,
     transparent 360deg
   );
-  mask: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
-  -webkit-mask: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+  mask: linear-gradient(to bottom, black 0%, black 40%, transparent 80%);
+  -webkit-mask: linear-gradient(to bottom, black 0%, black 40%, transparent 80%);
   pointer-events: none;
   z-index: 6;
   mix-blend-mode: difference;
