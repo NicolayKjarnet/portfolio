@@ -278,13 +278,22 @@
       <p class="about-intro" data-i18n="about.intro">
         Developer by day, creative by nature. I'm obsessed with crafting delightful user experiences where every visit feels a little different — bridging code and visual storytelling to build things that work, surprise, and look good doing it.
       </p>
-      <!-- Roots growing down from the forest into the timeline -->
-      <svg class="forest-roots" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M100,0 C100,15 98,25 95,35 C93,42 96,50 100,60" stroke="oklch(55% 0.06 70)" stroke-width="2.5" fill="none"/>
-        <path d="M100,0 C100,10 104,20 110,30 C115,38 112,48 108,55" stroke="oklch(50% 0.05 75)" stroke-width="1.5" fill="none" opacity="0.7"/>
-        <path d="M100,0 C100,8 95,16 88,25 C83,32 85,42 90,50" stroke="oklch(50% 0.05 75)" stroke-width="1.5" fill="none" opacity="0.7"/>
-        <path d="M100,0 C101,12 108,18 118,24 C124,28 122,36 118,42" stroke="oklch(48% 0.04 80)" stroke-width="1" fill="none" opacity="0.5"/>
-        <path d="M100,0 C99,10 92,14 82,20 C76,24 78,32 82,38" stroke="oklch(48% 0.04 80)" stroke-width="1" fill="none" opacity="0.5"/>
+      <!-- Roots: wide at top, funneling down to single point at bottom -->
+      <svg class="forest-roots" viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Main taproot — straight down the centre -->
+        <path d="M250,0 C250,30 250,80 250,140" stroke="oklch(55% 0.06 70)" stroke-width="2.5" fill="none"/>
+        <!-- Primary roots — start wide, curve inward to bottom centre -->
+        <path d="M310,0 C308,15 300,40 285,65 C270,90 258,115 250,140" stroke="oklch(52% 0.05 75)" stroke-width="2" fill="none" opacity="0.85"/>
+        <path d="M190,0 C192,15 200,40 215,65 C230,90 242,115 250,140" stroke="oklch(52% 0.05 75)" stroke-width="2" fill="none" opacity="0.85"/>
+        <!-- Secondary roots — wider start -->
+        <path d="M370,0 C365,12 345,35 320,58 C295,82 268,112 252,140" stroke="oklch(48% 0.04 80)" stroke-width="1.5" fill="none" opacity="0.65"/>
+        <path d="M130,0 C135,12 155,35 180,58 C205,82 232,112 248,140" stroke="oklch(48% 0.04 80)" stroke-width="1.5" fill="none" opacity="0.65"/>
+        <!-- Outer roots — widest spread -->
+        <path d="M430,0 C422,10 395,30 360,50 C320,72 280,105 254,140" stroke="oklch(45% 0.03 85)" stroke-width="1.2" fill="none" opacity="0.45"/>
+        <path d="M70,0 C78,10 105,30 140,50 C180,72 220,105 246,140" stroke="oklch(45% 0.03 85)" stroke-width="1.2" fill="none" opacity="0.45"/>
+        <!-- Finest tendrils — edge to edge -->
+        <path d="M480,0 C470,8 430,25 385,42 C335,62 290,95 256,140" stroke="oklch(42% 0.03 85)" stroke-width="0.8" fill="none" opacity="0.3"/>
+        <path d="M20,0 C30,8 70,25 115,42 C165,62 210,95 244,140" stroke="oklch(42% 0.03 85)" stroke-width="0.8" fill="none" opacity="0.3"/>
       </svg>
       <div class="about-content">
         <div class="profile-card">
@@ -365,8 +374,8 @@
         >
           <defs>
             <linearGradient id="wave3-split" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="50%" stop-color="oklch(95% 0.01 80)" />
-              <stop offset="50%" stop-color="var(--clr-orange)" />
+              <stop offset="50%" stop-color="oklch(30% 0.04 60)" />
+              <stop offset="50%" stop-color="oklch(30% 0.04 60)" />
             </linearGradient>
           </defs>
           <path

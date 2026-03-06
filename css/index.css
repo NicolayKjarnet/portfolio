@@ -250,7 +250,8 @@ section {
     var(--clr-about) 0%,
     var(--clr-about) 30%,
     oklch(35% 0.04 90) 55%,
-    var(--clr-earth) 80%
+    var(--clr-earth) 75%,
+    var(--clr-earth) 100%
   );
 }
 
@@ -1444,7 +1445,7 @@ video.project-section__img {
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 1;
+  z-index: 4;
 }
 
 .left .timeline-circle {
@@ -2275,8 +2276,8 @@ body.gif-cursor-striking * {
 .forest-roots {
   position: relative;
   z-index: 2;
-  width: 200px;
-  height: 60px;
+  width: min(600px, 90vw);
+  height: 140px;
   margin: 0 auto;
   display: block;
 }
@@ -2290,7 +2291,7 @@ body.gif-cursor-striking * {
 }
 
 .wave-footer-top .shape-fill {
-  fill: oklch(42% 0.045 135);
+  fill: var(--clr-earth, oklch(30% 0.04 60));
 }
 
 /* ============================================
@@ -3308,7 +3309,8 @@ button:focus-visible,
       var(--clr-about) 0%,
       var(--clr-about) 30%,
       oklch(35% 0.04 90) 55%,
-      var(--clr-earth) 80%
+      var(--clr-earth) 75%,
+      var(--clr-earth) 100%
     );
     z-index: 1;
   }
@@ -3395,11 +3397,11 @@ button:focus-visible,
     max-width: none;
     align-self: flex-start;
     overflow: hidden;
-    background-color: var(--clr-about);
+    background-color: transparent;
   }
 
   .profile-card:hover {
-    background-color: var(--clr-about);
+    background-color: transparent;
   }
 
   /* Hide mobile-only elements on desktop */
