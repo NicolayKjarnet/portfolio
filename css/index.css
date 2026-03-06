@@ -2258,10 +2258,14 @@ body.gif-cursor-striking * {
   animation: leafFall linear infinite;
 }
 
-.leaf--1 { left: 15%; top: -20px; animation-duration: 12s; animation-delay: 0s; }
-.leaf--2 { left: 45%; top: -20px; animation-duration: 16s; animation-delay: 4s; width: 14px; height: 14px; fill: oklch(60% 0.11 85); }
-.leaf--3 { left: 72%; top: -20px; animation-duration: 14s; animation-delay: 7s; width: 16px; height: 16px; fill: oklch(58% 0.12 100); }
-.leaf--4 { left: 88%; top: -20px; animation-duration: 18s; animation-delay: 2s; width: 12px; height: 12px; fill: oklch(52% 0.1 60); }
+.leaf--1 { left: 5%;  animation-duration: 14s; animation-delay: 0s; }
+.leaf--2 { left: 18%; animation-duration: 18s; animation-delay: 3s;  width: 16px; height: 16px; fill: oklch(60% 0.11 85); }
+.leaf--3 { left: 32%; animation-duration: 12s; animation-delay: 8s;  width: 20px; height: 20px; fill: oklch(58% 0.12 100); }
+.leaf--4 { left: 42%; animation-duration: 20s; animation-delay: 1s;  width: 12px; height: 12px; fill: oklch(52% 0.1 60); }
+.leaf--5 { left: 55%; animation-duration: 15s; animation-delay: 5s;  width: 18px; height: 18px; fill: oklch(62% 0.12 110); }
+.leaf--6 { left: 68%; animation-duration: 17s; animation-delay: 10s; width: 14px; height: 14px; fill: oklch(55% 0.10 90); }
+.leaf--7 { left: 80%; animation-duration: 13s; animation-delay: 6s;  width: 20px; height: 20px; fill: oklch(58% 0.11 105); }
+.leaf--8 { left: 93%; animation-duration: 19s; animation-delay: 2s;  width: 11px; height: 11px; fill: oklch(50% 0.09 75); }
 
 @keyframes leafFall {
   0%   { transform: translateY(-20px) rotate(0deg); opacity: 0; }
