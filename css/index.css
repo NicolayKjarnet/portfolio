@@ -3437,23 +3437,14 @@ button:focus-visible,
     width: 100%;
     height: 100%;
     position: relative;
-  }
-
-  /* Top fade: soft vignette into background */
-  .scrollytelling-media::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 20%;
-    background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.55) 0%,
-      transparent 100%
-    );
-    z-index: 1;
-    pointer-events: none;
+    -webkit-mask-image:
+      linear-gradient(to bottom, transparent 0%, black 12%, black 82%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-composite: destination-in;
+    mask-image:
+      linear-gradient(to bottom, transparent 0%, black 12%, black 82%, transparent 100%),
+      linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-composite: intersect;
   }
 
   .scrollytelling-media video,
@@ -3469,18 +3460,18 @@ button:focus-visible,
     padding: 4rem;
   }
 
-  /* Bottom fade: transparent → dark blend for tags readability */
+  /* Darken bottom area behind skill tags */
   .scrollytelling-media::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 40%;
+    height: 35%;
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(0, 0, 0, 0.6) 100%
+      rgba(0, 0, 0, 0.45) 100%
     );
     z-index: 1;
     pointer-events: none;
