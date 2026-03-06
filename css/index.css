@@ -131,6 +131,8 @@ section {
 .section-contact {
   --clr-spotlight: oklch(88% 0.04 80);
   background-color: oklch(13% 0.008 60);
+  padding-top: 3rem;
+  min-height: auto;
 }
 
 .section-contact > .grain-overlay {
