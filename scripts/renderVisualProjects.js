@@ -26,13 +26,14 @@ const visualProjects = [
     year: 2024,
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Skateboarding'],
     youtubeId: 'SfcEUHwksBU',
+    videoSrc: '/videos/hammok-one-minute.mp4',
     type: 'video',
   },
    {
     title: 'trueandtrue - Pin My Gaze',
     description: {
-      en: 'Music video from the EP "This Won\'t Last When You Know the Beginning. Filmed on Hvaler in Norway with me behind the camera and Vincent Engebretsen in front of it.',
-      no: 'Musikkvideo fra EP-en \u00ABThis Won\'t Last When You Know the Beginning\u00BB. Filmet på hvaler med meg bak kamera og Vincent Engebretsen foran.',
+      en: 'Music video from the EP "This Won\'t Last When You Know the Beginning." Filmed on Hvaler in Norway with me behind the camera and Vincent Engebretsen in front of it.',
+      no: 'Musikkvideo fra EP-en \u00ABThis Won\'t Last When You Know the Beginning\u00BB. Filmet p\u00e5 Hvaler med meg bak kamera og Vincent Engebretsen foran.',
     },
     role: { en: 'Director, Camera, Editor', no: 'Regissør, kamera, redigering' },
     year: 2024,
@@ -55,7 +56,7 @@ const visualProjects = [
   {
     title: 'Victoria Nadine - Nerve',
     description: {
-      en: 'Official music video. A cool project to be part of, and a bit outside of the other projects in this list in terms of popularity and reach.',
+      en: 'Official music video. A cool project to be part of, and a step up from the other projects in this list in terms of reach. I\'ve worked with bigger names before, but mostly social media and less visible projects — so this one\'s actually something to show.',
       no: 'Offisiell musikkvideo. Et kult prosjekt å være en del av, og langt utenfor de andre prosjektene i denne lista mtp. popularitet og reach. Jeg har for øvrig jobbet med store navn før, men mest SoMe og mindre synlige prosjekter, så her er det faktisk noe å vise frem.',
     },
     role: { en: 'Editor, Texting', no: 'Redigering, teksting' },
@@ -67,7 +68,7 @@ const visualProjects = [
   {
     title: 'Ushikawa - Invite the Grief',
     description: {
-      en: 'Official music video.',
+      en: 'A weird one for Ushikawa. Fun crew to work with.',
       no: 'Sær musikkvideo for Ushikawa. Morsom gjeng å jobbe med.',
     },
     role: { en: 'Director, DP, Editor', no: 'Regissør, fotograf, redigering' },
@@ -97,10 +98,11 @@ const renderVisualItem = ({ title, description, role, year, imgSrc, videoSrc, yo
 
   const media =
     type === 'video' && videoSrc
-      ? `<div class="visual-card__video">
-          <video src="${videoSrc}" controls preload="metadata" playsinline></video>
-          ${ytLink}
-        </div>`
+      ? `<div class="visual-card__video visual-card__video--cinema" data-video-src="${videoSrc}"${youtubeId ? ` data-youtube-id="${youtubeId}"` : ''}>
+            <img class="visual-card__poster" src="${youtubeId ? `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg` : ''}" alt="${title}" loading="lazy" />
+            <button class="visual-card__play-overlay" aria-label="${t('visual.playVideo')}"><i class="fas fa-play"></i></button>
+            ${ytLink}
+          </div>`
       : type === 'video' && youtubeId
         ? `<div class="visual-card__video visual-card__video--poster" data-youtube-id="${youtubeId}">
             <img class="visual-card__poster" src="https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg" alt="${title}" loading="lazy" />
