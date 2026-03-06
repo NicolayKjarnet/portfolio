@@ -34,7 +34,8 @@ export default {
   about: {
     title: 'About me',
     intro:
-      "Developer by day, creative by nature.\nI'm obsessed with crafting delightful user experiences where every visit feels a little different — bridging code and visual storytelling to build things that work, surprise, and look good doing it.",
+      "Let me be honest; I'm not the most technical developer you've met. But I'm creative and genuinely passionate about building fun, engaging user experiences where every visit feels a little different. With a background in video, writing and graphic media, and now code (and AI) as my tools, I can build whatever I want. And that's fun — especially when the small surprising details land, and the UX actually feels right.",
+    oneliner: 'Frontend @ Cavai · Tønsberg',
     skillsLabel: 'Skills',
     bio: "I'm a Frontend Developer at Cavai, where I build and improve the platform powering our interactive advertising solutions. I started as a Creative Developer in September 2024, creating games, quizzes and interactive campaigns from concept to code - a role where my background in visual storytelling enriched every technical solution. Now I work with Vue and TypeScript, developing the tools that bring these creatives to life.",
     trait1:
@@ -59,7 +60,6 @@ export default {
       'Go away!',
       'Leave me alone!',
       'Personal space, please.',
-      "I'm shy...",
       'Not cool, dude.',
       'Boundaries!',
       'You again?',

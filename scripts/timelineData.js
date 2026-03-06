@@ -8,16 +8,16 @@ const timelineData = [
     company: 'Cavai',
     details: [
       {
-        en: "Building and improving the platform that powers Cavai's interactive advertising solutions.",
-        no: 'Bygger og forbedrer plattformen som driver Cavais interaktive annonseløsninger.',
+        en: "I work on Cavai's ad platform. Think Figma, but for interactive ads.",
+        no: 'Jeg jobber med Cavais annonseplattform. Tenk Figma, men for interaktive annonser.',
       },
       {
-        en: 'Working with Vue.js and TypeScript to develop scalable, maintainable frontend architecture.',
-        no: 'Jobber med Vue.js og TypeScript for å utvikle skalerbar, vedlikeholdbar frontend-arkitektur.',
+        en: 'Vue and TypeScript day-to-day. Lots of component work, state management, and making things not break.',
+        no: 'Vue og TypeScript i hverdagen. Mye komponentarbeid, state management og å sørge for at ting ikke går i stykker.',
       },
       {
-        en: 'Collaborating with the team to enhance developer experience and platform capabilities.',
-        no: 'Samarbeider med teamet for å forbedre utvikleropplevelsen og plattformens kapasitet.',
+        en: "I used work in this platform as a creative for nine months, so I know where the pain points are.",
+        no: 'Jeg jobbet i denne plattformen selv i ni måneder, så jeg vet hvor skoen trykker.',
       },
     ],
     skills: ['Vue.js', 'TypeScript', 'JavaScript', 'SASS/CSS'],
@@ -29,16 +29,12 @@ const timelineData = [
     company: 'Cavai',
     details: [
       {
-        en: 'Created interactive advertising experiences from concept to finished product - games, quizzes, and engaging campaigns.',
-        no: 'Skapte interaktive annonseopplevelser fra konsept til ferdig produkt – spill, quizer og engasjerende kampanjer.',
+        en: 'Built games, quizzes and other interactive campaigns. Sometimes from scratch, often helping the creatives bring their ideas to life.',
+        no: 'Kodet spill, quizer og andre interaktive kampanjer. Noen ganger fra scratch, ofte som en hjelpende hånd for å få kreatørenes ideer til å fungere.',
       },
       {
-        en: 'Combined technical development with visual storytelling to deliver solutions that resonated with audiences.',
-        no: 'Kombinerte teknisk utvikling med visuell historiefortelling for å levere løsninger som traff publikum.',
-      },
-      {
-        en: 'Worked closely with the creative team, translating their ideas into functional, polished experiences.',
-        no: 'Jobbet tett med det kreative teamet, og oversatte ideene deres til funksjonelle, polerte opplevelser.',
+        en: "My first dev job. Turns out a background in film and storytelling is surprisingly useful when you're building stuff people are supposed to enjoy.",
+        no: 'Min første utviklerjobb. Det skulle vise seg at bakgrunn i film og historiefortelling er overraskende nyttig når man lager ting folk faktisk skal ha lyst til å trykke på.',
       },
     ],
     skills: ['JavaScript', 'CSS', 'HTML', '"Vanilla" Game Dev'],
@@ -50,12 +46,12 @@ const timelineData = [
     company: 'Kjærnet-Wesseltoft AS',
     details: [
       {
-        en: 'Developing an interactive platform for designing high-end, sustainable kitchens and a webshop for handcrafted items.',
-        no: 'Utvikler en interaktiv plattform for å designe eksklusive, bærekraftige kjøkken og en nettbutikk for håndlagde produkter.',
+        en: "Side project where I'm building an interactive kitchen planner and a webshop for handcrafted items.",
+        no: 'Sideprosjekt hvor jeg bygger en interaktiv kjøkkenplanlegger og en nettbutikk for hjemmelagde klær og møbler.',
       },
       {
-        en: 'Producing promotional videos, product photos, and marketing content.',
-        no: 'Produserer reklamevideoer, produktfoto og markedsføringsinnhold.',
+        en: 'I do everything from code to product photos and videos.',
+        no: 'Jeg gjør alt fra utvkiling til produktfoto og videoer.',
       },
     ],
     skills: ['React', 'TypeScript', 'Three.js', 'Supabase'],
@@ -63,19 +59,19 @@ const timelineData = [
   },
   {
     year: { en: 'Aug 2018 - Present', no: 'Aug 2018 - Nåværende' },
-    title: { en: 'Freelance Content Producer', no: 'Frilanser innholdsprodusent' },
-    company: 'Universal Music, EMI Music, Island Records, and more',
+    title: { en: 'Freelance Content Producer', no: 'Freelance innholdsprodusent' },
+    company: 'Universal Music, EMI Music, Island Records ++',
     details: [
       {
-        en: 'Producing music videos, promotional content, and graphic design for artists ranging from emerging talents to household names.',
-        no: 'Produserer musikkvideoer, reklameinnhold og grafisk design for artister fra nye talenter til kjente navn.',
+        en: "Music videos, promo content and some graphic design. I've worked with everyone from small indie acts to some of Norway's biggest artists.",
+        no: 'Musikkvideoer, promo-innhold og noe grafisk design. Har jobbet med alt fra små indieartister til noen av Norges største navn.',
       },
       {
-        en: 'Managing the full production pipeline - from concept and pre-production through filming to final delivery.',
-        no: 'Styrer hele produksjonslinjen – fra konsept og forproduksjon via filming til endelig levering.',
+        en: 'Mostly video editing, and mostly social media content, but also filming, directing and ideation.',
+        no: 'Først og fremst klipping av SoMe-innhold, men også film, foto, regi og idé.',
       },
     ],
-    skills: ['Premiere Pro', 'Davinci Resolve', 'Photography', 'Graphic Design'],
+    skills: ['Davinci Resolve', 'Premiere Pro', 'Photography', 'Graphic Design'],
     media: { type: 'video', src: './images/video-content-showreel-short.mp4' },
   },
   {
@@ -84,16 +80,12 @@ const timelineData = [
     company: 'Wolve IT',
     details: [
       {
-        en: "Redesigned the company's loyalty platform with a focus on improved usability and user experience.",
-        no: 'Redesignet selskapets lojalitetsplattform med fokus på forbedret brukervennlighet og brukeropplevelse.',
+        en: 'Redesigned Wolves loyalty platform. Did user research, testing, prototyping — the whole UX toolkit.',
+        no: 'Sammen med gruppa mi, gjorde vi en full redesign av lojalitetsplattformen til Wolve. Brukerundersøkelser, testing og prototyping.',
       },
       {
-        en: 'Conducted user research and market analysis to inform design decisions.',
-        no: 'Gjennomførte brukerundersøkelser og markedsanalyse for å informere designvalg.',
-      },
-      {
-        en: 'Project received top marks and positive feedback from the company.',
-        no: 'Prosjektet fikk toppkarakter og positive tilbakemeldinger fra selskapet.',
+        en: 'Got top marks and the company was happy. Not bad for a practice run.',
+        no: 'Arbeidet endte i toppkarakter, og selskapet var superfornøyde med resultatet.',
       },
     ],
     skills: ['Figma', 'UX Research', 'User Testing', 'Prototyping'],
@@ -105,16 +97,12 @@ const timelineData = [
     company: 'Kristiania University College',
     details: [
       {
-        en: 'Studied web development, mobile app development, UX/UI design, and agile methodologies.',
-        no: 'Studerte webutvikling, mobilapputvikling, UX/UI-design og smidige metoder.',
+        en: 'Where I learned to code. Web, mobile apps, UX — the full stack of frontend stuff and some full-stack.',
+        no: 'Her lærte jeg å kode, før dette var det helt gresk for meg. Nettsider, mobilapper, UX. Hele frontend-pakken og en dæsj med full-stack.',
       },
       {
-        en: 'Built projects with HTML, CSS, JavaScript, React, React Native, Swift, and more.',
-        no: 'Bygget prosjekter med HTML, CSS, JavaScript, React, React Native, Swift og mer.',
-      },
-      {
-        en: 'Developed collaboration and problem-solving skills through team projects.',
-        no: 'Utviklet samarbeids- og problemløsningsferdigheter gjennom teamprosjekter.',
+        en: 'React, React Native, Swift, JavaScript. Lots of group projects, lots of late nights.',
+        no: 'React, React Native, Swift, JavaScript. Masse gruppeprosjekter, mange sene kvelder, men først og fremst gøy!',
       },
     ],
     skills: ['React', 'React Native', 'Swift', 'JavaScript', 'Agile'],
@@ -125,16 +113,12 @@ const timelineData = [
     company: 'Westerdals Oslo ACT',
     details: [
       {
-        en: 'Developed a strong foundation in storytelling, narrative structure, and visual communication.',
-        no: 'Utviklet et solid fundament innen historiefortelling, narrativ struktur og visuell kommunikasjon.',
+        en: "My first degree — storytelling, narrative structure, screenwriting. Wrote short films, TV concepts and feature scripts.",
+        no: 'Min første grad. Historiefortelling, treaktstrukturen, manuskriving. Skrev kortfilmer, TV-konsepter og spillefilmmanus.',
       },
       {
-        en: 'Worked on short films, TV series concepts, and feature film scripts.',
-        no: 'Jobbet med kortfilmer, TV-seriekonsepter og spillefilmmanus.',
-      },
-      {
-        en: 'The storytelling skills from this degree now inform how I approach user experiences and product narratives.',
-        no: 'Historiefortellerferdighetene fra denne graden påvirker nå hvordan jeg tilnærmer meg brukeropplevelser og produktnarrativer.',
+        en: "Might seem unrelated to code, but knowing how to structure a story turns out to be pretty useful when you're designing user flows.",
+        no: 'Kan virke lite relatert til kode, men å vite hvordan man strukturerer en fortelling er overraskende nyttig når man designer brukerflyter.',
       },
     ],
     skills: ['Storytelling', 'Screenwriting', 'Film', 'Narrative Design'],

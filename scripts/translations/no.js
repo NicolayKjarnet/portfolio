@@ -25,7 +25,7 @@ export default {
     title: 'Ta kontakt',
     heading: 'La oss bygge noe sammen',
     subtitle:
-      'Har du et prosjekt i tankene? En jobbmulighet? Eller bare vil si hei? Jeg hører gjerne fra deg.',
+      'Har du et prosjekt i tankene? En jobbmulighet? Eller vil du bare si hei? Jeg hører gjerne fra deg, jeg.',
     email: 'E-post',
     location: 'Sted',
     locationValue: 'Tønsberg, Norge',
@@ -34,9 +34,10 @@ export default {
   about: {
     title: 'Om meg',
     intro:
-      'Utvikler om dagen, kreativ av natur. Jeg er opptatt av å skape gode og morsomme brukeropplevelser der hvert besøk føles litt unikt — og bygger broen mellom kode og visuell historiefortelling for å lage ting som fungerer, overrasker, og ser bra ut mens de gjør det.',
+      'La meg være ærlig; jeg er ikke den mest tekniske utvikleren du har møtt. Men jeg er idérik og veldig opptatt av å skape gode og morsomme brukeropplevelser der hvert besøk føles litt unikt. Med bakgrunn i video, tekst og grafiske medier, og nå kode (og AI) som verktøy, kan jeg bygge hva jeg vil. Og det er gøy, spesielt når de små detaljene som overrasker lander, og UX-en virkelig sitter.',
+    oneliner: 'Frontend @ Cavai · Tønsberg',
     skillsLabel: 'Ferdigheter',
-    bio: 'Nå for tiden er jeg frontend-utvikler hos Cavai, hvor jeg bygger og forbedrer plattformen som driver våre interaktive annonseløsninger. Jeg begynte som Creative Developer i september 2024, der jeg skapte spill, quizer og interaktive kampanjer fra konsept til kode – en rolle hvor bakgrunnen min innen visuell historiefortelling beriket hver tekniske løsning. Nå jobber jeg med Vue og TypeScript, og utvikler verktøyene som gir disse kreasjonene liv.',
+    bio: 'Jeg er frontend-utvikler hos Cavai, hvor jeg vedlikeholder og videreutvikler plattformen som driver våre interaktive annonseløsninger, tenk Figma for reklame. Jeg begynte som "Creative Developer" i september 2024 etter å ha fullført en bachelor i Frontend- og mobilutvikling. I denne rollen kodet jeg quizer, spill og andre interaktive kampanjer, noen ganger fra konsept til ferdig løsning, andre ganger bisto jeg kreatørene våre. En rolle hvor bakgrunnen min innen visuell historiefortelling beriket hver tekniske løsning. Nå jobber jeg med plattformen jeg selv jobbet (og jobber) i, noe som gir meg unik innsikt i å gjøre kreatørenes arbeidsdag litt enklere.',
     trait1:
       '7+ år som innholdsprodusent i musikkbransjen, med artister fra nye talenter til kjente navn.',
     trait2:
@@ -60,7 +61,6 @@ export default {
       'Gå vekk!',
       'La meg være i fred!',
       'Hold avstand, takk.',
-      'Jeg er sjenert...',
       'Ikke kult, kompis.',
       'Grenser!',
       'Deg igjen?',
