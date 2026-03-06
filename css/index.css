@@ -1417,8 +1417,9 @@ video.project-section__img {
   text-align: center;
   font-size: 2.5rem;
   color: var(--clr-white);
-  margin-bottom: 60px;
+  margin-bottom: 0;
   position: relative;
+  z-index: 2;
 }
 
 .timeline-item {
@@ -1441,7 +1442,7 @@ video.project-section__img {
   position: absolute;
   width: var(--timeline-circle-size);
   height: var(--timeline-circle-size);
-  background-color: var(--clr-orange);
+  background-color: var(--clr-white);
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
@@ -1453,10 +1454,6 @@ video.project-section__img {
 }
 .right .timeline-circle {
   left: -20px;
-}
-
-.timeline-circle {
-  background-color: var(--clr-white);
 }
 
 /* Timeline Content */
@@ -3452,7 +3449,7 @@ button:focus-visible,
     height: 10%;
     background: linear-gradient(
       to bottom,
-      var(--clr-about) 0%,
+      rgba(0, 0, 0, 0.4) 0%,
       transparent 100%
     );
     z-index: 1;
@@ -3468,11 +3465,11 @@ button:focus-visible,
 
   .scrollytelling-media .scrollytelling-fallback {
     object-fit: contain;
-    background-color: var(--clr-about);
+    background-color: oklch(25% 0.02 80);
     padding: 4rem;
   }
 
-  /* Bottom fade: transparent → solid background color */
+  /* Bottom fade: transparent → dark blend */
   .scrollytelling-media::after {
     content: '';
     position: absolute;
@@ -3483,7 +3480,7 @@ button:focus-visible,
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      var(--clr-about) 100%
+      rgba(0, 0, 0, 0.4) 100%
     );
     pointer-events: none;
   }
@@ -3518,13 +3515,14 @@ button:focus-visible,
     display: none;
   }
 
-  /* Active timeline entry highlight */
-  .timeline-item {
+  /* Active timeline entry highlight — use color fade instead of opacity
+     to avoid creating a stacking context (which traps z-index of circles) */
+  .timeline-item .timeline-content {
     opacity: 0.35;
     transition: opacity 0.4s ease;
   }
 
-  .timeline-item--active {
+  .timeline-item--active .timeline-content {
     opacity: 1;
   }
 
@@ -3536,9 +3534,8 @@ button:focus-visible,
   }
 
   .timeline-title {
-    text-align: left;
-    margin-left: 3rem;
-    margin-bottom: 40px;
+    text-align: center;
+    margin-bottom: 0;
   }
 
   .timeline-line {

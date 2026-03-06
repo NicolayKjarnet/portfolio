@@ -147,12 +147,6 @@ const createTimeline = () => {
   const timelineContainer = document.createElement('div');
   timelineContainer.className = 'timeline-container';
 
-  const title = document.createElement('h2');
-  title.className = 'timeline-title';
-  title.ariaLabel = 'timeline-heading';
-  title.textContent = t('timeline.title');
-  timelineContainer.appendChild(title);
-
   const timelineLine = document.createElement('div');
   timelineLine.className = 'timeline-line';
   timelineContainer.appendChild(timelineLine);
