@@ -27,7 +27,7 @@ const visualProjects = [
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Skateboarding'],
     youtubeId: 'SfcEUHwksBU',
     videoSrc: '/videos/hammok-one-minute.mp4',
-    imgSrc: '/images/hammok-one-minute-thumb-2.png',
+    imgSrc: '/images/thumbnails/hammok-one-minute-thumb-2.webp',
     type: 'video',
   },
    {
@@ -41,7 +41,7 @@ const visualProjects = [
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Post-Punk'],
     youtubeId: 'dU_fG-5h6gQ',
     videoSrc: '/videos/trueandtrue-pin-my-gaze.mp4',
-    imgSrc: '/images/pin-my-gaze-2.png',
+    imgSrc: '/images/thumbnails/pin-my-gaze-thumb.webp',
     type: 'video',
   },
   {
@@ -55,7 +55,7 @@ const visualProjects = [
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Indie'],
     youtubeId: 'vOinWBPNyTQ',
     videoSrc: '/videos/ushikawa-everlasting-green.mp4',
-    imgSrc: '/images/everlasting-green-thumb.png',
+    imgSrc: '/images/thumbnails/everlasting-green-thumb.webp',
     type: 'video',
   },
   {
@@ -81,7 +81,7 @@ const visualProjects = [
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Indie'],
     youtubeId: 'S7cxHb0GZcQ',
     videoSrc: '/videos/ushikawa-invite-the-grief.mp4',
-    imgSrc: '/images/invite-the-grief-thumb.png',
+    imgSrc: '/images/thumbnails/invite-the-grief-thumb.webp',
     type: 'video',
   },
    {
