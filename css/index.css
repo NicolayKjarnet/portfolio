@@ -756,7 +756,7 @@ section {
 .project-section__img-container {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 2 / 1;
+  aspect-ratio: 16 / 10;
 }
 
 .project-section__img {
@@ -880,21 +880,31 @@ video.project-section__img {
   cursor: pointer;
 }
 
-/* Project Card Hover States */
-.project-section__article:hover .read-more-overlay {
-  opacity: 1;
+/* Project Card Hover States — desktop only */
+@media (hover: hover) {
+  .project-section__article:hover .read-more-overlay {
+    opacity: 1;
+  }
+
+  .project-section__article:hover {
+    cursor: pointer;
+  }
+
+  .project-section__article:hover .project-section__img {
+    transform: scale(1.05);
+  }
+
+  .project-section__article:hover .noteworthy-techniques > ul > li {
+    background-color: var(--clr-dark);
+  }
 }
 
-.project-section__article:hover {
-  cursor: pointer;
-}
-
-.project-section__article:hover .project-section__img {
-  transform: scale(1.1);
-}
-
-.project-section__article:hover .noteworthy-techniques > ul > li {
-  background-color: var(--clr-dark);
+/* Mobile: always show read-more overlay subtly */
+@media (hover: none) {
+  .read-more-overlay {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* ============================================
