@@ -3389,12 +3389,13 @@ button:focus-visible,
     order: -1;
   }
 
-  /* Video modal — arrows below video on mobile */
+  /* Video modal — arrows just below video on mobile */
+  /* Video is 92vw wide, 16:9 → height ≈ 51.75vw, centered vertically */
   .video-modal__prev,
   .video-modal__next {
     position: fixed;
-    top: auto;
-    bottom: 1.5rem;
+    top: calc(50% + 26vw + 0.75rem);
+    bottom: auto;
     transform: none;
     width: 2.8rem;
     height: 2.8rem;
@@ -3409,7 +3410,8 @@ button:focus-visible,
   }
 
   .video-modal__yt-link {
-    bottom: 1.5rem;
+    top: calc(50% + 26vw + 0.75rem);
+    bottom: auto;
     right: calc(50% - 8rem);
   }
 }
