@@ -38,14 +38,16 @@ export function setupVideoModal() {
     nextBtn.style.display = currentIndex < cinemaCards.length - 1 ? '' : 'none';
   }
 
+  let videoAspect = 16 / 9; // default until metadata loads
+
   function computeTarget() {
     const maxW = Math.min(window.innerWidth * 0.92, 1400);
     const maxH = window.innerHeight * 0.88;
     let w = maxW;
-    let h = w * (9 / 16);
+    let h = w / videoAspect;
     if (h > maxH) {
       h = maxH;
-      w = h * (16 / 9);
+      w = h * videoAspect;
     }
     return {
       w, h,
@@ -54,10 +56,28 @@ export function setupVideoModal() {
     };
   }
 
+  video.addEventListener('loadedmetadata', () => {
+    if (video.videoWidth && video.videoHeight) {
+      videoAspect = video.videoWidth / video.videoHeight;
+      if (!modal.classList.contains('video-modal--open')) return;
+      const target = computeTarget();
+      gsap.to(wrap, {
+        left: target.x,
+        top: target.y,
+        width: target.w,
+        height: target.h,
+        borderRadius: '1rem',
+        duration: 0.4,
+        ease: 'power2.inOut',
+      });
+    }
+  });
+
   function loadCard(cardEl) {
     const videoSrc = cardEl.dataset.videoSrc;
     const youtubeId = cardEl.dataset.youtubeId;
 
+    videoAspect = 16 / 9; // reset until metadata arrives
     video.src = videoSrc;
     video.currentTime = 0;
 
@@ -121,10 +141,10 @@ export function setupVideoModal() {
     sourceRect = posterEl.getBoundingClientRect();
     const target = computeTarget();
 
-    loadCard(cardEl);
-
     modal.classList.add('video-modal--open');
     document.body.style.overflow = 'hidden';
+
+    loadCard(cardEl);
 
     // Position wrap at source
     gsap.set(wrap, {

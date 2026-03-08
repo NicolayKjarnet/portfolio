@@ -21,7 +21,7 @@ const timelineData = [
       },
     ],
     skills: ['Vue.js', 'TypeScript', 'JavaScript', 'SASS/CSS'],
-    media: { type: 'video', src: './images/cavai-frontend-showreel-short.mp4' },
+    media: { type: 'video', src: './videos/cavai-frontend-showreel-short.mp4' },
   },
   {
     year: { en: 'Sep 2024 - May 2025', no: 'Sep 2024 - Mai 2025' },
@@ -38,7 +38,7 @@ const timelineData = [
       },
     ],
     skills: ['JavaScript', 'CSS', 'HTML', '"Vanilla" Game Dev'],
-    media: { type: 'video', src: './images/cavai-showreel-2024.mp4' },
+    media: { type: 'video', src: './videos/cavai-showreel-2024.mp4' },
   },
   {
     year: { en: 'May 2024 - Present', no: 'Mai 2024 - Nåværende' },
@@ -55,7 +55,7 @@ const timelineData = [
       },
     ],
     skills: ['React', 'TypeScript', 'Three.js', 'Supabase'],
-    media: { type: 'video', src: 'images/kitchen-builder.mp4' },
+    media: { type: 'video', src: './videos/kitchen-builder.mp4' },
   },
   {
     year: { en: 'Aug 2018 - Present', no: 'Aug 2018 - Nåværende' },
@@ -72,7 +72,7 @@ const timelineData = [
       },
     ],
     skills: ['Davinci Resolve', 'Premiere Pro', 'Photography', 'Graphic Design'],
-    media: { type: 'video', src: './images/video-content-showreel-short.mp4' },
+    media: { type: 'video', src: './videos/video-content-showreel-short.mp4' },
   },
   {
     year: { en: 'Jan 2024 - Jun 2024', no: 'Jan 2024 - Jun 2024' },
@@ -89,7 +89,7 @@ const timelineData = [
       },
     ],
     skills: ['Figma', 'UX Research', 'User Testing', 'Prototyping'],
-    media: { type: 'video', src: './images/wolve-showcase-short.mp4' },
+    media: { type: 'video', src: './videos/wolve-showcase-short.mp4' },
   },
   {
     year: { en: 'Aug 2020 - Jun 2024', no: 'Aug 2020 - Jun 2024' },

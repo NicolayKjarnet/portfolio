@@ -91,7 +91,7 @@ const projects = [
   {
     link: 'https://kitchenbuilder.studiotorshov.no/',
     newTab: true,
-    videoSrc: '/images/kitchen-builder.mp4',
+    videoSrc: '/videos/kitchen-builder.mp4',
     title: { en: 'Kitchen Planner', no: 'Kjøkkenplanlegger' },
     description: {
       en: 'An interactive 3D platform for designing custom, sustainable kitchens. Visualize your dream kitchen in real-time.',
