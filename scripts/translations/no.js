@@ -149,7 +149,6 @@ export default {
       'Psst!',
       '...ser deg.',
       'Hei..',
-      'Trodde du ikke la merke til meg?',
       '*lusker*',
       'Bare meg!',
       'Ingenting å se her...',

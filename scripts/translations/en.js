@@ -148,7 +148,6 @@ export default {
       'Psst!',
       '...see you.',
       'Hey..',
-      'Thought you wouldn\'t notice me?',
       '*lurking*',
       'Just me!',
       'Nothing to see here...',
