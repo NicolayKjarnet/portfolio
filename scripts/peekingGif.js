@@ -284,6 +284,7 @@ export function setupPeekingGif() {
       },
       onComplete: () => {
         if (isChatbotMode) showChatbotLure();
+        else showMessage();
       },
     });
 
