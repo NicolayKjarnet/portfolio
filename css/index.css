@@ -307,7 +307,8 @@ section {
 /* Dividers */
 .divider {
   background-color: var(--clr-white);
-  height: 0.1px;
+  height: 1px;
+  opacity: 0.3;
   border: none;
 }
 
