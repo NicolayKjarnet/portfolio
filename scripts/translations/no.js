@@ -120,7 +120,7 @@ export default {
     readMore: 'Les mer',
     visitWebsite: 'Besøk nettsted',
     aboutHeading: 'Om',
-    ongoing: '(Pågående)',
+    ongoing: '',
     imageAlt: 'Bilde av {title}.',
   },
   music: {
