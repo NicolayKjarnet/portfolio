@@ -3423,9 +3423,7 @@ button:focus-visible,
   }
 
   .video-modal__yt-link {
-    top: calc(50% + 26vw + 0.75rem);
-    bottom: auto;
-    right: calc(50% - 8rem);
+    display: none;
   }
 }
 
