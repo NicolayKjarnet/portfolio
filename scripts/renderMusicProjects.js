@@ -60,6 +60,8 @@ const musicProjects = [
     links: [
       { url: 'https://open.spotify.com/album/2qbFTbHiWJZS9BsaVj5dFy', platform: 'spotify' },
       { url: 'https://music.apple.com/no/album/this-wont-last-when-you-know-the-beginning-ep/1760354407', platform: 'apple' },
+      { url: 'https://tidal.com/album/378567551', platform: 'tidal' },
+      { url: 'https://www.qobuz.com/no-en/album/this-wont-last-when-you-know-the-beginning-trueandtrue/sj93m5u8zwjlc', platform: 'qobuz' },
     ],
   },
   {
@@ -82,6 +84,7 @@ const musicProjects = [
     links: [
       { url: 'https://open.spotify.com/album/3SpmM3eIcpzURJB3JpMFkn', platform: 'spotify' },
       { url: 'https://music.apple.com/no/album/back-into-quiet-ep/1727145686', platform: 'apple' },
+      { url: 'https://tidal.com/album/341576165', platform: 'tidal' },
     ],
   },
   {

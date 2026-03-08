@@ -3388,6 +3388,30 @@ button:focus-visible,
   .footer__link--back-to-top {
     order: -1;
   }
+
+  /* Video modal — arrows below video on mobile */
+  .video-modal__prev,
+  .video-modal__next {
+    position: fixed;
+    top: auto;
+    bottom: 1.5rem;
+    transform: none;
+    width: 2.8rem;
+    height: 2.8rem;
+  }
+
+  .video-modal__prev { left: calc(50% - 4rem); }
+  .video-modal__next { right: calc(50% - 4rem); }
+
+  .video-modal__prev:hover,
+  .video-modal__next:hover {
+    transform: scale(1.1);
+  }
+
+  .video-modal__yt-link {
+    bottom: 1.5rem;
+    right: calc(50% - 8rem);
+  }
 }
 
 /* Tablets & up */
