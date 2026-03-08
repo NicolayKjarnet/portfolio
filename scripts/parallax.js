@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: item,
-          start: "top 80%",
+          start: "top 92%",
           toggleActions: "play none none none",
         },
       });
@@ -144,8 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
       if (content) {
         tl.from(content, {
           opacity: 0,
-          y: 50,
-          duration: 0.8,
+          y: 30,
+          duration: 0.5,
           ease: "power2.out",
           clearProps: "opacity",
         });
