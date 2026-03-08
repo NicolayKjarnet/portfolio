@@ -31,7 +31,7 @@ function randomPosition() {
   const randRotation = (Math.random() - 0.5) * 20;
 
   // On mobile: always partial peek so GIF stays at screen edge
-  const partial = isTouch ? true : Math.random() < 0.4;
+  const partial = isTouch;
   const peekDepth = partial ? s * 0.4 : s + 5;
 
   const ry = margin + Math.random() * (vh - margin * 2);
