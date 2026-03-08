@@ -258,9 +258,6 @@ function startTrack(trackEl) {
     const fill = currentTrackEl.querySelector('.music-card__track-progress-fill');
     if (fill) fill.style.width = '0%';
   }
-  restoreCover();
-  restoreCanvas();
-
   currentAudio = new Audio(previewUrl);
   currentBtn = btn;
   currentTrackEl = trackEl;
@@ -275,6 +272,7 @@ function startTrack(trackEl) {
   miniPlayer.querySelector('.mini-player__artist').textContent = artistText;
 
   swapCoverOrRestore(trackEl);
+  restoreCanvas();
   swapCanvas(trackEl);
 
   currentAudio.addEventListener('loadedmetadata', () => {
@@ -385,41 +383,28 @@ export function setupMusicPlayer() {
       return;
     }
 
-    // Stop previous
+    // Use startTrack for track-based playback
+    if (track) {
+      startTrack(track);
+      return;
+    }
+
+    // Single-card playback (no tracklist)
     stopCurrent();
 
-    // Start new
     currentAudio = new Audio(previewUrl);
     currentBtn = btn;
-    currentTrackEl = track;
+    currentTrackEl = null;
 
-    // Preview start/end
-    const startSec = parseTime(track?.dataset.previewStart);
-    previewEnd = startSec ? startSec + 30 : null;
+    const startSec = parseTime(null);
+    previewEnd = null;
 
-    // Get track/artist info for mini player
-    const titleText = track?.querySelector('.music-card__track-title')?.textContent || card?.querySelector('.music-card__title')?.textContent || '';
+    const titleText = card?.querySelector('.music-card__title')?.textContent || '';
     const artistText = card?.querySelector('.music-card__artist')?.textContent || '';
-
     miniPlayer.querySelector('.mini-player__title').textContent = titleText;
     miniPlayer.querySelector('.mini-player__artist').textContent = artistText;
 
-    // Swap cover/canvas if track has its own, otherwise restore
-    swapCoverOrRestore(track);
-    swapCanvas(track);
-
-    currentAudio.addEventListener('loadedmetadata', () => {
-      if (startSec) currentAudio.currentTime = startSec;
-      if (miniPlayer) {
-        const dur = previewEnd ? 30 : currentAudio.duration;
-        miniPlayer.querySelector('.mini-player__duration').textContent = formatTime(dur);
-      }
-    });
-
-    currentAudio.addEventListener('ended', () => {
-      playNext();
-    });
-
+    currentAudio.addEventListener('ended', () => { playNext(); });
     syncPlayingState(true);
     currentAudio.play().catch(() => stopCurrent());
   });
