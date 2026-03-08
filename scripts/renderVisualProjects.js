@@ -69,7 +69,7 @@ const visualProjects = [
     tags: [{ en: 'Music Video', no: 'Musikkvideo' }, 'Pop'],
     youtubeId: '2Lh7zL49Lyo',
     videoSrc: '/videos/victoria-nadine-nerve.mp4',
-    imgSrc: '/images/visuals-thumbnails/victoria-nadine-nerve-thumb.png',
+    imgSrc: '/images/visuals-thumbnails/victoria-nadine-nerve-thumb.webp',
     type: 'video',
   },
   {

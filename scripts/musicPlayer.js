@@ -274,7 +274,7 @@ function startTrack(trackEl) {
   miniPlayer.querySelector('.mini-player__title').textContent = titleText;
   miniPlayer.querySelector('.mini-player__artist').textContent = artistText;
 
-  swapCover(trackEl);
+  swapCoverOrRestore(trackEl);
   swapCanvas(trackEl);
 
   currentAudio.addEventListener('loadedmetadata', () => {
@@ -288,6 +288,16 @@ function startTrack(trackEl) {
 
   syncPlayingState(true);
   currentAudio.play().catch(() => stopCurrent());
+}
+
+/** Swap to single cover if track has one, otherwise restore album cover. */
+function swapCoverOrRestore(trackEl) {
+  const singleImg = trackEl?.dataset.singleImg;
+  if (!singleImg) {
+    restoreCover();
+    return;
+  }
+  swapCover(trackEl);
 }
 
 function swapCover(trackEl) {
@@ -326,9 +336,18 @@ function restoreCover() {
   });
 }
 
+export function stopMusicPlayer() {
+  stopCurrent();
+}
+
 export function setupMusicPlayer() {
   miniPlayer = createMiniPlayer();
   seekTooltip = createSeekTooltip();
+
+  // Stop music when tab is hidden or user navigates away
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden && currentAudio) stopCurrent();
+  });
 
   // Make mini-player progress seekable
   makeSeekable(miniPlayer.querySelector('.mini-player__progress'));
@@ -385,8 +404,8 @@ export function setupMusicPlayer() {
     miniPlayer.querySelector('.mini-player__title').textContent = titleText;
     miniPlayer.querySelector('.mini-player__artist').textContent = artistText;
 
-    // Swap cover/canvas if track has its own
-    swapCover(track);
+    // Swap cover/canvas if track has its own, otherwise restore
+    swapCoverOrRestore(track);
     swapCanvas(track);
 
     currentAudio.addEventListener('loadedmetadata', () => {

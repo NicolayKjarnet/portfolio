@@ -1,4 +1,5 @@
 import { t } from './i18n.js';
+import { stopMusicPlayer } from './musicPlayer.js';
 
 export function setupVideoModal() {
   const modal = document.createElement('div');
@@ -133,6 +134,7 @@ export function setupVideoModal() {
   function open(cardEl) {
     if (isOpen || isAnimating) return;
     isAnimating = true;
+    stopMusicPlayer();
 
     cinemaCards = getCinemaCards();
     currentIndex = cinemaCards.indexOf(cardEl);
