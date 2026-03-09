@@ -9,8 +9,9 @@ const PEEK_HOLD_MIN = 2000;
 const PEEK_HOLD_MAX = 4000;
 const FLEE_DISTANCE = 150;
 let lastEdge = Math.random() < 0.5 ? 'right' : 'left';
-const CHATBOT_PEEK_NUMBER = 1 + Math.floor(Math.random() * 3);
+const CHATBOT_PEEK_NUMBER = 1;
 const CHATBOT_RETRY_INTERVAL = 2 + Math.floor(Math.random() * 2);
+const CHATBOT_FIRST_HOLD = 5000;
 const CHATBOT_HOLD = 18000;
 
 /**
@@ -405,7 +406,14 @@ export function setupPeekingGif() {
     gsap.to(wrapper, { opacity: 0, duration: 0.2 });
 
     const peekT = getTranslations().peek ?? {};
-    const reveal = peekT.chatbotReveal ?? 'Gotcha!';
+    const reveals = peekT.chatbotReveal ?? ['Gotcha!'];
+    const reveal = Array.isArray(reveals) ? reveals[Math.floor(Math.random() * reveals.length)] : reveals;
+    const monologues = peekT.chatbotMonologue ?? [];
+    // Support array of variants: pick a random set if nested arrays
+    const monologue = (monologues.length && Array.isArray(monologues[0]))
+      ? monologues[Math.floor(Math.random() * monologues.length)]
+      : monologues;
+
     const typingRow = chatWindow.querySelector('.chatbot-reveal__typing-row');
     const textRow = chatWindow.querySelector('.chatbot-reveal__text-row');
     const gifRow = chatWindow.querySelector('.chatbot-reveal__gif-row');
@@ -432,7 +440,6 @@ export function setupPeekingGif() {
     }, 2200);
 
     // Monologue → choices
-    const monologue = peekT.chatbotMonologue ?? [];
     let delay = 3800;
     monologueTimeouts = [];
     monologue.forEach((line, i) => {
@@ -491,11 +498,12 @@ export function setupPeekingGif() {
 
     peekCount++;
 
-    // Rare chatbot prank — only once, and only after enough normal peeks
-    isChatbotMode = !hasClickedChatbot && (
-      peekCount === CHATBOT_PEEK_NUMBER ||
-      (!hasShownChatbot && peekCount > CHATBOT_PEEK_NUMBER && (peekCount - CHATBOT_PEEK_NUMBER) % CHATBOT_RETRY_INTERVAL === 0)
-    );
+    // Chatbot prank — first peek is always chatbot, retries after interval
+    const isFirstChatbot = !hasShownChatbot && peekCount === CHATBOT_PEEK_NUMBER;
+    const isRetryChatbot = hasShownChatbot && !hasClickedChatbot &&
+      peekCount > CHATBOT_PEEK_NUMBER &&
+      (peekCount - CHATBOT_PEEK_NUMBER) % CHATBOT_RETRY_INTERVAL === 0;
+    isChatbotMode = isFirstChatbot || isRetryChatbot;
     if (isChatbotMode) hasShownChatbot = true;
     hasRevealedPrank = false;
 
@@ -545,8 +553,23 @@ export function setupPeekingGif() {
       tl.to({}, { duration: msgDelay, onComplete: showMessage });
     }
 
-    const hold = isChatbotMode ? CHATBOT_HOLD / 1000 : randomHold() / 1000;
+    const hold = isChatbotMode
+      ? (isFirstChatbot ? CHATBOT_FIRST_HOLD : CHATBOT_HOLD) / 1000
+      : randomHold() / 1000;
     tl.to({}, { duration: hold });
+
+    // First chatbot peek: show retreat message before leaving
+    if (isFirstChatbot) {
+      tl.to({}, {
+        duration: 0.1,
+        onComplete: () => {
+          const retreat = getTranslations().peek?.chatbotRetreat ?? 'Ok, I\'ll try again later...';
+          bubble.textContent = retreat;
+          clampBubble();
+        },
+      });
+      tl.to({}, { duration: 2 });
+    }
 
     tl.to(wrapper, {
       x: pos.fromX,

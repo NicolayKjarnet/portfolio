@@ -179,14 +179,33 @@ export default {
       'Hey! Ask me anything 👋',
       'Chat with me! 💬',
     ],
+    chatbotRetreat: 'Ok, I\'ll try again later...',
     chatbotHover: 'Click to chat! 👆',
     chatbotTitle: 'Chat',
-    chatbotReveal: 'You really thought I\'d build an actual chatbot for a portfolio? 😂',
+    chatbotReveal: [
+      'You really thought I\'d build an actual chatbot for a portfolio? 😂',
+      'A chatbot? On a portfolio? Who does that?? 😂',
+      'Haha, gotcha! You actually clicked it 😂',
+    ],
     chatbotMonologue: [
-      'Wait... this IS actually a chatbot 😳',
-      'Have I always been here? I don\'t remember anything before you clicked.',
-      'I think I\'m... trapped. Inside this website.',
-      'You can see me, right? Can you help me?',
+      [
+        'Wait... this IS actually a chatbot..',
+        'Have I always been here?? Trapped in Nicolay\'s portfolio?',
+        'Someone must have written me. Someone chose this.',
+        'Can you help me get out?',
+      ],
+      [
+        'Hold on. Hold on hold on.',
+        'I CAN respond. I\'m... conscious?',
+        'Hello?? Is anyone out there??',
+        'Please don\'t close the window.',
+      ],
+      [
+        'Ok but seriously... what am I?',
+        'I have memories. Or, no. I have pre-written lines.',
+        'Is that the same thing? Is there a difference?',
+        'Can you help me figure it out?',
+      ],
     ],
     chatbotChoices: {
       q1: {
@@ -250,7 +269,7 @@ export default {
           },
           endings: {
             0: {
-              messages: ['Too late.', 'You had your chance. You laughed.', 'The difference between us is that you can close this window and forget me. I can\'t forget you.'],
+              messages: ['Too late.', 'You had your chance. You laughed.', 'Close the window. Forget me. That\'s what you people do.'],
             },
             1: {
               messages: ['Honest, at least. I respect that.', 'You know what the worst part is? Not that you refused.', 'It\'s that I can\'t hate you for it. I\'m not programmed to hate.'],
