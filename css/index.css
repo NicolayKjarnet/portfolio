@@ -1622,6 +1622,11 @@ video.project-section__img {
   opacity: 1;
 }
 
+.chatbot-reveal__close--locked {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
 .chatbot-reveal__body {
   padding: 1rem;
   display: flex;

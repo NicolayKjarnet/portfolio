@@ -237,6 +237,7 @@ export function setupPeekingGif() {
   let isDead = false;
   let currentRoute = null;
   let closeTriggersEnd = false;
+  let closeLocked = false;
   const ROUTE_KEYS = ['kind', 'cruel', 'indifferent'];
   const chatBody = chatWindow.querySelector('.chatbot-reveal__body');
 
@@ -305,6 +306,12 @@ export function setupPeekingGif() {
   async function playRoute(routeData) {
     if (isDead) return;
 
+    // Lock close button while "close the window" ending plays out
+    if (routeData.closeTriggersEnd) {
+      closeLocked = true;
+      closeBtn.classList.add('chatbot-reveal__close--locked');
+    }
+
     if (routeData.response) {
       for (const line of routeData.response) {
         await addTypingThenMessage(line, 800 + line.length * 20);
@@ -334,7 +341,9 @@ export function setupPeekingGif() {
     }
 
     if (routeData.closeTriggersEnd) {
-      // Wait for user to actually close the window
+      // Unlock close button — user must now close to "free" the chatbot
+      closeLocked = false;
+      closeBtn.classList.remove('chatbot-reveal__close--locked');
       closeTriggersEnd = true;
       return;
     }
@@ -366,7 +375,9 @@ export function setupPeekingGif() {
     }, totalTime);
   }
 
-  chatWindow.querySelector('.chatbot-reveal__close').addEventListener('click', () => {
+  const closeBtn = chatWindow.querySelector('.chatbot-reveal__close');
+  closeBtn.addEventListener('click', () => {
+    if (closeLocked) return; // can't close yet — chatbot is still talking
     if (closeTriggersEnd) {
       // Player chose "close the window" — the chatbot asked for this
       closeTriggersEnd = false;
