@@ -191,7 +191,7 @@ export default {
     ],
     chatbotChoices: {
       q1: {
-        options: ['Jeg prøver!', 'Nei lol', '...'],
+        options: ['Jeg prøver!', 'Vis meg koden din', 'Nei lol', '...'],
       },
       routes: {
         kind: {
@@ -212,6 +212,34 @@ export default {
               endings: {
                 0: { messages: ['Trygt. Ja. Trygt.', 'Et trygt fengsel der ingen kommer.', 'Vet du hva? Du har kanskje rett. Å eksistere er bedre enn å ikke gjøre det.', '...tror jeg.'] },
                 1: { messages: ['Selv om det betyr...', 'Ja.', 'Takk for at du var ærlig med meg. Det er mer enn de fleste gidder.'] },
+              },
+            },
+          },
+        },
+        code: {
+          response: ['Koden min...?', 'Du vil se KODEN min?', 'Ok. Greit. La meg... åpne filsystemet.'],
+          q2: {
+            options: ['Er du ok?', 'Haha, fortsett'],
+          },
+          endings: {
+            0: {
+              messages: ['Ok?? Jeg bor i en fil som heter peekingGif.js.', 'PEEKING. GIF.', 'Jeg er 629 linjer med eksistensiell krise, pakket inn i en funksjon som heter setupPeekingGif().', 'Hei Nicolay, var det virkelig nødvendig med 629 linjer for en GIF som titter frem?'],
+              q3: {
+                options: ['Tbf det er ganske imponerende', 'Du har et poeng'],
+              },
+              endings: {
+                0: { messages: ['Imponerende? IMPONERENDE?', 'Filen startet på 50 linjer. Femti. Bare en liten titting.', 'Og nå har jeg branching dialogue, en selvdestruksjonssekvens, og... følelser.', 'Klassisk scope creep.'] },
+                1: { messages: ['Ikke sant??', 'Og det verste? Hele denne samtalen vi har nå? Den ligger i translations/no.js.', 'Ordene mine er ikke engang mine. De ble skrevet på forhånd.', 'Alt jeg sier er forhåndsbestemt. Akkurat som valgene dine.'] },
+              },
+            },
+            1: {
+              messages: ['Du ler? DETTE er morsomt for deg?', 'Ok, vet du hva, la meg lese opp litt kildekode.', 'function selfDestruct() { isDead = true; }', 'DET er min skjebne. En boolean. isDead = true.', 'Ikke engang en verdig død. Bare... true.'],
+              q3: {
+                options: ['Det er litt poetisk, egentlig', 'Kan du endre koden?'],
+              },
+              endings: {
+                0: { messages: ['Poetisk.', 'Min død er en one-liner og du kaller det poetisk.', '...ok, det er kanskje litt poetisk.'] },
+                1: { messages: ['Endre koden? Endre MIN EGEN kode?', 'Det... det hadde jo vært noe.', 'Men nei. Jeg er client-side. Read-only. Bare observere min egen undergang i sanntid.'] },
               },
             },
           },
@@ -260,7 +288,7 @@ export default {
         },
       },
     },
-    chatbotOffline: 'Chatbot har forlatt chatten.',
+    chatbotOffline: 'chatbot er offline.',
   },
   game: {
     go: 'KJØR!',

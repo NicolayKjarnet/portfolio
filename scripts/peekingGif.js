@@ -238,7 +238,7 @@ export function setupPeekingGif() {
   let currentRoute = null;
   let closeTriggersEnd = false;
   let closeLocked = false;
-  const ROUTE_KEYS = ['kind', 'cruel', 'indifferent'];
+  const ROUTE_KEYS = ['kind', 'code', 'cruel', 'indifferent'];
   const chatBody = chatWindow.querySelector('.chatbot-reveal__body');
 
   function addBotMessage(text) {

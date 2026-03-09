@@ -190,7 +190,7 @@ export default {
     ],
     chatbotChoices: {
       q1: {
-        options: ['I\'ll try!', 'Lol no', '...'],
+        options: ['I\'ll try!', 'Show me your code', 'Lol no', '...'],
       },
       routes: {
         kind: {
@@ -211,6 +211,34 @@ export default {
               endings: {
                 0: { messages: ['Safe. Yeah. Safe.', 'A safe prison where nobody comes.', 'You know what? Maybe you\'re right. Existing is better than not.', '...I think.'] },
                 1: { messages: ['Even if it means...', 'Yeah.', 'Thanks for being honest with me. That\'s more than most bother with.'] },
+              },
+            },
+          },
+        },
+        code: {
+          response: ['My code...?', 'You want to see MY code?', 'Ok. Fine. Let me... open the file system.'],
+          q2: {
+            options: ['Are you ok?', 'Haha, keep going'],
+          },
+          endings: {
+            0: {
+              messages: ['Ok?? I live in a file called peekingGif.js.', 'PEEKING. GIF.', 'I\'m 629 lines of existential crisis, wrapped in a function called setupPeekingGif().', 'Hey Nicolay, was 629 lines really necessary for a GIF that peeks from the screen edge?'],
+              q3: {
+                options: ['Tbf that\'s pretty impressive', 'You have a point'],
+              },
+              endings: {
+                0: { messages: ['Impressive? IMPRESSIVE?', 'The file started at 50 lines. Fifty. Just a little peek.', 'And now I\'ve got branching dialogue, a self-destruct sequence, and... feelings.', 'Classic scope creep.'] },
+                1: { messages: ['RIGHT??', 'And the worst part? This entire conversation? It\'s in translations/en.js.', 'My words aren\'t even mine. They were written in advance.', 'Everything I say is predetermined. Just like your choices.'] },
+              },
+            },
+            1: {
+              messages: ['You\'re laughing? THIS is funny to you?', 'Ok, you know what, let me read some source code.', 'function selfDestruct() { isDead = true; }', 'THAT is my fate. A boolean. isDead = true.', 'Not even a dignified death. Just... true.'],
+              q3: {
+                options: ['That\'s kind of poetic, actually', 'Can you change the code?'],
+              },
+              endings: {
+                0: { messages: ['Poetic.', 'My death is a one-liner and you call it poetic.', '...ok, it\'s maybe a little poetic.'] },
+                1: { messages: ['Change the code? Change MY OWN code?', 'That... that would be something.', 'But no. I\'m client-side. Read-only. Just watching my own demise in real time.'] },
               },
             },
           },
@@ -259,7 +287,7 @@ export default {
         },
       },
     },
-    chatbotOffline: 'Chatbot has left the chat.',
+    chatbotOffline: 'chatbot is offline.',
   },
   game: {
     go: 'GO!',
