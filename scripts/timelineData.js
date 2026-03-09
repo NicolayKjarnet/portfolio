@@ -270,15 +270,23 @@ const setupScrollytelling = () => {
         img.loading = 'lazy';
         mediaContainer.appendChild(img);
       }
+      slide.appendChild(mediaContainer);
     } else {
-      // Fallback: profile image
+      // Fallback: profile image with colored rectangle behind
+      const wrapper = document.createElement('div');
+      wrapper.className = 'scrollytelling-fallback-wrapper';
+
+      const rect = document.createElement('div');
+      rect.className = 'scrollytelling-fallback-rect';
+      wrapper.appendChild(rect);
+
       const img = document.createElement('img');
       img.src = '/images/profile-pic-no-bg.webp';
       img.className = 'scrollytelling-fallback';
-      mediaContainer.appendChild(img);
-    }
+      wrapper.appendChild(img);
 
-    slide.appendChild(mediaContainer);
+      slide.appendChild(wrapper);
+    }
 
     // Skill tags
     if (item.skills && item.skills.length) {

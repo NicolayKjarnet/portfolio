@@ -284,9 +284,14 @@ export function setupPeekingGif() {
       },
       onComplete: () => {
         if (isChatbotMode) showChatbotLure();
-        else showMessage();
       },
     });
+
+    // Delay before showing speech bubble — longer for early peeks
+    if (!isChatbotMode) {
+      const msgDelay = peekCount <= 2 ? 2 : 0.6;
+      tl.to({}, { duration: msgDelay, onComplete: showMessage });
+    }
 
     const hold = isChatbotMode ? CHATBOT_HOLD / 1000 : randomHold() / 1000;
     tl.to({}, { duration: hold });

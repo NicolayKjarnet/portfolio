@@ -1145,42 +1145,33 @@ video.project-section__img {
 .profile-image {
   position: relative;
   margin-bottom: 1.5rem;
-  border-radius: 50%;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-  border-bottom-left-radius: 0%;
-  border-bottom-right-radius: 0%;
-  corner-top-left-shape: squircle;
-  corner-top-right-shape: squircle;
-  corner-bottom-left-shape: square;
-  corner-bottom-right-shape: square;
-  background-color: var(--clr-about, var(--clr-orange));
   width: 120px;
+  aspect-ratio: 3 / 4;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   transition: transform 0.5s ease, filter 0.3s ease-in-out;
   outline: none;
   border: none;
   padding: 0;
-  overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 
   &:focus {
     outline: none;
   }
 }
 
-/* Shine sweep pseudo-element */
-.profile-image::after {
+/* Colored rectangle behind image */
+.profile-image::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 45%, rgba(255,255,255,0.05) 50%, transparent 55%);
-  z-index: 2;
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
-  pointer-events: none;
+  bottom: 0;
+  left: -10px;
+  right: -10px;
+  height: 78%;
+  background-color: oklch(52% 0.06 60);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
+
 
 .profile-image__ring,
 .profile-image__ring::before,
@@ -1188,78 +1179,13 @@ video.project-section__img {
   display: none;
 }
 
-@supports (corner-shape: squircle) {
-  .profile-image {
-    corner-top-left-shape: squircle;
-    corner-top-right-shape: squircle;
-    corner-bottom-left-shape: square;
-    corner-bottom-right-shape: square;
-  }
-
-  .profile-image__ring,
-  .profile-image__ring::before,
-  .profile-image__ring::after {
-    corner-shape: squircle;
-    width: 120px;
-    border-radius: 50%;
-    display: block;
-  }
-}
-
-.profile-image__ring {
-  box-sizing: border-box;
-  position: absolute;
-  aspect-ratio: 1;
-  inset: 0;
-  z-index: 3;
-  opacity: 0;
-  border: 2px dashed var(--clr-about, var(--clr-orange));
-  transition: 0.3s ease-in-out;
-  animation: ring-rotate 35s linear infinite;
-}
-
-
-.profile-image__ring::after {
-  content: '';
-  box-sizing: border-box;
-  z-index: 1;
-  position: absolute;
-  inset: 0;
-  aspect-ratio: 1;
-  border: 2px dashed var(--clr-about, var(--clr-orange));
-  transition: 1s ease-in-out;
-  animation: ring-rotate 40s linear infinite;
-}
-
-.profile-image__ring::before {
-  content: '';
-  box-sizing: border-box;
-  position: absolute;
-  inset: 0;
-  aspect-ratio: 1;
-  border: 2px dashed var(--clr-about, var(--clr-orange));
-  transition: 1s ease-in-out;
-  animation: ring-rotate 30s linear infinite;
-}
-
-@keyframes ring-rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .profile-image img {
-  padding-top: 1rem;
-  box-sizing: border-box;
-  width: 160px;
+  width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: bottom center;
   transition: transform 0.5s ease, filter 0.5s ease;
   position: relative;
-  border-radius: 0%;
   z-index: 1;
 }
 
@@ -1378,10 +1304,6 @@ video.project-section__img {
   filter: brightness(1.05);
 }
 
-/* Trigger shine sweep on card hover */
-.profile-card:hover .profile-image::after {
-  transform: translateX(100%);
-}
 
 .profile-image:hover .profile-image__ring {
   opacity: 1;
@@ -3227,26 +3149,11 @@ button:focus-visible,
   }
 
   .profile-image {
-    background-color: transparent;
-    border-radius: 50%;
     width: 130px;
-    height: 130px;
-    box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 3px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    align-items: flex-end;
   }
 
   .profile-image__ring {
     display: none;
-  }
-
-  .profile-image img {
-    width: 80%;
-    height: auto;
-    padding-top: 0;
-    object-fit: contain;
-    border-radius: 0;
-    margin-top: auto;
   }
 
   .profile-oneliner {
@@ -3629,22 +3536,32 @@ button:focus-visible,
     object-fit: cover;
   }
 
-  .scrollytelling-media .scrollytelling-fallback {
-    object-fit: contain;
-    background-color: transparent;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 55%;
-    max-height: 70%;
-    border-radius: 2rem;
-    animation: gentleFloat 6s ease-in-out infinite;
+  .scrollytelling-fallback-wrapper {
+    position: relative;
+    width: 55%;
+    max-height: 65%;
+    aspect-ratio: 3 / 4;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
   }
 
-  @keyframes gentleFloat {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-12px); }
+  .scrollytelling-fallback-rect {
+    position: absolute;
+    bottom: 0;
+    left: -4%;
+    right: -4%;
+    height: 75%;
+    background-color: oklch(52% 0.06 60);
+  }
+
+  .scrollytelling-fallback-wrapper .scrollytelling-fallback {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: bottom center;
   }
 
   /* Darken bottom area behind skill tags */
