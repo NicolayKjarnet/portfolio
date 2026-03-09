@@ -53,26 +53,21 @@ export default {
   headerComments: {
     langToggle: [
       'Jaså, du vil bytte språk?',
-      'Jeg snakker begge, bare så du vet det.',
       'Valgets kvaler...',
     ],
     projects: [
-      'Åh, vil du se prosjektene?',
+      'Vil du se prosjektene du da?',
       'Der ligger det mye bra!',
       'Noen av de er ganske kule, faktisk.',
-      'Bla deg nedover, du blir ikke skuffet!',
     ],
     contact: [
       'Kontakt? Spennende!',
       'Send gjerne en melding!',
-      'Lover at han biter ikke.',
-      'Han svarer fortere enn meg, i hvert fall.',
     ],
     about: [
       'Nysgjerrig på hvem jeg er?',
       'Der kan du lese alt om meg!',
-      'Spoiler: han er ganske kul.',
-      'Kort versjon: kode, musikk og kaffe.',
+      'Spoiler: han er ganske kul.',,
     ],
   },
   footer: {

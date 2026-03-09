@@ -63,14 +63,10 @@ export default {
     contact: [
       'Contact? How exciting!',
       'Feel free to reach out!',
-      'Promise he doesn\'t bite.',
-      'He replies faster than me, at least.',
     ],
     about: [
       'Curious about who I am?',
       'You can read all about me there!',
-      'Spoiler: he\'s pretty cool.',
-      'Short version: code, music and coffee.',
     ],
   },
   footer: {
