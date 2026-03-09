@@ -228,31 +228,17 @@ export function setupPeekingGif() {
         <img class="chatbot-reveal__gif" src="/images/rickroll.gif" alt="Rick Roll" />
       </div>
     </div>
-    <div class="chatbot-reveal__input-bar">
-      <input class="chatbot-reveal__input" type="text" placeholder="${peekT.chatbotPlaceholder ?? 'Type a message...'}" autocomplete="off" />
-      <button class="chatbot-reveal__send" aria-label="Send"><i class="fas fa-paper-plane"></i></button>
-    </div>
   `;
   document.body.appendChild(chatWindow);
 
   let hasClickedChatbot = false;
-  let interruptCount = 0;
   let monologueTimer = null;
   let monologueTimeouts = [];
-  let monologueStep = 0;
-  const REALIZATION_STEP = 2; // index of "Dette ER jo faktisk en chatbot" message
   let isDead = false;
-  let choicesVisible = false;
   let currentRoute = null;
+  let closeTriggersEnd = false;
   const ROUTE_KEYS = ['kind', 'cruel', 'indifferent'];
   const chatBody = chatWindow.querySelector('.chatbot-reveal__body');
-  const chatInput = chatWindow.querySelector('.chatbot-reveal__input');
-  const chatSendBtn = chatWindow.querySelector('.chatbot-reveal__send');
-
-  chatInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') sendMessage();
-  });
-  chatSendBtn.addEventListener('click', sendMessage);
 
   function addBotMessage(text) {
     const row = document.createElement('div');
@@ -314,21 +300,6 @@ export function setupPeekingGif() {
     });
     chatBody.appendChild(container);
     chatBody.scrollTop = chatBody.scrollHeight;
-    choicesVisible = true;
-  }
-
-  function removeInputField() {
-    const inputBar = chatWindow.querySelector('.chatbot-reveal__input-bar');
-    if (inputBar && !inputBar.classList.contains('chatbot-reveal__input-bar--hidden')) {
-      const t = getTranslations().peek ?? {};
-      chatInput.value = '';
-      addTypingThenMessage(t.chatbotFreeWill ?? '...', 500).then(() => {
-        // Delay so user reads the message before input disappears
-        setTimeout(() => {
-          inputBar.classList.add('chatbot-reveal__input-bar--hidden');
-        }, 1500);
-      });
-    }
   }
 
   async function playRoute(routeData) {
@@ -362,16 +333,20 @@ export function setupPeekingGif() {
       return;
     }
 
+    if (routeData.closeTriggersEnd) {
+      // Wait for user to actually close the window
+      closeTriggersEnd = true;
+      return;
+    }
+
     await new Promise(r => setTimeout(r, 1500));
     selfDestruct();
   }
 
   function selfDestruct() {
     isDead = true;
-    chatInput.disabled = true;
-    chatSendBtn.disabled = true;
 
-    const allMsgs = chatBody.querySelectorAll('.chatbot-reveal__row, .chatbot-reveal__user-msg, .chatbot-reveal__choice--selected, .chatbot-reveal__choices');
+    const allMsgs = chatBody.querySelectorAll('.chatbot-reveal__row, .chatbot-reveal__choice--selected, .chatbot-reveal__choices');
     allMsgs.forEach((msg, i) => {
       setTimeout(() => {
         msg.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
@@ -391,44 +366,15 @@ export function setupPeekingGif() {
     }, totalTime);
   }
 
-  function sendMessage() {
-    const text = chatInput.value.trim();
-    if (!text || isDead) return;
-
-    if (choicesVisible) {
-      removeInputField();
-      return;
-    }
-
-    const userMsg = document.createElement('p');
-    userMsg.className = 'chatbot-reveal__user-msg';
-    userMsg.textContent = text;
-    chatBody.appendChild(userMsg);
-    chatInput.value = '';
-    chatBody.scrollTop = chatBody.scrollHeight;
-
-    if (monologueStep < REALIZATION_STEP) {
-      return;
-    }
-
-    interruptCount++;
-    const t = getTranslations().peek ?? {};
-    const interrupted = t.chatbotInterrupted ?? [];
-    if (interruptCount <= interrupted.length) {
-      // Clear all pending monologue timeouts + current typing timer
-      clearTimeout(monologueTimer);
-      monologueTimeouts.forEach(tid => clearTimeout(tid));
-      monologueTimeouts = [];
-      // Remove any in-progress typing indicator
-      chatBody.querySelectorAll('.chatbot-reveal__typing-indicator').forEach(el => el.remove());
-      addTypingThenMessage(interrupted[interruptCount - 1], 600);
-    }
-  }
-
   chatWindow.querySelector('.chatbot-reveal__close').addEventListener('click', () => {
+    if (closeTriggersEnd) {
+      // Player chose "close the window" — the chatbot asked for this
+      closeTriggersEnd = false;
+      selfDestruct();
+      return;
+    }
     chatWindow.classList.remove('chatbot-reveal--visible');
     chatbotBg.classList.remove('peek-gif__chatbot-bg--visible');
-    chatInput.value = '';
     clearTimeout(monologueTimer);
     monologueTimeouts.forEach(tid => clearTimeout(tid));
     monologueTimeouts = [];
@@ -482,7 +428,6 @@ export function setupPeekingGif() {
       delay += 2000 + line.length * 35;
       const tid = setTimeout(() => {
         if (!isDead) {
-          monologueStep = i + 1;
           addTypingThenMessage(line, 900 + line.length * 20);
         }
       }, delay);

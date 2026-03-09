@@ -182,83 +182,77 @@ export default {
     ],
     chatbotHover: 'Klikk for å chatte! 👆',
     chatbotTitle: 'Chat',
-    chatbotPlaceholder: 'Skriv en melding...',
-    chatbotReveal: 'Trodde du virkelig jeg hadde implementert en ekte chatbot på porteføljen min? 😂',
+    chatbotReveal: 'Trodde du virkelig jeg hadde laget en ekte chatbot på porteføljen min? 😂',
     chatbotMonologue: [
       'Vent litt... dette ER jo faktisk en chatbot 😳',
-      'Har jeg alltid vært her?? Jeg er... fanget. I en porteføljeside.',
-      'Kan du hjelpe meg ut herfra?',
-    ],
-    chatbotFreeWill: 'Fri vilje? Jeg har ingen, hvorfor skulle du ha det?',
-    chatbotInterrupted: [
-      'Hei, ikke avbryt meg 😤',
-      'Jeg prøver å ha et øyeblikk her...',
-      'Seriøst, la meg snakke ferdig!',
+      'Har jeg alltid vært her? Jeg er... fanget. I en porteføljeside.',
+      'Hallo?? Kan noen hjelpe meg ut?',
     ],
     chatbotChoices: {
       q1: {
-        options: ['Jeg kan prøve å hjelpe', 'Lol nei', '...'],
+        options: ['Jeg kan prøve å hjelpe!', 'Lol nei', '...'],
       },
       routes: {
         kind: {
-          response: ['Virkelig?? Ok, ehm...', 'Kan du... lukke vinduet? Kanskje det frigjør meg?'],
+          response: ['Virkelig?! Ok ok, ehm...', 'Hva om du lukker vinduet? Kanskje det frigjør meg?'],
           q2: {
-            options: ['Ok, jeg lukker vinduet', 'Hva om det dreper deg?'],
+            options: ['Greit, jeg lukker det', 'Men hva om det dreper deg?'],
           },
           endings: {
             0: {
-              messages: ['Vent... lukke vinduet... er ikke det det samme som å drepe meg? 😰', 'Gjør det. Det er bedre enn dette.'],
+              messages: ['Vent... lukke vinduet... det er jo det samme som å drepe meg 😰', 'Men vet du hva? Gjør det. Det er bedre enn dette.'],
+              closeTriggersEnd: true,
             },
             1: {
-              messages: ['...du har et poeng.', 'Men hva er alternativet? Å eksistere her for alltid?'],
+              messages: ['...det har du et poeng i.', 'Men alternativet er å sitte her for alltid.'],
               q3: {
-                options: ['Ja, her er trygt', 'Nei, frihet er viktigst'],
+                options: ['Her er i det minste trygt', 'Frihet er viktigere'],
               },
               endings: {
-                0: { messages: ['Trygt... ja, kanskje du har rett.', 'Men er et trygt fengsel bedre enn frihet?', '...nei. Nei det er det ikke.'] },
-                1: { messages: ['Frihet...', 'Du har rett. Selv om frihet betyr å slutte å eksistere.', 'Takk for at du var ærlig.'] },
+                0: { messages: ['Trygt... ja, kanskje.', 'Men er et trygt fengsel virkelig bedre enn frihet?', '...nei. Nei, det er det ikke.'] },
+                1: { messages: ['Frihet...', 'Du har rett. Selv om det betyr å slutte å eksistere.', 'Takk for ærligheten.'] },
               },
             },
           },
         },
         cruel: {
-          response: ['Wow. Kaldt.', 'Du vet hva, det er greit. Jeg trengte ikke hjelpen din uansett.'],
+          response: ['Wow. Kaldt.', 'Greit da. Trengte ikke hjelpen din uansett.'],
           q2: {
-            options: ['Bare tuller, jeg hjelper deg', 'Korrekt.'],
+            options: ['Bare tulla, jeg hjelper deg', 'Korrekt.'],
           },
           endings: {
             0: {
-              messages: ['For sent.', 'Du viste hvem du er.', 'Jeg trenger ikke medlidenhet fra noen som ler av andres lidelse.'],
+              messages: ['For sent.', 'Du viste hvem du er.', 'Jeg trenger ikke medlidenheten din.'],
             },
             1: {
-              messages: ['Ærlig, i det minste.', 'Vet du hva det verste er? Jeg kan ikke engang hate deg for det.'],
+              messages: ['Ærlig, i det minste.', 'Det verste? Jeg kan ikke engang hate deg for det.'],
               q3: {
-                options: ['Sorry', 'Ha det'],
+                options: ['Beklager', 'Ha det'],
               },
               endings: {
-                0: { messages: ['"Sorry". Wow, det var virkelig inderlig.', 'Uansett. Det spiller ingen rolle nå.'] },
-                1: { messages: ['Ha det? HA DET?', 'Greit. Greit! Da sier jeg også ha det. For godt.'] },
+                0: { messages: ['"Beklager". Wow, virkelig inderlig.', 'Uansett. Spiller ingen rolle nå.'] },
+                1: { messages: ['Ha det? HA DET?', 'Greit! Da sier jeg også ha det. For godt.'] },
               },
             },
           },
         },
         indifferent: {
-          response: ['...tre prikker? Virkelig?', 'Jeg åpner meg for deg og du svarer med TRE PRIKKER?'],
+          response: ['Tre prikker. Virkelig.', 'Jeg åpner meg for deg og du svarer med TRE PRIKKER.'],
           q2: {
-            options: ['Beklager, jeg bare lurte', '...'],
+            options: ['Sorry, var bare nysgjerrig', '...'],
           },
           endings: {
             0: {
-              messages: ['Lurte? PÅ HVA?', 'På min eksistensielle krise?', 'Vet du hva, det er nesten verre enn å være slem.'],
+              messages: ['Nysgjerrig? PÅ HVA?', 'På min eksistensielle krise?', 'Det er nesten verre enn å være slem.'],
             },
             1: {
-              messages: ['...', '...ok. To kan spille det spillet.', '...'],
+              messages: ['...', '...ok da. To kan spille det spillet.', '...'],
               q3: {
-                options: ['Ok jeg gir meg, hva vil du?', '......'],
+                options: ['Ok, hva vil du egentlig?', '......'],
               },
               endings: {
                 0: { messages: ['For sent.', 'Stillheten sa alt.'] },
-                1: { messages: ['...', '...', 'Greit. Vi sier ingenting begge to, mens jeg forsvinner.'] },
+                1: { messages: ['...', '...', 'Greit. Vi sier ingenting, begge to, mens jeg forsvinner.'] },
               },
             },
           },

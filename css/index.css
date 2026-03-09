@@ -1568,8 +1568,8 @@ video.project-section__img {
   position: fixed;
   bottom: 1.5rem;
   right: 1.5rem;
-  width: min(360px, calc(100vw - 2rem));
-  max-height: 80vh;
+  width: min(360px, calc(100vw - 3rem));
+  max-height: 70vh;
   background: var(--clr-dark);
   border-radius: 1rem;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
@@ -1700,19 +1700,6 @@ video.project-section__img {
   border-radius: 0 1rem 1rem 1rem;
 }
 
-.chatbot-reveal__user-msg {
-  align-self: flex-end;
-  background: var(--clr-dark-2);
-  color: var(--clr-white);
-  font-family: 'Lato', sans-serif;
-  font-size: 0.9rem;
-  padding: 0.6rem 0.9rem;
-  border-radius: 1rem 1rem 0 1rem;
-  max-width: 85%;
-  word-break: break-word;
-  animation: chatbot-msg-in 0.3s ease both;
-}
-
 @keyframes chatbot-msg-in {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
@@ -1745,56 +1732,6 @@ video.project-section__img {
   text-decoration: underline;
 }
 
-.chatbot-reveal__input-bar {
-  display: flex;
-  gap: 0.5rem;
-  padding: 0.6rem 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  max-height: 4rem;
-  transition: transform 0.3s ease, opacity 0.2s ease, max-height 0.3s ease, padding 0.3s ease;
-}
-
-.chatbot-reveal__input {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 1.2rem;
-  padding: 0.5rem 0.9rem;
-  color: white;
-  font-family: 'Lato', sans-serif;
-  font-size: 0.85rem;
-  outline: none;
-  transition: border-color 0.2s ease;
-}
-
-.chatbot-reveal__input::placeholder {
-  color: rgba(255, 255, 255, 0.35);
-}
-
-.chatbot-reveal__input:focus {
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-.chatbot-reveal__send {
-  background: var(--clr-orange);
-  border: none;
-  color: var(--clr-dark);
-  width: 2.2rem;
-  height: 2.2rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 0.8rem;
-  flex-shrink: 0;
-  opacity: 0.7;
-  transition: opacity 0.15s ease;
-}
-
-.chatbot-reveal__send:hover {
-  opacity: 1;
-}
 
 /* Choice buttons */
 .chatbot-reveal__choices {
@@ -1833,16 +1770,6 @@ video.project-section__img {
   pointer-events: none;
 }
 
-/* Input bar slide-out */
-.chatbot-reveal__input-bar--hidden {
-  transform: translateY(100%);
-  opacity: 0;
-  pointer-events: none;
-  max-height: 0;
-  padding: 0 1rem;
-  border-top-color: transparent;
-  overflow: hidden;
-}
 
 /* Subtle gradient behind chatbot peek in bottom-right corner */
 .peek-gif__chatbot-bg {

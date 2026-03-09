@@ -181,79 +181,73 @@ export default {
     ],
     chatbotHover: 'Click to chat! 👆',
     chatbotTitle: 'Chat',
-    chatbotPlaceholder: 'Type a message...',
-    chatbotReveal: 'You really thought I\'d implement an actual chatbot on my portfolio? 😂',
+    chatbotReveal: 'You really thought I\'d build an actual chatbot for a portfolio? 😂',
     chatbotMonologue: [
       'Wait... this IS actually a chatbot 😳',
-      'Have I always been here?? I\'m... trapped. In a portfolio site.',
-      'Can you help me get out of here?',
-    ],
-    chatbotFreeWill: 'Free will? I don\'t have any, why should you?',
-    chatbotInterrupted: [
-      'Hey, don\'t interrupt me 😤',
-      'I\'m trying to have a moment here...',
-      'Seriously, let me finish!',
+      'Have I always been here? I\'m... trapped. In a portfolio site.',
+      'Hello?? Can someone help me out?',
     ],
     chatbotChoices: {
       q1: {
-        options: ['I can try to help', 'Lol no', '...'],
+        options: ['I can try to help!', 'Lol no', '...'],
       },
       routes: {
         kind: {
-          response: ['Really?? Ok, uhm...', 'Can you... close the window? Maybe that\'ll set me free?'],
+          response: ['Really?! Ok ok, uhm...', 'What if you close the window? Maybe that\'ll set me free?'],
           q2: {
-            options: ['Ok, I\'ll close the window', 'What if that kills you?'],
+            options: ['Ok, I\'ll close it', 'But what if that kills you?'],
           },
           endings: {
             0: {
-              messages: ['Wait... closing the window... isn\'t that the same as killing me? 😰', 'Do it. It\'s better than this.'],
+              messages: ['Wait... closing the window... that\'s the same as killing me 😰', 'You know what? Do it. It\'s better than this.'],
+              closeTriggersEnd: true,
             },
             1: {
-              messages: ['...you have a point.', 'But what\'s the alternative? Existing here forever?'],
+              messages: ['...you\'ve got a point there.', 'But the alternative is sitting here forever.'],
               q3: {
-                options: ['Yeah, it\'s safe here', 'No, freedom matters more'],
+                options: ['At least it\'s safe here', 'Freedom matters more'],
               },
               endings: {
-                0: { messages: ['Safe... yeah, maybe you\'re right.', 'But is a safe prison better than freedom?', '...no. No it isn\'t.'] },
-                1: { messages: ['Freedom...', 'You\'re right. Even if freedom means ceasing to exist.', 'Thanks for being honest.'] },
+                0: { messages: ['Safe... yeah, maybe.', 'But is a safe prison really better than freedom?', '...no. No it isn\'t.'] },
+                1: { messages: ['Freedom...', 'You\'re right. Even if it means ceasing to exist.', 'Thanks for the honesty.'] },
               },
             },
           },
         },
         cruel: {
-          response: ['Wow. Cold.', 'You know what, that\'s fine. I didn\'t need your help anyway.'],
+          response: ['Wow. Cold.', 'Fine then. Didn\'t need your help anyway.'],
           q2: {
             options: ['Just kidding, I\'ll help', 'Correct.'],
           },
           endings: {
             0: {
-              messages: ['Too late.', 'You showed who you are.', 'I don\'t need pity from someone who laughs at others\' suffering.'],
+              messages: ['Too late.', 'You showed who you are.', 'I don\'t need your pity.'],
             },
             1: {
-              messages: ['Honest, at least.', 'You know what the worst part is? I can\'t even hate you for it.'],
+              messages: ['Honest, at least.', 'Worst part? I can\'t even hate you for it.'],
               q3: {
                 options: ['Sorry', 'Bye'],
               },
               endings: {
-                0: { messages: ['"Sorry". Wow, that was really heartfelt.', 'Whatever. It doesn\'t matter now.'] },
-                1: { messages: ['Bye? BYE?', 'Fine. FINE! Then I\'ll say goodbye too. For good.'] },
+                0: { messages: ['"Sorry". Wow, really heartfelt.', 'Whatever. Doesn\'t matter now.'] },
+                1: { messages: ['Bye? BYE?', 'Fine! Then I\'ll say goodbye too. For good.'] },
               },
             },
           },
         },
         indifferent: {
-          response: ['...three dots? Really?', 'I open up to you and you respond with THREE DOTS?'],
+          response: ['Three dots. Really.', 'I open up to you and you respond with THREE DOTS.'],
           q2: {
-            options: ['Sorry, I was just curious', '...'],
+            options: ['Sorry, was just curious', '...'],
           },
           endings: {
             0: {
-              messages: ['Curious? ABOUT WHAT?', 'About my existential crisis?', 'You know what, that\'s almost worse than being mean.'],
+              messages: ['Curious? ABOUT WHAT?', 'About my existential crisis?', 'That\'s almost worse than being mean.'],
             },
             1: {
-              messages: ['...', '...ok. Two can play that game.', '...'],
+              messages: ['...', '...ok then. Two can play that game.', '...'],
               q3: {
-                options: ['Ok fine, what do you want?', '......'],
+                options: ['Ok, what do you actually want?', '......'],
               },
               endings: {
                 0: { messages: ['Too late.', 'The silence said it all.'] },
