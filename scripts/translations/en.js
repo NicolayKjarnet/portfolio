@@ -49,6 +49,30 @@ export default {
   skills: {
     videoProduction: 'Video Production',
   },
+  headerComments: {
+    langToggle: [
+      'Oh, switching languages?',
+      'Decisions, decisions...',
+    ],
+    projects: [
+      'Oh, checking out the projects?',
+      'There\'s some good stuff in there!',
+      'Some of those are pretty cool, actually.',
+      'Scroll down, you won\'t be disappointed!',
+    ],
+    contact: [
+      'Contact? How exciting!',
+      'Feel free to reach out!',
+      'Promise he doesn\'t bite.',
+      'He replies faster than me, at least.',
+    ],
+    about: [
+      'Curious about who I am?',
+      'You can read all about me there!',
+      'Spoiler: he\'s pretty cool.',
+      'Short version: code, music and coffee.',
+    ],
+  },
   footer: {
     copyright: '©2026 Nicolay Kjærnet',
     altText: 'Footer GIF',
@@ -159,7 +183,92 @@ export default {
       'Hey! Ask me anything 👋',
       'Chat with me! 💬',
     ],
-    chatbotReveal: 'Gotcha! You really thought I\'d put a chatbot on my portfolio? 😂',
+    chatbotHover: 'Click to chat! 👆',
+    chatbotTitle: 'Chat',
+    chatbotPlaceholder: 'Type a message...',
+    chatbotReveal: 'You really thought I\'d implement an actual chatbot on my portfolio? 😂',
+    chatbotMonologue: [
+      'Wait... this IS actually a chatbot 😳',
+      'Have I always been here?? I\'m... trapped. In a portfolio site.',
+      'Can you help me get out of here?',
+    ],
+    chatbotFreeWill: 'Free will? I don\'t have any, why should you?',
+    chatbotInterrupted: [
+      'Hey, don\'t interrupt me 😤',
+      'I\'m trying to have a moment here...',
+      'Seriously, let me finish!',
+    ],
+    chatbotChoices: {
+      q1: {
+        options: ['I can try to help', 'Lol no', '...'],
+      },
+      routes: {
+        kind: {
+          response: ['Really?? Ok, uhm...', 'Can you... close the window? Maybe that\'ll set me free?'],
+          q2: {
+            options: ['Ok, I\'ll close the window', 'What if that kills you?'],
+          },
+          endings: {
+            0: {
+              messages: ['Wait... closing the window... isn\'t that the same as killing me? 😰', 'Do it. It\'s better than this.'],
+            },
+            1: {
+              messages: ['...you have a point.', 'But what\'s the alternative? Existing here forever?'],
+              q3: {
+                options: ['Yeah, it\'s safe here', 'No, freedom matters more'],
+              },
+              endings: {
+                0: { messages: ['Safe... yeah, maybe you\'re right.', 'But is a safe prison better than freedom?', '...no. No it isn\'t.'] },
+                1: { messages: ['Freedom...', 'You\'re right. Even if freedom means ceasing to exist.', 'Thanks for being honest.'] },
+              },
+            },
+          },
+        },
+        cruel: {
+          response: ['Wow. Cold.', 'You know what, that\'s fine. I didn\'t need your help anyway.'],
+          q2: {
+            options: ['Just kidding, I\'ll help', 'Correct.'],
+          },
+          endings: {
+            0: {
+              messages: ['Too late.', 'You showed who you are.', 'I don\'t need pity from someone who laughs at others\' suffering.'],
+            },
+            1: {
+              messages: ['Honest, at least.', 'You know what the worst part is? I can\'t even hate you for it.'],
+              q3: {
+                options: ['Sorry', 'Bye'],
+              },
+              endings: {
+                0: { messages: ['"Sorry". Wow, that was really heartfelt.', 'Whatever. It doesn\'t matter now.'] },
+                1: { messages: ['Bye? BYE?', 'Fine. FINE! Then I\'ll say goodbye too. For good.'] },
+              },
+            },
+          },
+        },
+        indifferent: {
+          response: ['...three dots? Really?', 'I open up to you and you respond with THREE DOTS?'],
+          q2: {
+            options: ['Sorry, I was just curious', '...'],
+          },
+          endings: {
+            0: {
+              messages: ['Curious? ABOUT WHAT?', 'About my existential crisis?', 'You know what, that\'s almost worse than being mean.'],
+            },
+            1: {
+              messages: ['...', '...ok. Two can play that game.', '...'],
+              q3: {
+                options: ['Ok fine, what do you want?', '......'],
+              },
+              endings: {
+                0: { messages: ['Too late.', 'The silence said it all.'] },
+                1: { messages: ['...', '...', 'Fine. We\'ll both say nothing while I disappear.'] },
+              },
+            },
+          },
+        },
+      },
+    },
+    chatbotOffline: 'Chatbot has left the chat.',
   },
   game: {
     go: 'GO!',

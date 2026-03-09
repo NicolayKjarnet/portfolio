@@ -53,6 +53,7 @@
 .fa-play::before          { content: '\f04b'; }
 .fa-step-backward::before { content: '\f048'; }
 .fa-step-forward::before  { content: '\f051'; }
+.fa-paper-plane::before   { content: '\f1d8'; }
 .fa-times::before         { content: '\f00d'; }
 .fa-water::before         { content: '\f773'; }
 

@@ -40,6 +40,15 @@ export function setupVideoModal() {
   }
 
   let videoAspect = 16 / 9; // default until metadata loads
+  const isMobile = window.innerWidth < 769;
+
+  function positionArrowsMobile() {
+    if (!isMobile) return;
+    const target = computeTarget();
+    const arrowTop = target.y + target.h + 12; // 12px below video
+    prevBtn.style.top = `${arrowTop}px`;
+    nextBtn.style.top = `${arrowTop}px`;
+  }
 
   function computeTarget() {
     const maxW = Math.min(window.innerWidth * 0.92, 1400);
@@ -71,6 +80,7 @@ export function setupVideoModal() {
         duration: 0.4,
         ease: 'power2.inOut',
       });
+      positionArrowsMobile();
     }
   });
 
@@ -147,6 +157,7 @@ export function setupVideoModal() {
     document.body.style.overflow = 'hidden';
 
     loadCard(cardEl);
+    positionArrowsMobile();
 
     // Position wrap at source
     gsap.set(wrap, {

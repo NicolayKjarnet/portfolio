@@ -3,15 +3,15 @@ import { getTranslations } from './i18n.js';
 
 const isTouch = matchMedia('(pointer: coarse)').matches;
 const GIF_SIZE = isTouch ? 60 : 80;
-const MIN_INTERVAL = isTouch ? 20000 : 10000;
-const MAX_INTERVAL = isTouch ? 45000 : 25000;
+const MIN_INTERVAL = isTouch ? 10000 : 5000;
+const MAX_INTERVAL = isTouch ? 15000 : 8000;
 const PEEK_HOLD_MIN = 2000;
 const PEEK_HOLD_MAX = 4000;
 const FLEE_DISTANCE = 150;
-const CHATBOT_CHANCE = 0.2;
 let lastEdge = Math.random() < 0.5 ? 'right' : 'left';
-const CHATBOT_MIN_PEEKS = 2;
-const CHATBOT_HOLD = 8000;
+const CHATBOT_PEEK_NUMBER = 1 + Math.floor(Math.random() * 3);
+const CHATBOT_RETRY_INTERVAL = 2 + Math.floor(Math.random() * 2);
+const CHATBOT_HOLD = 18000;
 
 /**
  * Generate a random peek position from any screen edge.
@@ -83,9 +83,13 @@ export function setupPeekingGif() {
   const bubble = document.createElement('div');
   bubble.className = 'peek-gif__bubble';
 
+  const chatbotBg = document.createElement('div');
+  chatbotBg.className = 'peek-gif__chatbot-bg';
+
   face.appendChild(img);
   wrapper.appendChild(face);
   wrapper.appendChild(bubble);
+  document.body.appendChild(chatbotBg);
   document.body.appendChild(wrapper);
 
   const eyes = createEyes(face, {
@@ -179,6 +183,7 @@ export function setupPeekingGif() {
   function hideMessage() {
     bubble.classList.remove('peek-gif__bubble--visible', 'peek-gif__bubble--chatbot', 'peek-gif__bubble--reveal');
     wrapper.classList.remove('peek-gif--chatbot');
+    chatbotBg.classList.remove('peek-gif__chatbot-bg--visible');
   }
 
   function showChatbotLure() {
@@ -192,28 +197,316 @@ export function setupPeekingGif() {
     bubble.style.top = '';
     bubble.classList.add('peek-gif__bubble--chatbot', 'peek-gif__bubble--visible');
     wrapper.classList.add('peek-gif--chatbot');
+    chatbotBg.classList.add('peek-gif__chatbot-bg--visible');
     clampBubble();
   }
+
+  // -- Chatbot reveal window --
+  const chatWindow = document.createElement('div');
+  chatWindow.className = 'chatbot-reveal';
+  const peekT = getTranslations().peek ?? {};
+  chatWindow.innerHTML = `
+    <div class="chatbot-reveal__header">
+      <span class="chatbot-reveal__title">${peekT.chatbotTitle ?? 'Chat'}</span>
+      <button class="chatbot-reveal__close" aria-label="Close">&times;</button>
+    </div>
+    <div class="chatbot-reveal__body">
+      <div class="chatbot-reveal__row chatbot-reveal__msg chatbot-reveal__typing-row">
+        <img class="chatbot-reveal__avatar" src="/images/footer-gif.gif" alt="" />
+        <div class="chatbot-reveal__typing">
+          <span class="chatbot-reveal__dot"></span>
+          <span class="chatbot-reveal__dot"></span>
+          <span class="chatbot-reveal__dot"></span>
+        </div>
+      </div>
+      <div class="chatbot-reveal__row chatbot-reveal__msg chatbot-reveal__text-row">
+        <img class="chatbot-reveal__avatar" src="/images/footer-gif.gif" alt="" />
+        <p class="chatbot-reveal__text"></p>
+      </div>
+      <div class="chatbot-reveal__row chatbot-reveal__msg chatbot-reveal__gif-row">
+        <img class="chatbot-reveal__avatar" src="/images/footer-gif.gif" alt="" />
+        <img class="chatbot-reveal__gif" src="/images/rickroll.gif" alt="Rick Roll" />
+      </div>
+    </div>
+    <div class="chatbot-reveal__input-bar">
+      <input class="chatbot-reveal__input" type="text" placeholder="${peekT.chatbotPlaceholder ?? 'Type a message...'}" autocomplete="off" />
+      <button class="chatbot-reveal__send" aria-label="Send"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  `;
+  document.body.appendChild(chatWindow);
+
+  let hasClickedChatbot = false;
+  let interruptCount = 0;
+  let monologueTimer = null;
+  let monologueTimeouts = [];
+  let monologueStep = 0;
+  const REALIZATION_STEP = 2; // index of "Dette ER jo faktisk en chatbot" message
+  let isDead = false;
+  let choicesVisible = false;
+  let currentRoute = null;
+  const ROUTE_KEYS = ['kind', 'cruel', 'indifferent'];
+  const chatBody = chatWindow.querySelector('.chatbot-reveal__body');
+  const chatInput = chatWindow.querySelector('.chatbot-reveal__input');
+  const chatSendBtn = chatWindow.querySelector('.chatbot-reveal__send');
+
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+  chatSendBtn.addEventListener('click', sendMessage);
+
+  function addBotMessage(text) {
+    const row = document.createElement('div');
+    row.className = 'chatbot-reveal__row chatbot-reveal__msg--visible';
+    row.innerHTML = `
+      <img class="chatbot-reveal__avatar" src="/images/footer-gif.gif" alt="" />
+      <p class="chatbot-reveal__text">${text}</p>
+    `;
+    chatBody.appendChild(row);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    return row;
+  }
+
+  function addTypingThenMessage(text, delay) {
+    return new Promise((resolve) => {
+      // Remove any existing typing indicators first
+      chatBody.querySelectorAll('.chatbot-reveal__typing-indicator').forEach(el => el.remove());
+
+      const dots = document.createElement('div');
+      dots.className = 'chatbot-reveal__row chatbot-reveal__msg--visible chatbot-reveal__typing-indicator';
+      dots.innerHTML = `
+        <img class="chatbot-reveal__avatar" src="/images/footer-gif.gif" alt="" />
+        <div class="chatbot-reveal__typing">
+          <span class="chatbot-reveal__dot"></span>
+          <span class="chatbot-reveal__dot"></span>
+          <span class="chatbot-reveal__dot"></span>
+        </div>
+      `;
+      chatBody.appendChild(dots);
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      monologueTimer = setTimeout(() => {
+        dots.remove();
+        addBotMessage(text);
+        resolve();
+      }, delay ?? (600 + Math.random() * 600));
+    });
+  }
+
+  function showChoices(options, callback) {
+    const container = document.createElement('div');
+    container.className = 'chatbot-reveal__choices';
+    options.forEach((label, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'chatbot-reveal__choice';
+      btn.textContent = label;
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('.chatbot-reveal__choice').forEach(b => {
+          if (b !== btn) b.remove();
+        });
+        btn.classList.add('chatbot-reveal__choice--selected');
+        btn.disabled = true;
+        chatBody.appendChild(btn);
+        container.remove();
+        chatBody.scrollTop = chatBody.scrollHeight;
+        callback(i);
+      });
+      container.appendChild(btn);
+    });
+    chatBody.appendChild(container);
+    chatBody.scrollTop = chatBody.scrollHeight;
+    choicesVisible = true;
+  }
+
+  function removeInputField() {
+    const inputBar = chatWindow.querySelector('.chatbot-reveal__input-bar');
+    if (inputBar && !inputBar.classList.contains('chatbot-reveal__input-bar--hidden')) {
+      const t = getTranslations().peek ?? {};
+      chatInput.value = '';
+      addTypingThenMessage(t.chatbotFreeWill ?? '...', 500).then(() => {
+        // Delay so user reads the message before input disappears
+        setTimeout(() => {
+          inputBar.classList.add('chatbot-reveal__input-bar--hidden');
+        }, 1500);
+      });
+    }
+  }
+
+  async function playRoute(routeData) {
+    if (isDead) return;
+
+    if (routeData.response) {
+      for (const line of routeData.response) {
+        await addTypingThenMessage(line, 800 + line.length * 20);
+        await new Promise(r => setTimeout(r, 1200));
+      }
+    }
+
+    if (routeData.messages) {
+      for (const line of routeData.messages) {
+        await addTypingThenMessage(line, 800 + line.length * 20);
+        await new Promise(r => setTimeout(r, 1200));
+      }
+    }
+
+    if (isDead) return;
+
+    const nextQ = routeData.q2 || routeData.q3;
+    if (nextQ) {
+      await new Promise(r => setTimeout(r, 800));
+      showChoices(nextQ.options, (choiceIdx) => {
+        const nextData = routeData.endings?.[choiceIdx];
+        if (nextData) {
+          setTimeout(() => playRoute(nextData), 600);
+        }
+      });
+      return;
+    }
+
+    await new Promise(r => setTimeout(r, 1500));
+    selfDestruct();
+  }
+
+  function selfDestruct() {
+    isDead = true;
+    chatInput.disabled = true;
+    chatSendBtn.disabled = true;
+
+    const allMsgs = chatBody.querySelectorAll('.chatbot-reveal__row, .chatbot-reveal__user-msg, .chatbot-reveal__choice--selected, .chatbot-reveal__choices');
+    allMsgs.forEach((msg, i) => {
+      setTimeout(() => {
+        msg.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+        msg.style.opacity = '0';
+        msg.style.transform = 'scale(0.8)';
+        setTimeout(() => msg.remove(), 200);
+      }, i * 80);
+    });
+
+    const totalTime = allMsgs.length * 80 + 600;
+    setTimeout(() => {
+      const offline = document.createElement('p');
+      offline.className = 'chatbot-reveal__offline';
+      offline.textContent = getTranslations().peek?.chatbotOffline ?? 'Chatbot has left the chat.';
+      chatBody.appendChild(offline);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, totalTime);
+  }
+
+  function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text || isDead) return;
+
+    if (choicesVisible) {
+      removeInputField();
+      return;
+    }
+
+    const userMsg = document.createElement('p');
+    userMsg.className = 'chatbot-reveal__user-msg';
+    userMsg.textContent = text;
+    chatBody.appendChild(userMsg);
+    chatInput.value = '';
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    if (monologueStep < REALIZATION_STEP) {
+      return;
+    }
+
+    interruptCount++;
+    const t = getTranslations().peek ?? {};
+    const interrupted = t.chatbotInterrupted ?? [];
+    if (interruptCount <= interrupted.length) {
+      // Clear all pending monologue timeouts + current typing timer
+      clearTimeout(monologueTimer);
+      monologueTimeouts.forEach(tid => clearTimeout(tid));
+      monologueTimeouts = [];
+      // Remove any in-progress typing indicator
+      chatBody.querySelectorAll('.chatbot-reveal__typing-indicator').forEach(el => el.remove());
+      addTypingThenMessage(interrupted[interruptCount - 1], 600);
+    }
+  }
+
+  chatWindow.querySelector('.chatbot-reveal__close').addEventListener('click', () => {
+    chatWindow.classList.remove('chatbot-reveal--visible');
+    chatbotBg.classList.remove('peek-gif__chatbot-bg--visible');
+    chatInput.value = '';
+    clearTimeout(monologueTimer);
+    monologueTimeouts.forEach(tid => clearTimeout(tid));
+    monologueTimeouts = [];
+    isPeeking = false;
+    isChatbotMode = false;
+    hasClickedChatbot = true;
+    schedulePeek();
+  });
 
   function revealChatbotPrank() {
     if (!isChatbotMode || hasRevealedPrank) return;
     hasRevealedPrank = true;
 
-    // Kill the current timeline so it doesn't auto-exit
     if (currentTl) currentTl.kill();
 
-    const reveal = getTranslations().peek?.chatbotReveal ?? 'Gotcha!';
-    bubble.classList.remove('peek-gif__bubble--chatbot');
-    bubble.classList.add('peek-gif__bubble--reveal');
-    bubble.textContent = reveal;
-    clampBubble();
+    hideMessage();
+    gsap.to(wrapper, { opacity: 0, duration: 0.2 });
 
-    // Let user read, then flee
-    clearTimeout(revealTimer);
-    revealTimer = setTimeout(() => {
-      isPeeking = true; // re-enable so flee() works
-      flee();
-    }, 2500);
+    const peekT = getTranslations().peek ?? {};
+    const reveal = peekT.chatbotReveal ?? 'Gotcha!';
+    const typingRow = chatWindow.querySelector('.chatbot-reveal__typing-row');
+    const textRow = chatWindow.querySelector('.chatbot-reveal__text-row');
+    const gifRow = chatWindow.querySelector('.chatbot-reveal__gif-row');
+
+    typingRow.classList.remove('chatbot-reveal__msg--visible');
+    textRow.classList.remove('chatbot-reveal__msg--visible');
+    gifRow.classList.remove('chatbot-reveal__msg--visible');
+    textRow.querySelector('.chatbot-reveal__text').textContent = reveal;
+
+    chatWindow.classList.add('chatbot-reveal--visible');
+
+    setTimeout(() => {
+      typingRow.classList.add('chatbot-reveal__msg--visible');
+    }, 200);
+
+    setTimeout(() => {
+      typingRow.classList.remove('chatbot-reveal__msg--visible');
+      textRow.classList.add('chatbot-reveal__msg--visible');
+    }, 1500);
+
+    setTimeout(() => {
+      gifRow.classList.add('chatbot-reveal__msg--visible');
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }, 2200);
+
+    // Monologue → choices
+    const monologue = peekT.chatbotMonologue ?? [];
+    let delay = 3800;
+    monologueTimeouts = [];
+    monologue.forEach((line, i) => {
+      delay += 2000 + line.length * 35;
+      const tid = setTimeout(() => {
+        if (!isDead) {
+          monologueStep = i + 1;
+          addTypingThenMessage(line, 900 + line.length * 20);
+        }
+      }, delay);
+      monologueTimeouts.push(tid);
+    });
+
+    // After monologue, show first choices
+    delay += 2500;
+    setTimeout(() => {
+      if (isDead) return;
+      const choices = peekT.chatbotChoices ?? {};
+      const q1 = choices.q1;
+      if (!q1) { selfDestruct(); return; }
+
+      showChoices(q1.options, (choiceIdx) => {
+        currentRoute = ROUTE_KEYS[choiceIdx] ?? ROUTE_KEYS[0];
+        const routeData = choices.routes?.[currentRoute];
+        if (routeData) {
+          setTimeout(() => playRoute(routeData), 600);
+        } else {
+          selfDestruct();
+        }
+      });
+    }, delay);
   }
 
   function flee() {
@@ -243,7 +536,10 @@ export function setupPeekingGif() {
     peekCount++;
 
     // Rare chatbot prank — only once, and only after enough normal peeks
-    isChatbotMode = !hasShownChatbot && peekCount > CHATBOT_MIN_PEEKS && Math.random() < CHATBOT_CHANCE;
+    isChatbotMode = !hasClickedChatbot && (
+      peekCount === CHATBOT_PEEK_NUMBER ||
+      (!hasShownChatbot && peekCount > CHATBOT_PEEK_NUMBER && (peekCount - CHATBOT_PEEK_NUMBER) % CHATBOT_RETRY_INTERVAL === 0)
+    );
     if (isChatbotMode) hasShownChatbot = true;
     hasRevealedPrank = false;
 
@@ -337,7 +633,12 @@ export function setupPeekingGif() {
 
       if (isChatbotMode) {
         if (dist < FLEE_DISTANCE) {
-          revealChatbotPrank();
+          // Show "click to chat" text on hover
+          const hoverText = getTranslations().peek?.chatbotHover ?? 'Click to chat! 👆';
+          if (bubble.textContent !== hoverText) {
+            bubble.textContent = hoverText;
+            clampBubble();
+          }
         }
       } else {
         if (dist < FLEE_DISTANCE * 3) {

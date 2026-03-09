@@ -728,6 +728,8 @@ function makeFlee(el, img, opts = {}) {
     }, { threshold: 0.3 });
     idleObs.observe(el);
   }
+
+  return { showCaption };
 }
 
 // ============================================
@@ -780,7 +782,7 @@ export function setupHeaderGif() {
     rightX: '52%',
   });
 
-  makeFlee(wrap, wrap.querySelector('.header__cutout'), {
+  const flee = makeFlee(wrap, wrap.querySelector('.header__cutout'), {
     maxPush: 40,
     influence: 180,
     ease: 0.1,
@@ -793,5 +795,30 @@ export function setupHeaderGif() {
     onHit: onGifHit,
     onClickStart: onGifClick,
     isGameActive: () => game?.active ?? false,
+  });
+
+  // Context-aware comments on nearby elements
+  const langToggle = document.querySelector('.lang-toggle');
+  const navLinks = document.querySelectorAll('.nav .list-item a');
+
+  const lastContextTimes = {};
+  const CONTEXT_COOLDOWN = 3000;
+
+  function contextComment(key) {
+    const now = Date.now();
+    if (now - (lastContextTimes[key] || 0) < CONTEXT_COOLDOWN) return;
+    const comments = getTranslations().headerComments?.[key];
+    if (!comments?.length) return;
+    lastContextTimes[key] = now;
+    const text = comments[Math.floor(Math.random() * comments.length)];
+    flee.showCaption(text);
+  }
+
+  if (langToggle) {
+    langToggle.addEventListener('mouseenter', () => contextComment('langToggle'));
+  }
+  navLinks.forEach(link => {
+    const section = link.getAttribute('href')?.replace('#', '');
+    link.addEventListener('mouseenter', () => contextComment(section || 'nav'));
   });
 }
