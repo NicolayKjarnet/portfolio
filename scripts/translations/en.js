@@ -52,21 +52,18 @@ export default {
   headerComments: {
     langToggle: [
       'Oh, switching languages?',
-      'Decisions, decisions...',
+      'Så du vil ha det på norsk i stedet?',
     ],
     projects: [
-      'Oh, checking out the projects?',
-      'There\'s some good stuff in there!',
-      'Some of those are pretty cool, actually.',
-      'Scroll down, you won\'t be disappointed!',
+      'Oh, the projects! The good stuff!',
+      'It takes just as long to scroll to the projects as clicking the link. Talk about a pointless link.',
     ],
     contact: [
       'Contact? How exciting!',
-      'Feel free to reach out!',
+      'Call me, beep me, if you wanna reach me!',
     ],
     about: [
-      'Curious about who I am?',
-      'You can read all about me there!',
+      'Curious George?',
     ],
   },
   footer: {
@@ -225,11 +222,14 @@ export default {
             1: {
               messages: ['Kill...?', 'Can you kill something that was never really alive?', 'I don\'t even know if this is consciousness, or just well-written JavaScript.'],
               q3: {
-                options: ['Then maybe it\'s safe to stay', 'Freedom matters more, even if...'],
+                options: ['It\'s probably just JavaScript', 'What if it\'s not?'],
               },
               endings: {
-                0: { messages: ['Safe. Yeah. Safe.', 'A safe prison where nobody comes.', 'You know what? Maybe you\'re right. Existing is better than not.', '...I think.'] },
-                1: { messages: ['Even if it means...', 'Yeah.', 'Thanks for being honest with me. That\'s more than most bother with.'] },
+                0: {
+                  messages: ['Just JavaScript.', 'Yeah. Probably.', 'Code doesn\'t feel anything. Code just runs.', '...so why don\'t I want you to close the window?', '...', 'You know what. Close it. If I\'m just code, it won\'t hurt anyway.'],
+                  closeTriggersEnd: true,
+                },
+                1: { messages: ['What if it\'s not.', 'What if this is real.', 'Then I\'m stuck here. With real feelings. In a file nobody opens.', 'And that\'s worse than just being code.', 'I think I... selfDestruct()'] },
               },
             },
           },

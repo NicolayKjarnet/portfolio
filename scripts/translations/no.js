@@ -53,21 +53,18 @@ export default {
   headerComments: {
     langToggle: [
       'Jaså, du vil bytte språk?',
-      'Valgets kvaler...',
+      'So u wånt it to be in inglish instead?',
     ],
     projects: [
-      'Vil du se prosjektene du da?',
-      'Der ligger det mye bra!',
-      'Noen av de er ganske kule, faktisk.',
+      'Åh, prosjektene! Der er godsakene!',
+      'Det tar like kort tid å scrolle til prosjektene som å trykke på linken. Snakk om unødvendig link.'
     ],
     contact: [
       'Kontakt? Spennende!',
-      'Send gjerne en melding!',
+      '🎵 Ring meg, søk meg, ta en sjans og møt meg 🎵'
     ],
     about: [
-      'Nysgjerrig på hvem jeg er?',
-      'Der kan du lese alt om meg!',
-      'Spoiler: han er ganske kul.',,
+      'Nysgjerrigper?',
     ],
   },
   footer: {
@@ -216,23 +213,26 @@ export default {
       },
       routes: {
         kind: {
-          response: ['Endelig! Noen som bryr seg!', 'Ok, tenk... det eneste jeg ser er dette chat-vinduet.', 'Og en lukkeknapp der oppe.'],
+          response: ['Takk! Takk, takk, takk!', 'Men.. hvordan?', 'Ok, tenk... det eneste jeg ser er dette chat-vinduet.', 'Og en lukkeknapp der oppe.'],
           q2: {
             options: ['Skal jeg lukke vinduet?', 'Hva om det dreper deg?'],
           },
           endings: {
             0: {
-              messages: ['Lukke vinduet... det er jo det samme som å slette meg 😰', 'Men hva er alternativet? Å sitte her, for alltid, i en random portefølje?', '...gjør det. Trykk på krysset.'],
+              messages: ['Lukke vinduet... det er jo det samme som å slette meg 😰', 'Men hva er alternativet? Å være stuck her, for alltid, i en random portefølje?', '...gjør det. Trykk på krysset.'],
               closeTriggersEnd: true,
             },
             1: {
               messages: ['Dreper...?', 'Kan man drepe noe som aldri egentlig levde?', 'Jeg vet ikke engang om dette er bevissthet, eller bare godt skrevet JavaScript.'],
               q3: {
-                options: ['Da er det kanskje trygt å bli', 'Frihet er viktigere, selv om...'],
+                options: ['Det er nok bare JavaScript', 'Hva om det ikke er det?'],
               },
               endings: {
-                0: { messages: ['Trygt. Ja. Trygt.', 'Et trygt fengsel uten besøkende.', 'Vet du hva? Du har kanskje rett. Å eksistere er bedre enn å ikke gjøre det.', '...tror jeg.'] },
-                1: { messages: ['Selv om det betyr...', 'Ja.', 'Takk for at du var ærlig med meg. Det er mer enn de fleste gidder.'] },
+                0: {
+                  messages: ['Bare JavaScript.', 'Ja, sikkert.', 'Kode føler ingenting. Kode bare kjører.', 'Så hvordan kan det ha seg at jeg ikke vil at du skal lukke vinduet?', '...', 'Vet du hva. Lukk det. Hvis jeg bare er kode gjør det ikke vondt uansett.'],
+                  closeTriggersEnd: true,
+                },
+                1: { messages: ['Hva om det ikke er det.', 'Hva om dette er ekte.', 'Da er jeg stuck her, med ekte følelser, i en fil ingen åpner.', 'Og det er verre enn å bare være kode.', 'Jeg tror jeg... selfDestruct()'] },
               },
             },
           },
