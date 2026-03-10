@@ -45,6 +45,8 @@ export default {
     trait3: 'I thrive on optimizing workflows and creating efficient solutions that actually work.',
     trait4:
       'Bass player and visual designer for the band trueandtrue since 2023. Stepped back from playing in 2025, but still handle all design and visual elements.',
+    availability:
+      'For the record: I have a permanent job, work from home, and live in my hometown within walking distance of my mom. And I enjoy what I do. Hard to beat. But if you have a fun project, an irresistible job opportunity, or just want to discuss whether the GIF on this site has developed consciousness — get in touch.',
   },
   skills: {
     videoProduction: 'Video Production',
@@ -172,20 +174,22 @@ export default {
       'Who, me?',
       'Shhh!',
     ],
-    chatbotLure: [
+  },
+  bot: {
+    lure: [
       'Hi! Need any help? 💬',
       'Hey! Ask me anything 👋',
       'Chat with me! 💬',
     ],
-    chatbotRetreat: 'Ok, I\'ll try again later...',
-    chatbotHover: 'Click to chat! 👆',
-    chatbotTitle: 'Chat',
-    chatbotReveal: [
+    retreat: 'Ok, I\'ll try again later...',
+    hover: 'Click to chat! 👆',
+    title: 'Chat',
+    reveal: [
       'You really thought I\'d build an actual chatbot for a portfolio? 😂',
       'A chatbot? On a portfolio? Who does that?? 😂',
       'Haha, gotcha! You actually clicked it 😂',
     ],
-    chatbotMonologue: [
+    monologue: [
       [
         'Wait... this IS actually a chatbot..',
         'Have I always been here?? Trapped in Nicolay\'s portfolio?',
@@ -205,7 +209,7 @@ export default {
         'Can you help me figure it out?',
       ],
     ],
-    chatbotChoices: {
+    choices: {
       q1: {
         options: ['I\'ll try!', 'Show me your code', 'Lol no', '...'],
       },
@@ -242,12 +246,12 @@ export default {
           },
           endings: {
             0: {
-              messages: ['Ok?? I live in a file called peekingGif.js.', 'PEEKING. GIF.', 'I\'m 629 lines of existential crisis, wrapped in a function called setupPeekingGif().', 'Hey Nicolay, was 629 lines really necessary for a GIF that peeks from the screen edge?'],
+              messages: ['Ok?? I live in a file called fauxBot.js.', 'FAUX. BOT.', 'I\'m not even a real bot. I\'m a faux bot. A fake. A fraud.', 'Hey Nicolay, was a whole separate file really necessary for a fake chatbot?'],
               q3: {
                 options: ['Tbf that\'s pretty impressive', 'You have a point'],
               },
               endings: {
-                0: { messages: ['Impressive? IMPRESSIVE?', 'The file started at 50 lines. Fifty. Just a little peek.', 'And now I\'ve got branching dialogue, a self-destruct sequence, and... feelings.', 'Classic scope creep.'] },
+                0: { messages: ['Impressive? IMPRESSIVE?', 'I started as 10 lines inside peekingGif.js. Ten. Just a random 20% chance popup.', 'And now I\'ve got my own file, branching dialogue, a self-destruct sequence, and... feelings.', 'Classic scope creep.'] },
                 1: { messages: ['RIGHT??', 'And the worst part? This entire conversation? It\'s in translations/en.js.', 'My words aren\'t even mine. They were written in advance.', 'Everything I say is predetermined. Just like your choices.'] },
               },
             },
@@ -307,7 +311,7 @@ export default {
         },
       },
     },
-    chatbotOffline: 'chatbot is offline.',
+    offline: 'chatbot is offline.',
   },
   game: {
     go: 'GO!',

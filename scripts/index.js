@@ -8,6 +8,7 @@ import { setupVideoModal } from './videoModal.js';
 import { setupWaveAnimation } from './waveAnimation.js';
 import { setupFooterGif, setupHeaderGif } from './footerGif.js';
 import { setupPeekingGif } from './peekingGif.js';
+import { setupFauxBot } from './fauxBot.js';
 import { addTimelineToPage, updateTimelineText } from './timelineData.js';
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
   setupFooterGif();
   setupHeaderGif();
   setupPeekingGif();
+  setupFauxBot();
 
   // Re-render JS content on language change
   onLangChange(() => {

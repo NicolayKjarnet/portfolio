@@ -1539,29 +1539,6 @@ video.project-section__img {
   transform: translateX(-50%) scaleX(-1);
 }
 
-.peek-gif--chatbot {
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.peek-gif__bubble--chatbot {
-  background: var(--clr-dark-2);
-  padding: 0.45rem 0.8rem;
-  border-radius: 1rem;
-  text-shadow: none;
-  font-weight: 400;
-  white-space: normal;
-  width: 10rem;
-  text-align: center;
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.peek-gif__bubble--reveal {
-  white-space: normal;
-  width: min(320px, 80vw);
-  text-align: center;
-}
 
 /* Chatbot reveal window */
 .chatbot-reveal {
@@ -1776,8 +1753,74 @@ video.project-section__img {
 }
 
 
-/* Subtle gradient behind chatbot peek in bottom-right corner */
-.peek-gif__chatbot-bg {
+.peek-gif__bubble--visible {
+  opacity: 1;
+}
+
+/* ---- Faux Bot (chatbot prank) ---- */
+.faux-bot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  pointer-events: none;
+  opacity: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.faux-bot__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: invert(1);
+}
+
+.faux-bot__bubble {
+  position: absolute;
+  bottom: 105%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7), 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.faux-bot--active {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.faux-bot__bubble--lure {
+  background: var(--clr-dark-2);
+  padding: 0.45rem 0.8rem;
+  border-radius: 1rem;
+  text-shadow: none;
+  font-weight: 400;
+  white-space: normal;
+  width: 10rem;
+  text-align: center;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.faux-bot__bubble--visible {
+  opacity: 1;
+}
+
+/* Subtle gradient behind faux-bot lure in bottom-right corner */
+.faux-bot__bg {
   position: fixed;
   bottom: 0;
   right: 0;
@@ -1790,11 +1833,7 @@ video.project-section__img {
   transition: opacity 0.5s ease;
 }
 
-.peek-gif__chatbot-bg--visible {
-  opacity: 1;
-}
-
-.peek-gif__bubble--visible {
+.faux-bot__bg--visible {
   opacity: 1;
 }
 

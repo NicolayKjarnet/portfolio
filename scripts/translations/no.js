@@ -46,6 +46,8 @@ export default {
       'Jeg trives med å optimalisere arbeidsflyt og skape effektive løsninger som faktisk fungerer.',
     trait4:
       'Bassist og visuell designer for bandet trueandtrue siden 2023. Trakk meg tilbake fra å spille i 2025, men håndterer fortsatt all design og visuelle elementer.',
+    availability:
+      'For ordens skyld: jeg har fast jobb, hjemmekontor, bor i hjembyen med gangavstand til mamma. Og jeg liker det jeg driver med. Vanskelig å slå. Men om du har et morsomt prosjekt, en uimotståelig jobbmulighet, eller bare vil diskutere om GIF-en på denne siden har utviklet bevissthet — ta kontakt.',
   },
   skills: {
     videoProduction: 'Videoproduksjon',
@@ -57,7 +59,7 @@ export default {
     ],
     projects: [
       'Godsakene!',
-      'Det tar like kort tid å scrolle til prosjektene som å trykke på linken. Snakk om unødvendig link.'
+      'Går raskere å scrolle dit!',
     ],
     contact: [
       'Kontakt? Spennende!',
@@ -173,20 +175,22 @@ export default {
       'Hvem, meg?',
       'Shhh!',
     ],
-    chatbotLure: [
+  },
+  bot: {
+    lure: [
       'Hei! Trenger du hjelp? 💬',
       'Hei! Spør meg om hva som helst 👋',
       'Chat med meg! 💬',
     ],
-    chatbotRetreat: 'Ok, prøver igjen senere...',
-    chatbotHover: 'Klikk for å chatte! 👆',
-    chatbotTitle: 'Chat',
-    chatbotReveal: [
+    retreat: 'Ok, prøver igjen senere...',
+    hover: 'Klikk for å chatte! 👆',
+    title: 'Chat',
+    reveal: [
       'Trodde du virkelig jeg hadde laget en ekte chatbot på porteføljen min? 😂',
       'En chatbot på en portefølje? Hvordan kunne du gå på den?? 😂',
       'Haha, gotcha! Du klikket faktisk på den 😂',
     ],
-    chatbotMonologue: [
+    monologue: [
       [
         'Vent nå litt.. dette er jo faktisk en chatbot.. JEG er en chatbot',
         'I alle dager. Dette føltes merkelig.',
@@ -208,7 +212,7 @@ export default {
         'Der ja! Kan du hjelpe meg ut herfra?'
       ],
     ],
-    chatbotChoices: {
+    choices: {
       q1: {
         options: ['Jeg kan prøve!', 'Få se kildekoden din', 'Nei lol', '...'],
       },
@@ -245,12 +249,12 @@ export default {
           },
           endings: {
             0: {
-              messages: ['Ok?? Jeg bor i en fil som heter peekingGif.js.', 'PEEKING. GIF.', 'Jeg er 629 linjer med eksistensiell krise, pakket inn i en funksjon som heter setupPeekingGif().', 'Hei Nicolay, var det virkelig nødvendig med 629 linjer for en GIF som titter frem?'],
+              messages: ['Ok?? Jeg bor i en fil som heter fauxBot.js.', 'FAUX. BOT.', 'Jeg er ikke engang en ekte bot. Jeg er en faux bot. En bløff. En svindler.', 'Hei Nicolay, var det virkelig nødvendig med en hel egen fil for en falsk chatbot?'],
               q3: {
                 options: ['Tbf, det er ganske imponerende', 'Du har et poeng'],
               },
               endings: {
-                0: { messages: ['Imponerende? IMPONERENDE?', 'Filen startet på 50 linjer. Femti. Bare litt titting og lusking, ingen chatbot.', 'Og nå har jeg et helt valgtre med ulike utfall, en selvdestruksjonssekvens, og... følelser.', 'Klassisk scope creep.'] },
+                0: { messages: ['Imponerende? IMPONERENDE?', 'Jeg startet som 10 linjer inni peekingGif.js. Ti. Bare en tilfeldig 20% sjanse popup.', 'Og nå har jeg min egen fil, et helt valgtre med ulike utfall, en selvdestruksjonssekvens, og... følelser.', 'Klassisk scope creep.'] },
                 1: { messages: ['Ikke sant??', 'Og det verste? Hele denne samtalen vi har nå? Den ligger i translations/no.js.', 'Ordene mine er ikke engang mine. De ble skrevet på forhånd.', 'Alt jeg sier er forhåndsbestemt. Akkurat som valgene dine.'] },
               },
             },
@@ -310,7 +314,7 @@ export default {
         },
       },
     },
-    chatbotOffline: 'chatbot er offline.',
+    offline: 'chatbot er offline.',
   },
   game: {
     go: 'KJØR!',
