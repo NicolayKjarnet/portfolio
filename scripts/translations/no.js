@@ -56,7 +56,7 @@ export default {
       'So u wånt it to be in inglish instead?',
     ],
     projects: [
-      'Åh, prosjektene! Der er godsakene!',
+      'Godsakene!',
       'Det tar like kort tid å scrolle til prosjektene som å trykke på linken. Snakk om unødvendig link.'
     ],
     contact: [
@@ -65,6 +65,7 @@ export default {
     ],
     about: [
       'Nysgjerrigper?',
+      'Stalker-vibber, men ok.'
     ],
   },
   footer: {
