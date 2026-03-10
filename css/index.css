@@ -3619,10 +3619,10 @@ button:focus-visible,
     right: 0.5rem;
     left: 0.5rem;
     width: auto;
-    max-height: 85vh;
+    max-height: 50vh;
   }
   .chatbot-reveal__body {
-    max-height: calc(85vh - 3rem);
+    max-height: calc(50vh - 3rem);
   }
   .chatbot-reveal--above-player {
     bottom: 4rem;
