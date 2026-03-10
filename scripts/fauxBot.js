@@ -337,7 +337,7 @@ export function setupFauxBot() {
     }, 2200);
 
     // Monologue → choices
-    let delay = 3800;
+    let delay = 3300;
     monologueTimeouts = [];
     monologue.forEach((line) => {
       delay += 2000 + line.length * 35;

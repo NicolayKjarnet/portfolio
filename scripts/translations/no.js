@@ -23,9 +23,9 @@ export default {
   },
   contact: {
     title: 'Ta kontakt',
-    heading: 'La oss bygge noe sammen',
+    heading: 'Ikke på jakt, men...',
     subtitle:
-      'Har du et prosjekt i tankene? En jobbmulighet? Eller vil du bare si hei? Jeg hører gjerne fra deg, jeg.',
+      'For ordens skyld: jeg har fast jobb, hjemmekontor, bor i hjembyen med gangavstand til mamma.<br>Og jeg liker det jeg driver med. Vanskelig å slå.<br>Men om du har et morsomt prosjekt, en uimotståelig jobbmulighet, eller bare vil diskutere om GIF-en på denne siden har utviklet bevissthet — ta kontakt.',
     email: 'E-post',
     location: 'Sted',
     locationValue: 'Tønsberg, Norge',
@@ -46,8 +46,6 @@ export default {
       'Jeg trives med å optimalisere arbeidsflyt og skape effektive løsninger som faktisk fungerer.',
     trait4:
       'Bassist og visuell designer for bandet trueandtrue siden 2023. Trakk meg tilbake fra å spille i 2025, men håndterer fortsatt all design og visuelle elementer.',
-    availability:
-      'For ordens skyld: jeg har fast jobb, hjemmekontor, bor i hjembyen med gangavstand til mamma. Og jeg liker det jeg driver med. Vanskelig å slå. Men om du har et morsomt prosjekt, en uimotståelig jobbmulighet, eller bare vil diskutere om GIF-en på denne siden har utviklet bevissthet — ta kontakt.',
   },
   skills: {
     videoProduction: 'Videoproduksjon',

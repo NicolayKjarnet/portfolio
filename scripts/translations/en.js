@@ -23,9 +23,9 @@ export default {
   },
   contact: {
     title: 'Get in touch',
-    heading: "Let's create something together",
+    heading: 'Not looking, but...',
     subtitle:
-      "Got a project in mind? A job opportunity? Or just want to say hello? I'd love to hear from you.",
+      "For the record: I have a permanent job, work from home, and live in my hometown within walking distance of my mom.<br>And I enjoy what I do. Hard to beat.<br>But if you have a fun project, an irresistible job opportunity, or just want to discuss whether the GIF on this site has developed consciousness — get in touch.",
     email: 'Email',
     location: 'Location',
     locationValue: 'Tønsberg, Norway',
@@ -45,8 +45,6 @@ export default {
     trait3: 'I thrive on optimizing workflows and creating efficient solutions that actually work.',
     trait4:
       'Bass player and visual designer for the band trueandtrue since 2023. Stepped back from playing in 2025, but still handle all design and visual elements.',
-    availability:
-      'For the record: I have a permanent job, work from home, and live in my hometown within walking distance of my mom. And I enjoy what I do. Hard to beat. But if you have a fun project, an irresistible job opportunity, or just want to discuss whether the GIF on this site has developed consciousness — get in touch.',
   },
   skills: {
     videoProduction: 'Video Production',
@@ -58,7 +56,7 @@ export default {
     ],
     projects: [
       'Oh, the projects! The good stuff!',
-      'It takes just as long to scroll to the projects as clicking the link. Talk about a pointless link.',
+      'Takes less time to scroll!',
     ],
     contact: [
       'Contact? How exciting!',

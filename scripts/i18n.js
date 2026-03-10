@@ -47,6 +47,12 @@ function updateDOM() {
     if (value !== undefined) el.textContent = value;
   });
 
+  document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+    const key = el.dataset.i18nHtml;
+    const value = lookupKey(translations[currentLang], key);
+    if (value !== undefined) el.innerHTML = value;
+  });
+
   document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
     const key = el.dataset.i18nAria;
     const value = lookupKey(translations[currentLang], key);
