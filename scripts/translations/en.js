@@ -60,7 +60,7 @@ export default {
     ],
     contact: [
       'Contact? How exciting!',
-      'Call me, beep me, if you wanna reach me!',
+      '🎵 Call me, beep me, if you wanna reach me 🎵',
     ],
     about: [
       'Curious George?',
