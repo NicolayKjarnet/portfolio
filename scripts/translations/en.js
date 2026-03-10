@@ -64,6 +64,7 @@ export default {
     ],
     about: [
       'Curious George?',
+      'Stalker vibes, but ok.',
     ],
   },
   footer: {
