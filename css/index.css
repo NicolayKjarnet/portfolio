@@ -1565,6 +1565,10 @@ video.project-section__img {
   pointer-events: auto;
 }
 
+.chatbot-reveal--above-player {
+  bottom: 4.5rem;
+}
+
 .chatbot-reveal__header {
   display: flex;
   align-items: center;
@@ -3609,11 +3613,32 @@ button:focus-visible,
     display: none;
   }
 
+  /* Chatbot mobile */
+  .chatbot-reveal {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    left: 0.5rem;
+    width: auto;
+    max-height: 85vh;
+  }
+  .chatbot-reveal__body {
+    max-height: calc(85vh - 3rem);
+  }
+  .chatbot-reveal--above-player {
+    bottom: 4rem;
+  }
+
   /* Mini player mobile */
   .mini-player {
     left: 2%;
     right: 2%;
     border-radius: 0.75rem;
+  }
+  .mini-player__progress {
+    border-radius: 0.75rem 0.75rem 0 0;
+  }
+  .mini-player__progress-fill {
+    border-radius: 0.75rem 0 0 0;
   }
 }
 

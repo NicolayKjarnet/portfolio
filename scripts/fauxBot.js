@@ -94,6 +94,7 @@ export function setupFauxBot() {
 
   let monologueTimer = null;
   let monologueTimeouts = [];
+  let pendingTypingResolve = null;
   let isDead = false;
   let currentRoute = null;
   let closeTriggersEnd = false;
@@ -151,7 +152,7 @@ export function setupFauxBot() {
       <p class="chatbot-reveal__text">${text}</p>
     `;
     chatBody.appendChild(row);
-    chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    chatBody.scrollTop = chatBody.scrollHeight;
     return row;
   }
 
@@ -170,9 +171,11 @@ export function setupFauxBot() {
         </div>
       `;
       chatBody.appendChild(dots);
-      chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      chatBody.scrollTop = chatBody.scrollHeight;
 
+      pendingTypingResolve = resolve;
       monologueTimer = setTimeout(() => {
+        pendingTypingResolve = null;
         dots.remove();
         addBotMessage(text);
         resolve();
@@ -193,13 +196,13 @@ export function setupFauxBot() {
         });
         btn.classList.add('chatbot-reveal__choice--selected');
         btn.disabled = true;
-        chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        chatBody.scrollTop = chatBody.scrollHeight;
         callback(i);
       });
       container.appendChild(btn);
     });
     chatBody.appendChild(container);
-    chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    chatBody.scrollTop = chatBody.scrollHeight;
   }
 
   async function playRoute(routeData) {
@@ -268,7 +271,7 @@ export function setupFauxBot() {
       offline.className = 'chatbot-reveal__offline';
       offline.textContent = getTranslations().bot?.offline ?? 'chatbot is offline.';
       chatBody.appendChild(offline);
-      chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      chatBody.scrollTop = chatBody.scrollHeight;
     }, totalTime);
   }
 
@@ -333,7 +336,7 @@ export function setupFauxBot() {
 
     setTimeout(() => {
       gifRow.classList.add('chatbot-reveal__msg--visible');
-      chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      chatBody.scrollTop = chatBody.scrollHeight;
     }, 2200);
 
     // Monologue → choices
@@ -501,6 +504,11 @@ export function setupFauxBot() {
     if (document.visibilityState === 'hidden') {
       clearTimeout(retryTimer);
       clearTimeout(monologueTimer);
+      if (pendingTypingResolve && chatWindow.classList.contains('chatbot-reveal--visible')) {
+        chatBody.querySelectorAll('.chatbot-reveal__typing-indicator').forEach(el => el.remove());
+        pendingTypingResolve();
+        pendingTypingResolve = null;
+      }
       if (isLureVisible && currentTl) {
         currentTl.kill();
         isLureVisible = false;
@@ -526,5 +534,17 @@ export function setupFauxBot() {
       { threshold: 0 },
     );
     obs.observe(header);
+  }
+
+  // -- Shift chatbot above mini-player when it's visible --
+  const miniPlayer = document.querySelector('.mini-player');
+  if (miniPlayer) {
+    const playerObs = new MutationObserver(() => {
+      chatWindow.classList.toggle(
+        'chatbot-reveal--above-player',
+        miniPlayer.classList.contains('mini-player--visible'),
+      );
+    });
+    playerObs.observe(miniPlayer, { attributes: true, attributeFilter: ['class'] });
   }
 }

@@ -3,8 +3,8 @@ import { getTranslations } from './i18n.js';
 
 const isTouch = matchMedia('(pointer: coarse)').matches;
 const GIF_SIZE = isTouch ? 60 : 80;
-const MIN_INTERVAL = isTouch ? 10000 : 5000;
-const MAX_INTERVAL = isTouch ? 15000 : 8000;
+const MIN_INTERVAL = isTouch ? 18000 : 10000;
+const MAX_INTERVAL = isTouch ? 30000 : 18000;
 const PEEK_HOLD_MIN = 2000;
 const PEEK_HOLD_MAX = 4000;
 const FLEE_DISTANCE = 150;

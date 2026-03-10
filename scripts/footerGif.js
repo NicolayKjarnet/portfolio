@@ -507,7 +507,7 @@ function makeFlee(el, img, opts = {}) {
   }
 
   function startIdleChat() {
-    if (idleChatTimer || !isTouch) return;
+    if (idleChatTimer) return;
     const loop = () => {
       if (isGameActive() || isClose) { idleChatTimer = null; return; }
       if (getLingerMessages().length) {
@@ -515,9 +515,9 @@ function makeFlee(el, img, opts = {}) {
         lastLingerIdx = index;
         showCaption(text);
       }
-      idleChatTimer = setTimeout(loop, 4000 + Math.random() * 3000);
+      idleChatTimer = setTimeout(loop, 6000 + Math.random() * 3000);
     };
-    idleChatTimer = setTimeout(loop, 3500);
+    idleChatTimer = setTimeout(loop, 7500);
   }
 
   function stopIdleChat() {
@@ -628,7 +628,7 @@ function makeFlee(el, img, opts = {}) {
                 showCaption(text);
               }
             }
-          }, 2500);
+          }, 4500);
         }
       } else {
         targetX = 0;
@@ -717,19 +717,22 @@ function makeFlee(el, img, opts = {}) {
     startIdleChat();
   }, { passive: true });
 
-  // Start idle chat when GIF is visible on touch devices
-  if (isTouch) {
-    const idleObs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && !isGameActive()) {
-        startIdleChat();
-      } else {
-        stopIdleChat();
-      }
-    }, { threshold: 0.3 });
-    idleObs.observe(el);
+  // Start idle chat when GIF is visible
+  const idleObs = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting && !isGameActive()) {
+      startIdleChat();
+    } else {
+      stopIdleChat();
+    }
+  }, { threshold: 0.3 });
+  idleObs.observe(el);
+
+  function restartIdleChat() {
+    stopIdleChat();
+    idleChatTimer = setTimeout(() => { idleChatTimer = null; startIdleChat(); }, 7500);
   }
 
-  return { showCaption };
+  return { showCaption, restartIdleChat };
 }
 
 // ============================================
@@ -812,6 +815,7 @@ export function setupHeaderGif() {
     lastContextTimes[key] = now;
     const text = comments[Math.floor(Math.random() * comments.length)];
     flee.showCaption(text);
+    flee.restartIdleChat();
   }
 
   if (langToggle) {
