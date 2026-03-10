@@ -284,8 +284,7 @@ function startTrack(trackEl) {
   });
   currentAudio.addEventListener('ended', () => playNext());
 
-  syncPlayingState(true);
-  currentAudio.play().catch(() => stopCurrent());
+  currentAudio.play().then(() => syncPlayingState(true)).catch(() => stopCurrent());
 }
 
 /** Swap to single cover if track has one, otherwise restore album cover. */
@@ -405,8 +404,7 @@ export function setupMusicPlayer() {
     miniPlayer.querySelector('.mini-player__artist').textContent = artistText;
 
     currentAudio.addEventListener('ended', () => { playNext(); });
-    syncPlayingState(true);
-    currentAudio.play().catch(() => stopCurrent());
+    currentAudio.play().then(() => syncPlayingState(true)).catch(() => stopCurrent());
   });
 }
 

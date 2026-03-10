@@ -151,7 +151,7 @@ export function setupFauxBot() {
       <p class="chatbot-reveal__text">${text}</p>
     `;
     chatBody.appendChild(row);
-    chatBody.scrollTop = chatBody.scrollHeight;
+    chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     return row;
   }
 
@@ -170,7 +170,7 @@ export function setupFauxBot() {
         </div>
       `;
       chatBody.appendChild(dots);
-      chatBody.scrollTop = chatBody.scrollHeight;
+      chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
       monologueTimer = setTimeout(() => {
         dots.remove();
@@ -193,15 +193,13 @@ export function setupFauxBot() {
         });
         btn.classList.add('chatbot-reveal__choice--selected');
         btn.disabled = true;
-        chatBody.appendChild(btn);
-        container.remove();
-        chatBody.scrollTop = chatBody.scrollHeight;
+        chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
         callback(i);
       });
       container.appendChild(btn);
     });
     chatBody.appendChild(container);
-    chatBody.scrollTop = chatBody.scrollHeight;
+    chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
   }
 
   async function playRoute(routeData) {
@@ -270,7 +268,7 @@ export function setupFauxBot() {
       offline.className = 'chatbot-reveal__offline';
       offline.textContent = getTranslations().bot?.offline ?? 'chatbot is offline.';
       chatBody.appendChild(offline);
-      chatBody.scrollTop = chatBody.scrollHeight;
+      chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }, totalTime);
   }
 
@@ -288,6 +286,7 @@ export function setupFauxBot() {
       return;
     }
     chatWindow.classList.remove('chatbot-reveal--visible');
+    document.body.style.overflow = '';
     lureBg.classList.remove('faux-bot__bg--visible');
     clearTimeout(monologueTimer);
     monologueTimeouts.forEach(tid => clearTimeout(tid));
@@ -321,6 +320,7 @@ export function setupFauxBot() {
     textRow.querySelector('.chatbot-reveal__text').textContent = reveal;
 
     chatWindow.classList.add('chatbot-reveal--visible');
+    document.body.style.overflow = 'hidden';
 
     setTimeout(() => {
       typingRow.classList.add('chatbot-reveal__msg--visible');
@@ -333,7 +333,7 @@ export function setupFauxBot() {
 
     setTimeout(() => {
       gifRow.classList.add('chatbot-reveal__msg--visible');
-      chatBody.scrollTop = chatBody.scrollHeight;
+      chatBody.lastElementChild?.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }, 2200);
 
     // Monologue → choices
