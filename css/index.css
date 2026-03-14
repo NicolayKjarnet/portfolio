@@ -3623,10 +3623,13 @@ button:focus-visible,
     right: 0.5rem;
     left: 0.5rem;
     width: auto;
-    max-height: 50vh;
+    max-height: calc(100vh - 1rem);
+    max-height: calc(100dvh - 1rem);
   }
   .chatbot-reveal__body {
-    max-height: calc(50vh - 3rem);
+    max-height: calc(100vh - 4rem);
+    max-height: calc(100dvh - 4rem);
+    -webkit-overflow-scrolling: touch;
   }
   .chatbot-reveal--above-player {
     bottom: 4rem;
