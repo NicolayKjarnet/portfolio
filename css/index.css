@@ -2008,6 +2008,10 @@ body.gif-game-playing * {
   -webkit-user-select: none !important;
 }
 
+body.gif-game-playing .gif-game__close {
+  cursor: pointer !important;
+}
+
 /* Hide real cursor during hammer strike so only the animated one shows */
 body.gif-cursor-striking,
 body.gif-cursor-striking * {
