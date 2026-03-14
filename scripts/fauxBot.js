@@ -4,10 +4,7 @@ import { getTranslations } from './i18n.js';
 const isTouch = matchMedia('(pointer: coarse)').matches;
 const GIF_SIZE = isTouch ? 60 : 80;
 const FLEE_DISTANCE = 150;
-const FIRST_HOLD = 5000;
-const RETRY_HOLD = 18000;
-const RETRY_DELAY_MIN = 15000;
-const RETRY_DELAY_MAX = 25000;
+const LURE_HOLD = 8000;
 
 function botPosition() {
   const vw = window.innerWidth;
@@ -19,6 +16,32 @@ function botPosition() {
     fromY: vh - GIF_SIZE - 24,
     rotation: 0,
   };
+}
+
+// Module-level state for cross-module coordination
+let _showLure = null;
+let _hasClicked = false;
+let _chatWindowEl = null;
+let _isLureVisible = false;
+
+/**
+ * Trigger the faux bot lure from outside (called by peekingGif).
+ * onDone is called when the lure cycle finishes (slides away or chatbot closed).
+ */
+export function triggerFauxBotLure(onDone) {
+  if (_showLure) _showLure(onDone);
+  else if (onDone) onDone();
+}
+
+/** Returns true once the chatbot has been opened and closed (permanent). */
+export function isFauxBotDone() {
+  return _hasClicked;
+}
+
+/** Returns true while the lure is visible or the chatbot window is open. */
+export function isFauxBotOpen() {
+  return _isLureVisible ||
+    (_chatWindowEl && _chatWindowEl.classList.contains('chatbot-reveal--visible'));
 }
 
 export function setupFauxBot() {
@@ -60,7 +83,13 @@ export function setupFauxBot() {
   let currentTl = null;
   let hasClicked = false;
   let isFirstAttempt = true;
-  let retryTimer = null;
+  let onDoneCallback = null;
+
+  // Sync module-level state
+  const syncState = () => {
+    _hasClicked = hasClicked;
+    _isLureVisible = isLureVisible;
+  };
 
   // -- Chat window --
   const botT = getTranslations().bot ?? {};
@@ -91,6 +120,7 @@ export function setupFauxBot() {
     </div>
   `;
   document.body.appendChild(chatWindow);
+  _chatWindowEl = chatWindow;
 
   let monologueTimer = null;
   let monologueTimeouts = [];
@@ -122,7 +152,7 @@ export function setupFauxBot() {
     });
   }
 
-  function showLure() {
+  function showLureBubble() {
     const lures = getTranslations().bot?.lure ?? [];
     if (!lures.length) return;
     const text = lures[Math.floor(Math.random() * lures.length)];
@@ -141,6 +171,14 @@ export function setupFauxBot() {
     bubble.classList.remove('faux-bot__bubble--visible', 'faux-bot__bubble--lure');
     wrapper.classList.remove('faux-bot--active');
     lureBg.classList.remove('faux-bot__bg--visible');
+  }
+
+  function callOnDone() {
+    if (onDoneCallback) {
+      const cb = onDoneCallback;
+      onDoneCallback = null;
+      cb();
+    }
   }
 
   // -- Chat window helpers --
@@ -289,14 +327,15 @@ export function setupFauxBot() {
       return;
     }
     chatWindow.classList.remove('chatbot-reveal--visible');
-    document.body.style.overflow = '';
     lureBg.classList.remove('faux-bot__bg--visible');
     clearTimeout(monologueTimer);
     monologueTimeouts.forEach(tid => clearTimeout(tid));
     monologueTimeouts = [];
     isLureVisible = false;
     hasClicked = true;
+    syncState();
     finishBot();
+    callOnDone();
   });
 
   // -- Reveal sequence (opens chat window) --
@@ -323,7 +362,6 @@ export function setupFauxBot() {
     textRow.querySelector('.chatbot-reveal__text').textContent = reveal;
 
     chatWindow.classList.add('chatbot-reveal--visible');
-    document.body.style.overflow = 'hidden';
 
     setTimeout(() => {
       typingRow.classList.add('chatbot-reveal__msg--visible');
@@ -372,14 +410,16 @@ export function setupFauxBot() {
     }, delay);
   }
 
-  // -- Lure GIF slide-in/out --
+  // -- Lure GIF slide-in/out (called externally by peekingGif) --
   function isGameActive() {
     return document.body.classList.contains('gif-game-playing');
   }
 
-  function showLureGif() {
+  function showLureGif(onDone) {
+    onDoneCallback = onDone;
+
     if (hasClicked || isGameActive() || document.visibilityState !== 'visible') {
-      if (!hasClicked) scheduleRetry();
+      callOnDone();
       return;
     }
 
@@ -390,22 +430,25 @@ export function setupFauxBot() {
       return r.top < window.innerHeight && r.bottom > 0;
     });
     if (anyGifVisible) {
-      scheduleRetry();
+      callOnDone();
       return;
     }
 
     isLureVisible = true;
+    syncState();
     document.body.setAttribute('data-faux-bot', '');
     hideBubble();
 
     const pos = botPosition();
-    const hold = (isFirstAttempt ? FIRST_HOLD : RETRY_HOLD) / 1000;
+    const hold = LURE_HOLD / 1000;
 
     const tl = gsap.timeline({
       onComplete: () => {
         isLureVisible = false;
+        syncState();
+        document.body.removeAttribute('data-faux-bot');
         hideBubble();
-        if (!hasClicked) scheduleRetry();
+        callOnDone();
       },
     });
     currentTl = tl;
@@ -427,12 +470,13 @@ export function setupFauxBot() {
       onStart: () => {
         if (isTouch) eyes.startIdle();
       },
-      onComplete: () => showLure(),
+      onComplete: () => showLureBubble(),
     });
 
-    // For first attempt, show retreat message before leaving
+    tl.to({}, { duration: hold });
+
+    // Show retreat message before leaving
     if (isFirstAttempt) {
-      tl.to({}, { duration: hold });
       tl.to({}, {
         duration: 0.1,
         onComplete: () => {
@@ -442,8 +486,6 @@ export function setupFauxBot() {
         },
       });
       tl.to({}, { duration: 2 });
-    } else {
-      tl.to({}, { duration: hold });
     }
 
     tl.to(wrapper, {
@@ -462,18 +504,14 @@ export function setupFauxBot() {
     isFirstAttempt = false;
   }
 
-  function scheduleRetry() {
-    if (hasClicked) return;
-    clearTimeout(retryTimer);
-    const delay = RETRY_DELAY_MIN + Math.random() * (RETRY_DELAY_MAX - RETRY_DELAY_MIN);
-    retryTimer = setTimeout(showLureGif, delay);
-  }
+  // Register module-level show function
+  _showLure = showLureGif;
 
   // -- Click: open chat window --
   wrapper.addEventListener('click', () => {
     if (!isLureVisible || hasClicked) return;
     hasClicked = true;
-    clearTimeout(retryTimer);
+    syncState();
     openChatWindow();
   });
 
@@ -502,7 +540,6 @@ export function setupFauxBot() {
   // -- Pause when tab is hidden --
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden') {
-      clearTimeout(retryTimer);
       clearTimeout(monologueTimer);
       if (pendingTypingResolve && chatWindow.classList.contains('chatbot-reveal--visible')) {
         chatBody.querySelectorAll('.chatbot-reveal__typing-indicator').forEach(el => el.remove());
@@ -512,29 +549,15 @@ export function setupFauxBot() {
       if (isLureVisible && currentTl) {
         currentTl.kill();
         isLureVisible = false;
+        syncState();
+        document.body.removeAttribute('data-faux-bot');
         eyes.stopIdle();
         hideBubble();
         gsap.set(wrapper, { opacity: 0 });
+        callOnDone();
       }
-    } else if (!hasClicked && !isLureVisible) {
-      scheduleRetry();
     }
   });
-
-  // -- Trigger: show lure when header scrolls fully out of view --
-  const header = document.querySelector('.header');
-  if (header) {
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry.isIntersecting && !hasClicked) {
-          showLureGif();
-          obs.disconnect();
-        }
-      },
-      { threshold: 0 },
-    );
-    obs.observe(header);
-  }
 
   // -- Shift chatbot above mini-player when it's visible --
   const miniPlayer = document.querySelector('.mini-player');

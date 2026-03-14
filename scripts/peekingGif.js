@@ -1,5 +1,6 @@
 import { createEyes } from './footerGif.js';
 import { getTranslations } from './i18n.js';
+import { triggerFauxBotLure, isFauxBotDone, isFauxBotOpen } from './fauxBot.js';
 
 const isTouch = matchMedia('(pointer: coarse)').matches;
 const GIF_SIZE = isTouch ? 60 : 80;
@@ -8,6 +9,7 @@ const MAX_INTERVAL = isTouch ? 30000 : 18000;
 const PEEK_HOLD_MIN = 2000;
 const PEEK_HOLD_MAX = 4000;
 const FLEE_DISTANCE = 150;
+const INITIAL_DELAY = 5000 + Math.random() * 1000;
 let lastEdge = Math.random() < 0.5 ? 'right' : 'left';
 
 /**
@@ -103,14 +105,6 @@ export function setupPeekingGif() {
     return document.body.classList.contains('gif-game-playing');
   }
 
-  function isFauxBotVisible() {
-    return document.body.hasAttribute('data-faux-bot');
-  }
-
-  function isFauxBotDone() {
-    return document.body.hasAttribute('data-faux-bot-done');
-  }
-
   function randomInterval() {
     return MIN_INTERVAL + Math.random() * (MAX_INTERVAL - MIN_INTERVAL);
   }
@@ -188,13 +182,18 @@ export function setupPeekingGif() {
   }
 
   function peek() {
-    // No peeking until the faux-bot has had its moment
-    if (!isFauxBotDone() || isGameActive() || gifVisible || isFauxBotVisible() || document.visibilityState !== 'visible') {
+    if (isGameActive() || gifVisible || isFauxBotOpen() || document.visibilityState !== 'visible') {
       schedulePeek();
       return;
     }
 
     peekCount++;
+
+    // 50/50 chance: faux bot lure or normal peek
+    if (!isFauxBotDone() && Math.random() < 0.5) {
+      triggerFauxBotLure(schedulePeek);
+      return;
+    }
 
     const pos = randomPosition();
     isPeeking = true;
@@ -299,5 +298,5 @@ export function setupPeekingGif() {
     }
   });
 
-  schedulePeek();
+  peekTimer = setTimeout(peek, INITIAL_DELAY);
 }

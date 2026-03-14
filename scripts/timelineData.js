@@ -306,23 +306,34 @@ const setupScrollytelling = () => {
   const slides = display.querySelectorAll('.scrollytelling-slide');
   let activeIndex = -1;
 
+  const isFallbackSlide = (i) =>
+    i >= 0 && slides[i]?.querySelector('.scrollytelling-fallback-wrapper');
+
   const activate = (index) => {
     if (index === activeIndex) return;
+    const prevIndex = activeIndex;
     activeIndex = index;
+
+    // Skip the opacity fade when both slides share the same fallback image
+    const skipFade = isFallbackSlide(prevIndex) && isFallbackSlide(index);
 
     slides.forEach((slide, i) => {
       const isActive = i === index;
+
+      if (skipFade) slide.style.transition = 'none';
       slide.classList.toggle('active', isActive);
 
       const video = slide.querySelector('video');
       if (video) {
-        if (isActive) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
+        if (isActive) video.play().catch(() => {});
+        else video.pause();
       }
     });
+
+    if (skipFade) {
+      slides[index].offsetHeight;
+      slides.forEach((s) => { s.style.transition = ''; });
+    }
 
     // Highlight active timeline entry
     timelineItems.forEach((item, i) => {
@@ -334,27 +345,21 @@ const setupScrollytelling = () => {
   activate(0);
 
   // Scroll-based: find which timeline item is closest to viewport center
-  let ticking = false;
   const onScroll = () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      ticking = false;
-      const center = window.innerHeight / 2;
-      let closestIndex = 0;
-      let closestDist = Infinity;
+    const center = window.innerHeight / 2;
+    let closestIndex = 0;
+    let closestDist = Infinity;
 
-      timelineItems.forEach((item, i) => {
-        const rect = item.getBoundingClientRect();
-        const dist = Math.abs(rect.top + rect.height / 2 - center);
-        if (dist < closestDist) {
-          closestDist = dist;
-          closestIndex = i;
-        }
-      });
-
-      activate(closestIndex);
+    timelineItems.forEach((item, i) => {
+      const rect = item.getBoundingClientRect();
+      const dist = Math.abs(rect.top + rect.height / 2 - center);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closestIndex = i;
+      }
     });
+
+    activate(closestIndex);
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
