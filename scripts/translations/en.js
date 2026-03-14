@@ -23,7 +23,7 @@ export default {
   },
   contact: {
     title: 'Get in touch',
-    heading: 'Not looking, but...',
+    heading: 'Happily employed, but...',
     subtitle:
       "For the record: I have a permanent job, work from home, and live in my hometown within walking distance of my mom.<br>And I enjoy what I do. Hard to beat.<br>But if you have a fun project, an irresistible job opportunity, or just want to discuss whether the GIF on this site has developed consciousness — get in touch.",
     email: 'Email',
