@@ -446,6 +446,8 @@ function showHammerStrike(x, y) {
 
 // Show hammer strike on any click while hammer cursor is active
 document.addEventListener('click', (e) => {
+  // Don't hijack clicks on nav/language controls
+  if (e.target.closest('.lang-toggle, .nav, a, button:not(.gif-game__cell)')) return;
   if (document.body.classList.contains('gif-cursor-near') ||
       document.body.classList.contains('gif-game-playing')) {
     showHammerStrike(e.clientX, e.clientY);
