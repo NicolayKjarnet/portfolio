@@ -1547,6 +1547,8 @@ video.project-section__img {
   right: 1.5rem;
   width: min(360px, calc(100vw - 3rem));
   max-height: 70vh;
+  display: flex;
+  flex-direction: column;
   background: var(--clr-dark);
   border-radius: 1rem;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
@@ -1616,7 +1618,8 @@ video.project-section__img {
   flex-direction: column;
   align-items: flex-start;
   gap: 0.6rem;
-  max-height: 60vh;
+  flex: 1;
+  min-height: 0;
   overflow-y: auto;
   overscroll-behavior: contain;
 }
@@ -3627,8 +3630,6 @@ button:focus-visible,
     max-height: calc(100dvh - 1rem);
   }
   .chatbot-reveal__body {
-    max-height: calc(100vh - 4rem);
-    max-height: calc(100dvh - 4rem);
     -webkit-overflow-scrolling: touch;
   }
   .chatbot-reveal--above-player {
