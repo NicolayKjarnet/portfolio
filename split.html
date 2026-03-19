@@ -12,13 +12,18 @@
     </div>
     <header class="header">
       <div class="header-link-container">
-        <a href="index.html" class="header__link">Back to Home</a>
+        <a href="index.html" class="header__link" data-i18n="projectPage.backToHome">Back to Home</a>
       </div>
       <div class="header-title-container">
-        <h1>Split Prototype</h1>
+        <h1 data-i18n="split.title">Split Prototype</h1>
       </div>
+      <button class="lang-toggle" data-lang-toggle data-i18n-aria="langToggle.ariaLabel" aria-label="Switch language">
+        <span class="lang-toggle__option lang-toggle__option--active" data-lang="en">EN</span>
+        <span class="lang-toggle__divider">|</span>
+        <span class="lang-toggle__option" data-lang="no">NO</span>
+      </button>
     </header>
-    <main>
+    <main id="top">
       <!-- Video Section -->
       <section class="video-section">
         <div class="video-container">
@@ -34,8 +39,8 @@
       <!-- Project Summary Section -->
       <section class="summary-section">
         <div class="summary">
-          <h2 class="summary-header">Project Summary</h2>
-          <p>
+          <h2 class="summary-header" data-i18n="projectPage.summary">Project Summary</h2>
+          <p data-i18n="split.summary">
             As a freelancer, you don't receive payments on a fixed date each month. You also don't know
             how much you will receive or how often. Since you manage your finances entirely on your own
             and are responsible for them, you ideally need multiple bank accounts: for taxes, VAT,
@@ -57,12 +62,13 @@
               class="footer__link footer__link--copyright"
               href="https://github.com/NicolayKjarnet"
               target="_blank"
-              >©2024 Nicolay Kjærnet</a
+              data-i18n="projectPage.copyright"
+              >©2026 Nicolay Kjærnet</a
             >
             <div class="footer__img-container">
               <img class="footer__img" src="/images/footer-gif.gif" alt="Footer GIF" />
             </div>
-            <a class="footer__link footer__link--back-to-top" href="#top">BACK TO TOP ▲</a>
+            <a class="footer__link footer__link--back-to-top" href="#top" data-i18n="projectPage.backToTop">BACK TO TOP ▲</a>
           </div>
         </footer>
       </section>
@@ -72,5 +78,9 @@
     <script defer type="module" src="scripts/projectIndex.js"></script>
     <script defer src="scripts/progress.js"></script>
     <script defer src="scripts/projectAnimations.js"></script>
+    <script type="module">
+      import { initI18n } from './scripts/i18n.js';
+      document.addEventListener('DOMContentLoaded', () => initI18n());
+    </script>
   </body>
 </html>

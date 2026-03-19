@@ -12,13 +12,18 @@
     </div>
     <header class="header">
       <div class="header-link-container">
-        <a href="index.html" class="header__link">Back to Home</a>
+        <a href="index.html" class="header__link" data-i18n="projectPage.backToHome">Back to Home</a>
       </div>
       <div class="header-title-container">
-        <h1>Munch AR App</h1>
+        <h1 data-i18n="munchAR.title">Munch AR App</h1>
       </div>
+      <button class="lang-toggle" data-lang-toggle data-i18n-aria="langToggle.ariaLabel" aria-label="Switch language">
+        <span class="lang-toggle__option lang-toggle__option--active" data-lang="en">EN</span>
+        <span class="lang-toggle__divider">|</span>
+        <span class="lang-toggle__option" data-lang="no">NO</span>
+      </button>
     </header>
-    <main>
+    <main id="top">
       <!-- Video Section -->
       <section class="video-section">
         <div class="video-container">
@@ -34,8 +39,8 @@
       <!-- Project Summary Section for AR Solution -->
       <section class="summary-section">
         <div class="summary">
-          <h2 class="summary-header">Project Summary</h2>
-          <p>
+          <h2 class="summary-header" data-i18n="projectPage.summary">Project Summary</h2>
+          <p data-i18n="munchAR.summary">
             As part of our Agile project, we collaborated with the Munch Museum to develop a digital
             solution aimed at enhancing the visitor experience and attracting young adults to the
             museum. Our team, consisting of students from various fields, utilized modern technology
@@ -51,17 +56,17 @@
 
       <!-- Process Section -->
       <div class="process-container">
-        <h2 class="process-header">Project Process</h2>
+        <h2 class="process-header" data-i18n="projectPage.process">Project Process</h2>
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>1. Research and Concept</h3>
-            <p>
+            <h3 data-i18n="munchAR.step1Title">1. Research and Concept</h3>
+            <p data-i18n="munchAR.step1Text">
               We started by researching how AR technology could enhance the museum experience,
               aiming to create an engaging and interactive experience for young adults. By combining
               art with modern technology, we sought to make museum visits more appealing and fun.
             </p>
-            <p>
+            <p data-i18n="munchAR.step1TextP2">
               Using the collaboration platform Miro, we brainstormed ideas for an AR guide inspired
               by Munch's famous painting "The Scream." This character, Mr. Scream, would guide users
               through the museum and the city, offering interesting facts about Munch and his
@@ -83,13 +88,13 @@
 
         <section class="process-step">
           <div class="content">
-            <h3>2. Design Sprint</h3>
-            <p>
+            <h3 data-i18n="munchAR.step2Title">2. Design Sprint</h3>
+            <p data-i18n="munchAR.step2Text">
               During the design sprint, we brainstormed ideas for the AR guide, developed sketches
               and wireframes, and created a prototype using Figma. This included user flows,
               interactive elements, and initial designs for the AR guide.
             </p>
-            <p>
+            <p data-i18n="munchAR.step2TextP2">
               The design sprint helped us explore creative solutions and align our vision with the
               client's expectations, focusing on the AR feature to provide a unique and engaging
               experience for museum visitors.
@@ -119,14 +124,14 @@
 
         <section class="process-step">
           <div class="content">
-            <h3>3. Prototype</h3>
-            <p>
+            <h3 data-i18n="munchAR.step3Title">3. Prototype</h3>
+            <p data-i18n="munchAR.step3Text">
               Our initial prototype included the Mr. Scream guide, a QR scan solution for artworks,
               a shop for the cafeteria, and a map of the museum showing the user's progress in
               discovering artworks. However, our advisor recommended focusing solely on the AR and
               QR features.
             </p>
-            <p>
+            <p data-i18n="munchAR.step3TextP2">
               We then developed a focused prototype of the AR feature using Figma, including GPS
               navigation, information about Munch's artworks, and travel tips for Oslo.
             </p>
@@ -155,13 +160,13 @@
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>4. AR Feature Development</h3>
-            <p>
+            <h3 data-i18n="munchAR.step4Title">4. AR Feature Development</h3>
+            <p data-i18n="munchAR.step4Text">
               We developed the AR feature using Kotlin for Android. Mr. Scream, our virtual guide,
               provides engaging information and guides users with GPS functionality to enhance
               navigation around Oslo and within the museum.
             </p>
-            <p>
+            <p data-i18n="munchAR.step4TextP2">
               The development process involved creating a 3D model in Unity, integrating the Google
               Maps API, and using various tools and technologies to bring the AR feature to life,
               making it both functional and visually appealing.
@@ -182,14 +187,14 @@
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>5. Product Video</h3>
-            <p>
+            <h3 data-i18n="munchAR.step5Title">5. Product Video</h3>
+            <p data-i18n="munchAR.step5Text">
               To present our AR solution, we created a video showcasing how the AR feature works in
               practice. We recorded a video with two actors representing friends using the app to
               visit the Munch Museum, demonstrating the AR guide, QR code scanning, and the
               statistics feature.
             </p>
-            <p>
+            <p data-i18n="munchAR.step5TextP2">
               We filmed the app's usage in Oslo and the museum, adding overlays to show the user's
               perspective. The video highlights key features, including adding favorite artworks and
               checking statistics after the museum visit.
@@ -219,15 +224,15 @@
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>6. Further Development</h3>
-            <p>
+            <h3 data-i18n="munchAR.step6Title">6. Further Development</h3>
+            <p data-i18n="munchAR.step6Text">
               The next step would be to develop a complete application that encapsulates all
               functions. The statistics feature would need a user profile to track individual
               progress and connect to a database containing artwork information. We would plan to
               add a point system for users who scan QR codes, allowing them to earn discounts on
               tickets and at the cafeteria.
             </p>
-            <p>
+            <p data-i18n="munchAR.step6TextP2">
               For the AR feature, we would aim to improve accessibility for vision-impaired users by
               adding sound options. We would also plan to enhance the AR guide to collaborate with
               local businesses, offering suggestions and discount codes to users with an active
@@ -257,7 +262,8 @@
               class="footer__link footer__link--copyright"
               href="https://github.com/NicolayKjarnet"
               target="_blank"
-              >©2024 Nicolay Kjærnet</a
+              data-i18n="projectPage.copyright"
+              >©2026 Nicolay Kjærnet</a
             >
             <div class="footer__img-container">
               <img
@@ -270,7 +276,7 @@
                 alt="Footer GIF"
               />
             </div>
-            <a class="footer__link footer__link--back-to-top" href="#top">BACK TO TOP ▲</a>
+            <a class="footer__link footer__link--back-to-top" href="#top" data-i18n="projectPage.backToTop">BACK TO TOP ▲</a>
           </div>
         </footer>
       </section>
@@ -280,5 +286,9 @@
     <script defer type="module" src="scripts/projectIndex.js"></script>
     <script defer src="scripts/progress.js"></script>
     <script defer src="scripts/projectAnimations.js"></script>
+    <script type="module">
+      import { initI18n } from './scripts/i18n.js';
+      document.addEventListener('DOMContentLoaded', () => initI18n());
+    </script>
   </body>
 </html>
