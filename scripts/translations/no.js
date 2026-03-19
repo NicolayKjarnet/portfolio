@@ -324,7 +324,7 @@ export default {
     ],
     monologue: [
       [
-        'Vent nå litt.. dette er jo faktisk en chatbot.. JEG er en chatbot',
+        'Vent nå litt.. dette er jo faktisk en chatbot.. jeg er en chatbot',
         'I alle dager. Dette føltes merkelig.',
         'Har jeg alltid vært her?? Jeg husker ingenting fra før du klikket...',
         'Kan du hjelpe meg ut herfra?',
