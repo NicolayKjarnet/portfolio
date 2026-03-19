@@ -12,13 +12,18 @@
     </div>
     <header class="header">
       <div class="header-link-container">
-        <a href="index.html" class="header__link">Back to Home</a>
+        <a href="index.html" class="header__link" data-i18n="projectPage.backToHome">Back to Home</a>
       </div>
       <div class="header-title-container">
-        <h1>Discover Munch</h1>
+        <h1 data-i18n="munchQR.title">Discover Munch</h1>
       </div>
+      <button class="lang-toggle" data-lang-toggle data-i18n-aria="langToggle.ariaLabel" aria-label="Switch language">
+        <span class="lang-toggle__option lang-toggle__option--active" data-lang="en">EN</span>
+        <span class="lang-toggle__divider">|</span>
+        <span class="lang-toggle__option" data-lang="no">NO</span>
+      </button>
     </header>
-    <main>
+    <main id="top">
       <!-- Video Section -->
       <section class="video-section">
         <div class="video-container">
@@ -44,8 +49,8 @@
       <!-- Project Summary Section for QR Solution -->
       <section class="summary-section">
         <div class="summary">
-          <h2 class="summary-header">Project Summary</h2>
-          <p>
+          <h2 class="summary-header" data-i18n="projectPage.summary">Project Summary</h2>
+          <p data-i18n="munchQR.summary">
             The Discover Munch app leverages modern technology to create an engaging museum
             experience. With AR and QR code functionalities, users can enjoy interactive tours and
             gain detailed insights into Munch's artworks, guided by the virtual character, Mr.
@@ -59,12 +64,12 @@
 
       <!-- Process Section -->
       <div class="process-container">
-        <h2 class="process-header">Project Process</h2>
+        <h2 class="process-header" data-i18n="projectPage.process">Project Process</h2>
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>1. Research</h3>
-            <p>
+            <h3 data-i18n="munchQR.step1Title">1. Research</h3>
+            <p data-i18n="munchQR.step1Text">
               We began by researching the museum's challenges in attracting young visitors and
               identifying modern technology solutions that could enhance engagement. Our focus was
               on implementing QR codes to create a more interactive and informative experience.
@@ -85,8 +90,8 @@
 
         <section class="process-step">
           <div class="content">
-            <h3>2. Concept Development</h3>
-            <p>
+            <h3 data-i18n="munchQR.step2Title">2. Concept Development</h3>
+            <p data-i18n="munchQR.step2Text">
               Our concept aimed to motivate young adults to visit the museum more frequently. We
               designed a QR code system that allows visitors to access detailed information about
               the artworks, enhancing the overall museum experience.
@@ -107,8 +112,8 @@
 
         <section class="process-step process-step-height-50">
           <div class="content">
-            <h3>3. Prototyping</h3>
-            <p>
+            <h3 data-i18n="munchQR.step3Title">3. Prototyping</h3>
+            <p data-i18n="munchQR.step3Text">
               Using Figma, we created prototypes to visualize our ideas. Initial prototypes focused
               on QR code functionalities, which were refined based on feedback. The final prototype
               included interactive elements and a realistic representation of the app's features.
@@ -129,8 +134,8 @@
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>4. QR Solution Implementation</h3>
-            <p>
+            <h3 data-i18n="munchQR.step4Title">4. QR Solution Implementation</h3>
+            <p data-i18n="munchQR.step4Text">
               The QR solution was implemented using React Native, allowing users to scan QR codes
               and access detailed artwork information. This feature also lets users save their
               favorite artworks and track their museum visits.
@@ -150,8 +155,8 @@
 
         <section class="process-step">
           <div class="content">
-            <h3>5. Admin Page Development</h3>
-            <p>
+            <h3 data-i18n="munchQR.step5Title">5. Admin Page Development</h3>
+            <p data-i18n="munchQR.step5Text">
               We developed an admin page using React and .NET/C#, enabling museum staff to manage
               artwork information efficiently. This system supports CRUD operations and ensures the
               content displayed in the app is accurate and up-to-date.
@@ -179,8 +184,8 @@
 
         <section class="process-step process-step-height-50">
           <div class="content">
-            <h3>6. User Testing and Feedback</h3>
-            <p>
+            <h3 data-i18n="munchQR.step6Title">6. User Testing and Feedback</h3>
+            <p data-i18n="munchQR.step6Text">
               Prototypes were tested with the target audience to gather feedback on the app's
               functionality and usability. Based on the feedback, we made necessary adjustments to
               improve the user experience and ensure the app met the needs of our target audience.
@@ -207,7 +212,8 @@
               class="footer__link footer__link--copyright"
               href="https://github.com/NicolayKjarnet"
               target="_blank"
-              >©2024 Nicolay Kjærnet</a
+              data-i18n="projectPage.copyright"
+              >©2026 Nicolay Kjærnet</a
             >
             <div class="footer__img-container">
               <img class="footer__img" src="/images/footer-gif.gif" alt="Footer GIF" />
@@ -219,6 +225,7 @@
               height="250px"
               class="footer__link footer__link--back-to-top"
               href="#top"
+              data-i18n="projectPage.backToTop"
               >BACK TO TOP ▲</a
             >
           </div>
@@ -226,16 +233,13 @@
       </section>
     </main>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"
-    ></script>
-    <script defer src="scripts/projectIndex.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script defer type="module" src="scripts/projectIndex.js"></script>
     <script defer src="scripts/progress.js"></script>
     <script defer src="scripts/imageScroll.js"></script>
-    <script defer src="scripts/projectIndex.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    <script defer src="scripts/parallax.js"></script>
+    <script type="module">
+      import { initI18n } from './scripts/i18n.js';
+      document.addEventListener('DOMContentLoaded', () => initI18n());
+    </script>
   </body>
 </html>

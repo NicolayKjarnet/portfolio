@@ -232,6 +232,50 @@ blockquote footer {
   border-bottom-right-radius: 0.5rem;
 }
 
+/* -------------------- LANGUAGE TOGGLE -------------------- */
+
+.lang-toggle {
+  position: absolute;
+  right: 15vw;
+  background: none;
+  border: 1px solid var(--clr-dark-3);
+  border-radius: 0.25rem;
+  padding: 0.3rem 0.6rem;
+  color: var(--clr-dark-3);
+  font-family: inherit;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  z-index: 10;
+  transition: border-color 0.3s ease;
+}
+
+.lang-toggle:hover {
+  border-color: var(--clr-dark);
+}
+
+.lang-toggle__option {
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.lang-toggle__option--active {
+  opacity: 1;
+}
+
+.lang-toggle__divider {
+  margin: 0 0.2rem;
+  opacity: 0.3;
+}
+
+@media (max-width: 768px) {
+  .lang-toggle {
+    position: relative;
+    right: auto;
+    margin-bottom: 0.5rem;
+  }
+}
+
 /* -------------------- FOOTER -------------------- */
 
 #footer-section {

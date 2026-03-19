@@ -16,6 +16,7 @@ import { t } from './i18n.js';
  * @property {boolean} [ongoingProject]
  * @property {boolean} [readMore]
  * @property {boolean} [visitWebsite]
+ * @property {number} [year]
  * @property {boolean} [hidden]
  */
 
@@ -34,6 +35,7 @@ const renderProjectItem = ({
   ongoingProject = false,
   readMore = true,
   visitWebsite = false,
+  year,
 }) => {
   const resolvedTitle = t(title);
 
@@ -62,6 +64,7 @@ const renderProjectItem = ({
                 ? `<div class="ongoing-indicator"><i class="fas fa-cog fa-spin"></i> ${t('project.inProgress')}</div>`
                 : ''
             }
+            ${year ? `<div class="year-badge">${year}</div>` : ''}
             ${readMore ? `<div class="read-more-overlay"><span>${t('project.readMore')}</span></div>` : ''}
             ${visitWebsite ? `<div class="read-more-overlay"><span>${t('project.visitWebsite')}</span></div>` : ''}
           </div>
@@ -95,7 +98,7 @@ const projects = [
     title: { en: 'Kitchen Planner', no: 'Kjøkkenplanlegger' },
     description: {
       en: 'An interactive 3D platform for designing custom, sustainable kitchens. Visualize your dream kitchen in real-time.',
-      no: 'En interaktiv 3D-plattform for å designe tilpassede, bærekraftige kjøkken. Visualiser kjøkkenet ditt i sanntid.',
+      no: 'En interaktiv 3D-plattform for å designe bærekraftige kjøkken, tilpasset ditt rom. Se resultatet i sanntid.',
     },
     techniques: ['React', 'TypeScript', 'Three.js', 'Tailwind'],
     classes: 'project-section__article--web',
@@ -103,6 +106,7 @@ const projects = [
     ongoingProject: true,
     readMore: false,
     visitWebsite: true,
+    year: 2026,
   },
   {
     link: 'https://studiotorshov.no/',
@@ -111,7 +115,7 @@ const projects = [
     title: 'Studio Torshov',
     description: {
       en: 'E-commerce platform for handcrafted clothes, furniture and other interior products. Built to complement the Kitchen Planner.',
-      no: 'Nettbutikk for håndlagde klær, møbler og andre interiørprodukter. Bygget som supplement til Kjøkkenplanleggeren.',
+      no: 'Nettbutikk for håndlagde klær, møbler og interiør. Bygget som supplement til Kjøkkenplanleggeren.',
     },
     techniques: ['Vue', 'TypeScript', 'Supabase'],
     classes: 'project-section__article--web',
@@ -119,6 +123,7 @@ const projects = [
     ongoingProject: true,
     readMore: false,
     visitWebsite: true,
+    year: 2026,
   },
   {
     link: 'https://campaign.site/teriyaki-ninja',
@@ -134,6 +139,7 @@ const projects = [
     imgClass: 'project-img',
     readMore: false,
     visitWebsite: true,
+    year: 2025,
   },
   {
     link: 'wolve.html',
@@ -141,13 +147,14 @@ const projects = [
     title: { en: 'Wolve Redesign', no: 'Wolve-redesign' },
     description: {
       en: "Complete UX overhaul of Wolve IT's loyalty platform. User research, prototyping, and testing resulted in top marks.",
-      no: 'Komplett UX-redesign av Wolve ITs lojalitetsplattform. Brukerundersøkelser, prototyping og testing ga toppkarakter.',
+      no: 'Fullstendig redesign av lojalitetsplattformen til Wolve IT. Brukerundersøkelser, prototyping og testing ga toppkarakter.',
     },
     techniques: ['Figma', 'UX', 'User testing'],
     classes: 'project-section__article--web',
     imgClass: 'project-img',
     clickoutLink: 'https://www.figma.com/file/HBssxeoUkcRd2txOOGbfy4/Wolve-IT-Prototype',
     isFigma: true,
+    year: 2024,
   },
   {
     link: 'artist-api.html',
@@ -155,13 +162,13 @@ const projects = [
     title: 'Artist API',
     description: {
       en: 'Full-stack artist management system for music labels. Create, read, update, and delete artist profiles with a clean, intuitive interface.',
-      no: 'Full-stack artisthåndteringssystem for musikkselskaper. Opprett, les, oppdater og slett artistprofiler med et rent, intuitivt grensesnitt.',
+      no: 'Fullstack-system for å håndtere artister. Opprett, les, oppdater og slett artistprofiler gjennom et rent og intuitivt grensesnitt.',
     },
     techniques: ['React', '.net/C#', 'CRUD', 'Bootstrap'],
     classes: 'project-section__article--web',
     imgClass: 'project-img',
     clickoutLink: 'https://github.com/NicolayKjarnet/pop-artists',
-    hidden: true,
+    year: 2023,
   },
   {
     link: 'greenhouse-system.html',
@@ -169,12 +176,13 @@ const projects = [
     title: { en: 'Greenhouse System', no: 'Drivhussystem' },
     description: {
       en: 'IoT monitoring dashboard for greenhouse environments. Real-time sensor data, mobile alerts, and historical tracking.',
-      no: 'IoT-overvåkingsdashboard for drivhusmiljøer. Sanntids sensordata, mobilvarslinger og historisk sporing.',
+      no: 'Dashboard for overvåking av drivhus med IoT. Sensordata i sanntid, varsling på mobil og historisk sporing.',
     },
     techniques: ['IoT', 'Arduino', 'C++', 'Mongo DB'],
     classes: 'project-section__article--web',
     imgClass: 'project-img',
     clickoutLink: 'https://github.com/NicolayKjarnet/greenhouse-system',
+    year: 2024,
   },
   {
     link: 'Dagens-latter.html',
@@ -182,13 +190,14 @@ const projects = [
     title: { en: 'Laughter Of The Day', no: 'Dagens Latter' },
     description: {
       en: 'iOS app serving daily jokes from an API. Save favorites and contribute your own to the collection.',
-      no: 'iOS-app som serverer daglige vitser fra et API. Lagre favoritter og bidra med dine egne.',
+      no: 'En iOS-app som serverer daglige vitser fra et API. Lagre favorittene dine og legg til egne.',
     },
     techniques: ['Swift', 'API', 'Core Data'],
     classes: 'project-section__article--web',
     imgClass: 'project-img',
     clickoutLink: 'https://github.com/NicolayKjarnet/DagensLatter',
     hidden: true,
+    year: 2024,
   },
   {
     link: 'munchAR.html',
@@ -196,11 +205,12 @@ const projects = [
     title: 'Munch AR',
     description: {
       en: 'AR navigation prototype guiding tourists through Oslo to the Munch Museum, with trivia and artwork previews along the way.',
-      no: 'AR-navigasjonsprototype som guider turister gjennom Oslo til Munchmuseet, med trivia og kunstforhåndsvisninger underveis.',
+      no: 'En AR-prototype som guider turister gjennom Oslo til Munchmuseet, med trivia og smakebiter av kunsten underveis.',
     },
     techniques: ['Figma', 'Android', 'Google Maps API'],
     classes: 'project-section__article--web',
     imgClass: 'project-img',
+    year: 2023,
   },
   {
     link: '',
@@ -217,18 +227,20 @@ const projects = [
     readMore: false,
     visitWebsite: false,
     hidden: true,
+    year: 2025,
   },
   {
     link: 'munchQR.html',
     imgSrc: '/images/munch-qr.webp',
     title: 'Discover Munch',
     description: {
-      en: 'QR-powered museum guide for tourists, paired with an admin dashboard for museum staff to manage artwork information.',
-      no: 'QR-drevet museumguide for turister, med et administrasjonspanel for museumsansatte til å håndtere kunstinformasjon.',
+      en: 'QR-powered museum guide for tourists, paired with an admin CMS for museum staff to manage artwork information.',
+      no: 'Museumguide basert på QR-koder for turister, med et CMS der ansatte kan håndtere informasjon om kunsten.',
     },
     techniques: ['React Native', 'React', '.net', 'C#', 'CRUD'],
     classes: 'project-section__article--web',
     imgClass: 'project-img',
+    year: 2023,
   },
   {
     link: 'https://rick-and-morty-api.nicolaykjaernet.com/',
@@ -236,7 +248,7 @@ const projects = [
     title: 'Rick and Morty',
     description: {
       en: 'Character encyclopedia pulling from the Rick and Morty API. Search, filter, and explore the multiverse.',
-      no: 'Karakterleksikon som henter fra Rick and Morty-APIet. Søk, filtrer og utforsk multiverse.',
+      no: 'Et leksikon over karakterer fra Rick and Morty. Søk, filtrer og utforsk multiverse.',
     },
     techniques: ['API', 'Grid', 'Media Queries', 'BEM'],
     classes: 'project-section__article--web',
@@ -244,6 +256,7 @@ const projects = [
     readMore: false,
     visitWebsite: true,
     hidden: true,
+    year: 2023,
   },
   {
     link: 'split.html',
@@ -251,13 +264,14 @@ const projects = [
     title: 'Split',
     description: {
       en: 'Finance app prototype for freelancers. Automatically splits income into tax, savings, and expense accounts based on your rules.',
-      no: 'Finansapp-prototype for frilansere. Deler automatisk inntekt i skatt, sparing og utgiftskontoer basert på dine regler.',
+      no: 'Prototype på en finansapp for frilansere. Fordeler inntekt automatisk mellom skatt, sparing og utgifter etter dine regler.',
     },
     techniques: ['UX', 'Figma', 'Universal Design'],
     classes: 'project-section__article--web',
     imgClass: 'project-img',
     clickoutLink: 'https://www.figma.com/file/aIVI2dZQAmWy2WuLlnObSA/Split-Prototype',
     isFigma: true,
+    year: 2023,
   },
   {
     link: 'https://scrollfolio.nicolaykjaernet.com/',
@@ -265,13 +279,14 @@ const projects = [
     title: 'Scrollfolio',
     description: {
       en: "Experimental portfolio showcasing scroll-triggered animations inspired by Apple's product pages.",
-      no: 'Eksperimentell portefølje med scroll-utløste animasjoner inspirert av Apples produktsider.',
+      no: 'En eksperimentell portefølje med animasjoner som trigges av scrolling, inspirert av Apples produktsider.',
     },
     techniques: ['GSAP', 'HTML', 'CSS', 'JS', 'Grid'],
     classes: 'project-section__article--web',
     imgClass: 'project-img',
     readMore: false,
     visitWebsite: true,
+    year: 2023,
   },
 ];
 
