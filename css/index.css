@@ -797,6 +797,19 @@ video.project-section__img {
   transition: 0.3s ease-in-out;
 }
 
+/* Year Badge */
+.year-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: var(--clr-white);
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
 /* Ongoing Indicator */
 .ongoing-indicator {
   position: absolute;

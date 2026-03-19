@@ -12,11 +12,16 @@
     </div>
     <header class="header">
       <div class="header-link-container">
-        <a href="index.html" class="header__link">Back to Home</a>
+        <a href="index.html" class="header__link" data-i18n="projectPage.backToHome">Back to Home</a>
       </div>
       <div class="header-title-container">
-        <h1>Artist API</h1>
+        <h1 data-i18n="artistApi.title">Artist API</h1>
       </div>
+      <button class="lang-toggle" data-lang-toggle data-i18n-aria="langToggle.ariaLabel" aria-label="Switch language">
+        <span class="lang-toggle__option lang-toggle__option--active" data-lang="en">EN</span>
+        <span class="lang-toggle__divider">|</span>
+        <span class="lang-toggle__option" data-lang="no">NO</span>
+      </button>
     </header>
     <main id="top">
       <!-- Video Section -->
@@ -34,8 +39,8 @@
       <!-- Summary Section -->
       <section class="summary-section">
         <div class="summary">
-          <h2 class="summary-header">Project Summary</h2>
-          <p>
+          <h2 class="summary-header" data-i18n="projectPage.summary">Project Summary</h2>
+          <p data-i18n="artistApi.summary">
             This project is an Artist API built with .NET/C# for the backend and React with
             TypeScript for the frontend. Originally a three-day exam assignment focused on basic
             CRUD operations for artists, I have since added features like album and song entities
@@ -43,7 +48,7 @@
             handling, styling and more.
           </p>
 
-          <a href="https://github.com/NicolayKjarnet/pop-artists">GitHub Repository</a>
+          <a href="https://github.com/NicolayKjarnet/pop-artists" data-i18n="projectPage.githubRepo">GitHub Repository</a>
         </div>
       </section>
 
@@ -51,12 +56,12 @@
 
       <!-- Process Section -->
       <div class="process-container">
-        <h2 class="process-header">Project Process</h2>
+        <h2 class="process-header" data-i18n="projectPage.process">Project Process</h2>
 
         <section class="process-step process-step-height-50">
           <div class="content">
-            <h3>1. Relation Setup and Mockup</h3>
-            <p>
+            <h3 data-i18n="artistApi.step1Title">1. Relation Setup and Mockup</h3>
+            <p data-i18n="artistApi.step1Text">
               The first step involved setting up the relationships between the main entities:
               artists, albums, and songs. This included creating mockups to visualize the data
               structure and relationships.
@@ -76,8 +81,8 @@
 
         <section class="process-step">
           <div class="content">
-            <h3>2. Initial Setup and Planning</h3>
-            <p>
+            <h3 data-i18n="artistApi.step2Title">2. Initial Setup and Planning</h3>
+            <p data-i18n="artistApi.step2Text">
               I started by setting up the web API with models, interfaces, and controllers in
               .NET/C#. Once the initial setup was complete, I tested the endpoints using Swagger to
               ensure they worked correctly.
@@ -97,8 +102,8 @@
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>3. Database Initialization</h3>
-            <p>
+            <h3 data-i18n="artistApi.step3Title">3. Database Initialization</h3>
+            <p data-i18n="artistApi.step3Text">
               I added a `DbInitializer` class to populate the database with initial data, including
               twelve artists, each with two albums and songs.
             </p>
@@ -117,8 +122,8 @@
 
         <section class="process-step process-step-height">
           <div class="content">
-            <h3>4. Frontend Setup</h3>
-            <p>
+            <h3 data-i18n="artistApi.step4Title">4. Frontend Setup</h3>
+            <p data-i18n="artistApi.step4Text">
               With the backend working, I set up the frontend using React and TypeScript. I created
               a service using Axios to fetch data from the backend and a context class to manage the
               state.
@@ -146,8 +151,8 @@
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>5. Building UI Components</h3>
-            <p>
+            <h3 data-i18n="artistApi.step5Title">5. Building UI Components</h3>
+            <p data-i18n="artistApi.step5Text">
               I built UI components such as `ArtistItem` and `ArtistList` to display artists. These
               components made use of the service and context to fetch and manage data.
             </p>
@@ -167,8 +172,8 @@
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>6. Adding Functionality</h3>
-            <p>
+            <h3 data-i18n="artistApi.step6Title">6. Adding Functionality</h3>
+            <p data-i18n="artistApi.step6Text">
               I added functionality for searching, adding, updating, and deleting artists. This
               included setting up form components and implementing error handling and user feedback
               features.
@@ -188,8 +193,8 @@
 
         <section class="process-step process-step-height-70">
           <div class="content">
-            <h3>7. Enhancing UX</h3>
-            <p>
+            <h3 data-i18n="artistApi.step7Title">7. Enhancing UX</h3>
+            <p data-i18n="artistApi.step7Text">
               I refined the user experience by adding confirmations for delete actions, tooltips,
               and error handling. This made the application more user-friendly and robust.
             </p>
@@ -218,8 +223,8 @@
 
         <section class="process-step">
           <div class="content">
-            <h3>8. Applying Design Principles</h3>
-            <p>
+            <h3 data-i18n="artistApi.step8Title">8. Applying Design Principles</h3>
+            <p data-i18n="artistApi.step8Text">
               Throughout the project, I applied design principles and best practices to ensure a
               high-quality user interface. This included using consistent design patterns and
               ensuring accessibility.
@@ -249,8 +254,8 @@
 
         <section class="process-step">
           <div class="content">
-            <h3>9. Future Improvements</h3>
-            <p>
+            <h3 data-i18n="artistApi.step9Title">9. Future Improvements</h3>
+            <p data-i18n="artistApi.step9Text">
               Currently, the application allows viewing artists, albums, and songs, but CRUD
               operations for albums and songs are not implemented. Future improvements include
               adding these operations and further refining the user experience.
@@ -277,7 +282,8 @@
               class="footer__link footer__link--copyright"
               href="https://github.com/NicolayKjarnet"
               target="_blank"
-              >©2024 Nicolay Kjærnet</a
+              data-i18n="projectPage.copyright"
+              >©2026 Nicolay Kjærnet</a
             >
             <div class="footer__img-container">
               <img
@@ -290,7 +296,7 @@
                 alt="Animated footer image"
               />
             </div>
-            <a class="footer__link footer__link--back-to-top" href="#top">BACK TO TOP ▲</a>
+            <a class="footer__link footer__link--back-to-top" href="#top" data-i18n="projectPage.backToTop">BACK TO TOP ▲</a>
           </div>
         </footer>
       </section>
@@ -300,12 +306,12 @@
       defer
       src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"
     ></script>
-    <script defer src="scripts/projectIndex.js"></script>
+    <script defer type="module" src="scripts/projectIndex.js"></script>
     <script defer src="scripts/progress.js"></script>
     <script defer src="scripts/imageScroll.js"></script>
-    <script defer src="scripts/projectIndex.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-    <script defer src="scripts/parallax.js"></script>
+    <script type="module">
+      import { initI18n } from './scripts/i18n.js';
+      document.addEventListener('DOMContentLoaded', () => initI18n());
+    </script>
   </body>
 </html>
