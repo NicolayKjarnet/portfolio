@@ -46,8 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // GIFs flee from cursor
   setupFooterGif();
   setupHeaderGif();
-  setupPeekingGif();
-  setupFauxBot();
+  // Peek + chatbot only on desktop (not touch/mobile)
+  if (!matchMedia('(pointer: coarse)').matches) {
+    setupPeekingGif();
+    setupFauxBot();
+  }
 
   // Re-render JS content on language change
   onLangChange(() => {
