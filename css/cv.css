@@ -78,6 +78,145 @@ a:hover { opacity: 0.8; }
   max-width: 540px;
 }
 
+.cv-header__add {
+  margin-top: 0.75rem;
+  background: var(--white-a10);
+  color: var(--clr-white);
+  border: 1px solid var(--white-a15);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.cv-header__add:hover { background: var(--white-a20); }
+
+/* ── Editor panel ──────────────────── */
+
+.cv-editor {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 2rem 1rem;
+}
+
+.cv-editor__inner {
+  background: var(--white-a10);
+  border: 1px solid var(--white-a15);
+  border-radius: var(--border-radius-small);
+  padding: 1rem;
+}
+
+.cv-editor__row {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.cv-editor__row select {
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--white-a15);
+  background: var(--clr-dark-2);
+  color: var(--clr-white);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8rem;
+  outline: none;
+}
+
+.cv-editor__input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.4rem;
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--white-a15);
+  background: var(--clr-dark-2);
+  color: var(--clr-white);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+.cv-editor__input:focus { border-color: var(--clr-orange); }
+
+.cv-editor__actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  justify-content: flex-end;
+}
+
+.cv-editor__actions button {
+  padding: 0.4rem 1rem;
+  border-radius: var(--border-radius-small);
+  border: 1px solid var(--white-a15);
+  background: var(--white-a10);
+  color: var(--clr-white);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.cv-editor__actions button:hover { background: var(--white-a20); }
+
+.cv-save-btn {
+  background: var(--clr-orange) !important;
+  border-color: var(--clr-orange) !important;
+  color: var(--clr-dark) !important;
+  font-weight: 700 !important;
+}
+.cv-save-btn:hover { opacity: 0.85; }
+
+/* ── Save toast ────────────────────── */
+
+.cv-toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: var(--clr-dark-2);
+  border: 1px solid var(--white-a15);
+  color: oklch(70% 0.15 150);
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--border-radius-small);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+.cv-toast--visible { opacity: 1; transform: translateY(0); }
+.cv-toast--saving { color: rgba(255, 255, 255, 0.4); }
+
+/* ── Editable fields ───────────────── */
+
+.cv-item__title[contenteditable] {
+  outline: none;
+  border-radius: 3px;
+  padding: 0 2px;
+  margin: 0 -2px;
+  transition: background var(--transition-fast);
+}
+.cv-item__title[contenteditable]:focus {
+  background: var(--white-a10);
+}
+
+.cv-item__client[contenteditable] {
+  outline: none;
+  border-radius: 3px;
+  padding: 0 2px;
+  margin: 0 -2px;
+  transition: background var(--transition-fast);
+}
+.cv-item__client[contenteditable]:focus {
+  background: var(--white-a10);
+}
+
 /* ── Filters ────────────────────────── */
 
 .cv-filters {

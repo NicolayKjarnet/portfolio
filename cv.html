@@ -26,7 +26,30 @@
     <a class="cv-header__back" href="/">&larr; Tilbake til portefoljen</a>
     <h1 class="cv-header__title">Arbeidslogg</h1>
     <p class="cv-header__subtitle">Alt jeg har levert — fra musikkvideoer og kampanjer til plattformutvikling.</p>
+    <button class="cv-header__add" id="add-btn">+ Ny oppføring</button>
   </header>
+
+  <div class="cv-editor" id="editor" style="display:none;">
+    <div class="cv-editor__inner">
+      <div class="cv-editor__row">
+        <select id="entry-year"></select>
+        <select id="entry-month"></select>
+        <select id="entry-category">
+          <option value="product">Product Dev</option>
+          <option value="creative">Kreativ</option>
+          <option value="music">Musikk & Film</option>
+          <option value="other">Annet</option>
+        </select>
+      </div>
+      <input type="text" id="entry-title" class="cv-editor__input" placeholder="Tittel">
+      <input type="text" id="entry-client" class="cv-editor__input" placeholder="Klient (valgfritt)">
+      <input type="text" id="entry-tags" class="cv-editor__input" placeholder="Tags (kommaseparert)">
+      <div class="cv-editor__actions">
+        <button id="cancel-btn">Avbryt</button>
+        <button class="cv-save-btn" id="save-btn">Lagre</button>
+      </div>
+    </div>
+  </div>
 
   <nav class="cv-filters" aria-label="Filtrer etter kategori">
     <div class="cv-filters__inner">
@@ -42,33 +65,134 @@
     <div id="cv-timeline"></div>
   </main>
 
+  <div class="cv-toast" id="save-toast">Lagret</div>
+
   <script src="/scripts/chapter-player.js"></script>
   <script type="module">
-    import { cvData } from './scripts/cvData.js';
+    const MONTHS = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
 
-    const timelineEl = document.getElementById('cv-timeline');
-    const statsEl = document.getElementById('cv-stats');
-    let activeFilter = 'all';
-    let videoCounter = 0;
+    // Sanity config
+    const PROJECT_ID = 'zlkgs6oe';
+    const DATASET = 'production';
+    const TOKEN = 'skW46u1NkJG7aIhvpmZuuEi1XTmKQpUfLCApGBmqjwVizqmhhchWzkbtJr3d2FQciVzkOjLbsNoD1lTjICxsUWyN1tFnwvvWDDiaVo8uBi4t0nyMZOFJsAXEMA4QEv4vXmqESIpIdmJ58zwbZ1lfSbvbwdIV01wubv0MPm5yxsC5VLPXLVOQ';
 
-    // Only hide GitHub PR links — everything else is fair game
-    const isPublicLink = (url) => {
-      if (!url) return false;
-      return !url.includes('github.com');
+    const sanityQuery = async (query) => {
+      const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/${DATASET}?query=${encodeURIComponent(query)}`;
+      const res = await fetch(url, { headers: { Authorization: `Bearer ${TOKEN}` } });
+      const json = await res.json();
+      return json.result;
     };
+
+    const sanityMutate = async (mutations) => {
+      const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/mutate/${DATASET}`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${TOKEN}` },
+        body: JSON.stringify({ mutations }),
+      });
+      return res.ok;
+    };
+
+    // ── Toast ──────────────────────────
+    const toast = document.getElementById('save-toast');
+    let toastTimer = null;
+    const showToast = (text, cls) => {
+      if (toastTimer) clearTimeout(toastTimer);
+      toast.textContent = text;
+      toast.className = `cv-toast cv-toast--visible ${cls || ''}`;
+      toastTimer = setTimeout(() => { toast.className = 'cv-toast'; }, 1800);
+    };
+
+    // ── Debounced save ─────────────────
+    const saveTimers = new Map();
+    const debouncedSave = (id, field, value) => {
+      const key = `${id}::${field}`;
+      if (saveTimers.has(key)) clearTimeout(saveTimers.get(key));
+      showToast('Lagrer...', 'cv-toast--saving');
+      saveTimers.set(key, setTimeout(async () => {
+        saveTimers.delete(key);
+        const ok = await sanityMutate([{ patch: { id, set: { [field]: value } } }]);
+        showToast(ok ? 'Lagret' : 'Feil ved lagring', ok ? '' : 'cv-toast--saving');
+      }, 800));
+    };
+
+    // ── New entry editor ────────────────
+    const editor = document.getElementById('editor');
+    const addBtn = document.getElementById('add-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const saveBtn = document.getElementById('save-btn');
+    const entryYear = document.getElementById('entry-year');
+    const entryMonth = document.getElementById('entry-month');
+
+    const now = new Date();
+    for (let y = now.getFullYear(); y >= 2015; y--) {
+      const opt = document.createElement('option');
+      opt.value = y; opt.textContent = y;
+      entryYear.appendChild(opt);
+    }
+    MONTHS.forEach((m) => {
+      const opt = document.createElement('option');
+      opt.value = m; opt.textContent = m;
+      entryMonth.appendChild(opt);
+    });
+    entryMonth.value = MONTHS[now.getMonth()];
+
+    addBtn.addEventListener('click', () => {
+      editor.style.display = editor.style.display === 'none' ? 'block' : 'none';
+      if (editor.style.display === 'block') document.getElementById('entry-title').focus();
+    });
+    cancelBtn.addEventListener('click', () => { editor.style.display = 'none'; });
+
+    saveBtn.addEventListener('click', async () => {
+      const title = document.getElementById('entry-title').value.trim();
+      if (!title) return;
+
+      saveBtn.disabled = true;
+      saveBtn.textContent = 'Lagrer...';
+
+      const year = parseInt(entryYear.value);
+      const month = entryMonth.value;
+      const category = document.getElementById('entry-category').value;
+      const client = document.getElementById('entry-client').value.trim();
+      const tagsRaw = document.getElementById('entry-tags').value.trim();
+      const tags = tagsRaw ? tagsRaw.split(',').map((t) => t.trim()).filter(Boolean) : [];
+
+      const slug = title.toLowerCase()
+        .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'aa')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
+      const monthSlug = month.toLowerCase()
+        .replace(/æ/g, 'ae').replace(/ø/g, 'o').replace(/å/g, 'aa')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      const id = `cv-${year}-${monthSlug}-${slug}`;
+
+      const doc = { _id: id, _type: 'cvItem', year, month, title, category, sortOrder: 0 };
+      if (client) doc.client = client;
+      if (tags.length) doc.tags = tags;
+
+      const ok = await sanityMutate([{ createOrReplace: doc }]);
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Lagre';
+      showToast(ok ? 'Lagret' : 'Feil', ok ? '' : 'cv-toast--saving');
+
+      document.getElementById('entry-title').value = '';
+      document.getElementById('entry-client').value = '';
+      document.getElementById('entry-tags').value = '';
+      editor.style.display = 'none';
+      render();
+    });
 
     // ── TOC ──────────────────────────
     const tocList = document.getElementById('toc-list');
     const tocSections = [];
 
-    const buildToc = () => {
+    const buildToc = (grouped) => {
       tocList.innerHTML = '';
       tocSections.length = 0;
 
-      cvData.forEach((yearBlock) => {
+      grouped.forEach((yearBlock) => {
         const yearId = `y-${yearBlock.year}`;
         const yearLi = document.createElement('li');
-
         const yearLink = document.createElement('a');
         yearLink.className = 'toc__year';
         yearLink.textContent = yearBlock.year;
@@ -82,12 +206,12 @@
         const monthsUl = document.createElement('ul');
         monthsUl.className = 'toc__months';
 
-        yearBlock.entries.forEach((monthBlock) => {
-          const monthId = `m-${yearBlock.year}-${monthBlock.month.toLowerCase()}`;
+        yearBlock.months.forEach((mb) => {
+          const monthId = `m-${yearBlock.year}-${mb.month.toLowerCase()}`;
           const monthLi = document.createElement('li');
           const monthLink = document.createElement('a');
           monthLink.className = 'toc__month';
-          monthLink.textContent = monthBlock.month;
+          monthLink.textContent = mb.month;
           monthLink.href = `#${monthId}`;
           monthLink.addEventListener('click', (e) => {
             e.preventDefault();
@@ -107,36 +231,72 @@
       const onScroll = () => {
         let active = null;
         const scrollY = window.scrollY + window.innerHeight * 0.3;
-
         tocSections.forEach((s) => {
           const el = document.getElementById(s.id);
           if (el && el.offsetTop <= scrollY) active = s;
         });
-
         tocSections.forEach((s) => {
           s.monthLink.classList.remove('toc__month--active');
           s.yearLink.classList.remove('toc__year--active');
         });
-
         if (active) {
           active.monthLink.classList.add('toc__month--active');
           active.yearLink.classList.add('toc__year--active');
         }
       };
-
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     };
 
-    const render = () => {
+    // Only hide GitHub PR links
+    const isPublicLink = (url) => url && !url.includes('github.com');
+
+    // ── Render ────────────────────────
+    const timelineEl = document.getElementById('cv-timeline');
+    const statsEl = document.getElementById('cv-stats');
+    let activeFilter = 'all';
+    let videoCounter = 0;
+
+    const fetchData = async () => {
+      return sanityQuery(
+        `*[_type == "cvItem"] | order(year desc, sortOrder asc) {
+          _id, year, month, sortOrder, title, client, category,
+          tags, roles, links, videoSrc, videoChapters, isMilestone
+        }`
+      );
+    };
+
+    const groupData = (items) => {
+      const yearMap = new Map();
+      for (const item of items) {
+        if (!yearMap.has(item.year)) yearMap.set(item.year, new Map());
+        const monthMap = yearMap.get(item.year);
+        if (!monthMap.has(item.month)) monthMap.set(item.month, []);
+        monthMap.get(item.month).push(item);
+      }
+
+      return [...yearMap.entries()]
+        .sort((a, b) => b[0] - a[0])
+        .map(([year, monthMap]) => ({
+          year,
+          months: [...monthMap.entries()]
+            .sort((a, b) => MONTHS.indexOf(b[0]) - MONTHS.indexOf(a[0]))
+            .map(([month, items]) => ({ month, items })),
+        }));
+    };
+
+    const render = async () => {
       timelineEl.innerHTML = '';
       videoCounter = 0;
-      buildToc();
+
+      const allItems = await fetchData();
+      const grouped = groupData(allItems);
+      buildToc(grouped);
 
       let totalItems = 0;
       const categoryCounts = { product: 0, creative: 0, music: 0, other: 0 };
 
-      cvData.forEach((yearBlock) => {
+      grouped.forEach((yearBlock) => {
         const yearEl = document.createElement('section');
         yearEl.className = 'cv-year';
         yearEl.id = `y-${yearBlock.year}`;
@@ -148,7 +308,7 @@
 
         let yearHasVisible = false;
 
-        yearBlock.entries.forEach((monthBlock) => {
+        yearBlock.months.forEach((monthBlock) => {
           const monthEl = document.createElement('div');
           monthEl.className = 'cv-month';
           monthEl.id = `m-${yearBlock.year}-${monthBlock.month.toLowerCase()}`;
@@ -171,10 +331,8 @@
             const visible = activeFilter === 'all' || cat === activeFilter;
             if (visible) { monthHasVisible = true; yearHasVisible = true; }
 
-            const isMilestone = (item.tags || []).includes('milestone');
-
             const el = document.createElement('div');
-            el.className = `cv-item${visible ? '' : ' cv-item--hidden'}${isMilestone ? ' cv-item--milestone' : ''}`;
+            el.className = `cv-item${visible ? '' : ' cv-item--hidden'}${item.isMilestone ? ' cv-item--milestone' : ''}`;
 
             // Dot
             const dot = document.createElement('span');
@@ -187,13 +345,27 @@
 
             const title = document.createElement('div');
             title.className = 'cv-item__title';
+            title.contentEditable = 'true';
+            title.spellcheck = false;
             title.textContent = item.title;
+            title.addEventListener('blur', () => {
+              if (title.textContent.trim() !== item.title) {
+                debouncedSave(item._id, 'title', title.textContent.trim());
+              }
+            });
             body.appendChild(title);
 
             if (item.client) {
               const client = document.createElement('div');
               client.className = 'cv-item__client';
+              client.contentEditable = 'true';
+              client.spellcheck = false;
               client.textContent = item.client;
+              client.addEventListener('blur', () => {
+                if (client.textContent.trim() !== item.client) {
+                  debouncedSave(item._id, 'client', client.textContent.trim());
+                }
+              });
               body.appendChild(client);
             }
 
@@ -232,7 +404,7 @@
             if (item.tags && item.tags.length) {
               const tagsEl = document.createElement('div');
               tagsEl.className = 'cv-item__tags';
-              item.tags.filter((t) => t !== 'milestone').forEach((t) => {
+              item.tags.forEach((t) => {
                 const span = document.createElement('span');
                 span.className = 'cv-item__tag';
                 span.textContent = t;
@@ -242,20 +414,17 @@
             }
 
             // Chapter video player
-            if (item.video && visible) {
+            if (item.videoSrc && visible) {
               const playerId = `cv-player-${videoCounter++}`;
               const videoWrap = document.createElement('div');
               videoWrap.className = 'cv-item__video';
               videoWrap.id = playerId;
               el.appendChild(videoWrap);
 
-              // Defer ChapterPlayer init to after DOM insert
               requestAnimationFrame(() => {
                 if (typeof ChapterPlayer !== 'undefined') {
-                  ChapterPlayer.create(playerId, {
-                    src: item.video.src,
-                    chapters: item.video.chapters || [],
-                  });
+                  const chapters = (item.videoChapters || []).map((c) => ({ time: c.time, label: c.label }));
+                  ChapterPlayer.create(playerId, { src: item.videoSrc, chapters });
                 }
               });
             }
