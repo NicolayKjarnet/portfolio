@@ -390,6 +390,123 @@ a:hover { opacity: 0.8; }
   margin: -0.25rem -0.4rem;
 }
 
+/* ── Table of Contents ─────────────── */
+
+.toc {
+  display: none;
+}
+
+@media (min-width: 1100px) {
+  .toc {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 2.5rem 1rem 2rem 1.5rem;
+    box-sizing: border-box;
+    scrollbar-width: none;
+  }
+
+  .toc::-webkit-scrollbar {
+    display: none;
+  }
+
+  .toc__label {
+    font-family: var(--j-font-ui);
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--j-accent);
+    margin-bottom: 1rem;
+  }
+
+  .toc__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc__year {
+    font-family: var(--j-font-ui);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--j-text);
+    padding: 0.4rem 0 0.15rem 0.75rem;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+    transition: color var(--j-transition);
+  }
+
+  .toc__year:hover {
+    color: var(--j-accent);
+  }
+
+  .toc__year--active {
+    color: var(--j-accent);
+    border-left-color: var(--j-accent);
+  }
+
+  .toc__months {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .toc__month {
+    display: block;
+    font-family: var(--j-font-ui);
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: var(--j-text-muted);
+    padding: 0.15rem 0 0.15rem 1.25rem;
+    border-left: 2px solid transparent;
+    text-decoration: none;
+    transition: color var(--j-transition);
+  }
+
+  .toc__month:hover {
+    color: var(--j-text);
+    opacity: 1;
+  }
+
+  .toc__month--active {
+    color: var(--j-text);
+    font-weight: 600;
+    border-left-color: var(--j-accent);
+  }
+
+  .toc__divider {
+    height: 1px;
+    background: var(--j-border-subtle);
+    margin: 0.75rem 0 0.75rem 0.75rem;
+  }
+
+  .toc__link--page {
+    display: block;
+    font-family: var(--j-font-ui);
+    font-size: 0.72rem;
+    color: var(--j-text-muted);
+    padding: 0.2rem 0 0.2rem 0.75rem;
+    text-decoration: none;
+    transition: color var(--j-transition);
+  }
+
+  .toc__link--page:hover {
+    color: var(--j-accent);
+    opacity: 1;
+  }
+
+  .toc__link--page::after {
+    content: ' \2197';
+    font-size: 0.65em;
+    opacity: 0.5;
+  }
+}
+
 /* ── Save toast ────────────────────── */
 
 .journal-toast {

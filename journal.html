@@ -23,6 +23,16 @@
 
   <!-- Main app (hidden until auth) -->
   <div class="journal-app" id="journal-app" style="display:none;">
+    <nav class="toc" id="toc">
+      <div class="toc__label">INNHOLD</div>
+      <ul class="toc__list" id="toc-list"></ul>
+      <div class="toc__divider"></div>
+      <ul class="toc__list">
+        <li><a class="toc__link toc__link--page" href="/cv.html">CV</a></li>
+        <li><a class="toc__link toc__link--page" href="/">Portefølje</a></li>
+      </ul>
+    </nav>
+
     <header class="journal-header">
       <a class="journal-header__back" href="/">&larr; Tilbake</a>
       <h1 class="journal-header__title">Journal</h1>
@@ -233,15 +243,90 @@
         }));
     };
 
+    // ── TOC ──────────────────────────
+    const tocList = document.getElementById('toc-list');
+    const tocSections = [];
+
+    const buildToc = (data) => {
+      tocList.innerHTML = '';
+      tocSections.length = 0;
+
+      data.forEach((yearBlock) => {
+        const yearId = `y-${yearBlock.year}`;
+        const yearLi = document.createElement('li');
+
+        const yearLink = document.createElement('a');
+        yearLink.className = 'toc__year';
+        yearLink.textContent = yearBlock.year;
+        yearLink.href = `#${yearId}`;
+        yearLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById(yearId)?.scrollIntoView({ behavior: 'smooth' });
+        });
+        yearLi.appendChild(yearLink);
+
+        const monthsUl = document.createElement('ul');
+        monthsUl.className = 'toc__months';
+
+        yearBlock.months.forEach((doc) => {
+          const monthId = `m-${yearBlock.year}-${doc.month.toLowerCase()}`;
+          const monthLi = document.createElement('li');
+          const monthLink = document.createElement('a');
+          monthLink.className = 'toc__month';
+          monthLink.textContent = doc.month;
+          monthLink.href = `#${monthId}`;
+          monthLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById(monthId)?.scrollIntoView({ behavior: 'smooth' });
+          });
+          monthLi.appendChild(monthLink);
+          monthsUl.appendChild(monthLi);
+          tocSections.push({ id: monthId, yearLink, monthLink });
+        });
+
+        yearLi.appendChild(monthsUl);
+        tocList.appendChild(yearLi);
+      });
+
+      setupTocScroll();
+    };
+
+    const setupTocScroll = () => {
+      const onScroll = () => {
+        let active = null;
+        const scrollY = window.scrollY + window.innerHeight * 0.3;
+
+        tocSections.forEach((s) => {
+          const el = document.getElementById(s.id);
+          if (el && el.offsetTop <= scrollY) active = s;
+        });
+
+        tocSections.forEach((s) => {
+          s.monthLink.classList.remove('toc__month--active');
+          s.yearLink.classList.remove('toc__year--active');
+        });
+
+        if (active) {
+          active.monthLink.classList.add('toc__month--active');
+          active.yearLink.classList.add('toc__year--active');
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    };
+
     const render = async () => {
       if (!checkAuth()) return;
       timelineEl.innerHTML = '';
 
       const data = await fetchData();
+      buildToc(data);
 
       data.forEach((yearBlock) => {
         const yearEl = document.createElement('section');
         yearEl.className = 'journal-year';
+        yearEl.id = `y-${yearBlock.year}`;
 
         const yearH = document.createElement('h2');
         yearH.className = 'journal-year__heading';
@@ -251,6 +336,7 @@
         yearBlock.months.forEach((doc) => {
           const monthEl = document.createElement('div');
           monthEl.className = 'journal-month';
+          monthEl.id = `m-${yearBlock.year}-${doc.month.toLowerCase()}`;
 
           const monthH = document.createElement('h3');
           monthH.className = 'journal-month__heading';

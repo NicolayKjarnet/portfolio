@@ -10,7 +10,7 @@ import { setupFooterGif, setupHeaderGif } from './footerGif.js';
 import { setupPeekingGif } from './peekingGif.js';
 import { setupFauxBot } from './fauxBot.js';
 import { addTimelineToPage, updateTimelineText } from './timelineData.js';
-import { setupToc } from './toc.js';
+
 
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize i18n first (detects language, updates static DOM)
@@ -43,9 +43,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Initialize wave animations
   setupWaveAnimation();
-
-  // Table of contents sidebar
-  setupToc();
 
   // GIFs flee from cursor
   setupFooterGif();
