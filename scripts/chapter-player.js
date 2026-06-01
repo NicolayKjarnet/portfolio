@@ -51,7 +51,7 @@ const ChapterPlayer = (() => {
     if (!container) return console.error(`ChapterPlayer: #${containerId} not found`);
 
     const { src, poster, chapters = [] } = opts;
-    const state = { currentChapter: 0, chaptersOpen: false, seeking: false };
+    const state = { currentChapter: 0, chaptersOpen: false, seeking: false, pendingSeek: null };
 
     // Sort chapters by time
     chapters.sort((a, b) => a.time - b.time);
@@ -140,8 +140,11 @@ const ChapterPlayer = (() => {
       item.addEventListener('click', () => {
         if (video.readyState >= 1) {
           video.currentTime = ch.time;
+          video.play();
+        } else {
+          state.pendingSeek = ch.time;
+          video.play();
         }
-        video.play();
       });
       chapterList.appendChild(item);
     });
@@ -230,11 +233,22 @@ const ChapterPlayer = (() => {
       }
     }
 
+    /* ── Apply pending seek once video is ready ── */
+    const applyPendingSeek = () => {
+      if (state.pendingSeek !== null && video.readyState >= 1) {
+        video.currentTime = state.pendingSeek;
+        state.pendingSeek = null;
+      }
+    };
+
     /* ── Events ── */
     video.addEventListener('loadedmetadata', () => {
+      applyPendingSeek();
       buildSegments();
       update();
     });
+
+    video.addEventListener('canplay', applyPendingSeek);
 
     video.addEventListener('timeupdate', update);
 
@@ -282,9 +296,6 @@ const ChapterPlayer = (() => {
       tooltip.classList.add('visible');
     };
 
-    progressWrap.addEventListener('click', (e) => {
-      seekTo(getSeekPct(e));
-    });
     progressWrap.addEventListener('mousedown', (e) => {
       state.seeking = true;
       seekTo(getSeekPct(e));
@@ -300,6 +311,21 @@ const ChapterPlayer = (() => {
     progressWrap.addEventListener('mouseleave', () => {
       if (!state.seeking) tooltip.classList.remove('visible');
     });
+
+    // Touch support for progress bar
+    progressWrap.addEventListener('touchstart', (e) => {
+      state.seeking = true;
+      const touch = e.touches[0];
+      const rect = progressWrap.getBoundingClientRect();
+      seekTo(Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width)));
+    }, { passive: true });
+    progressWrap.addEventListener('touchmove', (e) => {
+      if (!state.seeking) return;
+      const touch = e.touches[0];
+      const rect = progressWrap.getBoundingClientRect();
+      seekTo(Math.max(0, Math.min(1, (touch.clientX - rect.left) / rect.width)));
+    }, { passive: true });
+    progressWrap.addEventListener('touchend', () => { state.seeking = false; });
 
     // Volume
     volSlider.addEventListener('input', () => {
@@ -339,11 +365,11 @@ const ChapterPlayer = (() => {
           break;
         case 'ArrowLeft':
           e.preventDefault();
-          video.currentTime = Math.max(0, video.currentTime - 5);
+          if (video.readyState >= 1) video.currentTime = Math.max(0, video.currentTime - 5);
           break;
         case 'ArrowRight':
           e.preventDefault();
-          video.currentTime = Math.min(video.duration, video.currentTime + 5);
+          if (video.readyState >= 1) video.currentTime = Math.min(video.duration, video.currentTime + 5);
           break;
         case 'ArrowUp':
           e.preventDefault();
