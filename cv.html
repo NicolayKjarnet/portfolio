@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/webp" href="images/self-portrait.webp">
+  <title>CV — Nicolay Kjaernet</title>
+  <link rel="stylesheet" href="/css/cv.css">
+  <link rel="stylesheet" href="/css/chapter-player.css">
+</head>
+<body>
+
+  <header class="cv-header">
+    <a class="cv-header__back" href="/">&larr; Tilbake til portefoljen</a>
+    <h1 class="cv-header__title">Arbeidslogg</h1>
+    <p class="cv-header__subtitle">Alt jeg har levert — fra musikkvideoer og kampanjer til plattformutvikling.</p>
+  </header>
+
+  <nav class="cv-filters" aria-label="Filtrer etter kategori">
+    <div class="cv-filters__inner">
+      <button class="cv-filter-btn active" data-filter="all">Alle</button>
+      <button class="cv-filter-btn" data-filter="product">Product Dev</button>
+      <button class="cv-filter-btn" data-filter="creative">Kreativ</button>
+      <button class="cv-filter-btn" data-filter="music">Musikk & Film</button>
+    </div>
+  </nav>
+
+  <main class="cv-content" id="cv-content">
+    <div class="cv-stats" id="cv-stats"></div>
+    <div id="cv-timeline"></div>
+  </main>
+
+  <script src="/scripts/chapter-player.js"></script>
+  <script type="module">
+    import { cvData } from './scripts/cvData.js';
+
+    const timelineEl = document.getElementById('cv-timeline');
+    const statsEl = document.getElementById('cv-stats');
+    let activeFilter = 'all';
+    let videoCounter = 0;
+
+    // Only hide GitHub PR links — everything else is fair game
+    const isPublicLink = (url) => {
+      if (!url) return false;
+      return !url.includes('github.com');
+    };
+
+    const render = () => {
+      timelineEl.innerHTML = '';
+      videoCounter = 0;
+
+      let totalItems = 0;
+      const categoryCounts = { product: 0, creative: 0, music: 0, other: 0 };
+
+      cvData.forEach((yearBlock) => {
+        const yearEl = document.createElement('section');
+        yearEl.className = 'cv-year';
+
+        const yearH = document.createElement('h2');
+        yearH.className = 'cv-year__heading';
+        yearH.textContent = yearBlock.year;
+        yearEl.appendChild(yearH);
+
+        let yearHasVisible = false;
+
+        yearBlock.entries.forEach((monthBlock) => {
+          const monthEl = document.createElement('div');
+          monthEl.className = 'cv-month';
+
+          const monthH = document.createElement('h3');
+          monthH.className = 'cv-month__heading';
+          monthH.textContent = monthBlock.month;
+          monthEl.appendChild(monthH);
+
+          const itemsEl = document.createElement('div');
+          itemsEl.className = 'cv-items';
+
+          let monthHasVisible = false;
+
+          monthBlock.items.forEach((item) => {
+            const cat = item.category || 'other';
+            totalItems++;
+            categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+
+            const visible = activeFilter === 'all' || cat === activeFilter;
+            if (visible) { monthHasVisible = true; yearHasVisible = true; }
+
+            const isMilestone = (item.tags || []).includes('milestone');
+
+            const el = document.createElement('div');
+            el.className = `cv-item${visible ? '' : ' cv-item--hidden'}${isMilestone ? ' cv-item--milestone' : ''}`;
+
+            // Dot
+            const dot = document.createElement('span');
+            dot.className = `cv-item__dot cv-item__dot--${cat}`;
+            el.appendChild(dot);
+
+            // Body
+            const body = document.createElement('div');
+            body.className = 'cv-item__body';
+
+            const title = document.createElement('div');
+            title.className = 'cv-item__title';
+            title.textContent = item.title;
+            body.appendChild(title);
+
+            if (item.client) {
+              const client = document.createElement('div');
+              client.className = 'cv-item__client';
+              client.textContent = item.client;
+              body.appendChild(client);
+            }
+
+            if (item.roles && item.roles.length) {
+              const rolesEl = document.createElement('div');
+              rolesEl.className = 'cv-item__roles';
+              item.roles.forEach((r) => {
+                const span = document.createElement('span');
+                span.className = 'cv-item__role';
+                span.textContent = r;
+                rolesEl.appendChild(span);
+              });
+              body.appendChild(rolesEl);
+            }
+
+            if (item.links) {
+              const publicLinks = item.links.filter((l) => isPublicLink(l.url));
+              if (publicLinks.length) {
+                const linksEl = document.createElement('div');
+                linksEl.className = 'cv-item__links';
+                publicLinks.forEach((l) => {
+                  const a = document.createElement('a');
+                  a.className = 'cv-item__link';
+                  a.href = l.url;
+                  a.target = '_blank';
+                  a.rel = 'noopener';
+                  a.textContent = l.label;
+                  linksEl.appendChild(a);
+                });
+                body.appendChild(linksEl);
+              }
+            }
+
+            el.appendChild(body);
+
+            if (item.tags && item.tags.length) {
+              const tagsEl = document.createElement('div');
+              tagsEl.className = 'cv-item__tags';
+              item.tags.filter((t) => t !== 'milestone').forEach((t) => {
+                const span = document.createElement('span');
+                span.className = 'cv-item__tag';
+                span.textContent = t;
+                tagsEl.appendChild(span);
+              });
+              if (tagsEl.children.length) el.appendChild(tagsEl);
+            }
+
+            // Chapter video player
+            if (item.video && visible) {
+              const playerId = `cv-player-${videoCounter++}`;
+              const videoWrap = document.createElement('div');
+              videoWrap.className = 'cv-item__video';
+              videoWrap.id = playerId;
+              el.appendChild(videoWrap);
+
+              // Defer ChapterPlayer init to after DOM insert
+              requestAnimationFrame(() => {
+                if (typeof ChapterPlayer !== 'undefined') {
+                  ChapterPlayer.create(playerId, {
+                    src: item.video.src,
+                    chapters: item.video.chapters || [],
+                  });
+                }
+              });
+            }
+
+            itemsEl.appendChild(el);
+          });
+
+          monthEl.appendChild(itemsEl);
+          if (monthHasVisible) yearEl.appendChild(monthEl);
+        });
+
+        if (yearHasVisible) timelineEl.appendChild(yearEl);
+      });
+
+      // Stats
+      statsEl.innerHTML = '';
+      [
+        { value: totalItems, label: 'Totalt' },
+        { value: categoryCounts.product, label: 'Product Dev' },
+        { value: categoryCounts.creative, label: 'Kreativ' },
+        { value: categoryCounts.music + (categoryCounts.other || 0), label: 'Musikk & Film' },
+      ].forEach((s) => {
+        const stat = document.createElement('div');
+        stat.className = 'cv-stat';
+        stat.innerHTML = `<div class="cv-stat__value">${s.value}</div><div class="cv-stat__label">${s.label}</div>`;
+        statsEl.appendChild(stat);
+      });
+    };
+
+    document.querySelectorAll('.cv-filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cv-filter-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        render();
+      });
+    });
+
+    render();
+  </script>
+</body>
+</html>

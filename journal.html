@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/webp" href="images/self-portrait.webp">
+  <title>Journal — Nicolay Kjaernet</title>
+  <link rel="stylesheet" href="/css/journal.css">
+</head>
+<body>
+
+  <!-- Login gate -->
+  <div class="journal-login" id="login-gate">
+    <div class="journal-login__box">
+      <h1 class="journal-login__title">Journal</h1>
+      <p class="journal-login__subtitle">Skriv inn passordet for å fortsette.</p>
+      <input type="password" class="journal-login__input" id="passcode-input" placeholder="Passord" autofocus>
+      <button class="journal-login__btn" id="passcode-btn">Logg inn</button>
+      <p class="journal-login__error" id="login-error"></p>
+    </div>
+  </div>
+
+  <!-- Main app (hidden until auth) -->
+  <div class="journal-app" id="journal-app" style="display:none;">
+    <header class="journal-header">
+      <a class="journal-header__back" href="/">&larr; Tilbake</a>
+      <h1 class="journal-header__title">Journal</h1>
+      <button class="journal-header__add" id="add-btn">+ Nytt innlegg</button>
+    </header>
+
+    <div class="journal-editor" id="editor" style="display:none;">
+      <div class="journal-editor__inner">
+        <div class="journal-editor__fields">
+          <select id="entry-year"></select>
+          <select id="entry-month"></select>
+        </div>
+        <textarea id="entry-text" placeholder="Skriv innlegget ditt her..."></textarea>
+        <div class="journal-editor__actions">
+          <button id="cancel-btn">Avbryt</button>
+          <button class="journal-save-btn" id="save-btn">Lagre</button>
+        </div>
+      </div>
+    </div>
+
+    <main class="journal-content" id="journal-content">
+      <div id="journal-timeline"></div>
+    </main>
+  </div>
+
+  <div class="journal-toast" id="save-toast">Lagret</div>
+
+  <script type="module">
+    const PASSCODE = 'Melsom123';
+    const MONTHS = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
+
+    // Sanity config
+    const PROJECT_ID = 'zlkgs6oe';
+    const DATASET = 'production';
+    const TOKEN = 'skW46u1NkJG7aIhvpmZuuEi1XTmKQpUfLCApGBmqjwVizqmhhchWzkbtJr3d2FQciVzkOjLbsNoD1lTjICxsUWyN1tFnwvvWDDiaVo8uBi4t0nyMZOFJsAXEMA4QEv4vXmqESIpIdmJ58zwbZ1lfSbvbwdIV01wubv0MPm5yxsC5VLPXLVOQ';
+
+    const sanityQuery = async (query) => {
+      const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/${DATASET}?query=${encodeURIComponent(query)}`;
+      const res = await fetch(url, {
+        headers: { Authorization: `Bearer ${TOKEN}` },
+      });
+      const json = await res.json();
+      return json.result;
+    };
+
+    const sanityMutate = async (mutations) => {
+      const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/mutate/${DATASET}`;
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${TOKEN}`,
+        },
+        body: JSON.stringify({ mutations }),
+      });
+      return res.ok;
+    };
+
+    // ── Auth ──────────────────────────
+    const loginGate = document.getElementById('login-gate');
+    const app = document.getElementById('journal-app');
+    const passcodeInput = document.getElementById('passcode-input');
+    const passcodeBtn = document.getElementById('passcode-btn');
+    const loginError = document.getElementById('login-error');
+
+    const checkAuth = () => sessionStorage.getItem('journal-auth') === '1';
+
+    const authenticate = () => {
+      if (passcodeInput.value === PASSCODE) {
+        sessionStorage.setItem('journal-auth', '1');
+        loginGate.style.display = 'none';
+        app.style.display = 'block';
+        render();
+      } else {
+        loginError.textContent = 'Feil passord.';
+        passcodeInput.select();
+      }
+    };
+
+    passcodeBtn.addEventListener('click', authenticate);
+    passcodeInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') authenticate(); });
+
+    if (checkAuth()) {
+      loginGate.style.display = 'none';
+      app.style.display = 'block';
+    }
+
+    // ── New entry editor ────────────────
+    const editor = document.getElementById('editor');
+    const addBtn = document.getElementById('add-btn');
+    const cancelBtn = document.getElementById('cancel-btn');
+    const saveBtn = document.getElementById('save-btn');
+    const entryYear = document.getElementById('entry-year');
+    const entryMonth = document.getElementById('entry-month');
+    const entryText = document.getElementById('entry-text');
+
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    for (let y = currentYear; y >= 2020; y--) {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = y;
+      entryYear.appendChild(opt);
+    }
+    MONTHS.forEach((m) => {
+      const opt = document.createElement('option');
+      opt.value = m;
+      opt.textContent = m;
+      entryMonth.appendChild(opt);
+    });
+    entryMonth.value = MONTHS[now.getMonth()];
+
+    addBtn.addEventListener('click', () => {
+      editor.style.display = editor.style.display === 'none' ? 'block' : 'none';
+      if (editor.style.display === 'block') entryText.focus();
+    });
+
+    cancelBtn.addEventListener('click', () => {
+      editor.style.display = 'none';
+      entryText.value = '';
+    });
+
+    saveBtn.addEventListener('click', async () => {
+      const text = entryText.value.trim();
+      if (!text) return;
+
+      saveBtn.disabled = true;
+      saveBtn.textContent = 'Lagrer...';
+
+      const year = parseInt(entryYear.value);
+      const month = entryMonth.value;
+      const id = `journal-${year}-${month.toLowerCase()}`;
+
+      const existing = await sanityQuery(`*[_id == "${id}"][0]{ content }`);
+
+      let ok;
+      if (existing) {
+        const newContent = existing.content ? existing.content + '\n' + text : text;
+        ok = await sanityMutate([{ patch: { id, set: { content: newContent } } }]);
+      } else {
+        ok = await sanityMutate([{
+          createOrReplace: {
+            _id: id,
+            _type: 'journalMonth',
+            year,
+            month,
+            content: text,
+          },
+        }]);
+      }
+
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'Lagre';
+      showToast(ok ? 'Lagret' : 'Feil ved lagring', ok ? '' : 'journal-toast--saving');
+
+      entryText.value = '';
+      editor.style.display = 'none';
+      render();
+    });
+
+    // ── Save toast ──────────────────────
+    const toast = document.getElementById('save-toast');
+    let toastTimer = null;
+
+    const showToast = (text, className) => {
+      if (toastTimer) clearTimeout(toastTimer);
+      toast.textContent = text;
+      toast.className = `journal-toast journal-toast--visible ${className || ''}`;
+      toastTimer = setTimeout(() => {
+        toast.className = 'journal-toast';
+      }, 1800);
+    };
+
+    // ── Debounced save for inline edits ──
+    const saveTimers = new Map();
+
+    const debouncedSave = (id, field, value, delay = 1500) => {
+      const key = `${id}::${field}`;
+      if (saveTimers.has(key)) clearTimeout(saveTimers.get(key));
+      showToast('Lagrer...', 'journal-toast--saving');
+      saveTimers.set(key, setTimeout(async () => {
+        saveTimers.delete(key);
+        const ok = await sanityMutate([{ patch: { id, set: { [field]: value } } }]);
+        showToast(ok ? 'Lagret' : 'Feil ved lagring', ok ? '' : 'journal-toast--saving');
+      }, delay));
+    };
+
+    // ── Render ────────────────────────
+    const timelineEl = document.getElementById('journal-timeline');
+
+    const fetchData = async () => {
+      const docs = await sanityQuery(
+        `*[_type == "journalMonth"] | order(year desc, month desc) { _id, year, month, content, highlights, setbacks }`
+      );
+
+      // Group by year
+      const yearMap = new Map();
+      for (const doc of docs) {
+        if (!yearMap.has(doc.year)) yearMap.set(doc.year, []);
+        yearMap.get(doc.year).push(doc);
+      }
+
+      return [...yearMap.entries()]
+        .sort((a, b) => b[0] - a[0])
+        .map(([year, months]) => ({
+          year,
+          months: months.sort((a, b) => MONTHS.indexOf(b.month) - MONTHS.indexOf(a.month)),
+        }));
+    };
+
+    const render = async () => {
+      if (!checkAuth()) return;
+      timelineEl.innerHTML = '';
+
+      const data = await fetchData();
+
+      data.forEach((yearBlock) => {
+        const yearEl = document.createElement('section');
+        yearEl.className = 'journal-year';
+
+        const yearH = document.createElement('h2');
+        yearH.className = 'journal-year__heading';
+        yearH.textContent = yearBlock.year;
+        yearEl.appendChild(yearH);
+
+        yearBlock.months.forEach((doc) => {
+          const monthEl = document.createElement('div');
+          monthEl.className = 'journal-month';
+
+          const monthH = document.createElement('h3');
+          monthH.className = 'journal-month__heading';
+          monthH.textContent = doc.month;
+          monthEl.appendChild(monthH);
+
+          // Editable content block
+          const block = document.createElement('div');
+          block.className = 'journal-block';
+          block.contentEditable = 'true';
+          block.spellcheck = false;
+          block.textContent = doc.content || '';
+
+          block.addEventListener('blur', () => {
+            debouncedSave(doc._id, 'content', block.textContent, 500);
+          });
+
+          monthEl.appendChild(block);
+
+          const makeSection = (type, label, items) => {
+            const text = items ? items.join('\n') : '';
+            if (!text) return;
+
+            const section = document.createElement('div');
+            section.className = `journal-section journal-section--${type}`;
+
+            const labelEl = document.createElement('div');
+            labelEl.className = 'journal-section__label';
+            labelEl.textContent = label;
+            section.appendChild(labelEl);
+
+            const content = document.createElement('div');
+            content.className = 'journal-section__content';
+            content.contentEditable = 'true';
+            content.spellcheck = false;
+            content.textContent = text;
+            content.addEventListener('blur', () => {
+              const lines = content.textContent.split('\n').filter((l) => l.trim());
+              debouncedSave(doc._id, type === 'highlight' ? 'highlights' : 'setbacks', lines, 500);
+            });
+            section.appendChild(content);
+
+            monthEl.appendChild(section);
+          };
+
+          if (doc.highlights && doc.highlights.length) makeSection('highlight', 'Høydepunkter', doc.highlights);
+          if (doc.setbacks && doc.setbacks.length) makeSection('setback', 'Nederlag', doc.setbacks);
+
+          yearEl.appendChild(monthEl);
+        });
+
+        timelineEl.appendChild(yearEl);
+      });
+    };
+
+    if (checkAuth()) render();
+  </script>
+</body>
+</html>
