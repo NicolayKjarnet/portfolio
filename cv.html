@@ -11,6 +11,17 @@
 </head>
 <body>
 
+  <nav class="toc" id="toc">
+    <div class="toc__pages">
+      <a class="toc__page-link" href="/">Portefølje</a>
+      <span class="toc__page-link toc__page-link--current">CV</span>
+      <a class="toc__page-link" href="/journal.html">Journal</a>
+    </div>
+    <div class="toc__divider"></div>
+    <div class="toc__label">INNHOLD</div>
+    <ul class="toc__list" id="toc-list"></ul>
+  </nav>
+
   <header class="cv-header">
     <a class="cv-header__back" href="/">&larr; Tilbake til portefoljen</a>
     <h1 class="cv-header__title">Arbeidslogg</h1>
@@ -46,9 +57,81 @@
       return !url.includes('github.com');
     };
 
+    // ── TOC ──────────────────────────
+    const tocList = document.getElementById('toc-list');
+    const tocSections = [];
+
+    const buildToc = () => {
+      tocList.innerHTML = '';
+      tocSections.length = 0;
+
+      cvData.forEach((yearBlock) => {
+        const yearId = `y-${yearBlock.year}`;
+        const yearLi = document.createElement('li');
+
+        const yearLink = document.createElement('a');
+        yearLink.className = 'toc__year';
+        yearLink.textContent = yearBlock.year;
+        yearLink.href = `#${yearId}`;
+        yearLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById(yearId)?.scrollIntoView({ behavior: 'smooth' });
+        });
+        yearLi.appendChild(yearLink);
+
+        const monthsUl = document.createElement('ul');
+        monthsUl.className = 'toc__months';
+
+        yearBlock.entries.forEach((monthBlock) => {
+          const monthId = `m-${yearBlock.year}-${monthBlock.month.toLowerCase()}`;
+          const monthLi = document.createElement('li');
+          const monthLink = document.createElement('a');
+          monthLink.className = 'toc__month';
+          monthLink.textContent = monthBlock.month;
+          monthLink.href = `#${monthId}`;
+          monthLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById(monthId)?.scrollIntoView({ behavior: 'smooth' });
+          });
+          monthLi.appendChild(monthLink);
+          monthsUl.appendChild(monthLi);
+          tocSections.push({ id: monthId, yearLink, monthLink });
+        });
+
+        yearLi.appendChild(monthsUl);
+        tocList.appendChild(yearLi);
+      });
+    };
+
+    const setupTocScroll = () => {
+      const onScroll = () => {
+        let active = null;
+        const scrollY = window.scrollY + window.innerHeight * 0.3;
+
+        tocSections.forEach((s) => {
+          const el = document.getElementById(s.id);
+          if (el && el.offsetTop <= scrollY) active = s;
+        });
+
+        tocSections.forEach((s) => {
+          s.monthLink.classList.remove('toc__month--active');
+          s.yearLink.classList.remove('toc__year--active');
+        });
+
+        if (active) {
+          active.monthLink.classList.add('toc__month--active');
+          active.yearLink.classList.add('toc__year--active');
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    };
+
     const render = () => {
       timelineEl.innerHTML = '';
       videoCounter = 0;
+      buildToc();
 
       let totalItems = 0;
       const categoryCounts = { product: 0, creative: 0, music: 0, other: 0 };
@@ -56,6 +139,7 @@
       cvData.forEach((yearBlock) => {
         const yearEl = document.createElement('section');
         yearEl.className = 'cv-year';
+        yearEl.id = `y-${yearBlock.year}`;
 
         const yearH = document.createElement('h2');
         yearH.className = 'cv-year__heading';
@@ -67,6 +151,7 @@
         yearBlock.entries.forEach((monthBlock) => {
           const monthEl = document.createElement('div');
           monthEl.className = 'cv-month';
+          monthEl.id = `m-${yearBlock.year}-${monthBlock.month.toLowerCase()}`;
 
           const monthH = document.createElement('h3');
           monthH.className = 'cv-month__heading';
@@ -210,6 +295,7 @@
     });
 
     render();
+    setupTocScroll();
   </script>
 </body>
 </html>

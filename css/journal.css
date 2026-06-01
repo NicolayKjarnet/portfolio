@@ -479,31 +479,39 @@ a:hover { opacity: 0.8; }
     border-left-color: var(--j-accent);
   }
 
-  .toc__divider {
-    height: 1px;
-    background: var(--j-border-subtle);
-    margin: 0.75rem 0 0.75rem 0.75rem;
+  .toc__pages {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    margin-bottom: 0;
   }
 
-  .toc__link--page {
-    display: block;
+  .toc__page-link {
     font-family: var(--j-font-ui);
-    font-size: 0.72rem;
+    font-size: 0.78rem;
+    font-weight: 500;
     color: var(--j-text-muted);
-    padding: 0.2rem 0 0.2rem 0.75rem;
     text-decoration: none;
+    padding: 0.2rem 0 0.2rem 0.75rem;
+    border-left: 2px solid transparent;
     transition: color var(--j-transition);
   }
 
-  .toc__link--page:hover {
+  .toc__page-link:hover {
     color: var(--j-accent);
     opacity: 1;
   }
 
-  .toc__link--page::after {
-    content: ' \2197';
-    font-size: 0.65em;
-    opacity: 0.5;
+  .toc__page-link--current {
+    color: var(--j-text);
+    font-weight: 700;
+    border-left-color: var(--j-accent);
+  }
+
+  .toc__divider {
+    height: 1px;
+    background: var(--j-border-subtle);
+    margin: 0.6rem 0 0.6rem 0.75rem;
   }
 }
 
