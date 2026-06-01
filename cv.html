@@ -251,6 +251,29 @@
     // Only hide GitHub PR links
     const isPublicLink = (url) => url && !url.includes('github.com');
 
+    // ── Embed detection ─────────────────
+    const getEmbed = (url) => {
+      if (!url) return null;
+
+      // YouTube
+      let m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]+)/);
+      if (m) return { type: 'youtube', html: `<iframe src="https://www.youtube.com/embed/${m[1]}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>` };
+
+      // Spotify (track, album, playlist, episode)
+      m = url.match(/open\.spotify\.com\/(track|album|playlist|episode)\/([\w]+)/);
+      if (m) return { type: 'spotify', html: `<iframe src="https://open.spotify.com/embed/${m[1]}/${m[2]}?theme=0" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>` };
+
+      // Instagram post
+      m = url.match(/instagram\.com\/(?:p|reel)\/([\w-]+)/);
+      if (m) return { type: 'instagram', html: `<iframe src="https://www.instagram.com/p/${m[1]}/embed/" frameborder="0" scrolling="no" allowtransparency></iframe>` };
+
+      // TikTok
+      m = url.match(/tiktok\.com\/@[\w.]+\/video\/(\d+)/);
+      if (m) return { type: 'tiktok', html: `<iframe src="https://www.tiktok.com/embed/v2/${m[1]}" frameborder="0" allow="encrypted-media" allowfullscreen></iframe>` };
+
+      return null;
+    };
+
     // ── Render ────────────────────────
     const timelineEl = document.getElementById('cv-timeline');
     const statsEl = document.getElementById('cv-stats');
@@ -396,6 +419,22 @@
                   linksEl.appendChild(a);
                 });
                 body.appendChild(linksEl);
+              }
+
+              // Embeds for social media links
+              if (visible) {
+                const embeds = publicLinks.map((l) => getEmbed(l.url)).filter(Boolean);
+                if (embeds.length) {
+                  const embedsEl = document.createElement('div');
+                  embedsEl.className = 'cv-item__embeds';
+                  embeds.forEach((emb) => {
+                    const wrap = document.createElement('div');
+                    wrap.className = `cv-embed cv-embed--${emb.type}`;
+                    wrap.innerHTML = emb.html;
+                    embedsEl.appendChild(wrap);
+                  });
+                  body.appendChild(embedsEl);
+                }
               }
             }
 
