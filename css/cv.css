@@ -169,6 +169,98 @@ a:hover { opacity: 0.8; }
 }
 .cv-save-btn:hover { opacity: 0.85; }
 
+/* ── Editor link rows ─────────────── */
+
+.cv-editor__links { margin-top: 0.25rem; }
+.cv-editor__links-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+.cv-editor__links-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.5;
+}
+.cv-editor__add-link {
+  background: none;
+  border: 1px dashed var(--white-a20);
+  color: var(--clr-orange);
+  font-size: 0.72rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+}
+.cv-editor__add-link:hover { border-color: var(--clr-orange); }
+.cv-editor__link-row {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+.cv-editor__link-label { flex: 1; }
+.cv-editor__link-url { flex: 2; }
+.cv-editor__remove-link {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 0.3rem;
+  line-height: 1;
+}
+.cv-editor__remove-link:hover { color: #e55; }
+
+/* ── Inline link editing on items ──── */
+
+.cv-item__add-link {
+  background: none;
+  border: 1px dashed var(--white-a20);
+  color: var(--clr-orange);
+  font-size: 0.7rem;
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+.cv-item:hover .cv-item__add-link { opacity: 1; }
+.cv-item__add-link:hover { border-color: var(--clr-orange); }
+
+.cv-item__link-form {
+  display: flex;
+  gap: 0.3rem;
+  align-items: center;
+  margin: 0.3rem 0;
+  width: 100%;
+}
+.cv-item__link-form input {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+.cv-item__link-save,
+.cv-item__link-cancel {
+  background: none;
+  border: 1px solid var(--white-a15);
+  color: var(--clr-white);
+  font-size: 0.72rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+}
+.cv-item__link-save { color: var(--clr-orange); border-color: var(--clr-orange); }
+.cv-item__link-save:hover { background: var(--clr-orange); color: var(--clr-dark); }
+.cv-item__link-cancel:hover { color: #e55; }
+
 /* ── Save toast ────────────────────── */
 
 .cv-toast {

@@ -44,6 +44,12 @@
       <input type="text" id="entry-title" class="cv-editor__input" placeholder="Tittel">
       <input type="text" id="entry-client" class="cv-editor__input" placeholder="Klient (valgfritt)">
       <input type="text" id="entry-tags" class="cv-editor__input" placeholder="Tags (kommaseparert)">
+      <div class="cv-editor__links" id="entry-links">
+        <div class="cv-editor__links-header">
+          <span class="cv-editor__links-label">Lenker</span>
+          <button type="button" class="cv-editor__add-link" id="add-link-btn">+ Legg til lenke</button>
+        </div>
+      </div>
       <div class="cv-editor__actions">
         <button id="cancel-btn">Avbryt</button>
         <button class="cv-save-btn" id="save-btn">Lagre</button>
@@ -137,11 +143,39 @@
     });
     entryMonth.value = MONTHS[now.getMonth()];
 
+    // ── Link rows in editor ─────────────
+    const entryLinks = document.getElementById('entry-links');
+    const addLinkBtn = document.getElementById('add-link-btn');
+
+    const addLinkRow = (label = '', url = '') => {
+      const row = document.createElement('div');
+      row.className = 'cv-editor__link-row';
+      row.innerHTML = `<input type="text" class="cv-editor__input cv-editor__link-label" placeholder="Label (f.eks. Preview)" value="${label}">
+        <input type="url" class="cv-editor__input cv-editor__link-url" placeholder="https://..." value="${url}">
+        <button type="button" class="cv-editor__remove-link">&times;</button>`;
+      row.querySelector('.cv-editor__remove-link').addEventListener('click', () => row.remove());
+      entryLinks.appendChild(row);
+      row.querySelector('.cv-editor__link-label').focus();
+    };
+
+    const getEditorLinks = () => {
+      return [...entryLinks.querySelectorAll('.cv-editor__link-row')].map((row) => ({
+        label: row.querySelector('.cv-editor__link-label').value.trim(),
+        url: row.querySelector('.cv-editor__link-url').value.trim(),
+      })).filter((l) => l.url);
+    };
+
+    const clearEditorLinks = () => {
+      entryLinks.querySelectorAll('.cv-editor__link-row').forEach((r) => r.remove());
+    };
+
+    addLinkBtn.addEventListener('click', () => addLinkRow());
+
     addBtn.addEventListener('click', () => {
       editor.style.display = editor.style.display === 'none' ? 'block' : 'none';
       if (editor.style.display === 'block') document.getElementById('entry-title').focus();
     });
-    cancelBtn.addEventListener('click', () => { editor.style.display = 'none'; });
+    cancelBtn.addEventListener('click', () => { editor.style.display = 'none'; clearEditorLinks(); });
 
     saveBtn.addEventListener('click', async () => {
       const title = document.getElementById('entry-title').value.trim();
@@ -165,9 +199,17 @@
         .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
       const id = `cv-${year}-${monthSlug}-${slug}`;
 
+      const links = getEditorLinks().map((l) => ({
+        _type: 'object',
+        _key: Math.random().toString(36).slice(2, 10),
+        label: l.label || l.url,
+        url: l.url,
+      }));
+
       const doc = { _id: id, _type: 'cvItem', year, month, title, category, sortOrder: 0 };
       if (client) doc.client = client;
       if (tags.length) doc.tags = tags;
+      if (links.length) doc.links = links;
 
       const ok = await sanityMutate([{ createOrReplace: doc }]);
 
@@ -178,6 +220,7 @@
       document.getElementById('entry-title').value = '';
       document.getElementById('entry-client').value = '';
       document.getElementById('entry-tags').value = '';
+      clearEditorLinks();
       editor.style.display = 'none';
       render();
     });
@@ -404,25 +447,64 @@
               body.appendChild(rolesEl);
             }
 
-            if (item.links) {
-              const publicLinks = item.links.filter((l) => isPublicLink(l.url));
-              if (publicLinks.length) {
-                const linksEl = document.createElement('div');
-                linksEl.className = 'cv-item__links';
-                publicLinks.forEach((l) => {
-                  const a = document.createElement('a');
-                  a.className = 'cv-item__link';
-                  a.href = l.url;
-                  a.target = '_blank';
-                  a.rel = 'noopener';
-                  a.textContent = l.label;
-                  linksEl.appendChild(a);
+            // Links section (display + inline editing)
+            {
+              const publicLinks = (item.links || []).filter((l) => isPublicLink(l.url));
+              const linksEl = document.createElement('div');
+              linksEl.className = 'cv-item__links';
+
+              publicLinks.forEach((l) => {
+                const a = document.createElement('a');
+                a.className = 'cv-item__link';
+                a.href = l.url;
+                a.target = '_blank';
+                a.rel = 'noopener';
+                a.textContent = l.label;
+                linksEl.appendChild(a);
+              });
+
+              const addBtn = document.createElement('button');
+              addBtn.className = 'cv-item__add-link';
+              addBtn.textContent = '+';
+              addBtn.title = 'Legg til lenke';
+              addBtn.addEventListener('click', () => {
+                const form = document.createElement('div');
+                form.className = 'cv-item__link-form';
+                form.innerHTML = `<input type="text" class="cv-editor__input" placeholder="Label" style="flex:1">
+                  <input type="url" class="cv-editor__input" placeholder="https://..." style="flex:2">
+                  <button class="cv-item__link-save">OK</button>
+                  <button class="cv-item__link-cancel">&times;</button>`;
+                linksEl.insertBefore(form, addBtn);
+                form.querySelector('input').focus();
+
+                const save = async () => {
+                  const label = form.querySelector('input').value.trim();
+                  const url = form.querySelectorAll('input')[1].value.trim();
+                  if (!url) return;
+                  const existing = item.links || [];
+                  const newLinks = [...existing, {
+                    _type: 'object',
+                    _key: Math.random().toString(36).slice(2, 10),
+                    label: label || url,
+                    url,
+                  }];
+                  const ok = await sanityMutate([{ patch: { id: item._id, set: { links: newLinks } } }]);
+                  showToast(ok ? 'Lagret' : 'Feil', ok ? '' : 'cv-toast--saving');
+                  if (ok) render();
+                };
+
+                form.querySelector('.cv-item__link-save').addEventListener('click', save);
+                form.querySelector('.cv-item__link-cancel').addEventListener('click', () => form.remove());
+                form.addEventListener('keydown', (e) => {
+                  if (e.key === 'Enter') { e.preventDefault(); save(); }
+                  if (e.key === 'Escape') form.remove();
                 });
-                body.appendChild(linksEl);
-              }
+              });
+              linksEl.appendChild(addBtn);
+              body.appendChild(linksEl);
 
               // Embeds for social media links
-              if (visible) {
+              if (visible && publicLinks.length) {
                 const embeds = publicLinks.map((l) => getEmbed(l.url)).filter(Boolean);
                 if (embeds.length) {
                   const embedsEl = document.createElement('div');
@@ -500,6 +582,16 @@
         activeFilter = btn.dataset.filter;
         render();
       });
+    });
+
+    // ── Cmd+S shortcut ──────────────────
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 's') {
+        e.preventDefault();
+        if (editor.style.display !== 'none') {
+          saveBtn.click();
+        }
+      }
     });
 
     render();
