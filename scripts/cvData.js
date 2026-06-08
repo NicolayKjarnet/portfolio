@@ -16,6 +16,59 @@ export const cvData = [
     year: 2026,
     entries: [
       {
+        month: 'Juni',
+        items: [
+          {
+            title: 'Crossfade-animasjon for change-operatorer',
+            client: 'Cavai Product',
+            category: 'product',
+            tags: ['feature', 'frontend', 'engine'],
+          },
+          {
+            title: 'Font-optimalisering: subsetting, embedding, TTF/OTF-støtte',
+            client: 'Cavai Product',
+            category: 'product',
+            tags: ['feature', 'frontend', 'engine', 'backend'],
+          },
+          {
+            title: 'Automatisk WebP-konvertering av bilder',
+            client: 'Cavai Product',
+            category: 'product',
+            tags: ['feature', 'backend'],
+          },
+          {
+            title: 'Show/Hide bevarer blokk-tilstand, eksport-fix og Xandr-makro',
+            client: 'Cavai Product',
+            category: 'product',
+            tags: ['bugfix', 'engine', 'frontend'],
+          },
+          {
+            title: 'Audi dobbel fullskjerm',
+            client: 'Cavai',
+            category: 'creative',
+            links: [
+              { label: 'Preview', url: 'https://my.cavai.com/creatives/51251-51861-55170-93389/build#design' },
+            ],
+          },
+          {
+            title: 'Specsavers dobbel fullskjerm',
+            client: 'Cavai',
+            category: 'creative',
+            links: [
+              { label: 'Preview', url: 'https://my.cavai.com/creatives/51251-51861-55170-93552/build#design' },
+            ],
+          },
+          {
+            title: 'Ford fullscreen responsive',
+            client: 'Cavai',
+            category: 'creative',
+            links: [
+              { label: 'Preview', url: 'https://my.cavai.com/creatives/0-53491-55030-92343/build#design' },
+            ],
+          },
+        ],
+      },
+      {
         month: 'Mai',
         items: [
           {
