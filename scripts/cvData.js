@@ -23,24 +23,45 @@ export const cvData = [
             client: 'Cavai Product',
             category: 'product',
             tags: ['feature', 'frontend', 'engine'],
+            links: [
+              { label: 'PR #1896', url: 'https://github.com/Cavai/Application-Frontend/pull/1896' },
+              { label: 'CE #748', url: 'https://github.com/Cavai/Creative-Engine/pull/748' },
+            ],
+            video: {
+              src: 'https://cavai-release-notes.pages.dev/releases/af-8.27.0/crossfade.mp4',
+            },
           },
           {
             title: 'Font-optimalisering: subsetting, embedding, TTF/OTF-støtte',
             client: 'Cavai Product',
             category: 'product',
-            tags: ['feature', 'frontend', 'engine', 'backend'],
+            tags: ['feature', 'frontend', 'engine'],
+            links: [
+              { label: 'PR #1887', url: 'https://github.com/Cavai/Application-Frontend/pull/1887' },
+              { label: 'CE #744', url: 'https://github.com/Cavai/Creative-Engine/pull/744' },
+            ],
+            video: {
+              src: 'https://cavai-release-notes.pages.dev/releases/af-8.27.0/font-optimization.mp4',
+            },
           },
           {
             title: 'Automatisk WebP-konvertering av bilder',
             client: 'Cavai Product',
             category: 'product',
             tags: ['feature', 'backend'],
+            links: [
+              { label: 'BE #564', url: 'https://github.com/Cavai/Application-Backend/pull/564' },
+            ],
           },
           {
             title: 'Show/Hide bevarer blokk-tilstand, eksport-fix og Xandr-makro',
             client: 'Cavai Product',
             category: 'product',
             tags: ['bugfix', 'engine', 'frontend'],
+            links: [
+              { label: 'CE #745', url: 'https://github.com/Cavai/Creative-Engine/pull/745' },
+              { label: 'PR #1889', url: 'https://github.com/Cavai/Application-Frontend/pull/1889' },
+            ],
           },
           {
             title: 'Audi dobbel fullskjerm',
