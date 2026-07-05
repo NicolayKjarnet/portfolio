@@ -16,6 +16,55 @@ export const cvData = [
     year: 2026,
     entries: [
       {
+        month: 'Juli',
+        items: [
+          {
+            title: 'Rich text-formatering i tekst, knapper og flow-operatorer',
+            client: 'Cavai Product',
+            category: 'product',
+            tags: ['feature', 'frontend', 'engine'],
+            links: [
+              { label: 'PR #1900', url: 'https://github.com/Cavai/Application-Frontend/pull/1900' },
+              { label: 'CE #749', url: 'https://github.com/Cavai/Creative-Engine/pull/749' },
+              { label: 'Release note', url: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/' },
+            ],
+            video: {
+              src: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/rich-text.mp4',
+              chapters: [
+                { title: 'Formatting in blocks', time: 0 },
+                { title: 'Formatting in flow', time: 33 },
+              ],
+            },
+          },
+          {
+            title: 'Forbedret template-velger med søk og workspace-gruppering',
+            client: 'Cavai Product',
+            category: 'product',
+            tags: ['improvement', 'frontend'],
+            links: [
+              { label: 'PR #1897', url: 'https://github.com/Cavai/Application-Frontend/pull/1897' },
+              { label: 'Release note', url: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/' },
+            ],
+            video: {
+              src: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/templates.mp4',
+              chapters: [
+                { title: 'Picking a template', time: 0 },
+                { title: 'Search, filter, and workspace browsing', time: 5 },
+              ],
+            },
+          },
+          {
+            title: 'Bugfixes: preview overlay, template-rekkefølge, italic fonts',
+            client: 'Cavai Product',
+            category: 'product',
+            tags: ['bugfix', 'frontend', 'engine'],
+            links: [
+              { label: 'Release note', url: 'https://cavai-release-notes.pages.dev/releases/af-8.28.0/' },
+            ],
+          },
+        ],
+      },
+      {
         month: 'Juni',
         items: [
           {
@@ -64,6 +113,14 @@ export const cvData = [
             ],
           },
           {
+            title: 'World Cup Poll',
+            client: 'Cavai',
+            category: 'creative',
+            links: [
+              { label: 'Preview', url: 'https://my.cavai.com/creatives/50878-53134-54741-91310/build#design' },
+            ],
+          },
+          {
             title: 'Audi dobbel fullskjerm',
             client: 'Cavai',
             category: 'creative',
@@ -72,7 +129,7 @@ export const cvData = [
             ],
           },
           {
-            title: 'Specsavers dobbel fullskjerm',
+            title: 'Specsavers arm-strekker',
             client: 'Cavai',
             category: 'creative',
             links: [
@@ -80,11 +137,11 @@ export const cvData = [
             ],
           },
           {
-            title: 'Ford fullscreen responsive',
+            title: 'Nordea Black Card fullskjerm',
             client: 'Cavai',
             category: 'creative',
             links: [
-              { label: 'Preview', url: 'https://my.cavai.com/creatives/0-53491-55030-92343/build#design' },
+              { label: 'Preview', url: 'https://my.cavai.com/creatives/50134-50179-55277-94550/build#design' },
             ],
           },
         ],
@@ -92,6 +149,14 @@ export const cvData = [
       {
         month: 'Mai',
         items: [
+          {
+            title: 'Ford Puma fullscreen',
+            client: 'Cavai',
+            category: 'creative',
+            links: [
+              { label: 'Preview', url: 'https://my.cavai.com/creatives/0-53491-55030-92343/build#design' },
+            ],
+          },
           {
             title: 'Block Grouping: multi-select, drag & drop, konfigurasjon',
             client: 'Cavai Product',
