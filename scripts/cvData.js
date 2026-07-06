@@ -28,13 +28,8 @@ export const cvData = [
               { label: 'CE #749', url: 'https://github.com/Cavai/Creative-Engine/pull/749' },
               { label: 'Release note', url: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/' },
             ],
-            video: {
-              src: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/rich-text.mp4',
-              chapters: [
-                { title: 'Formatting in blocks', time: 0 },
-                { title: 'Formatting in flow', time: 33 },
-              ],
-            },
+            // TODO: uncomment when AF 8.29.0 is released and deployed to release notes site
+            // video: { src: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/rich-text.mp4', chapters: [{ title: 'Formatting in blocks', time: 0 }, { title: 'Formatting in flow', time: 33 }] },
           },
           {
             title: 'Forbedret template-velger med søk og workspace-gruppering',
@@ -45,13 +40,8 @@ export const cvData = [
               { label: 'PR #1897', url: 'https://github.com/Cavai/Application-Frontend/pull/1897' },
               { label: 'Release note', url: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/' },
             ],
-            video: {
-              src: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/templates.mp4',
-              chapters: [
-                { title: 'Picking a template', time: 0 },
-                { title: 'Search, filter, and workspace browsing', time: 5 },
-              ],
-            },
+            // TODO: uncomment when AF 8.29.0 is released and deployed to release notes site
+            // video: { src: 'https://cavai-release-notes.pages.dev/releases/af-8.29.0/templates.mp4', chapters: [{ title: 'Picking a template', time: 0 }, { title: 'Search, filter, and workspace browsing', time: 5 }] },
           },
           {
             title: 'Bugfixes: preview overlay, template-rekkefølge, italic fonts',
