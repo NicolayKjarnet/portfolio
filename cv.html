@@ -544,7 +544,7 @@
 
               requestAnimationFrame(() => {
                 if (typeof ChapterPlayer !== 'undefined') {
-                  const chapters = (item.videoChapters || []).map((c) => ({ time: c.time, label: c.label }));
+                  const chapters = (item.videoChapters || []).map((c) => ({ time: c.time, title: c.label }));
                   ChapterPlayer.create(playerId, { src: item.videoSrc, chapters });
                 }
               });
