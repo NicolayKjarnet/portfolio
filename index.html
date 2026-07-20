@@ -12,6 +12,17 @@
     <link rel="stylesheet" href="/css/index.css" />
   </head>
   <body>
+    <!-- Admin nav (only visible when authenticated) -->
+    <nav class="admin-nav" id="admin-nav" style="display:none;">
+      <a class="admin-nav__link" href="/cv.html">CV</a>
+      <a class="admin-nav__link" href="/journal.html">Journal</a>
+    </nav>
+    <script>
+      if (sessionStorage.getItem('portfolio-token')) {
+        document.getElementById('admin-nav').style.display = '';
+      }
+    </script>
+
     <!-- Header -->
     <section class="section-hero">
       <header role="banner" class="header">

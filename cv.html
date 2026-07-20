@@ -100,7 +100,27 @@
     const passcodeBtn = document.getElementById('passcode-btn');
     const loginError = document.getElementById('login-error');
 
-    const checkAuth = () => sessionStorage.getItem('cv-auth') === '1';
+    const getToken = () => sessionStorage.getItem('portfolio-token');
+    const checkAuth = () => !!getToken();
+
+    const verifyAndShow = async () => {
+      const token = getToken();
+      if (!token) return;
+      try {
+        const res = await fetch('/api/verify-auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token }),
+        });
+        if (res.ok) {
+          loginGate.style.display = 'none';
+          cvApp.style.display = 'block';
+          render();
+        } else {
+          sessionStorage.removeItem('portfolio-token');
+        }
+      } catch { /* show login */ }
+    };
 
     const authenticate = async () => {
       passcodeBtn.disabled = true;
@@ -111,7 +131,8 @@
           body: JSON.stringify({ passcode: passcodeInput.value }),
         });
         if (res.ok) {
-          sessionStorage.setItem('cv-auth', '1');
+          const { token } = await res.json();
+          sessionStorage.setItem('portfolio-token', token);
           loginGate.style.display = 'none';
           cvApp.style.display = 'block';
           render();
@@ -129,8 +150,7 @@
     passcodeInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') authenticate(); });
 
     if (checkAuth()) {
-      loginGate.style.display = 'none';
-      cvApp.style.display = 'block';
+      verifyAndShow();
     }
 
     const sanityQuery = async (query) => {

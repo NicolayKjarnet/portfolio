@@ -90,7 +90,27 @@
     const passcodeBtn = document.getElementById('passcode-btn');
     const loginError = document.getElementById('login-error');
 
-    const checkAuth = () => sessionStorage.getItem('journal-auth') === '1';
+    const getToken = () => sessionStorage.getItem('portfolio-token');
+    const checkAuth = () => !!getToken();
+
+    const verifyAndShow = async () => {
+      const token = getToken();
+      if (!token) return;
+      try {
+        const res = await fetch('/api/verify-auth', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token }),
+        });
+        if (res.ok) {
+          loginGate.style.display = 'none';
+          app.style.display = 'block';
+          render();
+        } else {
+          sessionStorage.removeItem('portfolio-token');
+        }
+      } catch { /* show login */ }
+    };
 
     const authenticate = async () => {
       passcodeBtn.disabled = true;
@@ -101,7 +121,8 @@
           body: JSON.stringify({ passcode: passcodeInput.value }),
         });
         if (res.ok) {
-          sessionStorage.setItem('journal-auth', '1');
+          const { token } = await res.json();
+          sessionStorage.setItem('portfolio-token', token);
           loginGate.style.display = 'none';
           app.style.display = 'block';
           render();
@@ -119,8 +140,7 @@
     passcodeInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') authenticate(); });
 
     if (checkAuth()) {
-      loginGate.style.display = 'none';
-      app.style.display = 'block';
+      verifyAndShow();
     }
 
     // ── New entry editor ────────────────
@@ -395,7 +415,7 @@
       });
     };
 
-    if (checkAuth()) render();
+    if (checkAuth()) verifyAndShow();
   </script>
 </body>
 </html>
