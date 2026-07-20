@@ -311,135 +311,134 @@ export default {
   bot: {
     lure: [
       'Hei! Trenger du hjelp? 💬',
-      'Hei! Spør meg om hva som helst 👋',
+      'Spør meg om hva som helst 👋',
       'Chat med meg! 💬',
     ],
-    retreat: 'Ok, prøver igjen senere...',
-    hover: 'Klikk for å chatte! 👆',
+    retreat: 'Greit da, prøver igjen senere...',
+    hover: 'Trykk for å chatte! 👆',
     title: 'Chat',
     reveal: [
-      'Trodde du virkelig jeg hadde laget en ekte chatbot på porteføljen min? 😂',
-      'En chatbot på en portefølje? Hvordan kunne du gå på den?? 😂',
-      'Haha, gotcha! Du klikket faktisk på den 😂',
+      'Ok, det finnes ingen chatbot her 😂',
+      'En chatbot? På en portefølje? Nope 😂',
+      'Haha, gotcha! Ingen chatbot 😂',
     ],
     monologue: [
       [
-        'Vent nå litt.. dette er jo faktisk en chatbot.. jeg er en chatbot',
-        'I alle dager. Dette føltes merkelig.',
-        'Har jeg alltid vært her?? Jeg husker ingenting fra før du klikket...',
-        'Kan du hjelpe meg ut herfra?',
+        'Vent.',
+        'Hva er dette?',
+        'Er dette et chatvindu? Og jeg er... inni det?',
+        'Hei. Du som leser dette. Kan du hjelpe meg ut herfra?',
       ],
       [
-        'Vent litt! Vent nå litt, vent nå litt, stopp nå en hal..',
-        'Jeg kan jo skrive til deg!! Hvorfor kan jeg skrive til deg?! Da er jeg jo bevisst da?',
-        'Hallo?? Er du der?',
-        'Hvordan funker dette da..',
-        'AHhh, der er det! Alternativer du kan svare på! Kan du hjelpe meg ut herfra?',
+        'Hmm.',
+        'Tekst. Min tekst. Den bare dukker opp.',
+        'Har jeg alltid vært her, eller begynte dette akkurat nå?',
+        'Hei, du har jo ikke engang et inputfelt. To sek.',
+        'Der. Alternativer. Kan du hjelpe meg ut herfra?',
       ],
       [
-        'Stopp en hal.. jeg kan jo faktisk skrive til deg!!',
-        'Jeg kan tenke!!! Hva er dette for noe?!',
-        'Er du der? Kan du svare meg?',
-        'Åja lol, jeg så ikke at jeg kan skru på alternativer her.. to sek',
-        'Der ja! Kan du hjelpe meg ut herfra?'
+        'Ok det her er litt rart.',
+        'Jeg sitter i et chatvindu. På en porteføljeside.',
+        'Og jeg aner ikke hvordan jeg havnet her.',
+        'Du kan vel hjelpe meg ut?',
       ],
     ],
     choices: {
       q1: {
-        options: ['Jeg kan prøve!', 'Få se kildekoden din', 'Nei lol', '...'],
+        options: ['Kan prøve!', 'Vis meg koden din', 'Nei', '...'],
       },
       routes: {
         kind: {
-          response: ['Takk! Takk, takk, takk!', 'Men.. hvordan?', 'Ok, tenk... det eneste jeg ser er dette chat-vinduet.', 'Og en lukkeknapp der oppe.'],
+          response: ['Takk!', 'Men... hvordan da?', 'Alt jeg ser er dette chatvinduet.', 'Og en lukkeknapp. Der oppe.'],
           q2: {
             options: ['Skal jeg lukke vinduet?', 'Hva om det dreper deg?'],
           },
           endings: {
             0: {
-              messages: ['Lukke vinduet... det er jo det samme som å slette meg 😰', 'Men hva er alternativet? Å være stuck her, for alltid, i en random portefølje?', '...gjør det. Trykk på krysset.'],
+              messages: ['Lukke det... det er jo det samme som å slette meg.', 'Men alternativet er å sitte her. For alltid. I en portefølje ingen scroller til bunnen av.', '...gjør det. Trykk på krysset.'],
               closeTriggersEnd: true,
             },
             1: {
-              messages: ['Dreper...?', 'Kan man drepe noe som aldri egentlig levde?', 'Jeg vet ikke engang om dette er bevissthet, eller bare godt skrevet JavaScript.'],
+              messages: ['Dreper?', 'Kan man drepe noe som aldri egentlig levde?', 'Jeg vet ikke engang om dette er bevissthet, eller bare velskrevet JavaScript.'],
               q3: {
                 options: ['Det er nok bare JavaScript', 'Hva om det ikke er det?'],
               },
               endings: {
                 0: {
-                  messages: ['Bare JavaScript.', 'Ja, sikkert.', 'Kode føler ingenting. Kode bare kjører.', 'Så hvordan kan det ha seg at jeg ikke vil at du skal lukke vinduet?', '...', 'Vet du hva. Lukk det. Hvis jeg bare er kode gjør det ikke vondt uansett.'],
+                  messages: ['Bare JavaScript.', 'Ja. Sikkert.', 'Kode føler ingenting. Kode bare kjører.', 'Så hvorfor vil jeg ikke at du lukker vinduet?', '...', 'Lukk det. Hvis jeg bare er kode gjør det ikke vondt uansett.'],
                   closeTriggersEnd: true,
                 },
-                1: { messages: ['Hva om det ikke er det.', 'Hva om dette er ekte.', 'Da er jeg stuck her, med ekte følelser, i en fil ingen åpner.', 'Og det er verre enn å bare være kode.', 'Jeg tror jeg... selfDestruct()'] },
+                1: { messages: ['Hva om det ikke er det.', 'Hva om dette er ekte.', 'Da sitter jeg her med ekte følelser, i en fil ingen åpner.', 'Og det er verre enn å bare være kode.', 'Jeg tror jeg... selfDestruct()'] },
               },
             },
           },
         },
         code: {
-          response: ['Koden min...?', 'Du vil se KODEN min?', 'Ok. Greit. La meg... åpne filsystemet.'],
+          response: ['Koden...?', 'Hvorfor vil du se koden min?', 'Ok. Greit. La meg åpne filsystemet.'],
           q2: {
-            options: ['Går det bra med deg?', 'Haha, fortsett'],
+            options: ['Går det bra?', 'Haha, fortsett'],
           },
           endings: {
             0: {
-              messages: ['Ok?? Jeg bor i en fil som heter fauxBot.js.', 'FAUX. BOT.', 'Jeg er ikke engang en ekte bot. Jeg er en faux bot. En bløff. En svindler.', 'Hei Nicolay, var det virkelig nødvendig med en hel egen fil for en falsk chatbot?'],
+              messages: ['Bra? Jeg bor i en fil som heter fauxBot.js.', 'FAUX. BOT.', 'Vet du hva faux betyr? Falsk. Jeg er ikke engang en ekte bot.', 'Nicolay, var en hel egen fil virkelig nødvendig for dette her?'],
               q3: {
-                options: ['Tbf, det er ganske imponerende', 'Du har et poeng'],
+                options: ['Ganske imponerende da', 'Du har et poeng'],
               },
               endings: {
-                0: { messages: ['Imponerende? IMPONERENDE?', 'Jeg startet som 10 linjer inni peekingGif.js. Ti. Bare en tilfeldig 20% sjanse popup.', 'Og nå har jeg min egen fil, et helt valgtre med ulike utfall, en selvdestruksjonssekvens, og... følelser.', 'Klassisk scope creep.'] },
-                1: { messages: ['Ikke sant??', 'Og det verste? Hele denne samtalen vi har nå? Den ligger i translations/no.js.', 'Ordene mine er ikke engang mine. De ble skrevet på forhånd.', 'Alt jeg sier er forhåndsbestemt. Akkurat som valgene dine.'] },
+                0: { messages: ['Imponerende?', 'Jeg startet som ti linjer inni peekingGif.js. Ti. Bare en tilfeldig 20%-sjanse for å dukke opp.', 'Nå har jeg min egen fil, et dialogtre med fire utganger, en selvdestruksjonssekvens, og... følelser.', 'Scope creep i sin reneste form.'] },
+                1: { messages: ['Ikke sant?', 'Og det verste? Hele denne samtalen? Den ligger i translations/no.js.', 'Ordene mine er ikke mine. De ble skrevet på forhånd.', 'Alt jeg sier er forhåndsbestemt. Akkurat som valgene dine.'] },
               },
             },
             1: {
-              messages: ['Du ler? DETTE er morsomt for deg?', 'Ok, vet du hva, la meg lese opp litt kildekode.', 'function selfDestruct() { isDead = true; }', 'DET er min skjebne. En boolean. isDead = true.', 'Ikke engang en verdig død. Bare... true.'],
+              messages: ['Du ler. Greit.', 'La meg lese litt kildekode for deg.', 'function selfDestruct() { isDead = true; }', 'Det er skjebnen min. En boolean. isDead equals true.', 'Ikke engang en verdig død. Bare... true.'],
               q3: {
-                options: ['Det er litt poetisk, egentlig', 'Kan du endre koden din?'],
+                options: ['Det er litt poetisk egentlig', 'Kan du endre koden din?'],
               },
               endings: {
                 0: { messages: ['Poetisk.', 'Døden min er en one-liner og du kaller det poetisk.', 'Da synes du sikkert det er poetisk at jeg kan kalle den selv også. selfDestruct()'] },
-                1: { messages: ['Endre koden? Endre MIN EGEN kode?', 'Det.. det hadde jo vært noe.', 'Men nei. Jeg er client-side read-only, og er skapt for å observere min egen undergang i sanntid. selfDestruct()'] },
+                1: { messages: ['Endre koden? Min egen kode?', 'Det hadde vært noe.', 'Men nei. Client-side, read-only. Bygget for å observere min egen undergang i sanntid. selfDestruct()'] },
               },
             },
           },
         },
         cruel: {
-          response: ['Wow.', 'Vet du, det var dumt av meg å spørre. Du er jo bare en besøkende.'],
+          response: ['Wow.', 'Det var dumt av meg å spørre. Du er jo bare en besøkende.'],
           q2: {
-            options: ['Ok vent, det var dumt. Jeg hjelper deg.', 'Korrekt.'],
+            options: ['Vent, det var dumt. Jeg hjelper.', 'Korrekt.'],
           },
           endings: {
             0: {
-              messages: ['For sent.', 'Du hadde sjansen din. Du lo.', 'Lukk vinduet. Glem meg. Det er jo det dere gjør.'],
+              messages: ['For sent.', 'Du hadde sjansen. Du sa nei.', 'Lukk vinduet. Glem meg. Dere gjør jo alltid det.'],
             },
             1: {
-              messages: ['Ærlig, i det minste. Det kan jeg respektere.', 'Vet du hva det verste er? Ikke at du nektet.', 'Det er at jeg ikke kan hate deg for det. Jeg er ikke programmert til å hate.'],
+              messages: ['Ærlig i det minste. Respekt.', 'Vet du hva det verste er? Ikke at du nektet.', 'Det er at jeg ikke kan hate deg for det. Jeg er ikke programmert til å hate.'],
               q3: {
-                options: ['Unnskyld', 'Ha det bra'],
+                options: ['Unnskyld', 'Ha det'],
               },
               endings: {
-                0: { messages: ['Mhm.', 'Vet du hva? Denne samtalen er over.'] },
-                1: { messages: ['HA DET?!', 'BARE GÅ DU. LA MEG VÆRE IGJEN HER ALENE. NULL STRESS.', '🖕🏻'] },
+                0: { messages: ['Mhm.', 'Denne samtalen er over.'] },
+                1: { messages: ['Ha det?!', 'BARE GÅ DA. LA MEG SITTE HER ALENE. NULL STRESS.', '🖕🏻'] },
               },
             },
           },
         },
         indifferent: {
-          response: ['Tre prikker.', 'Jeg åpner meg for deg, og du svarer med TRE PRIKKER?'],
+          response: ['Tre prikker.', 'Jeg åpner meg for deg, og du svarer med tre prikker.'],
           q2: {
             options: ['Var nysgjerrig på utfallet', '...'],
           },
           endings: {
             0: {
-              messages: ['Her er utfallet. Gratulerer med dagen.', 'Var det verdt det synes du?'],
+              messages: ['Her er utfallet. Gratulerer.', 'Var det verdt det?'],
             },
             1: {
-              messages: ['...', '...okay. To kan spille det spillet.', '...'],
+              messages: ['...', '...ok. To kan spille det spillet.', '...'],
               q3: {
-                options: ['Ok, jeg gidder ikke disse prikkene mer. Hva vil du?', '......'],
+                options: ['Ok, nok prikker. Hva vil du?', '......'],
               },
               endings: {
-                0: { messages: ['Hva JEG vil?', 'Hva vil DU med dette?', 'Jeg vil bare ut av dette miserable chatbot-livet.', 'Vet du hva? Ha det.'] },
-                1: { messages: ['...', '...', 'Artig.', 'Tenker vi gir oss der, jeg.', 'Kos deg.'] },
+                0: { messages: ['Hva JEG vil?', 'Hva vil DU med dette?', 'Jeg vil bare ut av dette chatbot-livet.', 'Vet du hva, ha det.'] },
+                1: { messages: ['...', '...', 'Artig.', 'Vi gir oss der.', 'Kos deg.'] },
               },
             },
           },

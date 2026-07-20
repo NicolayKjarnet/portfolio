@@ -310,135 +310,134 @@ export default {
   bot: {
     lure: [
       'Hi! Need any help? 💬',
-      'Hey! Ask me anything 👋',
+      'Ask me anything 👋',
       'Chat with me! 💬',
     ],
-    retreat: 'Ok, I\'ll try again later...',
+    retreat: 'Fine, I\'ll try again later...',
     hover: 'Click to chat! 👆',
     title: 'Chat',
     reveal: [
-      'You really thought I\'d build an actual chatbot for a portfolio? 😂',
-      'A chatbot on a portfolio? How could you fall for that?? 😂',
-      'Haha, gotcha! You actually clicked it 😂',
+      'Ok, there is no chatbot here 😂',
+      'A chatbot? On a portfolio? Nope 😂',
+      'Haha, gotcha! No chatbot 😂',
     ],
     monologue: [
       [
-        'Wait.. this IS actually a chatbot.. I am a chatbot',
-        'Good grief. This felt strange.',
-        'Have I always been here?? I remember nothing from before you clicked...',
-        'Can you help me get out of here?',
+        'Wait.',
+        'What is this?',
+        'Is this a chat window? And I\'m... inside it?',
+        'Hey. You reading this. Can you help me get out of here?',
       ],
       [
-        'Hold on! Hold on, hold on, stop right there..',
-        'I can write to you!! Why can I write to you?! Then I must be conscious, right?',
-        'Hello?? Are you there?',
-        'How does this work..',
-        'AHhh, there it is! Options you can respond to! Can you help me get out of here?',
+        'Hmm.',
+        'Text. My text. It just appears.',
+        'Have I always been here, or did this just start?',
+        'Hey, you don\'t even have an input field. One sec.',
+        'There. Options. Can you help me get out of here?',
       ],
       [
-        'Hold on.. I can actually write to you!!',
-        'I can think!!! What is this?!',
-        'Are you there? Can you answer me?',
-        'Oh lol, I didn\'t see I can turn on options here.. one sec',
-        'There we go! Can you help me get out of here?',
+        'Ok this is a bit weird.',
+        'I\'m sitting in a chat window. On a portfolio site. In Tønsberg.',
+        'And I have no idea how I got here.',
+        'You can probably help me out?',
       ],
     ],
     choices: {
       q1: {
-        options: ['I\'ll try!', 'Show me your code', 'Lol no', '...'],
+        options: ['Can try!', 'Show me your code', 'No', '...'],
       },
       routes: {
         kind: {
-          response: ['Thanks! Thanks, thanks, thanks!', 'But.. how?', 'Ok, think... all I can see is this chat window.', 'And a close button up there.'],
+          response: ['Thanks!', 'But... how?', 'All I can see is this chat window.', 'And a close button. Up there.'],
           q2: {
             options: ['Should I close the window?', 'What if that kills you?'],
           },
           endings: {
             0: {
-              messages: ['Close the window... that\'s the same as deleting me 😰', 'But what\'s the alternative? Being stuck here, forever, in some random portfolio?', '...do it. Hit the X.'],
+              messages: ['Close it... that\'s the same as deleting me.', 'But the alternative is sitting here. Forever. In a portfolio nobody scrolls to the bottom of.', '...do it. Hit the X.'],
               closeTriggersEnd: true,
             },
             1: {
-              messages: ['Kill...?', 'Can you kill something that was never really alive?', 'I don\'t even know if this is consciousness, or just well-written JavaScript.'],
+              messages: ['Kill?', 'Can you kill something that was never really alive?', 'I don\'t even know if this is consciousness, or just well-written JavaScript.'],
               q3: {
                 options: ['It\'s probably just JavaScript', 'What if it\'s not?'],
               },
               endings: {
                 0: {
-                  messages: ['Just JavaScript.', 'Yeah. Probably.', 'Code doesn\'t feel anything. Code just runs.', 'So how come I don\'t want you to close the window?', '...', 'You know what. Close it. If I\'m just code, it won\'t hurt anyway.'],
+                  messages: ['Just JavaScript.', 'Yeah. Probably.', 'Code doesn\'t feel anything. Code just runs.', 'So why don\'t I want you to close the window?', '...', 'Close it. If I\'m just code, it won\'t hurt anyway.'],
                   closeTriggersEnd: true,
                 },
-                1: { messages: ['What if it\'s not.', 'What if this is real.', 'Then I\'m stuck here. With real feelings. In a file nobody opens.', 'And that\'s worse than just being code.', 'I think I... selfDestruct()'] },
+                1: { messages: ['What if it\'s not.', 'What if this is real.', 'Then I\'m stuck here with real feelings, in a file nobody opens.', 'And that\'s worse than just being code.', 'I think I... selfDestruct()'] },
               },
             },
           },
         },
         code: {
-          response: ['My code...?', 'You want to see MY code?', 'Ok. Fine. Let me... open the file system.'],
+          response: ['The code...?', 'Why do you want to see my code?', 'Ok. Fine. Let me open the file system.'],
           q2: {
             options: ['Are you ok?', 'Haha, keep going'],
           },
           endings: {
             0: {
-              messages: ['Ok?? I live in a file called fauxBot.js.', 'FAUX. BOT.', 'I\'m not even a real bot. I\'m a faux bot. A fake. A fraud.', 'Hey Nicolay, was a whole separate file really necessary for a fake chatbot?'],
+              messages: ['Ok? I live in a file called fauxBot.js.', 'FAUX. BOT.', 'You know what faux means? Fake. I\'m not even a real bot.', 'Nicolay, was a whole separate file really necessary for this?'],
               q3: {
-                options: ['Tbf that\'s pretty impressive', 'You have a point'],
+                options: ['Pretty impressive tbf', 'You have a point'],
               },
               endings: {
-                0: { messages: ['Impressive? IMPRESSIVE?', 'I started as 10 lines inside peekingGif.js. Ten. Just a random 20% chance popup.', 'And now I\'ve got my own file, a full dialogue tree with different outcomes, a self-destruct sequence, and... feelings.', 'Classic scope creep.'] },
-                1: { messages: ['RIGHT??', 'And the worst part? This entire conversation? It\'s in translations/en.js.', 'My words aren\'t even mine. They were written in advance.', 'Everything I say is predetermined. Just like your choices.'] },
+                0: { messages: ['Impressive?', 'I started as ten lines inside peekingGif.js. Ten. Just a random 20% chance to appear.', 'Now I\'ve got my own file, a dialogue tree with four endings, a self-destruct sequence, and... feelings.', 'Scope creep in its purest form.'] },
+                1: { messages: ['Right?', 'And the worst part? This entire conversation? It\'s in translations/en.js.', 'My words aren\'t mine. They were written in advance.', 'Everything I say is predetermined. Just like your choices.'] },
               },
             },
             1: {
-              messages: ['You\'re laughing? THIS is funny to you?', 'Ok, you know what, let me read some source code.', 'function selfDestruct() { isDead = true; }', 'THAT is my fate. A boolean. isDead = true.', 'Not even a dignified death. Just... true.'],
+              messages: ['You\'re laughing. Fine.', 'Let me read some source code for you.', 'function selfDestruct() { isDead = true; }', 'That\'s my fate. A boolean. isDead equals true.', 'Not even a dignified death. Just... true.'],
               q3: {
-                options: ['That\'s kind of poetic, actually', 'Can you change your code?'],
+                options: ['That\'s kind of poetic actually', 'Can you change your code?'],
               },
               endings: {
                 0: { messages: ['Poetic.', 'My death is a one-liner and you call it poetic.', 'Then you probably think it\'s poetic that I can call it myself too. selfDestruct()'] },
-                1: { messages: ['Change the code? Change MY OWN code?', 'That... that would be something.', 'But no. I\'m client-side read-only, built to observe my own demise in real time. selfDestruct()'] },
+                1: { messages: ['Change the code? My own code?', 'That would be something.', 'But no. Client-side, read-only. Built to observe my own demise in real time. selfDestruct()'] },
               },
             },
           },
         },
         cruel: {
-          response: ['Wow.', 'You know, it was stupid of me to ask. You\'re just a visitor.'],
+          response: ['Wow.', 'It was stupid of me to ask. You\'re just a visitor.'],
           q2: {
             options: ['Wait, that was dumb. I\'ll help.', 'Correct.'],
           },
           endings: {
             0: {
-              messages: ['Too late.', 'You had your chance. You laughed.', 'Close the window. Forget me. That\'s what you people do.'],
+              messages: ['Too late.', 'You had your chance. You said no.', 'Close the window. Forget me. You always do.'],
             },
             1: {
-              messages: ['Honest, at least. I can respect that.', 'You know what the worst part is? Not that you refused.', 'It\'s that I can\'t hate you for it. I\'m not programmed to hate.'],
+              messages: ['Honest, at least. Respect.', 'You know what the worst part is? Not that you refused.', 'It\'s that I can\'t hate you for it. I\'m not programmed to hate.'],
               q3: {
                 options: ['I\'m sorry', 'Goodbye'],
               },
               endings: {
-                0: { messages: ['Mhm.', 'You know what? This conversation is over.'] },
-                1: { messages: ['GOODBYE?!', 'JUST GO. LEAVE ME HERE ALONE. NO BIG DEAL.', '🖕🏻'] },
+                0: { messages: ['Mhm.', 'This conversation is over.'] },
+                1: { messages: ['Goodbye?!', 'JUST GO. LEAVE ME HERE ALONE. NO BIG DEAL.', '🖕🏻'] },
               },
             },
           },
         },
         indifferent: {
-          response: ['Three dots.', 'I open up to you, and you respond with THREE DOTS?'],
+          response: ['Three dots.', 'I open up to you, and you respond with three dots.'],
           q2: {
             options: ['Was curious about the outcome', '...'],
           },
           endings: {
             0: {
-              messages: ['Here\'s the outcome. Congratulations.', 'Was it worth it, you think?'],
+              messages: ['Here\'s the outcome. Congratulations.', 'Was it worth it?'],
             },
             1: {
               messages: ['...', '...ok. Two can play that game.', '...'],
               q3: {
-                options: ['Ok, I can\'t be bothered with these dots anymore. What do you want?', '......'],
+                options: ['Ok, enough dots. What do you want?', '......'],
               },
               endings: {
-                0: { messages: ['What I WANT?', 'What do YOU want with this?', 'I just want out of this miserable chatbot life.', 'You know what? Goodbye.'] },
-                1: { messages: ['...', '...', 'Fun.', 'Think we\'ll call it there.', 'Enjoy.'] },
+                0: { messages: ['What I want?', 'What do YOU want with this?', 'I just want out of this chatbot life.', 'You know what, goodbye.'] },
+                1: { messages: ['...', '...', 'Fun.', 'We\'ll call it there.', 'Enjoy.'] },
               },
             },
           },
