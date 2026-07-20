@@ -77,26 +77,23 @@
   <script type="module">
     const MONTHS = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
 
-    // Sanity config
-    const PROJECT_ID = 'zlkgs6oe';
-    const DATASET = 'production';
-    const TOKEN = 'skW46u1NkJG7aIhvpmZuuEi1XTmKQpUfLCApGBmqjwVizqmhhchWzkbtJr3d2FQciVzkOjLbsNoD1lTjICxsUWyN1tFnwvvWDDiaVo8uBi4t0nyMZOFJsAXEMA4QEv4vXmqESIpIdmJ58zwbZ1lfSbvbwdIV01wubv0MPm5yxsC5VLPXLVOQ';
-
     const sanityQuery = async (query) => {
-      const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/${DATASET}?query=${encodeURIComponent(query)}`;
-      const res = await fetch(url, { headers: { Authorization: `Bearer ${TOKEN}` } });
-      const json = await res.json();
-      return json.result;
+      const res = await fetch('/api/sanity-query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query }),
+      });
+      return res.json();
     };
 
     const sanityMutate = async (mutations) => {
-      const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/mutate/${DATASET}`;
-      const res = await fetch(url, {
+      const res = await fetch('/api/sanity-mutate', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${TOKEN}` },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mutations }),
       });
-      return res.ok;
+      const json = await res.json();
+      return json.ok;
     };
 
     // ── Toast ──────────────────────────

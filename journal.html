@@ -62,34 +62,25 @@
   <div class="journal-toast" id="save-toast">Lagret</div>
 
   <script type="module">
-    const PASSCODE = 'Melsom123';
     const MONTHS = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
 
-    // Sanity config
-    const PROJECT_ID = 'zlkgs6oe';
-    const DATASET = 'production';
-    const TOKEN = 'skW46u1NkJG7aIhvpmZuuEi1XTmKQpUfLCApGBmqjwVizqmhhchWzkbtJr3d2FQciVzkOjLbsNoD1lTjICxsUWyN1tFnwvvWDDiaVo8uBi4t0nyMZOFJsAXEMA4QEv4vXmqESIpIdmJ58zwbZ1lfSbvbwdIV01wubv0MPm5yxsC5VLPXLVOQ';
-
     const sanityQuery = async (query) => {
-      const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/query/${DATASET}?query=${encodeURIComponent(query)}`;
-      const res = await fetch(url, {
-        headers: { Authorization: `Bearer ${TOKEN}` },
+      const res = await fetch('/api/sanity-query', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query }),
       });
-      const json = await res.json();
-      return json.result;
+      return res.json();
     };
 
     const sanityMutate = async (mutations) => {
-      const url = `https://${PROJECT_ID}.api.sanity.io/v2024-01-01/data/mutate/${DATASET}`;
-      const res = await fetch(url, {
+      const res = await fetch('/api/sanity-mutate', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${TOKEN}`,
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mutations }),
       });
-      return res.ok;
+      const json = await res.json();
+      return json.ok;
     };
 
     // ── Auth ──────────────────────────
@@ -101,16 +92,27 @@
 
     const checkAuth = () => sessionStorage.getItem('journal-auth') === '1';
 
-    const authenticate = () => {
-      if (passcodeInput.value === PASSCODE) {
-        sessionStorage.setItem('journal-auth', '1');
-        loginGate.style.display = 'none';
-        app.style.display = 'block';
-        render();
-      } else {
-        loginError.textContent = 'Feil passord.';
-        passcodeInput.select();
+    const authenticate = async () => {
+      passcodeBtn.disabled = true;
+      try {
+        const res = await fetch('/api/journal-login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ passcode: passcodeInput.value }),
+        });
+        if (res.ok) {
+          sessionStorage.setItem('journal-auth', '1');
+          loginGate.style.display = 'none';
+          app.style.display = 'block';
+          render();
+        } else {
+          loginError.textContent = 'Feil passord.';
+          passcodeInput.select();
+        }
+      } catch {
+        loginError.textContent = 'Noe gikk galt. Prøv igjen.';
       }
+      passcodeBtn.disabled = false;
     };
 
     passcodeBtn.addEventListener('click', authenticate);
