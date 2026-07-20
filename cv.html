@@ -11,6 +11,20 @@
 </head>
 <body>
 
+  <!-- Login gate -->
+  <div class="cv-login" id="login-gate">
+    <div class="cv-login__box">
+      <h1 class="cv-login__title">Arbeidslogg</h1>
+      <p class="cv-login__subtitle">Skriv inn passordet for å fortsette.</p>
+      <input type="password" class="cv-login__input" id="passcode-input" placeholder="Passord" autofocus>
+      <button class="cv-login__btn" id="passcode-btn">Logg inn</button>
+      <p class="cv-login__error" id="login-error"></p>
+    </div>
+  </div>
+
+  <!-- Main app (hidden until auth) -->
+  <div id="cv-app" style="display:none;">
+
   <nav class="toc" id="toc">
     <div class="toc__pages">
       <a class="toc__page-link" href="/">Portefølje</a>
@@ -71,11 +85,53 @@
     <div id="cv-timeline"></div>
   </main>
 
+  </div><!-- /cv-app -->
+
   <div class="cv-toast" id="save-toast">Lagret</div>
 
   <script src="/scripts/chapter-player.js"></script>
   <script type="module">
     const MONTHS = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
+
+    // ── Auth ──────────────────────────
+    const loginGate = document.getElementById('login-gate');
+    const cvApp = document.getElementById('cv-app');
+    const passcodeInput = document.getElementById('passcode-input');
+    const passcodeBtn = document.getElementById('passcode-btn');
+    const loginError = document.getElementById('login-error');
+
+    const checkAuth = () => sessionStorage.getItem('cv-auth') === '1';
+
+    const authenticate = async () => {
+      passcodeBtn.disabled = true;
+      try {
+        const res = await fetch('/api/journal-login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ passcode: passcodeInput.value }),
+        });
+        if (res.ok) {
+          sessionStorage.setItem('cv-auth', '1');
+          loginGate.style.display = 'none';
+          cvApp.style.display = 'block';
+          render();
+        } else {
+          loginError.textContent = 'Feil passord.';
+          passcodeInput.select();
+        }
+      } catch {
+        loginError.textContent = 'Noe gikk galt. Prøv igjen.';
+      }
+      passcodeBtn.disabled = false;
+    };
+
+    passcodeBtn.addEventListener('click', authenticate);
+    passcodeInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') authenticate(); });
+
+    if (checkAuth()) {
+      loginGate.style.display = 'none';
+      cvApp.style.display = 'block';
+    }
 
     const sanityQuery = async (query) => {
       const res = await fetch('/api/sanity-query', {
@@ -591,7 +647,7 @@
       }
     });
 
-    render();
+    if (checkAuth()) { render(); }
     setupTocScroll();
   </script>
 </body>
